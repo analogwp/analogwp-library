@@ -1,0 +1,249 @@
+@media screen and (min-width: 768px) {
+	.ang-wrapper {
+		display: grid;
+		grid-template-columns: 9fr 3fr;
+		column-gap: 50px;
+	}
+
+	#ang_plugin_rollback_version-description + .form-table tbody {
+		display: grid;
+		grid-template-columns: auto 1fr;
+	}
+
+	#ang_plugin_rollback_version-description + .form-table .forminp-button {
+		padding: 15px 0;
+	}
+}
+
+.ang .forminp .description {
+	display: block;
+	margin-top: 10px;
+}
+
+.ang .forminp-button {
+	padding: 15px 10px;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+
+.ang .forminp-button .description {
+	margin-top: 0;
+}
+
+.ang .collapsible {
+	border: none;
+	border-top: 1px solid#e2e4e7;
+	border-bottom: 1px solid#e2e4e7;
+	background-color: #fff;
+	padding: 15px;
+	outline: none;
+	width: 100%;
+	font-weight: 600;
+	text-align: left;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+.ang .collapsible:after, .ang .collapsible.active:after {
+	font-family: 'Dashicons';
+	font-size: 20px;
+	color: #000;
+	float: right;
+	margin-left: 5px;
+}
+
+.ang .collapsible:after {
+	content: "\f140";
+}
+
+.ang .collapsible.active:after {
+	content: "\f142";;
+}
+
+.ang .collapsible.active, .ang .collapsible:hover {
+	background-color: #fff;
+}
+
+.ang .collapsible-content {
+	padding: 0 18px;
+	background-color: white;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+}
+
+
+.ang #ang-starter-kits .titledesc .header,
+.ang .ang-starter-kits-list li {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	margin-top: 25px;
+}
+
+.ang .ang-starter-kits-list img {
+	width: 160px;
+	border-radius: 5px;
+	height: auto;
+}
+
+.ang .ang-starter-kits-list .kit-title {
+	font-size: 18px;
+	font-weight: 500;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+.ang .ang-starter-kits-list .kit-description {
+	display: inline-block;
+	font-size: 14px;
+	color: #50575e;
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+.ang .ang-starter-kits-list .kit-btns > * {
+	margin-right: 5px;
+	margin-top: 5px;
+}
+
+.ang #ang-starter-kits + .submit {
+	display: none;
+}
+
+.ang.gopro .submit {
+	display: none;
+}
+.ang.gopro .ang-button.ang-gopro-button {
+	display: inline-block;
+	margin-top: 30px;
+}
+
+.ang.gopro h1 {
+	margin-top: 15px;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 30px;
+}
+
+.ang.gopro .gopro-content ul {
+	list-style: disc;
+	list-style-position: inside;
+}
+
+.ang.gopro .gopro-content li {
+	line-height: 1.5;
+}
+
+.ang.gopro .gopro-content p, li {
+	font-size: 15px;
+}
+
+.ang.gopro form {
+	position: relative;
+}
+
+.ang.gopro form {
+	height: calc(100% - 10%);
+}
+
+@media screen and ( min-width: 1920px ) {
+	.ang.gopro form {
+		height: auto;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.ang.gopro form {
+		padding-bottom: 250px;
+	}
+}
+
+.ang.gopro .gopro-content img {
+	width: 100%;
+}
+
+.ang.gopro .tab-content .ang-button {
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.ang .ang-enhanced-select {
+	min-width: 150px;
+}
+
+.ang .sidebar .promo,
+.ang .sidebar .upgrade-box {
+	margin-top: 50px;
+	background: #fff;
+	border: 1px solid #dcdcdc;
+	padding: 5px 30px 25px;
+}
+
+.ang .sidebar .social {
+	display: flex;
+	gap: 15px;
+}
+
+.ang .upgrade-box li {
+	list-style: disc;
+	font-size: 1.1em;
+}
+
+.ang .upgrade-box h3 {
+	line-height: 1.4em;
+}
+
+.ang .upgrade-box .regular-text {
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.ang .upgrade-box + .promo {
+	margin-top: 30px;
+}
+
+.ang .sidebar .form-newsletter input {
+	width: 100%;
+}
+
+.ang .sidebar .form-newsletter .ang-button {
+	margin-top: 10px;
+}
+
+.ang .sidebar .social > a {
+	text-decoration: none;
+}
+
+.experiment-indicator {
+	display: inline-block;
+	height: 10px;
+	width: 10px;
+	border-radius: 50%;
+	border: 2px solid #fff;
+	-webkit-box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+	box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+	transform: translateY(2px);
+	margin-right: 4px;
+}
+
+.experiment-indicator.active {
+	background: #39b54a;
+}
+
+.gopro-content ul li::marker {
+	font-size: 18px;
+	line-height: 0;
+}
+
+.gopro-content a.ang-button.button-primary {
+	background: #413EC5;
+	border-color: #413EC5;
+	text-transform: uppercase;
+	padding: 4px 15px;
+	font-weight: 600;
+}

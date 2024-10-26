@@ -1,0 +1,52 @@
+{
+    "name": "mauryaratan/analogwp-templates",
+    "description": "Style Kits for Elementor adds a number of intuitive styling controls in the Elementor editor that allow you to apply styles globally or per page.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Ram Ratan Maurya",
+            "email": "ratan.maurya@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+  	"prefer-stable": true,
+  	"config": {
+	  "sort-packages": true,
+        "allow-plugins": {
+            "civicrm/composer-downloads-plugin": true,
+            "ergebnis/composer-normalize": true
+        }
+	},
+	"require": {
+	  "enshrined/svg-sanitize": "^0.15.4"
+	},
+    "require-dev": {
+        "civicrm/composer-downloads-plugin": "*",
+        "ergebnis/composer-normalize": "*",
+        "flow/jsonpath": "*",
+        "sniccowp/php-scoper-wordpress-excludes": "*"
+    },
+	"extra": {
+	  "downloads": {
+		"php-scoper": {
+		  "path": "vendor/bin/php-scoper",
+		  "type": "phar",
+		  "url": "https://github.com/humbug/php-scoper/releases/download/0.17.2/php-scoper.phar"
+		}
+	  }
+	},
+  "scripts": {
+	"post-install-cmd": [
+	  "@prefix-dependencies"
+	],
+	"post-update-cmd": [
+	  "@prefix-dependencies"
+	],
+	"prefix-dependencies": [
+	  "php-scoper add-prefix --output-dir=./third-party --force --quiet",
+	  "echo '{ \"autoload\": { \"classmap\": [\"\"] } }' > ./third-party/composer.json",
+	  "@composer dump-autoload --working-dir ./third-party --no-dev --classmap-authoritative"
+	]
+  }
+}

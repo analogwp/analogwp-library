@@ -1,0 +1,208 @@
+:root {
+	--ang-accent: #5C32B6;
+}
+
+.elementor-add-analogwp-button {
+	background-color: var(--ang-accent);
+	margin-left: 5px;
+}
+
+#analogwp-templates-modal .dialog-widget-content {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+	overflow-x: hidden;
+	background-color: #e3e3e3;
+	border-radius: none;
+}
+
+#analogwp-templates-modal p {
+	margin: 1em 0;
+}
+
+#analogwp-templates {
+	background-color: #F1F1F1;
+    text-align: left;
+}
+
+#analogwp-templates input[type=checkbox]:checked:before {
+	margin: -5px 0 0 -9px;
+}
+
+#analogwp-templates label {
+	cursor: pointer;
+}
+
+#analogwp-templates-modal .dialog-message {
+    padding: 0;
+}
+
+#analogwp-templates > div {
+	margin: 0;
+}
+
+#analogwp-templates-modal .ang-notices p {
+	margin: 0;
+}
+
+.elementor-add-analogwp-button {
+	background-image: url('../img/triangle.svg');
+	background-repeat: no-repeat;
+	background-size: 20px;
+	background-position: center;
+}
+
+button[data-action="save_token"] {
+	background-color: #8d62a0 !important;
+}
+
+.dialog-widget.ang-notice,
+.elementor-panel .ang-notice {
+	display: inline-block;
+	padding: 10px;
+	line-height: 1.4;
+	font-size:12px;
+	font-style:normal;
+	color: rgba(0, 0, 0, 0.7) !important;
+	background: #EFEFEF !important;
+	border-radius: 4px;
+}
+
+.elementor-panel .ang-notice.desc {
+	background: transparent !important;
+	border: 1px solid rgba(255, 255, 255, .3) !important;
+	color: inherit !important;
+}
+
+.dialog-widget.ang-notice a,
+.elementor-panel .ang-notice a {
+	text-decoration: underline;
+}
+
+.dialog-widget.ang-notice a:hover,
+.elementor-panel .ang-notice a:hover {
+	text-decoration: none;
+}
+
+.dialog-widget.ang-notice {
+	padding: 10px !important;
+	left: 10px !important;
+	width: 260px !important;
+}
+
+.dialog-widget.ang-notice.yellow,
+.elementor-panel .ang-notice.yellow {
+	background: #FDEAB9 !important;
+}
+
+.dialog-widget.ang-notice.blue,
+.elementor-panel .ang-notice.blue {
+	background: #E6F6FF !important;
+	margin: 2px 0;
+	float: right;
+	padding: 6px 8px;
+}
+
+.dialog-widget.ang-notice.description,
+.elementor-panel .ang-notice.description {
+	width: 100%;
+	background: #E6F6FF !important;
+}
+
+.dialog-widget.ang-notice.description a,
+.elementor-panel .ang-notice.description a{
+	color: currentColor;
+}
+
+.elementor-panel .ang-notice.blue:hover {
+	border-bottom-color: transparent;
+}
+
+.hint--medium:after {
+	width: 180px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+	.elementor-panel .ang-notice {
+		background: #EFEFEF;;
+		border: none;
+	}
+
+	[class*=hint--][aria-label]:after {
+		background: #34383C;
+		border: 1px solid rgba(255,255,255,.3);
+		border-radius: 4px;
+	}
+
+	.hint--top-right:before {
+		border-top-color: #727477 !important;
+	}
+}
+
+
+.dark-mode [class*=hint--][aria-label]:after {
+	background: #34383C;
+	border: 1px solid rgba(255,255,255,.3);
+	border-radius: 4px;
+}
+
+.dark-mode .hint--top-right:before {
+	border-top-color: #727477;
+}
+
+.ang-description-wide .elementor-control-field-description {
+	display: block;
+}
+
+#ang-stylekit-update .dialog-message p + p {
+	margin-top: 20px;
+}
+
+#ang-stylekit-update .dialog-lightbox-ang_apply {
+	color: #3ab54b;
+	border-left: 1px solid #e6e9ec;
+}
+
+#ang-has-globalkit .dialog-header {
+	line-height: 1.4;
+}
+
+#ang-has-globalkit .dialog-ang_apply {
+	color: #39b54a;
+}
+
+#analogwp-templates,
+#analogwp-templates-modal .dialog-message,
+#analogwp-templates-modal .dialog-content {
+	height: 100%;
+}
+
+
+#elementor-panel-page-settings-controls > .elementor-control[class*="ang_"],
+#elementor-kit-panel-content-controls > .elementor-control[class*="ang_"] {
+	position: relative;
+}
+
+#elementor-panel-page-settings-controls > .elementor-control[class*="ang_"]:after,
+#elementor-kit-panel-content-controls > .elementor-control[class*="ang_"]:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 5px;
+	height: 100%;
+	background: #C5B1CE;
+}
+
+.elementor-control-ang_action_tokens .select2-container {
+	min-width: 120px;
+}
+
+.elementor-control.elementor-control-description_ang_global_stylekit .elementor-descriptor {
+	font-style: normal;
+	color: currentColor;
+}
+
+.sub-arrow + .sub-arrow {
+	display: none;
+}
