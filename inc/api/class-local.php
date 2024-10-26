@@ -19,6 +19,7 @@ use WP_Query;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_REST_Server;
+use Analog\Slink\Data\Slink_Data;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -49,7 +50,7 @@ class Local extends Base {
 				WP_REST_Server::CREATABLE => 'handle_direct_import',
 			),
 			'/templates'               => array(
-				WP_REST_Server::READABLE => 'templates_list',
+				WP_REST_Server::READABLE => 'templates_list_slink',
 			),
 			'/mark_favorite/'          => array(
 				WP_REST_Server::CREATABLE => 'mark_as_favorite',
@@ -639,6 +640,38 @@ class Local extends Base {
 		}
 
 		return $payload;
+	}
+
+	/**
+	 * v3 library endpoint.
+	 *
+	 * @since 20200218
+	 *
+	 * @param \WP_REST_Request $request
+	 * @return \WP_REST_Response
+	 */
+	public function templates_list_slink( \WP_REST_Request $request ) {
+		$key  = 'slink_api_data_v3';
+		$info = get_transient( $key );
+
+		$force = $request->get_param( 'force_update' );
+
+		$info = array(
+			'timestamp' => current_time( 'timestamp' ),
+			'library'   => array(
+				'blocks'        => Slink_Data::patterns(),
+				'stylekits'     => array(),
+				'templates'     => array(),
+				'template_kits' => array(),
+				'test'		=> array(
+					'test'
+				)
+			),
+		);
+
+		ray( $info );
+
+		return $info;
 	}
 }
 

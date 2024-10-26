@@ -220,22 +220,22 @@ const Sidebar = ( { state } ) => {
 
 	return (
 		<SidebarWrapper className="sidebar">
-			<TextControl
-				placeholder={ AGWP.isContainer ? __( 'Search Patterns', 'ang' ) : __( 'Search Blocks', 'ang' ) }
-				value={ context.state.blocksSearchInput }
-				onChange={ ( value ) => {
-					context.handleSearch( value, 'patterns' );
-					context.dispatch( { blocksSearchInput: value } );
-				} }
-			/>
+			{/*<TextControl*/}
+			{/*	placeholder={ AGWP.isContainer ? __( 'Search Templates', 'ang' ) : __( 'Search Blocks', 'ang' ) }*/}
+			{/*	value={ context.state.blocksSearchInput }*/}
+			{/*	onChange={ ( value ) => {*/}
+			{/*		context.handleSearch( value, 'patterns' );*/}
+			{/*		context.dispatch( { blocksSearchInput: value } );*/}
+			{/*	} }*/}
+			{/*/>*/}
 
-			{ AGWP.license.status !== 'valid' && (
-				<ToggleControl
-					label={ AGWP.isContainer ? __( 'Show Pro Patterns', 'ang' ) : __( 'Show Pro Blocks', 'ang' ) }
-					checked={ ! context.state.showFree }
-					onChange={ toggleProBlocks }
-				/>
-			) }
+			{/*{ AGWP.license.status !== 'valid' && (*/}
+			{/*	<ToggleControl*/}
+			{/*		label={ AGWP.isContainer ? __( 'Show Pro Patterns', 'ang' ) : __( 'Show Pro Blocks', 'ang' ) }*/}
+			{/*		checked={ ! context.state.showFree }*/}
+			{/*		onChange={ toggleProBlocks }*/}
+			{/*	/>*/}
+			{/*) }*/}
 			{ tabGenerator( categoriesData() ).length >= 1 &&
 			<TabPanel
 				className="block-categories-tabs"

@@ -322,16 +322,12 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 
 			<Container className="blocks-area">
 
-				{ AGWP.license.status !== 'valid' && (
-					<ProModal />
-				) }
-
 				{ ! context.state.syncing && context.state.blocks.length < 1 && (
-					<Empty text={ AGWP.isContainer ? __( 'No patterns found', 'ang' ) : __( 'No blocks found', 'ang' ) } />
+					<Empty text={ AGWP.isContainer ? __( 'No Templates found', 'ang' ) : __( 'No blocks found', 'ang' ) } />
 				) }
 
 				{ context.state.syncing && context.state.blocks.length < 1 && (
-					<Empty text={ AGWP.isContainer ? __( 'Loading Patterns...', 'ang' ) : __( 'Loading Blocks...', 'ang' ) } />
+					<Empty text={ AGWP.isContainer ? __( 'Loading Templates...', 'ang' ) : __( 'Loading Blocks...', 'ang' ) } />
 				) }
 
 				<Masonry

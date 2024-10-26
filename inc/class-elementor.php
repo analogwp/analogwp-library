@@ -9,6 +9,7 @@ namespace Analog;
 
 use Analog\Elementor\ANG_Action;
 use Analog\Elementor\Globals\Controller;
+use Analog\Slink\Init;
 use Elementor\Core\Common\Modules\Finder\Categories_Manager;
 use Elementor\Core\DynamicTags\Manager;
 use Analog\Elementor\Tags\Light_Background;
@@ -24,6 +25,7 @@ class Elementor {
 	 * Constructor.
 	 */
 	public function __construct() {
+		new Init();
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'enqueue_editor_scripts' ) );
 		add_action( 'elementor/preview/enqueue_styles', array( $this, 'enqueue_editor_scripts' ) );
 
