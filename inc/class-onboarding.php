@@ -265,7 +265,7 @@ class Onboarding {
 				</div>
 				<div class="entry-footer">
 					<div class="prev">
-						<a href="<?php echo esc_url( admin_url( 'admin.php?page=ang-settings' ) ); ?>"><?php esc_html_e( 'Skip wizard', 'ang' ); ?></a>
+						<a href="<?php echo esc_url( admin_url( 'admin.php?page=ang-library-settings' ) ); ?>"><?php esc_html_e( 'Skip wizard', 'ang' ); ?></a>
 					</div>
 					<div class="next <?php echo $finished ? esc_attr( 'hidden' ) : ''; ?>">
 						<button id="start-onboarding" class="button btn-primary"><?php esc_html_e( 'Apply', 'ang' ); ?></button>

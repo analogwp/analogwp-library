@@ -9,7 +9,7 @@ class SaveSettingsCest {
 
     private function shouldSaveSettings(AcceptanceTester $I) {
     	// Ensure settings can be saved.
-    	$I->amOnAdminPage( 'admin.php?page=ang-settings' );
+    	$I->amOnAdminPage( 'admin.php?page=ang-library-settings' );
 
     	$I->amGoingTo( 'save page settings without any changes' );
     	$I->click( 'Save changes' );

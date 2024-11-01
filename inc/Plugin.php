@@ -173,7 +173,7 @@ final class Plugin {
 					'value' => $global_kit_title,
 				),
 			),
-			'adminURL'                => admin_url( 'admin.php?page=ang-settings&tab=general#global_kit' ),
+			'adminURL'                => admin_url( 'admin.php?page=ang-library-settings&tab=general#global_kit' ),
 			'blockMediaURL'           => 'https://bs.analogwp.com/',
 			'isGlobalSkEnabled'       => (bool) Options::get_instance()->get( 'use_global_sk' ),
 			'globalSkAlwaysEnableURL' => admin_url( 'admin.php?page=style-kits' ),
@@ -213,7 +213,7 @@ final class Plugin {
 	 * @return array An array of plugin action links.
 	 */
 	public function plugin_action_links( $links ) {
-		$settings_link = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=ang-settings' ), __( 'Settings', 'ang' ) );
+		$settings_link = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=ang-library-settings' ), __( 'Settings', 'ang' ) );
 
 		array_unshift( $links, $settings_link );
 

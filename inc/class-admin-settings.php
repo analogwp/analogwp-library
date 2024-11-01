@@ -66,7 +66,7 @@ class Admin_Settings {
 	public static function save() {
 		global $current_tab;
 
-		check_admin_referer( 'ang-settings' );
+		check_admin_referer( 'ang-library-settings' );
 
 		// Trigger actions.
 		do_action( 'ang_settings_save_' . $current_tab );
@@ -671,7 +671,7 @@ class Admin_Settings {
 										echo '<h1 id="' . esc_attr( sanitize_title( $value['id'] ) ) . '-content-title">' . esc_html( $value['title'] ) . '</h1>';
 									}
 									?>
-									<a href="<?php echo esc_url( admin_url( 'admin.php?page=ang-settings&tab=general&section=starter-kit&refresh=true' ) ); ?>" class="button-secondary"><?php esc_html_e( 'Refresh', 'ang' ); ?></a>
+									<a href="<?php echo esc_url( admin_url( 'admin.php?page=ang-library-settings&tab=general&section=starter-kit&refresh=true' ) ); ?>" class="button-secondary"><?php esc_html_e( 'Refresh', 'ang' ); ?></a>
 								</div>
 
 							<?php

@@ -20,7 +20,7 @@ $current_tab_label = $tabs[ $current_tab ] ?? '';
 global $current_user;
 
 if ( ! $tab_exists ) {
-	wp_safe_redirect( admin_url( 'admin.php?page=ang-settings' ) );
+	wp_safe_redirect( admin_url( 'admin.php?page=ang-library-settings' ) );
 	exit;
 }
 ?>
@@ -32,7 +32,7 @@ if ( ! $tab_exists ) {
 				<?php
 
 				foreach ( $tabs as $slug => $label ) {
-					echo '<a href="' . esc_html( admin_url( 'admin.php?page=ang-settings&tab=' . esc_attr( $slug ) ) ) . '" class="ang-nav-tab ' . ( $current_tab === $slug ? 'ang-nav-tab-active' : '' ) . '">' . esc_html( $label ) . '</a>';
+					echo '<a href="' . esc_html( admin_url( 'admin.php?page=ang-library-settings&tab=' . esc_attr( $slug ) ) ) . '" class="ang-nav-tab ' . ( $current_tab === $slug ? 'ang-nav-tab-active' : '' ) . '">' . esc_html( $label ) . '</a>';
 				}
 
 				do_action( 'ang_settings_tabs' );
@@ -52,7 +52,7 @@ if ( ! $tab_exists ) {
 					<?php if ( empty( $GLOBALS['hide_save_button'] ) ) : ?>
 						<button name="save" class="button-primary ang-save-button" type="submit" value="<?php esc_attr_e( 'Save changes', 'ang' ); ?>"><?php esc_html_e( 'Save changes', 'ang' ); ?></button>
 					<?php endif; ?>
-					<?php wp_nonce_field( 'ang-settings' ); ?>
+					<?php wp_nonce_field( 'ang-library-settings' ); ?>
 				</p>
 			</div>
 		</form>

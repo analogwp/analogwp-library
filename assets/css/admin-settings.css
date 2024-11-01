@@ -14,17 +14,17 @@
 		padding: 15px 0;
 	}
 
-	body.custom-library_page_ang-settings .wrap {
+	body.custom-library_page_ang-library-settings .wrap {
 		margin: 0;
 		padding: 20px 30px 30px;
 	}
 }
 
-body.custom-library_page_ang-settings #wpcontent {
+body.custom-library_page_ang-library-settings #wpcontent {
 	padding: 0;
 }
 
-body.custom-library_page_ang-settings .wrap {
+body.custom-library_page_ang-library-settings .wrap {
 	margin: 0;
 	padding: 40px 60px 60px;
 }

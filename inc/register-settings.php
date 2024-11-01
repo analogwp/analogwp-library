@@ -46,7 +46,7 @@ function register_menu() {
 		__( 'Custom Library Settings', 'ang' ),
 		__( 'Settings', 'ang' ),
 		'manage_options',
-		'ang-settings',
+		'ang-library-settings',
 		'Analog\Settings\new_settings_page'
 	);
 
@@ -84,7 +84,7 @@ function save_settings() {
 	global $current_tab, $current_section;
 
 	// We should only save on the settings page.
-	if ( ! is_admin() || ! isset( $_GET['page'] ) || 'ang-settings' !== $_GET['page'] ) { // phpcs:ignore
+	if ( ! is_admin() || ! isset( $_GET['page'] ) || 'ang-library-settings' !== $_GET['page'] ) { // phpcs:ignore
 		return;
 	}
 

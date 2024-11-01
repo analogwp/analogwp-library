@@ -51,7 +51,7 @@ class Finder_Shortcuts extends Base_Category {
 			),
 			'settings'   => array(
 				'title'    => __( 'Settings', 'ang' ),
-				'url'      => admin_url( 'admin.php?page=ang-settings' ),
+				'url'      => admin_url( 'admin.php?page=ang-library-settings' ),
 				'icon'     => 'settings',
 				'keywords' => array( 'analog', 'settings' ),
 			),
