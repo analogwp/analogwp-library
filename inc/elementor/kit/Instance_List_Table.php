@@ -437,31 +437,6 @@ class Instance_List_Table extends \WP_List_Table {
 	}
 }
 
-/**
- * Generates page HTML for Instance listing page.
- *
- * @since 1.7.1
- *
- * @return void
- */
-function ang_instance_list() {
-	$kits_table = new Instance_List_Table();
-	?>
-	<div class="wrap">
-		<h2><?php esc_html_e( 'Instance List', 'ang' ); ?></h2>
-		<form id="ang-instance-list" method="get">
-			<input type="hidden" name="page" value="ang-instance-list" />
-
-			<?php
-			$kits_table->prepare_items();
-			$kits_table->search_box( 'Search', 'search' );
-			$kits_table->display();
-			?>
-		</form>
-	</div>
-	<?php
-}
-
 add_action(
 	'admin_head',
 	function() {
