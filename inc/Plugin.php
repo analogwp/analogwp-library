@@ -162,15 +162,13 @@ final class Plugin {
 				'status'  => Options::get_instance()->get( 'ang_license_key_status' ),
 				'message' => get_transient( 'ang_license_message' ),
 			) : false,
-			'installed_kits'          => Utils::imported_remote_kits(),
 			'globalKit'               => array(
 				array(
 					'label' => $global_kit_title,
 					'value' => $global_kit_title,
 				),
 			),
-			'adminURL'                => admin_url( 'admin.php?page=ang-library-settings&tab=general#global_kit' ),
-			'blockMediaURL'           => 'https://bs.analogwp.com/',
+			'adminURL'                => admin_url( 'admin.php?page=ang-library-settings&tab=general' ),
 			'globalSkAlwaysEnableURL' => admin_url( 'admin.php?page=style-kits' ),
 			'isContainer'             => Utils::is_container(),
 			'activePlugins'           => array_values( $plugins ),
@@ -247,18 +245,15 @@ final class Plugin {
 		require_once ANG_PLUGIN_DIR . 'inc/slink/init.php';
 
 		require_once ANG_PLUGIN_DIR . 'inc/class-elementor.php';
-		require_once ANG_PLUGIN_DIR . 'inc/class-tracker.php';
 		require_once ANG_PLUGIN_DIR . 'inc/class-cron.php';
 
 		require_once ANG_PLUGIN_DIR . 'inc/elementor/trait-document.php';
 		require_once ANG_PLUGIN_DIR . 'inc/elementor/class-tools.php';
-		require_once ANG_PLUGIN_DIR . 'inc/upgrade-functions.php';
 		require_once ANG_PLUGIN_DIR . 'inc/Database_Upgrader.php';
 
 		require_once ANG_PLUGIN_DIR . 'inc/admin/class-admin.php';
 
 		require_once ANG_PLUGIN_DIR . 'inc/class-beta-testers.php';
-		require_once ANG_PLUGIN_DIR . 'inc/Core/Util/Migration.php';
 
 		if ( defined( 'WP_CLI' ) && \WP_CLI ) {
 			require_once ANG_PLUGIN_DIR . 'inc/cli/commands.php';

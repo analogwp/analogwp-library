@@ -36,16 +36,6 @@ export async function requestDirectImport( template, withPage = false, kit = fal
 	} );
 }
 
-export async function requestStyleKitData( kit ) {
-	return await apiFetch( {
-		path: '/agwp/v1/import/kit',
-		method: 'post',
-		data: {
-			kit,
-		},
-	} ).then( response => response );
-}
-
 export async function requestBlockContent( block, method ) {
 	return await apiFetch( {
 		path: '/agwp/v1/blocks/insert',
@@ -55,32 +45,6 @@ export async function requestBlockContent( block, method ) {
 			method,
 		},
 	} ).then( response => response );
-}
-
-/**
- * @deprecated
- * @use requestElementorImport()
- */
-export async function requestImportLayout( template ) {
-	const editorId =
-		'undefined' !== typeof ElementorConfig ? ElementorConfig.post_id : false;
-
-	apiFetch( {
-		path: '/agwp/v1/import/elementor',
-		method: 'post',
-		data: {
-			template_id: template.id,
-			editor_post_id: editorId,
-		},
-	} ).then( data => {
-		const parsedTemplate = JSON.parse( data );
-
-		if ( typeof elementor !== 'undefined' ) {
-			doElementorInsert( parsedTemplate.content );
-
-			window.analogModal.hide();
-		}
-	} );
 }
 
 export async function getSettings() {
@@ -163,40 +127,13 @@ export async function requestElementorImport( template, kit ) {
 			return;
 		}
 
-		const kitTitle = ( 'string' === typeof kit.data ) ? kit.data : kit.data.title;
-
-		if ( parsedTemplate.tokens ) {
-			elementor.settings.page.model.set( parsedTemplate.tokens );
-
-			let options = elementor.settings.page.model.controls.ang_action_tokens.options;
-
-			if ( ! Object.values(options).includes(kitTitle) ) {
-				/* Populate Style Kits dropdown with new item. */
-				if ( options.length === 0 ) {
-					options = {};
-				}
-				const id = parsedTemplate.tokens.ang_action_tokens.toString();
-
-				_.extend( options, { [id]: kitTitle });
-
-				elementor.settings.page.model.controls.ang_action_tokens.options = options;
-			}
-		}
-
 		doElementorInsert( parsedTemplate.content );
 
 		window.analogModal.hide();
 		setTimeout(function() {
 			if ( elementsLength !== 0 ) {
 				elementor.reloadPreview();
-			} else {
-				analog.openThemeStyles();
 			}
-
-			elementor.once( 'preview:loaded', () => {
-				analog.redirectToSection();
-				elementor.settings.page.model.setExternalChange( 'ang_action_tokens', elementor.config.kit_id.toString() )
-			} );
 		});
 	} );
 }

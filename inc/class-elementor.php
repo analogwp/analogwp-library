@@ -7,15 +7,8 @@
 
 namespace Analog;
 
-use Analog\Elementor\ANG_Action;
-use Analog\Elementor\Globals\Controller;
 use Analog\Slink\Init;
 use Elementor\Core\Common\Modules\Finder\Categories_Manager;
-use Elementor\Core\DynamicTags\Manager;
-use Analog\Elementor\Tags\Light_Background;
-use Analog\Elementor\Tags\Dark_Background;
-use Elementor\TemplateLibrary\Source_Local as Local;
-use Elementor\Core\Kits\Manager as Kits_Manager;
 
 /**
  * Intializes scripts/styles needed for AnalogWP modal on Elementor editing page.
@@ -39,18 +32,6 @@ class Elementor {
 			}
 		);
 
-		add_action( 'elementor/controls/register', array( $this, 'register_controls' ) );
-	}
-
-	/**
-	 * Register custom Elementor control.
-	 */
-	public function register_controls() {
-		require_once ANG_PLUGIN_DIR . 'inc/elementor/class-ang-action.php';
-
-		$controls_manager = Plugin::elementor()->controls_manager;
-
-		$controls_manager->register( new ANG_Action() );
 	}
 
 	/**

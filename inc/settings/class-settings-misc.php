@@ -39,15 +39,6 @@ class Misc extends Settings_Page {
 					'id'   => 'ang_misc',
 				),
 				array(
-					'title'         => __( 'Usage Data Tracking', 'ang' ),
-					'desc'          => __( 'Opt-in to our anonymous plugin data collection and to updates', 'ang' ),
-					'id'            => 'ang_data_collection',
-					'default'       => false,
-					'type'          => 'checkbox',
-					'checkboxgroup' => 'start',
-					'desc_tip'      => __( 'We guarantee no sensitive data is collected. ', 'ang' ) . '<a class="ang-link" href="https://analogwp.com/docs/what-usage-data-is-tracked-by-style-kits/" target="_blank">' . __( 'More Info', 'ang' ) . '</a>',
-				),
-				array(
 					'title'         => __( 'Remove Data on Uninstall', 'ang' ),
 					'desc'          => __( 'Check this box to remove all data stored by Custom Library for Elementor plugin, including license info, user settings, import history etc.', 'ang' ),
 					'id'            => 'remove_on_uninstall',

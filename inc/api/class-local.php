@@ -70,9 +70,6 @@ class Local extends Base {
 			'/tokens/get'              => array(
 				WP_REST_Server::CREATABLE => 'get_token',
 			),
-			'/import/kit'              => array(
-				WP_REST_Server::CREATABLE => 'handle_kit_import',
-			),
 			'/blocks/insert'           => array(
 				WP_REST_Server::CREATABLE => 'get_blocks_content',
 			),
@@ -511,26 +508,6 @@ class Local extends Base {
 			),
 			200
 		);
-	}
-
-	/**
-	 * Handle remote Style Kit import.
-	 *
-	 * @since 1.3.4
-	 * @param WP_REST_Request $request Request object.
-	 * @return WP_REST_Response|WP_Error
-	 */
-	public function handle_kit_import( WP_REST_Request $request ) {
-		$kit = $request->get_param( 'kit' );
-
-		if ( ! $kit ) {
-			return new WP_Error( 'kit_import_error', __( 'Invalid Style Kit ID.', 'ang' ) );
-		}
-
-		$kit_manager = new Manager();
-		$data        = $kit_manager->import_kit( $kit );
-
-		return new WP_REST_Response( $data, 200 );
 	}
 
 	/**

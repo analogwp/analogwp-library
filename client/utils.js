@@ -1,16 +1,10 @@
-import { requestSettingUpdate } from './api';
 import Filters from './filters';
-import StyleKits from './stylekits/stylekits';
 import Blocks from './blocks/blocks';
 import Templates from './Templates';
 
 const { Fragment } = React;
 
 export const getPageComponents = ( state ) => {
-	if ( state.tab === 'styleKits' ) {
-		return <StyleKits />;
-	}
-
 	if ( state.tab === 'blocks' ) {
 		return <Blocks />;
 	}
@@ -53,18 +47,6 @@ export function hasProTemplates( templates ) {
 	return templates.some( ( template ) => template.is_pro === true );
 }
 
-export function increaseInstallCount( settings, dispatch ) {
-	const installCount = parseInt( settings.install_count ) || 0;
-
-	dispatch( {
-		settings: {
-			...settings,
-			install_count: installCount + 1,
-		},
-	} );
-
-	requestSettingUpdate( 'install_count', installCount + 1 );
-}
 
 export function isNewTheme( date ) {
 	const start = moment.unix( date );
