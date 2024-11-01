@@ -1,7 +1,6 @@
 /src/js/app/test.js
-/assets/js/app.js.map
+/assets/js/app
 /build
-/assets/js/app.js
 node_modules/
 /assets/fonts/
 /assets/js/blocksLibrary.js
@@ -10,10 +9,7 @@ node_modules/
 
 /.idea/**
 /.idea/workspace.xml
-/inc/elementor/js/ang-action.min.js
-/inc/elementor/js/ang-typography.min.js
 /inc/elementor/js/*.min.js
-/gulp.config.json
 
 /vendor/
 /.env

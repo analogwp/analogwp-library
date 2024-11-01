@@ -15,7 +15,7 @@
  * Author URI:  https://analogwp.com/
  * License:     GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: ang
+ * Text Domain: analog-library
  * Elementor tested up to: 3.25.3
  * Elementor Pro tested up to: 3.23.3
  */
