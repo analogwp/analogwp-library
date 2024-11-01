@@ -21,7 +21,7 @@ function register_menu() {
 		$permission = 'read';
 	}
 
-	$menu_slug = 'analogwp_templates';
+	$menu_slug = 'analog_library';
 
 	add_menu_page(
 		esc_html__( 'Custom Library for Elementor', 'ang' ),
@@ -35,20 +35,15 @@ function register_menu() {
 
 	add_submenu_page(
 		$menu_slug,
-		__( 'Custom Library for Elementor', 'ang' ),
-		__( 'Custom Library', 'ang' ),
-		$permission,
-		'analogwp_templates'
-	);
-
-	add_submenu_page(
-		$menu_slug,
 		__( 'Custom Library Settings', 'ang' ),
 		__( 'Settings', 'ang' ),
 		'manage_options',
 		'ang-library-settings',
 		'Analog\Settings\new_settings_page'
 	);
+
+	// Remove duplicate menu hack.
+	remove_submenu_page( $menu_slug, $menu_slug );
 
 	add_action( 'load-style-kits_page_settings', 'Analog\Settings\settings_page_init' );
 }

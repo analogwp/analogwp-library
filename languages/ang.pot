@@ -41,7 +41,7 @@ msgstr ""
 #. translators: %s: version number
 #: analogwp-templates.php:47
 #: analogwp-templates.php:199
-msgid "Style Kit for Elementor requires PHP version %s"
+msgid "Custom Library for Elementor requires PHP version %s"
 msgstr ""
 
 #: analogwp-templates.php:48
@@ -1682,7 +1682,7 @@ msgid "Remove Data on Uninstall"
 msgstr ""
 
 #: inc/settings/class-settings-misc.php:52
-msgid "Check this box to remove all data stored by Style Kit for Elementor plugin, including license info, user settings, import history etc. Any imported or manually saved Style Kits are not removed."
+msgid "Check this box to remove all data stored by Custom Library for Elementor plugin, including license info, user settings, import history etc. Any imported or manually saved Style Kits are not removed."
 msgstr ""
 
 #: inc/settings/class-settings-version-control.php:25

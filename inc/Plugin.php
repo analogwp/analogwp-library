@@ -9,7 +9,6 @@
 namespace Analog;
 
 use Analog\Admin\Notices;
-use Analog\Elementor\Google_Fonts;
 
 /**
  * Main class for the plugin.
@@ -69,11 +68,8 @@ final class Plugin {
 		add_action( 'admin_enqueue_scripts', array( self::$instance, 'scripts' ) );
 		add_filter( 'analog/app/strings', array( self::$instance, 'send_strings_to_app' ) );
 
-		add_action( 'admin_bar_menu', array( self::$instance, 'add_kit_to_menu_bar' ), 400 );
-
 		( new Consumer() )->register();
 		( new Notices() )->register();
-		( new Google_Fonts() )->register();
 
 		// Migrations.
 		$this->database_upgrader = new Database_Upgrader();
@@ -86,7 +82,7 @@ final class Plugin {
 	 * @param string $hook Current page hook.
 	 */
 	public function scripts( $hook ) {
-		if ( 'toplevel_page_analogwp_templates' !== $hook ) {
+		if ( 'toplevel_page_analog_library' !== $hook ) {
 			return;
 		}
 
@@ -116,7 +112,7 @@ final class Plugin {
 		$i10n = apply_filters( // phpcs:ignore
 			'analog/app/strings',
 			array(
-				'is_settings_page'  => 'toplevel_page_analogwp_templates' === $hook,
+				'is_settings_page'  => 'toplevel_page_analog_library' === $hook,
 				'rollback_url'      => wp_nonce_url( admin_url( 'admin-post.php?action=ang_rollback&version=VERSION' ), 'ang_rollback' ),
 				'rollback_versions' => Utils::get_rollback_versions(),
 			)
@@ -175,7 +171,6 @@ final class Plugin {
 			),
 			'adminURL'                => admin_url( 'admin.php?page=ang-library-settings&tab=general#global_kit' ),
 			'blockMediaURL'           => 'https://bs.analogwp.com/',
-			'isGlobalSkEnabled'       => (bool) Options::get_instance()->get( 'use_global_sk' ),
 			'globalSkAlwaysEnableURL' => admin_url( 'admin.php?page=style-kits' ),
 			'isContainer'             => Utils::is_container(),
 			'activePlugins'           => array_values( $plugins ),
@@ -244,7 +239,6 @@ final class Plugin {
 		require_once ANG_PLUGIN_DIR . 'inc/api/class-remote.php';
 		require_once ANG_PLUGIN_DIR . 'inc/api/class-local.php';
 		require_once ANG_PLUGIN_DIR . 'inc/class-analog-importer.php';
-		require_once ANG_PLUGIN_DIR . 'inc/elementor/Google_Fonts.php';
 
 		// Custom stuff.
 		require_once ANG_PLUGIN_DIR . 'inc/slink/data/class-base-db.php';
@@ -256,70 +250,19 @@ final class Plugin {
 		require_once ANG_PLUGIN_DIR . 'inc/class-tracker.php';
 		require_once ANG_PLUGIN_DIR . 'inc/class-cron.php';
 
-		require_once ANG_PLUGIN_DIR . 'inc/elementor/Reset_Default_Style_Trait.php';
 		require_once ANG_PLUGIN_DIR . 'inc/elementor/trait-document.php';
-		require_once ANG_PLUGIN_DIR . 'inc/elementor/class-typography.php';
-		require_once ANG_PLUGIN_DIR . 'inc/elementor/class-colors.php';
-		require_once ANG_PLUGIN_DIR . 'inc/elementor/class-post-type.php';
 		require_once ANG_PLUGIN_DIR . 'inc/elementor/class-tools.php';
 		require_once ANG_PLUGIN_DIR . 'inc/upgrade-functions.php';
 		require_once ANG_PLUGIN_DIR . 'inc/Database_Upgrader.php';
-		require_once ANG_PLUGIN_DIR . 'inc/class-quick-edit.php';
 
 		require_once ANG_PLUGIN_DIR . 'inc/admin/class-admin.php';
 
 		require_once ANG_PLUGIN_DIR . 'inc/class-beta-testers.php';
-
-		require_once ANG_PLUGIN_DIR . 'inc/elementor/sections/background-color-classes.php';
-
-		require_once ANG_PLUGIN_DIR . 'inc/elementor/kit/Manager.php';
-		require_once ANG_PLUGIN_DIR . 'inc/elementor/kit/Kits_List_Table.php';
 		require_once ANG_PLUGIN_DIR . 'inc/Core/Util/Migration.php';
-		require_once ANG_PLUGIN_DIR . 'inc/elementor/kit/tabs/Theme_Style_Kits.php';
-		require_once ANG_PLUGIN_DIR . 'inc/elementor/kit/Instance_List_Table.php';
-
-		if ( ! defined( 'ANG_PRO_VERSION' ) ) {
-			require_once ANG_PLUGIN_DIR . 'inc/elementor/Promotions.php';
-		}
 
 		if ( defined( 'WP_CLI' ) && \WP_CLI ) {
 			require_once ANG_PLUGIN_DIR . 'inc/cli/commands.php';
 		}
-	}
-
-	/**
-	 * Add Kit title to menu bar when debug is enabled.
-	 *
-	 * @param \WP_Admin_Bar $wp_admin_bar
-	 * @since 1.6.9
-	 * @return void
-	 */
-	public function add_kit_to_menu_bar( \WP_Admin_Bar $wp_admin_bar ) {
-		if ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG  ) {
-			return;
-		}
-
-		$post_id  = get_the_ID();
-		$settings = get_post_meta( $post_id, '_elementor_page_settings', true );
-
-		if ( ! isset( $settings['ang_action_tokens'] ) ) {
-			$title = get_the_title( Options::get_instance()->get( 'global_kit' ) );
-		} else {
-			$title = get_the_title( $settings['ang_action_tokens'] );
-		}
-
-		$parent = 'style_kits';
-		$wp_admin_bar->add_menu( array(
-			'id'     => $parent,
-			'parent' => 'elementor_inspector',
-			'title'  => 'Style Kit',
-		) );
-
-		$wp_admin_bar->add_menu( array(
-			'id'     => 'style_kits_kit',
-			'parent' => $parent,
-			'title'  => 'Kit: ' . $title,
-		) );
 	}
 
 	/**

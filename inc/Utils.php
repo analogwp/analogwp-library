@@ -344,7 +344,7 @@ class Utils extends Base {
 
 			$plugin_information = plugins_api(
 				'plugin_information',
-				array( 'slug' => 'analogwp-templates' )
+				array( 'slug' => 'analog-library' )
 			);
 
 			if ( empty( $plugin_information->versions ) || ! is_array( $plugin_information->versions ) ) {
@@ -370,7 +370,7 @@ class Utils extends Base {
 					continue;
 				}
 
-				$current_index++;
+				++$current_index;
 				$rollback_versions[] = $version;
 			}
 
@@ -394,7 +394,7 @@ class Utils extends Base {
 
 		array_walk_recursive(
 			$data,
-			function( &$value, $key ) {
+			function ( &$value, $key ) {
 				if ( 'isInner' === $key || 'isLinked' === $key ) {
 					$value = (bool) $value;
 				}
@@ -425,7 +425,7 @@ class Utils extends Base {
 
 		return array_filter(
 			$settings,
-			function( $key ) use ( $allowed ) {
+			function ( $key ) use ( $allowed ) {
 				foreach ( $allowed as $allow ) {
 					if ( strpos( $key, $allow ) === 0 ) {
 						return false;
@@ -789,13 +789,7 @@ class Utils extends Base {
 	 * @return bool
 	 */
 	public static function is_container() {
-		$sk_container_lib = Options::get_instance()->get( 'container_library_experiment' );
-
-		if ( self::is_elementor_container() && ( 'default' === $sk_container_lib || false === $sk_container_lib ) ) {
-			return true;
-		}
-
-		return 'active' === $sk_container_lib;
+		return self::is_elementor_container();
 	}
 
 	/**

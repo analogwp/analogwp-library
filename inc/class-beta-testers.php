@@ -17,7 +17,7 @@ class Beta_Testers {
 	/**
 	 * Transient key.
 	 *
-	 * Holds the "Style Kit for Elementor" beta testers transient key.
+	 * Holds the "Custom Library for Elementor" beta testers transient key.
 	 *
 	 * @access private
 	 * @static

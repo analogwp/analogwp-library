@@ -46,7 +46,7 @@ class Version_Control extends Settings_Page {
 					'id'    => 'ang_plugin_rollback_version',
 				),
 				array(
-					'title'     => __( 'Rollback Style Kits', 'ang' ),
+					'title'     => __( 'Rollback Custom Library', 'ang' ),
 					'id'        => 'ang_rollback_version_select_option',
 					'type'      => 'select',
 					'class'     => 'ang-enhanced-select',

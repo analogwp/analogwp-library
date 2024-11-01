@@ -41,38 +41,13 @@ class General extends Settings_Page {
 		$settings = array();
 
 		if ( '' === $current_section ) {
-			$default_import_method = array();
-
-			if ( ! Utils::is_elementor_container() ) {
-				$default_import_method = array(
-					'id'    => 'use_global_sk',
-					'title' => esc_html_x( 'Template import method', 'settings title', 'ang' ),
-					'desc'  => sprintf(
-					/* translators: %s: Global Style Kit Documentation link */
-						__( 'Always import templates using the Global Style Kit. %s', 'ang' ),
-						'<a href="https://analogwp.com/docs/default-template-import-method/" target="_blank">' . __( 'Read more', 'ang' ) . '</a>'
-					),
-					'type'  => 'checkbox',
-				);
-			}
 
 			$settings = array(
 				array(
-					'title' => '',
+					'title' => esc_html__( 'General Settings', 'ang' ),
 					'type'  => 'title',
-					'id'    => 'ang_color_palette',
+					'id'    => 'ang_general_settings',
 				),
-				array(
-					'title' => esc_html_x( 'Global Style Kit', 'settings title', 'ang' ),
-					'desc'  => sprintf(
-					/* translators: %s: Local Style Kits page link */
-						__( 'This option is now in %s page.', 'ang' ),
-						'<a href="' . esc_url( admin_url( 'admin.php?page=style-kits' ) ) . '">' . __( 'Local Style Kits', 'ang' ) . '</a>'
-					),
-					'id'    => 'global_kit_helper',
-					'type'  => 'deprecated-notice',
-				),
-				$default_import_method,
 				array(
 					'id'      => 'allow_svg_uploads',
 					'title'   => esc_html_x( 'Enable SVG Uploads', 'settings title', 'ang' ),
@@ -80,17 +55,6 @@ class General extends Settings_Page {
 					/* translators: %s: Global Style Kit Documentation link */
 						__( 'Helps importing SVGs in templates. %s', 'ang' ),
 						'<a href="https://analogwp.com/docs/enable-svg-imports-in-patterns" target="_blank">' . __( 'Read more', 'ang' ) . '</a>'
-					),
-					'type'    => 'checkbox',
-					'default' => true,
-				),
-				array(
-					'id'      => 'hide_legacy_features',
-					'title'   => esc_html_x( 'Hide legacy features', 'settings title', 'ang' ),
-					'desc'    => sprintf(
-					/* translators: %s: Legacy features Documentation link */
-						__( 'Hide legacy features from the Style Kit panel. %s', 'ang' ),
-						'<a href="https://analogwp.com/docs/what-are-legacy-features/" target="_blank">' . __( 'Read more', 'ang' ) . '</a>'
 					),
 					'type'    => 'checkbox',
 					'default' => true,
@@ -106,7 +70,7 @@ class General extends Settings_Page {
 				),
 				array(
 					'type' => 'sectionend',
-					'id'   => 'ang_color_palette',
+					'id'   => 'ang_general_settings',
 				),
 			);
 			$settings = apply_filters( 'ang_' . $this->id . '_settings', $settings );

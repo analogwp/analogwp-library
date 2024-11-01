@@ -165,7 +165,7 @@ const Container = styled.div`
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		max-height: 150px;
+		max-height: 400px;
 	}
 
 	h3 {
@@ -245,7 +245,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 
 	const getScreenshot = ( block ) => {
 		if ( AGWP.isContainer ) {
-			return block.thumbnail || AGWP.blockMediaURL + `patterns/${ block.id }.webp?modified=${ block.modified }`;
+			return block.thumbnail || AGWP.pluginURL + 'assets/img/placeholder.svg';
 		}
 
 		return AGWP.blockMediaURL + block.id + '.jpg';
@@ -359,8 +359,8 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 											<img
 												src={ getScreenshot( block ) }
 												loading="lazy"
-												width="720"
-												height="100"
+												width="900"
+												height="600"
 												alt={ block.title }
 											/>
 

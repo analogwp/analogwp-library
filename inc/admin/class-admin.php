@@ -35,7 +35,7 @@ final class Admin extends Base {
 	 */
 	public function footer_text( $text ) {
 		$current_screen   = get_current_screen();
-		$is_analog_screen = 'analogwp_templates' === $current_screen->parent_base;
+		$is_analog_screen = 'analog_library' === $current_screen->parent_base;
 
 		if ( $is_analog_screen ) {
 			$text = sprintf(

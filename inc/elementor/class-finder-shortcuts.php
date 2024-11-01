@@ -45,7 +45,7 @@ class Finder_Shortcuts extends Base_Category {
 		return array(
 			'library'    => array(
 				'title'    => __( 'Templates Library', 'ang' ),
-				'url'      => admin_url( 'admin.php?page=analogwp_templates' ),
+				'url'      => admin_url( 'admin.php?page=analog_library' ),
 				'icon'     => 'library-download',
 				'keywords' => array( 'analog', 'library', 'settings' ),
 			),

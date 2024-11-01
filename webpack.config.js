@@ -52,19 +52,7 @@ const config = {
 
 // For Productions
 if ( inProduction ) {
-	config.plugins.push( new webpack.optimize.UglifyJsPlugin( { mangle: false } ) );
-	// config.plugins.push(
-	// 	new UglifyJsPlugin({
-	// 			"uglifyOptions":
-	// 				{
-	// 					compress: {
-	// 						warnings: false
-	// 					},
-	// 					sourceMap: true
-	// 				}
-	// 		}
-	// 	)
-	// )
+	config.plugins.push( new webpack.optimize.UglifyJsPlugin( { sourceMap: true, mangle: false } ) );
 	config.plugins.push( new webpack.LoaderOptionsPlugin( { minimize: true } ) );
 }
 

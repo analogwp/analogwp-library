@@ -49,7 +49,7 @@ class Misc extends Settings_Page {
 				),
 				array(
 					'title'         => __( 'Remove Data on Uninstall', 'ang' ),
-					'desc'          => __( 'Check this box to remove all data stored by Style Kit for Elementor plugin, including license info, user settings, import history etc. Any imported or manually saved Style Kits are not removed.', 'ang' ),
+					'desc'          => __( 'Check this box to remove all data stored by Custom Library for Elementor plugin, including license info, user settings, import history etc.', 'ang' ),
 					'id'            => 'remove_on_uninstall',
 					'default'       => false,
 					'type'          => 'checkbox',
