@@ -31,7 +31,7 @@ class Finder_Shortcuts extends Base_Category {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Style Kits for Elementor Shortcuts', 'ang' );
+		return __( 'Custom Library for Elementor Shortcuts', 'ang' );
 	}
 
 	/**

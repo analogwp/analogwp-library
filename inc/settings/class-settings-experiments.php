@@ -22,7 +22,6 @@ class Experiments extends Settings_Page {
 		$this->id    = 'experiments';
 		$this->label = __( 'Experiments', 'ang' );
 		parent::__construct();
-
 	}
 
 	/**
@@ -43,11 +42,6 @@ class Experiments extends Settings_Page {
 			array(
 				array(
 					'title' => __( 'Style Kits Experiments', 'ang' ),
-					'desc'  => sprintf(
-						/* translators: %s: Style Kits Experiments Documentation link */
-						__( 'Below you can activate experimental features for Style Kits and Style Kits Pro. We suggest you to turn on backups while using these experiments. %s about how this works.', 'ang' ),
-						'<a href="https://analogwp.com/docs/style-kits-experiments/" target="_blank">' . __( 'Learn more', 'ang' ) . '</a>'
-					),
 					'type'  => 'title',
 					'id'    => 'ang_experiments',
 				),

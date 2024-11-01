@@ -2,7 +2,7 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Style Kits for Elementor 2.1.0\n"
+"Project-Id-Version: Custom Library for Elementor 2.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/analogwp-templates\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: inc/admin/class-admin.php:44
 #: inc/class-tracker.php:131
 #: inc/register-settings.php:27
-msgid "Style Kits for Elementor"
+msgid "Custom Library for Elementor"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Install Elementor Now"
 msgstr ""
 
-#. translators: 1: Style Kits for Elementor, 2: Link to plugin review
+#. translators: 1: Custom Library for Elementor, 2: Link to plugin review
 #: inc/admin/class-admin.php:43
 msgid "Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!"
 msgstr ""
@@ -104,7 +104,7 @@ msgid "Get Support"
 msgstr ""
 
 #: inc/admin/Notice.php:172
-msgid "Style Kits for Elementor Logo"
+msgid "Custom Library for Elementor Logo"
 msgstr ""
 
 #: inc/api/class-local.php:124
@@ -436,7 +436,7 @@ msgid "This action will update the Style Kit with the latest changes, and will a
 msgstr ""
 
 #: inc/elementor/class-ang-action.php:116
-msgid "Meet Style Kits for Elementor"
+msgid "Meet Custom Library for Elementor"
 msgstr ""
 
 #. translators: %s: Link to Style Kits documentation.
@@ -675,7 +675,7 @@ msgid "Reset"
 msgstr ""
 
 #: inc/elementor/class-finder-shortcuts.php:34
-msgid "Style Kits for Elementor Shortcuts"
+msgid "Custom Library for Elementor Shortcuts"
 msgstr ""
 
 #: inc/elementor/class-finder-shortcuts.php:47
@@ -1694,7 +1694,7 @@ msgid "Rollback Versions"
 msgstr ""
 
 #: inc/settings/class-settings-version-control.php:44
-msgid "If you are having issues with current version of Style Kits for Elementor, you can rollback to a previous stable version."
+msgid "If you are having issues with current version of Custom Library for Elementor, you can rollback to a previous stable version."
 msgstr ""
 
 #: inc/settings/class-settings-version-control.php:49

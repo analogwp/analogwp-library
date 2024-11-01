@@ -29,19 +29,6 @@ class General extends Settings_Page {
 	}
 
 	/**
-	 * Get sections.
-	 *
-	 * @return array
-	 */
-	public function get_sections() {
-		$sections = array(
-			''            => __( 'General', 'ang' ),
-			'starter-kit' => __( 'Starter Kit', 'ang' ),
-		);
-		return apply_filters( 'ang_get_sections_' . $this->id, $sections );
-	}
-
-	/**
 	 * Get settings array.
 	 *
 	 * @param string $current_section Current section ID.
@@ -122,30 +109,6 @@ class General extends Settings_Page {
 					'id'   => 'ang_color_palette',
 				),
 			);
-			$settings = apply_filters( 'ang_' . $this->id . '_settings', $settings );
-		} elseif ( 'starter-kit' === $current_section ) {
-			$response = Remote::get_instance()->get_starterkits_info();
-
-			if ( $_GET && isset( $_GET['refresh'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-				$response = Remote::get_instance()->get_starterkits_info( true );
-			}
-
-			$settings = array(
-				array(
-					'id'                => 'ang-starter-kits',
-					'title'             => __( 'Download Starter Kit', 'ang' ),
-					'desc'              => sprintf(
-						'%1$s <a href="https://analogwp.com/docs/pulse-starter-kit/" target="_blank">%2$s</a>',
-						__( 'Download a site kit zip that you can import into your website.', 'ang-pro' ),
-						__( 'Learn more', 'ang-pro' ),
-					),
-					'type'              => 'starter-kits',
-					'download_btn_text' => __( 'Download ZIP', 'ang' ),
-					'demo_btn_text'     => __( 'View Demo', 'ang' ),
-					'kits'              => $response['starterkits'] ?? array(),
-				),
-			);
-
 			$settings = apply_filters( 'ang_' . $this->id . '_settings', $settings );
 		}
 

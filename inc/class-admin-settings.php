@@ -46,14 +46,13 @@ class Admin_Settings {
 		if ( empty( self::$settings ) ) {
 			$settings = array();
 
-			include_once dirname( __FILE__ ) . '/settings/class-settings-page.php';
+			include_once __DIR__ . '/settings/class-settings-page.php';
 
 			$settings[] = include 'settings/class-settings-general.php';
 			$settings[] = include 'settings/class-settings-experiments.php';
 			$settings[] = include 'settings/class-settings-misc.php';
 			$settings[] = include 'settings/class-settings-extensions.php';
 			$settings[] = include 'settings/class-settings-version-control.php';
-			$settings[] = include 'settings/class-settings-gopro.php';
 
 			self::$settings = apply_filters( 'ang_get_settings_pages', $settings );
 		}
@@ -143,7 +142,7 @@ class Admin_Settings {
 		// Get tabs for the settings page.
 		$tabs = apply_filters( 'ang_settings_tabs_array', array() );
 
-		include dirname( __FILE__ ) . '/settings/views/html-admin-settings.php';
+		include __DIR__ . '/settings/views/html-admin-settings.php';
 	}
 
 	/**

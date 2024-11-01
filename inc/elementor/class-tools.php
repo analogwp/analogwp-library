@@ -66,7 +66,7 @@ class Tools extends Base {
 	 * @param string $message Error message.
 	 */
 	private function handle_wp_error( $message ) {
-		_default_wp_die_handler( $message, 'Style Kits for Elementor' );
+		_default_wp_die_handler( $message, 'Custom Library for Elementor' );
 	}
 
 	/**

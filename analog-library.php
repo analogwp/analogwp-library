@@ -3,20 +3,20 @@
  * Plugin main file.
  *
  * @package     Analog
- * @copyright   2019-2023 Dashwork Studio Pvt. Ltd.
- * @link        https://analogwp.com
+ * @copyright   2024 SmallTownDev
+ * @link        https://analogwp.com/custom-library-for-elementor
  *
  * @wordpress-plugin
- * Plugin Name: Style Kits for Elementor
- * Plugin URI:  https://analogwp.com/
- * Description: Style Kits extends the Elementor theme styles editor with more global styling options. Boost your design workflow in Elementor with intuitive global controls and theme style presets.
+ * Plugin Name: Custom Library for Elementor
+ * Plugin URI:  https://analogwp.com/custom-library-for-elementor
+ * Description: Custom Library for Elementor extends the Elementor library with a custom library of your own templates. Boost your design workflow in Elementor with this plugin.
  * Version:     2.1.0
  * Author:      AnalogWP
  * Author URI:  https://analogwp.com/
  * License:     GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: ang
- * Elementor tested up to: 3.23.4
+ * Elementor tested up to: 3.25.3
  * Elementor Pro tested up to: 3.23.3
  */
 

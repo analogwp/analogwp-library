@@ -2,7 +2,7 @@
 /**
  * Class Analog\Plugin.
  *
- * @copyright 2020 Dashwork Studio Pvt. Ltd.
+ * @copyright 2024 SmallTownDev
  * @package Analog
  */
 
@@ -217,11 +217,6 @@ final class Plugin {
 
 		array_unshift( $links, $settings_link );
 
-		if ( ! defined( 'ANG_PRO_VERSION' ) ) {
-			/* translators: %1$s: Link to Style Kits Pro. %2$s: Go Pro text. */
-			$links['go_pro'] = sprintf( '<a href="%1$s" style="color: #5c32b6;font-weight: 700;" target="_blank" class="ang-plugins-gopro">%2$s</a>', Utils::get_pro_link(), __( 'Go Pro', 'ang' ) );
-		}
-
 		return $links;
 	}
 
@@ -287,7 +282,7 @@ final class Plugin {
 			require_once ANG_PLUGIN_DIR . 'inc/elementor/Promotions.php';
 		}
 
-		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+		if ( defined( 'WP_CLI' ) && \WP_CLI ) {
 			require_once ANG_PLUGIN_DIR . 'inc/cli/commands.php';
 		}
 	}

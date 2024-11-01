@@ -131,7 +131,7 @@ final class Promotions extends Base {
 		$messages = $texts['messages'];
 		?>
 		<div class="elementor-nerd-box">
-			<img class="elementor-nerd-box-icon" style="width:45px;margin-right:0;" alt="Style Kits for Elementor" src="<?php echo esc_url( ANG_PLUGIN_URL . 'assets/img/analog.svg' ); ?>" />
+			<img class="elementor-nerd-box-icon" style="width:45px;margin-right:0;" alt="Custom Library for Elementor" src="<?php echo esc_url( ANG_PLUGIN_URL . 'assets/img/analog.svg' ); ?>" />
 			<?php if ( isset( $texts['title'] ) && $texts['title'] ) : ?>
 			<div class="elementor-nerd-box-title"><?php echo $texts['title']; // @codingStandardsIgnoreLine ?></div>
 				<?php
@@ -200,7 +200,7 @@ final class Promotions extends Base {
 					</a>
 				<?php } ?>
 			</div>
-			<img class="elementor-nerd-box-icon" style="width:45px;margin-right:0;" alt="Style Kits for Elementor" src="<?php echo esc_url( ANG_PLUGIN_URL . 'assets/img/analog.svg' ); ?>" />
+			<img class="elementor-nerd-box-icon" style="width:45px;margin-right:0;" alt="Custom Library for Elementor" src="<?php echo esc_url( ANG_PLUGIN_URL . 'assets/img/analog.svg' ); ?>" />
 		</div>
 		<?php
 

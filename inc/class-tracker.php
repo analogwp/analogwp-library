@@ -128,7 +128,7 @@ class Tracker {
 				'content'         => sprintf(
 					/* translators: %2$s Plugin Name %3%s Review text */
 					__( 'Hey! You have been using %1$s for over 2 weeks, we hope you enjoy it! If so, please leave a positive %2$s.', 'ang' ),
-					'<strong>' . __( 'Style Kits for Elementor', 'ang' ) . '</strong>',
+					'<strong>' . __( 'Custom Library for Elementor', 'ang' ) . '</strong>',
 					'<a href="https://analogwp.com/admin-review" target="_blank">' . __( 'review on WordPress.org', 'ang' ) . '</a>'
 				),
 				'type'            => Notice::TYPE_INFO,

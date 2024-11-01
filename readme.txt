@@ -37,7 +37,7 @@ A one-of-a-kind pattern library for Elementor, powered by flexbox containers and
 
 Manage container spacing globally, adjust button styles per size, and many more tools that will help you scale-up your layouts with consistency.
 
-Style Kits for Elementor adds a set of extra UI controls to Theme Styles editor, for the most important aspects of your Elementor design system.
+Custom Library for Elementor adds a set of extra UI controls to Theme Styles editor, for the most important aspects of your Elementor design system.
 
 - Global Style Kit fonts
 - Global Style Kit colors
@@ -81,7 +81,7 @@ Ideally, yes. To take advantage of the new Style Kits pattern library you will n
 No, Style Kits will still work with the FREE version of Elementor. However, any patterns that include Elementor PRO widgets (Contact form, Call to action etc) will not be imported into your pages. The rest of the Style Kits functionality will work with the free version of Elementor.
 
 = What is a Style Kit? =
-In simple words, a Style Kit is a collection of your Global theme styles. Includes Typography, Colors, spacing and more. In Style Kits for Elementor you get access to a number of such theme style presets that you can import and apply on your website.
+In simple words, a Style Kit is a collection of your Global theme styles. Includes Typography, Colors, spacing and more. In Custom Library for Elementor you get access to a number of such theme style presets that you can import and apply on your website.
 
 = Will the patterns work with my existing theme? =
 Yes, if you have Elementor installed and activated. In general, patterns will inherit the styles of your existing theme (especially for typography). However it is recommended that you use Style Kits on a fresh site, and apply any of the included theme style presets as a starting point for your Global styles.
@@ -624,7 +624,7 @@ We offer high-level support for all Style Kits users. Reach out to https://analo
 
 = 1.3 - August 05, 2019 =
 * New: Added Button Controls under Page Styles 🎉
-* New: Plugin rebranded as "Style Kits for Elementor"
+* New: Plugin rebranded as "Custom Library for Elementor"
 * Fix: Text/Heading size controls not being persistent on style kit change
 * Fix: Column gap individual controls not taking place
 * Fix: Style Kit update modal displaying on page where it was updated from
@@ -699,7 +699,7 @@ We offer high-level support for all Style Kits users. Reach out to https://analo
 Added Style kit import/export feature. Fixed an issue with column gaps.
 
 = 1.2 =
-Introducing Style Kits for Elementor, added a bunch of QoL improvements.
+Introducing Custom Library for Elementor, added a bunch of QoL improvements.
 
 = 1.3.4 =
 Fixed a critical bug inside Elementor when attempting to import a template.
