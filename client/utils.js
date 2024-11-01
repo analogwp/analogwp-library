@@ -1,20 +1,7 @@
-import Filters from './filters';
 import Blocks from './blocks/blocks';
-import Templates from './Templates';
 
-const { Fragment } = React;
-
-export const getPageComponents = ( state ) => {
-	if ( state.tab === 'blocks' ) {
-		return <Blocks />;
-	}
-
-	return (
-		<Fragment>
-			{ ! state.isOpen && <Filters /> }
-			<Templates />
-		</Fragment>
-	);
+export const getPageComponents = () => {
+	return <Blocks />;
 };
 
 export const debugMode = () => Boolean( AGWP.debugMode );

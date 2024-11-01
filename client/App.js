@@ -147,12 +147,7 @@ class App extends React.Component {
 	constructor() {
 		super( ...arguments );
 
-		const initialContainerTab = ! AGWP.is_settings_page ? 'blocks' : 'styleKits';
-
 		this.state = {
-			templates: [],
-			kits: [],
-			styleKits: [],
 			blocks: [],
 			count: null,
 			isOpen: false, // Determines whether modal to preview template is open or not.
@@ -160,19 +155,14 @@ class App extends React.Component {
 			favorites: AGWP.favorites,
 			blockFavorites: AGWP.blockFavorites,
 			showing_favorites: false,
-			archive: [], // holds template archive temporarily for filter/favorites, includes all templates, never set on it.
 			blockArchive: [], // same as archive above just for blocks.
 			showFree: true,
 			showPro: true,
 			group: true,
-			activeKit: false,
-			installedKits: AGWP.installed_kits || {},
-			tab: AGWP.isContainer ? initialContainerTab : 'blocks',
-			blocksTab: AGWP.isContainer ? 'all-patterns' : 'all-blocks',
+			tab: 'blocks',
+			blocksTab: 'all-templates',
 			hasPro: false,
-			settings: {
-				ang_sync_colors: true,
-			},
+			settings: {},
 			blocksSearchInput: '',
 			itemFilteredWithSearchTerm: function( foundItems, searchInput ) {
 				let searchTags = [];
@@ -199,7 +189,7 @@ class App extends React.Component {
 
 	switchTabs() {
 		const hash = location.hash;
-		const validHashes = [ '#templates', '#styleKits', '#blocks' ];
+		const validHashes = [ '#blocks' ];
 
 		if ( validHashes.indexOf( hash ) > -1 && AGWP.is_settings_page ) {
 			this.setState( {
@@ -227,12 +217,6 @@ class App extends React.Component {
 			} );
 		}
 
-		if ( window.localStorage.getItem( 'analog::group-kit' ) === 'false' ) {
-			this.setState( {
-				group: false,
-			} );
-		}
-
 		this.setState( {
 			syncing: true,
 		} );
@@ -242,19 +226,16 @@ class App extends React.Component {
 
 		this.setState( {
 			templates: library.templates,
-			kits: library.template_kits,
 			archive: library.templates,
 			blockArchive: library.blocks,
 			count: library.templates.length,
 			timestamp: templates.timestamp,
 			hasPro: hasProTemplates( library.templates ),
-			styleKits: library.stylekits,
 			blocks: library.blocks,
 			syncing: false,
 		} );
 
-		this.handleSort( 'latest', 'templates' );
-		this.handleSort( 'latest', 'blocks' );
+		this.handleSort( 'latest' );
 
 		// Listen for Elementor modal close, so we can reset some states.
 		document.addEventListener( 'modal-close', () => {
@@ -268,35 +249,24 @@ class App extends React.Component {
 		getSettings().then( settings => this.setState( { settings } ) );
 	}
 
-	handleFilter( type, library = 'templates' ) {
-		const templates = [ ...this.state.archive ];
+	handleFilter( type ) {
 		const blocks = [ ...this.state.blockArchive ];
 
-		if ( 'blocks' !== library ) {
-			if ( type === 'all' ) {
-				this.setState( { templates: this.state.archive } );
-				return;
-			}
-
-			const filtered = templates.filter( template => template.type === type );
-			this.setState( { templates: filtered } );
-		} else {
-			if ( type === 'all' ) {
-				this.setState( { blocks: this.state.blockArchive } );
-				return;
-			}
-
-			const filtered = blocks.filter( block => block.tags[ 0 ] === type );
-			this.setState( { blocks: filtered } );
+		if ( type === 'all' ) {
+			this.setState( { blocks: this.state.blockArchive } );
+			return;
 		}
+
+		const filtered = blocks.filter( block => block.tags[ 0 ] === type );
+		this.setState( { blocks: filtered } );
 	}
 
-	handleSort( value, library = 'templates' ) {
+	handleSort( value ) {
 		this.setState( {
 			showing_favorites: false,
 		} );
 
-		const sortData = this.state[ library ];
+		const sortData = this.state[ 'blocks' ];
 
 		if ( 'popular' === value ) {
 			const sorted = sortData.sort( ( a, b ) => {
@@ -311,7 +281,7 @@ class App extends React.Component {
 				return 0;
 			} );
 
-			this.setState( { [ library ]: sorted } );
+			this.setState( { [ 'blocks' ]: sorted } );
 		}
 
 		if ( 'latest' === value ) {
@@ -327,15 +297,12 @@ class App extends React.Component {
 				return 0;
 			} );
 
-			this.setState( { [ library ]: sorted } );
+			this.setState( { [ 'blocks' ]: sorted } );
 		}
 	}
 
-	handleSearch( value, library = 'templates' ) {
+	handleSearch( value, library = 'blocks' ) {
 		let searchData = this.state.blockArchive;
-		if ( 'templates' === library ) {
-			searchData = this.state.archive;
-		}
 		let filtered = [];
 		let searchTags = [];
 
@@ -353,13 +320,6 @@ class App extends React.Component {
 			} );
 
 			if ( filtered.length > 0 ) {
-				if ( 'templates' === library ) {
-					this.setState( {
-						templates: filtered,
-					} );
-
-					return;
-				}
 
 				this.setState( {
 					blocks: filtered,
@@ -369,16 +329,10 @@ class App extends React.Component {
 				return;
 			}
 		}
-		if ( 'templates' === library ) {
-			this.setState( {
-				templates: value ? [] : this.state.archive,
-			} );
-		} else {
-			this.setState( {
-				blocks: value ? [] : this.state.blockArchive,
-				blocksSearchInput: '',
-			} );
-		}
+		this.setState( {
+			blocks: value ? [] : this.state.blockArchive,
+			blocksSearchInput: '',
+		} );
 	}
 
 	async refreshAPI() {
@@ -395,13 +349,8 @@ class App extends React.Component {
 			const library = data.library;
 
 			this.setState( {
-				templates: library.templates,
-				archive: library.templates,
 				blockArchive: library.blocks,
-				count: library.templates.length,
-				kits: library.template_kits,
 				timestamp: data.timestamp,
-				styleKits: library.stylekits,
 				blocks: library.blocks,
 				syncing: false,
 				blocksSearchInput: '',
@@ -420,18 +369,12 @@ class App extends React.Component {
 		} );
 		window.localStorage.setItem( 'analog::group-block', false );
 
-		const filteredTemplates = this.state.archive.filter(
-			template => template.id in this.state.favorites
-		);
 		const filteredBlocks = this.state.blockArchive.filter(
 			block => block.id in this.state.blockFavorites
 		);
 
 		this.setState( {
 			showing_favorites: ! this.state.showing_favorites,
-			templates: ! this.state.showing_favorites ?
-				filteredTemplates :
-				this.state.archive,
 			blocks: ! this.state.showing_favorites ?
 				filteredBlocks :
 				this.state.blockArchive,

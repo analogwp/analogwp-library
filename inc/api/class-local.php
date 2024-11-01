@@ -9,8 +9,6 @@ namespace Analog\API;
 
 use Analog\Plugin;
 use Analog\Base;
-use Analog\Classes\Import_Image;
-use Analog\Elementor\Kit\Manager;
 use Analog\Options;
 use Analog\Utils;
 use Elementor\TemplateLibrary\Analog_Importer;
@@ -19,7 +17,7 @@ use WP_Query;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_REST_Server;
-use Analog\Slink\Data\Slink_Data;
+use Analog\Core\Data\Library_Data;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -50,7 +48,7 @@ class Local extends Base {
 				WP_REST_Server::CREATABLE => 'handle_direct_import',
 			),
 			'/templates'               => array(
-				WP_REST_Server::READABLE => 'templates_list_slink',
+				WP_REST_Server::READABLE => 'library_templates_list',
 			),
 			'/mark_favorite/'          => array(
 				WP_REST_Server::CREATABLE => 'mark_as_favorite',
@@ -627,8 +625,8 @@ class Local extends Base {
 	 * @param \WP_REST_Request $request
 	 * @return \WP_REST_Response
 	 */
-	public function templates_list_slink( \WP_REST_Request $request ) {
-		$key  = 'slink_api_data_v3';
+	public function library_templates_list( \WP_REST_Request $request ) {
+		$key  = 'ang_library_api_data_v3';
 		$info = get_transient( $key );
 
 		$force = $request->get_param( 'force_update' );
@@ -636,7 +634,7 @@ class Local extends Base {
 		$info = array(
 			'timestamp' => current_time( 'timestamp' ),
 			'library'   => array(
-				'blocks'        => Slink_Data::patterns(),
+				'blocks'        => Library_Data::templates(),
 				'stylekits'     => array(),
 				'templates'     => array(),
 				'template_kits' => array(),
@@ -645,8 +643,6 @@ class Local extends Base {
 				)
 			),
 		);
-
-		ray( $info );
 
 		return $info;
 	}

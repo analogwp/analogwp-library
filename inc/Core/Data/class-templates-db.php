@@ -1,23 +1,30 @@
 <?php
+/**
+ * Library templates database.
+ *
+ * @package Analog Library
+ */
 
-namespace Analog\Slink\Data;
+namespace Analog\Core\Data;
 
-
+/**
+ * Class Templates_DB.
+ */
 class Templates_DB extends Base_DB {
 	/**
 	 * The name of the cache group.
 	 *
 	 * @var string
 	 */
-	public $cache_group = 'ang_preview_sync_patterns';
+	public $cache_group = 'ang_custom_sync_templates';
 
 	/**
-	 * DB_Patterns constructor.
+	 * Templates_DB constructor.
 	 */
 	function __construct() {
 		global $wpdb;
 
-		$this->table_name  = $wpdb->prefix . 'slink_self_templates';
+		$this->table_name  = $wpdb->prefix . 'analog_custom_templates';
 		$this->primary_key = 'id';
 		$this->version     = '1.0';
 
@@ -63,6 +70,11 @@ class Templates_DB extends Base_DB {
 		);
 	}
 
+	/**
+	 * Creates a custom table using table name from $this->table_name.
+	 *
+	 * @return void
+	 */
 	public function create_table() {
 		global $wpdb;
 
@@ -86,6 +98,13 @@ class Templates_DB extends Base_DB {
 		update_option( $this->table_name . '_db_version', $this->version );
 	}
 
+	/**
+	 * Insert data in table.
+	 *
+	 * @param $data
+	 * @param $type
+	 * @return int
+	 */
 	public function insert( $data, $type = '' ) {
 		$result = parent::insert( $data, $type );
 
@@ -120,13 +139,25 @@ class Templates_DB extends Base_DB {
 		return $last_changed;
 	}
 
-	public function pattern_exists( $post_id, $site_id ) {
+	/**
+	 * Check if template exists.
+	 *
+	 * @param int $post_id
+	 * @param int $site_id
+	 * @return array|object|\stdClass|null
+	 */
+	public function template_exists( $post_id, $site_id = 0 ) {
 		global $wpdb;
 
 		return $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $this->table_name WHERE template_id = %d AND site_id = %d LIMIT 1;", $post_id, $site_id ) );
 	}
 
-	public function get_patterns() {
+	/**
+	 * Get all templates in table.
+	 *
+	 * @return array|object|\stdClass[]|null
+	 */
+	public function get_templates() {
 		global $wpdb;
 
 		$results = $wpdb->get_results( "SELECT template_id, site_id, installs, title, meta FROM $this->table_name ORDER BY created_at DESC" );
@@ -134,7 +165,14 @@ class Templates_DB extends Base_DB {
 		return $results;
 	}
 
-	public function get_pattern_content( $template_id, $site_id ) {
+	/**
+	 * Get template content by id.
+	 *
+	 * @param int $template_id
+	 * @param int $site_id
+	 * @return array|object|\stdClass|null
+	 */
+	public function get_template_content( $template_id, $site_id = 0 ) {
 		global $wpdb;
 
 		$result = $wpdb->get_row( $wpdb->prepare( "SELECT meta, content FROM $this->table_name WHERE template_id = %d AND site_id = %d", $template_id, $site_id ) );

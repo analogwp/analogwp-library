@@ -3,7 +3,7 @@ import AnalogContext from '../AnalogContext';
 const { __ } = wp.i18n;
 const { TextControl, TabPanel, ToggleControl, Button } = wp.components;
 
-const blockIdentifier = AGWP.isContainer ? 'all-patterns' : 'all-blocks';
+const blockIdentifier = 'all-templates';
 
 const defaultTabs = [
 	'favorites',

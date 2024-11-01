@@ -323,11 +323,11 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 			<Container className="blocks-area">
 
 				{ ! context.state.syncing && context.state.blocks.length < 1 && (
-					<Empty text={ AGWP.isContainer ? __( 'No Templates found', 'ang' ) : __( 'No blocks found', 'ang' ) } />
+					<Empty text={ __( 'No Templates found', 'ang' ) } />
 				) }
 
 				{ context.state.syncing && context.state.blocks.length < 1 && (
-					<Empty text={ AGWP.isContainer ? __( 'Loading Templates...', 'ang' ) : __( 'Loading Blocks...', 'ang' ) } />
+					<Empty text={ __( 'Loading Templates...', 'ang' ) } />
 				) }
 
 				<Masonry

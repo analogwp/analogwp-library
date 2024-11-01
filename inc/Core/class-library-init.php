@@ -1,0 +1,202 @@
+<?php
+/**
+ * Library initialization.
+ *
+ * @package Analog Library
+ */
+
+namespace Analog\Core;
+
+use Analog\Core\Data\Templates_DB;
+use Elementor\TemplateLibrary\Source_Local;
+
+/**
+ * Class Library_Init.
+ */
+class Library_Init {
+	/**
+	 * Holds Template DB instance.
+	 *
+	 * @var Templates_DB $templates_db
+	 */
+	protected Templates_DB $templates_db;
+
+	/**
+	 * Constructor.
+	 */
+	public function __construct() {
+		$this->templates_db = new Templates_DB();
+
+		$this->hooks();
+	}
+
+	/**
+	 * Registered hooks.
+	 *
+	 * @return void
+	 */
+	public function hooks() {
+		add_action( 'save_post_elementor_library', array( $this, 'handle_template_sync' ), 20, 3 );
+
+		// Register Meta box.
+		add_action( 'add_meta_boxes', array( $this, 'register_meta_boxes' ) );
+
+		// Save meta value with save post hook.
+		add_action( 'save_post', array( $this, 'handle_save_meta_boxes' ) );
+	}
+
+	/**
+	 * Registers metaboxes.
+	 *
+	 * @return void
+	 */
+	public function register_meta_boxes() {
+		add_meta_box(
+			'analog-library-id',
+			esc_html__( 'Library Handover', 'ang' ),
+			array( $this, 'render_library_metabox' ),
+			Source_Local::CPT,
+			'side'
+		);
+	}
+
+	/**
+	 * Handles meta box data saving.
+	 *
+	 * @param int $post_id Post ID.
+	 * @return void
+	 */
+	public function handle_save_meta_boxes( $post_id ) {
+		if ( isset( $_POST['analog_sync_to_library'] ) ) {
+			update_post_meta( $post_id, 'analog_sync_to_library', $_POST['analog_sync_to_library'] );
+		} else {
+			update_post_meta( $post_id, 'analog_sync_to_library', 0 );
+		}
+	}
+
+	/**
+	 * Renders library metabox.
+	 *
+	 * @param int $post Post ID.
+	 * @return void
+	 */
+	public function render_library_metabox( $post ) {
+		$wpdocs_meta_val = get_post_meta( $post->ID, 'analog_sync_to_library', true );
+		?>
+		<label for="analog_sync_to_library"><input type="checkbox" name="analog_sync_to_library" id="analog_sync_to_library" value="1" <?php checked( $wpdocs_meta_val, 1 ); ?>>
+			&nbsp;Add to library</label>
+		<?php
+	}
+
+	/**
+	 * Prepare template data for saving in Library DB.
+	 *
+	 * @param int $post_id Post ID.
+	 * @return mixed|null
+	 */
+	public function prepare_template_for_save( $post_id ) {
+
+		$tags             = get_the_terms( $post_id, 'elementor_library_category' );
+		$keywords         = get_the_terms( $post_id, 'analog_library_keyword' );
+		$required_plugins = get_post_meta( $post_id, 'required_plugins', true );
+
+		$template_data = array(
+			'id'               => (int) $post_id,
+			'site_id'          => 0,
+			'title'            => get_post_field( 'post_title', $post_id ),
+			'thumbnail'        => get_the_post_thumbnail_url( $post_id, 'medium_large' ),
+			'published'        => get_the_date( 'U', $post_id ),
+			'modified'         => get_the_modified_date( 'U', $post_id ),
+			'tags'             => ( ! is_wp_error( $tags ) && $tags ) ? wp_list_pluck( $tags, 'name' ) : false,
+			'keywords'         => ( ! is_wp_error( $keywords ) && $keywords ) ? wp_list_pluck( $keywords, 'name' ) : false,
+			'is_live'          => (bool) get_post_meta( $post_id, 'is_live', true ),
+			'is_pro'           => (bool) get_post_meta( $post_id, 'is_pro', true ),
+			'version'          => get_post_meta( $post_id, 'required_version', true ),
+			'uses_container'   => (bool) get_post_meta( $post_id, 'uses_container', true ),
+			'data'             => array(
+				'content' => json_decode( get_post_meta( $post_id, '_elementor_data', true ) ),
+			),
+			'required_plugins' => $required_plugins,
+		);
+
+		return apply_filters( 'analog_template_data', $template_data, $post_id );
+	}
+
+	/**
+	 * Sync template data with library db.
+	 *
+	 * @param array $required_data Template data.
+	 * @return void
+	 */
+	public function sync_template( $required_data ) {
+		$data = $required_data;
+
+		$template_data = array(
+			'template_id' => $data['id'],
+			'site_id'     => $data['site_id'],
+			'title'       => $data['title'],
+			'content'     => isset( $data['data'] ) ? wp_json_encode( $data['data']['content'] ) : false,
+			'updated_at'  => current_time( 'mysql' ),
+			'meta'        => wp_json_encode(
+				array(
+					'thumbnail'        => $data['thumbnail'],
+					'published'        => $data['published'],
+					'modified'         => $data['modified'],
+					'tags'             => $data['tags'],
+					'keywords'         => $data['keywords'],
+					'is_live'          => $data['is_live'],
+					'is_pro'           => $data['is_pro'],
+					'version'          => $data['version'],
+					'uses_container'   => true,
+					'required_plugins' => $data['required_plugins'],
+				)
+			),
+		);
+
+		$exists = $this->templates_db->template_exists( $data['id'], $data['site_id'] );
+		if ( $exists ) {
+			$this->templates_db->update( $exists->id, $template_data );
+		} else {
+			$template_data['created_at'] = current_time( 'mysql' );
+			$this->templates_db->insert( $template_data );
+		}
+	}
+
+	/**
+	 * Handles syncing templates.
+	 *
+	 * @param int      $post_ID
+	 * @param \WP_Post $post
+	 * @param bool     $update
+	 * @return void
+	 */
+	public function handle_template_sync( int $post_ID, \WP_Post $post, bool $update ) {
+		if ( 'publish' !== $post->post_status ) {
+			return;
+		}
+
+		// Intentionally unchecked.
+		// $template_type = get_post_meta( $post_ID, '_elementor_template_type', true );
+		//
+		// if ( 'container' !== $template_type ) {
+		// return;
+		// }
+
+		$sync = (bool) isset( $_POST['analog_sync_to_library'] ) ? 1 : 0;
+
+		if ( ! $sync ) {
+			return;
+		}
+
+		$transient_key = 'analog_push_template_' . $post->ID;
+		if ( ! get_transient( $transient_key ) ) {
+			// First we prepare.
+			$data = $this->prepare_template_for_save( $post_ID );
+
+			// Save in our Database table.
+			$this->sync_template( $data );
+
+			set_transient( $transient_key, true, 5 );
+		}
+	}
+}

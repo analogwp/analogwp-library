@@ -1,7 +1,15 @@
 <?php
+/**
+ * Base library database.
+ *
+ * @package Analog Library
+ */
 
-namespace Analog\Slink\Data;
+namespace Analog\Core\Data;
 
+/**
+ * Class Base_DB.
+ */
 abstract class Base_DB {
 	public $table_name;
 	public $version;

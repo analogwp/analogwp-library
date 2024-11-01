@@ -238,11 +238,10 @@ final class Plugin {
 		require_once ANG_PLUGIN_DIR . 'inc/api/class-local.php';
 		require_once ANG_PLUGIN_DIR . 'inc/class-analog-importer.php';
 
-		// Custom stuff.
-		require_once ANG_PLUGIN_DIR . 'inc/slink/data/class-base-db.php';
-		require_once ANG_PLUGIN_DIR . 'inc/slink/data/class-templates-db.php';
-		require_once ANG_PLUGIN_DIR . 'inc/slink/data/class-slink-data.php';
-		require_once ANG_PLUGIN_DIR . 'inc/slink/init.php';
+		require_once ANG_PLUGIN_DIR . 'inc/Core/Data/class-base-db.php';
+		require_once ANG_PLUGIN_DIR . 'inc/Core/Data/class-templates-db.php';
+		require_once ANG_PLUGIN_DIR . 'inc/Core/Data/class-library-data.php';
+		require_once ANG_PLUGIN_DIR . 'inc/Core/class-library-init.php';
 
 		require_once ANG_PLUGIN_DIR . 'inc/class-elementor.php';
 		require_once ANG_PLUGIN_DIR . 'inc/class-cron.php';

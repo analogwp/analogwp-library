@@ -7,7 +7,7 @@
 
 namespace Analog;
 
-use Analog\Slink\Init;
+use Analog\Core\Library_Init;
 use Elementor\Core\Common\Modules\Finder\Categories_Manager;
 
 /**
@@ -18,7 +18,9 @@ class Elementor {
 	 * Constructor.
 	 */
 	public function __construct() {
-		new Init();
+		// Initiate Library.
+		new Library_Init();
+
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'enqueue_editor_scripts' ) );
 		add_action( 'elementor/preview/enqueue_styles', array( $this, 'enqueue_editor_scripts' ) );
 

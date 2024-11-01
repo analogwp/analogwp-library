@@ -1,36 +1,48 @@
 <?php
+/**
+ * Library Data handler.
+ *
+ * @package Analog Library
+ */
 
+namespace Analog\Core\Data;
 
-namespace Analog\Slink\Data;
+/**
+ * Class Library_Data.
+ */
+final class Library_Data {
 
-final class Slink_Data {
-
-	public static function patterns() {
+	/**
+	 * Get templates from library.
+	 *
+	 * @return array
+	 */
+	public static function templates() {
 		$db_blocks     = new Templates_DB();
-		$patterns_data = $db_blocks->get_patterns();
-		$patterns      = array();
+		$patterns_data = $db_blocks->get_templates();
+		$templates     = array();
 
 		if ( count( $patterns_data ) ) {
 			foreach ( $patterns_data as $pattern ) {
 				$meta = json_decode( $pattern->meta );
 
-//				if ( isset( $meta->is_live ) ) {
-//					$is_live = (bool) $meta->is_live;
-//					if ( ! $is_live ) {
-//						continue;
-//					}
-//				} else {
-//					continue;
-//				}
+				if ( isset( $meta->is_live ) ) {
+					$is_live = (bool) $meta->is_live;
+					if ( ! $is_live ) {
+						continue;
+					}
+				} else {
+					continue;
+				}
 
 				$thumbnail = false;
-				if ( $meta->thumbnail !== '0' ) {
+				if ( '0' !== $meta->thumbnail ) {
 					$thumbnail = $meta->thumbnail;
 				}
 
 				$modified = isset( $meta->modified ) ? $meta->modified : $meta->published;
 
-				$patterns[] = array(
+				$templates[] = array(
 					'id'              => (int) $pattern->template_id,
 					'siteID'          => (int) $pattern->site_id,
 					'title'           => $pattern->title,
@@ -47,8 +59,6 @@ final class Slink_Data {
 			}
 		}
 
-		ray( $patterns );
-
-		return $patterns;
+		return $templates;
 	}
 }
