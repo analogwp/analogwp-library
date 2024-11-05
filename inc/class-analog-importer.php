@@ -8,6 +8,7 @@
 namespace Elementor\TemplateLibrary;
 
 use Analog\API\Remote;
+use Analog\Core\Data\Library_Data;
 use Analog\Formatter;
 use Analog\Plugin;
 use Elementor\TemplateLibrary\Classes\Images;
@@ -29,7 +30,7 @@ class Analog_Importer extends Source_Remote {
 	}
 
 	/**
-	 * Get template data.
+	 * Get local template data.
 	 *
 	 * @inheritDoc
 	 *
@@ -41,9 +42,9 @@ class Analog_Importer extends Source_Remote {
 	 *
 	 * @return array Remote Template data.
 	 */
-	public function get_data( array $args, $context = 'display', $data = false ) {
+	public function get_local_data( array $args, $context = 'display', $data = false ) {
 		if ( ! $data ) {
-			$data = Remote::get_instance()->get_template_content( $args['template_id'], $args['license'], $args['method'], $args['site_id'] );
+			$data = Library_Data::prepare_template_content( $args['template_id'] );
 		}
 
 		if ( is_wp_error( $data ) ) {
@@ -51,12 +52,6 @@ class Analog_Importer extends Source_Remote {
 		}
 
 		Plugin::elementor()->editor->set_edit_mode( true );
-
-		// Remove Typography options if opted in.
-		if ( isset( $args['options']['remove_typography'] ) && true === $args['options']['remove_typography'] ) {
-			require_once ANG_PLUGIN_DIR . 'inc/class-formatter.php';
-			$data['content'] = Formatter::remove_typography_data_recursive( $data['content'] );
-		}
 
 		$data['content'] = $this->replace_elements_ids( $data['content'] );
 		$data['content'] = $this->process_export_import_content( $data['content'], 'on_import' );
@@ -69,10 +64,8 @@ class Analog_Importer extends Source_Remote {
 
 		/**
 		 * During json encode/decode between preview/demo, isInner is usually converted into string.
-		 * This helper function converts it back to Boolean so Elementor doesn't changes this control
+		 * This helper function converts it back to Boolean so Elementor doesn't change this control
 		 * into an "Inner Section".
-		 *
-		 * @since 1.3.8
 		 */
 		$data['content'] = Utils::convert_string_to_boolean( $data['content'] );
 
