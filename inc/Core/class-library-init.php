@@ -223,13 +223,6 @@ class Library_Init {
 			return;
 		}
 
-		// Intentionally unchecked.
-		// $template_type = get_post_meta( $post_ID, '_elementor_template_type', true );
-		//
-		// if ( 'container' !== $template_type ) {
-		// return;
-		// }
-
 		$sync = (bool) isset( $_POST['analog_sync_to_library'] ) ? 1 : 0;
 
 		if ( ! $sync ) {
