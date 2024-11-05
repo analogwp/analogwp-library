@@ -18,13 +18,13 @@ final class Library_Data {
 	 * @return array
 	 */
 	public static function templates() {
-		$db_blocks     = new Templates_DB();
-		$patterns_data = $db_blocks->get_templates();
-		$templates     = array();
+		$db_blocks      = new Templates_DB();
+		$templates_data = $db_blocks->get_templates();
+		$templates      = array();
 
-		if ( count( $patterns_data ) ) {
-			foreach ( $patterns_data as $pattern ) {
-				$meta = json_decode( $pattern->meta );
+		if ( count( $templates_data ) ) {
+			foreach ( $templates_data as $template ) {
+				$meta = json_decode( $template->meta );
 
 				if ( isset( $meta->is_live ) ) {
 					$is_live = (bool) $meta->is_live;
@@ -43,13 +43,13 @@ final class Library_Data {
 				$modified = isset( $meta->modified ) ? $meta->modified : $meta->published;
 
 				$templates[] = array(
-					'id'              => (int) $pattern->template_id,
-					'siteID'          => (int) $pattern->site_id,
-					'title'           => $pattern->title,
+					'id'              => (int) $template->template_id,
+					'siteID'          => (int) $template->site_id,
+					'title'           => $template->title,
 					'thumbnail'       => $thumbnail,
 					'published'       => (int) $meta->published,
 					'modified'        => (int) $modified,
-					'popularityIndex' => (int) $pattern->installs,
+					'popularityIndex' => (int) $template->installs,
 					'is_pro'          => (bool) $meta->is_pro,
 					'tags'            => (array) $meta->tags,
 					'keywords'        => isset( $meta->keywords ) ? (array) $meta->keywords : array(),
