@@ -63,14 +63,35 @@ class Library_Init {
 	/**
 	 * Handles meta box data saving.
 	 *
-	 * @param int $post_id Post ID.
+	 * @param int $post_ID Post ID.
 	 * @return void
 	 */
-	public function handle_save_meta_boxes( $post_id ) {
-		if ( isset( $_POST['analog_sync_to_library'] ) ) {
-			update_post_meta( $post_id, 'analog_sync_to_library', $_POST['analog_sync_to_library'] );
-		} else {
-			update_post_meta( $post_id, 'analog_sync_to_library', 0 );
+	public function handle_save_meta_boxes( int $post_ID ) {
+		if ( ! isset( $_POST['analog_library_meta_nonce'] ) ) {
+			return;
+		}
+
+		check_admin_referer( 'analog-library-meta', 'analog_library_meta_nonce' );
+
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		if ( ! current_user_can( 'edit_post', $post_ID ) ) {
+			return;
+		}
+
+		$keys = array(
+			'analog_sync_to_library',
+			'analog_is_template_live',
+		);
+
+		foreach ( $keys as $key ) {
+			if ( isset( $_POST[ $key ] ) ) {
+				update_post_meta( $post_ID, $key, absint( $_POST[ $key ] ) );
+			} else {
+				update_post_meta( $post_ID, $key, 0 );
+			}
 		}
 	}
 
@@ -81,11 +102,24 @@ class Library_Init {
 	 * @return void
 	 */
 	public function render_library_metabox( $post ) {
-		$wpdocs_meta_val = get_post_meta( $post->ID, 'analog_sync_to_library', true );
+		$sync_to_library  = get_post_meta( $post->ID, 'analog_sync_to_library', true );
+		$is_template_live = get_post_meta( $post->ID, 'analog_is_template_live', true );
+
+		ob_start();
+		wp_nonce_field( 'analog-library-meta', 'analog_library_meta_nonce' );
 		?>
-		<label for="analog_sync_to_library"><input type="checkbox" name="analog_sync_to_library" id="analog_sync_to_library" value="1" <?php checked( $wpdocs_meta_val, 1 ); ?>>
-			&nbsp;Add to library</label>
+		<div>
+			<label for="analog_sync_to_library"><input type="checkbox" name="analog_sync_to_library" id="analog_sync_to_library" value="1" <?php checked( $sync_to_library, 1 ); ?>>
+				&nbsp;Add to library</label>
+		</div>
+
+		<div>
+			<label for="analog_is_template_live"><input type="checkbox" name="analog_is_template_live" id="analog_is_template_live" value="1" <?php checked( $is_template_live, 1 ); ?>>
+				&nbsp;Is Live</label>
+		</div>
 		<?php
+		// HTML is included. Ignoring!
+		echo ob_get_clean(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -109,7 +143,7 @@ class Library_Init {
 			'modified'         => get_the_modified_date( 'U', $post_id ),
 			'tags'             => ( ! is_wp_error( $tags ) && $tags ) ? wp_list_pluck( $tags, 'name' ) : false,
 			'keywords'         => ( ! is_wp_error( $keywords ) && $keywords ) ? wp_list_pluck( $keywords, 'name' ) : false,
-			'is_live'          => (bool) get_post_meta( $post_id, 'is_live', true ),
+			'is_live'          => (bool) get_post_meta( $post_id, 'analog_is_template_live', true ),
 			'is_pro'           => (bool) get_post_meta( $post_id, 'is_pro', true ),
 			'version'          => get_post_meta( $post_id, 'required_version', true ),
 			'uses_container'   => (bool) get_post_meta( $post_id, 'uses_container', true ),
