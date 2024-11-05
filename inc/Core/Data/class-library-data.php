@@ -18,8 +18,8 @@ final class Library_Data {
 	 * @return array
 	 */
 	public static function templates() {
-		$db_blocks      = new Templates_DB();
-		$templates_data = $db_blocks->get_templates();
+		$templates_db   = new Templates_DB();
+		$templates_data = $templates_db->get_templates();
 		$templates      = array();
 
 		if ( count( $templates_data ) ) {
@@ -60,5 +60,26 @@ final class Library_Data {
 		}
 
 		return $templates;
+	}
+
+	/**
+	 * Get template data.
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function prepare_template_content( $template_id ) {
+		if ( ! $template_id ) {
+			return new \WP_Error( 'template_error', 'Invalid parameter(s).' );
+		}
+
+		$templates_db = new Templates_DB();
+
+		$template = $templates_db->get_template_content( $template_id );
+
+		if ( ! $template ) {
+			return new \WP_Error( 'template_content_error', 'No content found for this template. This is most probably due to invalid ID.' );
+		}
+
+		return array( 'content' => json_decode( $template->content, true ) );
 	}
 }
