@@ -7,7 +7,7 @@
   "scripts": {
     "install-scripts": "composer install && npm install",
     "build": "wp-scripts build --webpack-src-dir=client --output-path=assets/js/app",
-    "dev": "wp-scripts start --webpack-src-dir=client --output-path=js/app",
+    "dev": "wp-scripts start --webpack-src-dir=client --output-path=assets/js/app",
     "makePot": "wp i18n make-pot . ./languages/analog-library.pot",
     "convertPot2json": "npx po2json ./languages/analog-library.pot ./languages/analog-library-analogwp-app.json -f jed1.x",
     "plugin-zip": "npm run build && wp-scripts plugin-zip",
