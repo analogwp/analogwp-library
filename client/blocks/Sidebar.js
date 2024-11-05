@@ -3,7 +3,7 @@ import AnalogContext from '../AnalogContext';
 const { __ } = wp.i18n;
 const { TextControl, TabPanel, ToggleControl, Button } = wp.components;
 
-const blockIdentifier = 'all-templates';
+const blockIdentifier = 'all';
 
 const defaultTabs = [
 	'favorites',
@@ -11,13 +11,6 @@ const defaultTabs = [
 ];
 
 const SidebarWrapper = styled.div`
-	width: 100%;
-	max-width: 220px;
-	height: 100vh;
-	position: sticky;
-	position: -webkit-sticky;
-	top: 35px;
-
 	.components-tab-panel__tabs {
 		display: flex;
 		flex-direction: column;

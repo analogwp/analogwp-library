@@ -65,11 +65,11 @@ const Container = styled.div`
 			display: none;
 		}
 
-		> div {
+		> div > div.components-card {
 			background: #fff;
 			box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
 			position: relative;
-			margin-bottom: 25px;
+			margin-bottom: 15px;
 		}
 	}
 
@@ -348,70 +348,69 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 							requiresElementorPro = unresolvedPlugins && unresolvedPlugins.includes( 'elementor-pro' );
 						}
 						return (
-							<div key={ block.id }>
+							<div key={block.id}>
 								<Card>
 									<CardBody>
-										{ block.is_pro && (
-											<span className="pro">{ __( 'Pro', 'ang' ) }</span>
-										) }
+										{block.is_pro && (
+											<span className="pro">{__('Pro', 'ang')}</span>
+										)}
 
 										<figure>
 											<img
-												src={ getScreenshot( block ) }
+												src={getScreenshot(block)}
 												loading="lazy"
 												width="900"
 												height="600"
-												alt={ block.title }
+												alt={block.title}
 											/>
 
 											<div className="actions">
-												{ ! isValid( block.is_pro ) && (
-													<a className="ang-promo" href="https://analogwp.com/style-kits-pro/?utm_medium=plugin&utm_source=library&utm_campaign=style+kits+pro" target="_blank">
-														<Button isPrimary>{ __( 'Go Pro', 'ang' ) }</Button>
+												{!isValid(block.is_pro) && (
+													<a className="ang-promo"
+													   href="https://analogwp.com/style-kits-pro/?utm_medium=plugin&utm_source=library&utm_campaign=style+kits+pro"
+													   target="_blank">
+														<Button isPrimary>{__('Go Pro', 'ang')}</Button>
 													</a>
-												) }
-												{ isValid( block.is_pro ) && requiresElementorPro && (
-													<a className="ang-requirements" href="https://analogwp.com/style-kits-pro/?utm_medium=plugin&utm_source=library&utm_campaign=style+kits+pro" target="_blank">
-														<img className="required-logo" src={ AGWP.pluginURL + '/assets/img/elementor.svg' } />
+												)}
+												{isValid(block.is_pro) && requiresElementorPro && (
+													<a className="ang-requirements"
+													   href="https://analogwp.com/style-kits-pro/?utm_medium=plugin&utm_source=library&utm_campaign=style+kits+pro"
+													   target="_blank">
+														<img className="required-logo"
+															 src={AGWP.pluginURL + '/assets/img/elementor.svg'}/>
 														<h4 className="title">Elementor PRO</h4>
-														<p className="description">This pattern is using Elementor PRO widgets.</p>
+														<p className="description">This pattern is using Elementor PRO
+															widgets.</p>
 													</a>
-												) }
+												)}
 												<NotificationConsumer>
-													{ ( { add } ) => (
-														! requiresElementorPro && isValid( block.is_pro ) && (
-															<Button isPrimary onClick={ () => importBlock( block, add ) }>
-																{ __( 'Import', 'ang' ) }
+													{({add}) => (
+														!requiresElementorPro && isValid(block.is_pro) && (
+															<Button isPrimary onClick={() => importBlock(block, add)}>
+																{__('Import', 'ang')}
 															</Button>
 														)
-													) }
+													)}
 												</NotificationConsumer>
-												{ AGWP.isContainer &&
-													<div className="pattern-title">
-														<h3>{ decodeEntities( block.title ) }</h3>
-													</div>
-												}
 											</div>
 											<button
-												className={ classnames( 'button-plain favorite', {
+												className={classnames('button-plain favorite', {
 													'is-active': block.id in favorites,
-												} ) }
-												onClick={ () => makeFavorite( block.id ) }
+												})}
+												onClick={() => makeFavorite(block.id)}
 											>
-												<Star />
+												<Star/>
 											</button>
 										</figure>
 									</CardBody>
-									{ ! AGWP.isContainer && <CardFooter>
-										<div className="content">
-											<h3>{ decodeEntities( block.title ) }</h3>
-											{ block.is_pro && <span className="pro">{ __( 'Pro', 'ang' ) }</span> }
-										</div>
-									</CardFooter> }
 								</Card>
+								<div className="content">
+									<h3>{decodeEntities(block.title)}</h3>
+									{block.is_pro && <span className="pro">{__('Pro', 'ang')}</span>}
+								</div>
 							</div>
 						);
-					} ) }
+					})}
 				</Masonry>
 			</Container>
 		</React.Fragment>

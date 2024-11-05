@@ -1,19 +1,20 @@
 import classNames from 'classnames';
 import AnalogContext from './AnalogContext';
 import { NotificationConsumer } from './Notifications';
-import Close from './icons/close';
+import XMark from './icons/x-mark';
+import Refresh from "./icons/refresh";
 
 const { __ } = wp.i18n;
 const { Button } = wp.components;
 
 const Synchronization = () => {
 	return (
-		<div>
+		<div className="actions">
 			<AnalogContext.Consumer>
 				{ context => (
 					<NotificationConsumer>
 						{ ( { add } ) => (
-							<Button isPrimary
+							<Button
 								className={ classNames( 'ang-sync', {
 									'is-active': context.state.syncing,
 								} ) }
@@ -25,8 +26,8 @@ const Synchronization = () => {
 								} }
 							>
 								{ context.state.syncing ?
-									__( 'Syncing...', 'ang' ) :
-									__( 'Sync Library', 'ang' ) }
+									<Refresh /> :
+									<Refresh /> }
 								{ /*<Refresh />*/ }
 							</Button>
 						) }
@@ -34,8 +35,10 @@ const Synchronization = () => {
 				) }
 			</AnalogContext.Consumer>
 			{ ! AGWP.is_settings_page && (
-				<Button isSecondary className="close-modal">
-					{ __( 'Close', 'ang' ) } <Close />
+				<Button className="close-modal">
+					<XMark
+						className="icons"
+					/>
 				</Button>
 			) }
 		</div>

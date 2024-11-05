@@ -1,6 +1,5 @@
 import { default as styled, keyframes } from 'styled-components';
 import ThemeContext from './contexts/ThemeContext';
-import Nav from './Nav';
 import Synchronization from './Synchronization';
 
 const rotate = keyframes`
@@ -15,8 +14,7 @@ const rotate = keyframes`
 
 const Container = styled.div`
 	padding: 8px 24px;
-	margin-bottom: 30px;
-	background: #fff;
+	background: #4D45BD;
 	border-bottom: 1px solid #DFDFDF;
 
 	.ang-container {
@@ -28,6 +26,14 @@ const Container = styled.div`
 	.logo img {
 		max-width: 42px;
 		max-height: 42px;
+	}
+
+	.logo h2 {
+		font-size: 16px;
+		line-height: 24px;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: #fff;
 	}
 
 	a {
@@ -79,9 +85,8 @@ const Header = () => {
 		<Container theme={ theme }>
 			<div className="ang-container">
 				<div className="logo">
-					<img src={ AGWP.pluginURL + '/assets/img/analog.svg' } alt="" />
+					<h2>Library</h2>
 				</div>
-				{ ! AGWP.isContainer && <Nav /> }
 				<Synchronization />
 			</div>
 		</Container>

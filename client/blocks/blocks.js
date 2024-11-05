@@ -8,6 +8,17 @@ import Sidebar from './Sidebar';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
+const BlocksWrapper = styled.div`
+	.vertical-sidebar .sidebar {
+		width: 100%;
+		max-width: 220px;
+		height: 100vh;
+		position: sticky;
+		position: -webkit-sticky;
+		top: 35px;
+	}
+`;
+
 const LibraryWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -120,17 +131,19 @@ export default class Blocks extends Component {
 
 		return (
 			<Fragment>
-				<LibraryWrapper>
-					<Sidebar
-						state={ dataSet }
-					/>
-					<BlockList
-						state={ dataSet }
-						importBlock={ this.importBlock }
-						favorites={ this.context.state.blockFavorites }
-						makeFavorite={ this.makeFavorite }
-					/>
-				</LibraryWrapper>
+				<BlocksWrapper>
+					<LibraryWrapper className="vertical-sidebar">
+						<Sidebar
+							state={ dataSet }
+						/>
+						<BlockList
+							state={ dataSet }
+							importBlock={ this.importBlock }
+							favorites={ this.context.state.blockFavorites }
+							makeFavorite={ this.makeFavorite }
+						/>
+					</LibraryWrapper>
+				</BlocksWrapper>
 			</Fragment>
 		);
 	}

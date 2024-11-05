@@ -8,6 +8,9 @@
 	font-family: Inter, 'sans-serif';
 }
 
+#analogwp-templates-modal {
+}
+
 /*Top navigation tab CSS*/
 /*START*/
 #sk-library-heading {
@@ -33,8 +36,14 @@
 	margin-left: 8px;
 }
 
+#analogwp-templates .logo + .actions svg {
+	color: #fff;
+	width: 25px;
+	height: auto;
+	fill: none;
+}
+
 #analogwp-templates .close-modal svg {
-	width: 15px;
 	margin-left: 6px;
 }
 
@@ -64,9 +73,16 @@
 
 #analogwp-templates .analogwp-content {
 	background: #F1F1F1;
-	padding: 4px 24px;
 	min-height: calc(100% - 51px);
 	position: relative;
+}
+
+#analogwp-templates .sidebar {
+	padding: 24px;
+}
+
+#analogwp-templates .blocks-area {
+	padding: 24px;
 }
 
 #analogwp-templates .templates-collection li .components-card__body figure {
@@ -465,6 +481,12 @@
 
 #analogwp-templates .sidebar {
 	display: flex;
+	gap: 20px;
+	background-color: #fff;
+}
+
+#analogwp-templates .sidebar.vertical {
+	gap: 0;
 	flex-direction: column;
 	height: 100vh;
 	overflow-y: scroll;

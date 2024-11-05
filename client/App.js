@@ -160,7 +160,7 @@ class App extends React.Component {
 			showPro: true,
 			group: true,
 			tab: 'blocks',
-			blocksTab: 'all-templates',
+			blocksTab: 'all',
 			hasPro: false,
 			settings: {},
 			blocksSearchInput: '',
