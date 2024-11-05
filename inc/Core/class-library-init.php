@@ -36,13 +36,13 @@ class Library_Init {
 	 * @return void
 	 */
 	public function hooks() {
-		add_action( 'save_post_elementor_library', array( $this, 'handle_template_sync' ), 20, 3 );
+		add_action( 'save_post_elementor_library', array( $this, 'handle_template_sync' ), 30, 3 );
 
 		// Register Meta box.
 		add_action( 'add_meta_boxes', array( $this, 'register_meta_boxes' ) );
 
 		// Save meta value with save post hook.
-		add_action( 'save_post', array( $this, 'handle_save_meta_boxes' ) );
+		add_action( 'save_post_elementor_library', array( $this, 'handle_save_meta_boxes' ), 20 );
 	}
 
 	/**
@@ -197,6 +197,20 @@ class Library_Init {
 	}
 
 	/**
+	 * Remove template from library.
+	 *
+	 * @param int $template_id Post ID of the template.
+	 * @return bool
+	 */
+	public function remove_template_from_library( $template_id ) {
+		$exists = $this->templates_db->template_exists( $template_id );
+		if ( $exists ) {
+			return $this->templates_db->delete( $exists->id );
+		}
+		return false;
+	}
+
+	/**
 	 * Handles syncing templates.
 	 *
 	 * @param int      $post_ID
@@ -219,6 +233,8 @@ class Library_Init {
 		$sync = (bool) isset( $_POST['analog_sync_to_library'] ) ? 1 : 0;
 
 		if ( ! $sync ) {
+			// Delete if template exists in library.
+			$this->remove_template_from_library( $post_ID );
 			return;
 		}
 
