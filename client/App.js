@@ -229,7 +229,6 @@ class App extends React.Component {
 			archive: library.templates,
 			blockArchive: library.blocks,
 			count: library.templates.length,
-			timestamp: templates.timestamp,
 			hasPro: hasProTemplates( library.templates ),
 			blocks: library.blocks,
 			syncing: false,
@@ -350,7 +349,6 @@ class App extends React.Component {
 
 			this.setState( {
 				blockArchive: library.blocks,
-				timestamp: data.timestamp,
 				blocks: library.blocks,
 				syncing: false,
 				blocksSearchInput: '',
