@@ -24,7 +24,6 @@ class Version_Control extends Settings_Page {
 		$this->id    = 'version-control';
 		$this->label = __( 'Version Control', 'ang' );
 		parent::__construct();
-
 	}
 
 	/**
@@ -37,6 +36,7 @@ class Version_Control extends Settings_Page {
 		$rollback_controls = array();
 
 		if ( current_user_can( 'update_plugins' ) ) {
+			$rollback_versions = array();
 			array_push(
 				$rollback_controls,
 				array(

@@ -226,6 +226,11 @@ class Utils extends Base {
 	 * @return array|mixed
 	 */
 	public static function get_rollback_versions() {
+
+		// Exit early.
+		// @TODO: Remove when ready for rollbacks.
+		return array();
+
 		$rollback_versions = get_transient( 'ang_rollback_versions_' . ANG_VERSION );
 
 		if ( false === $rollback_versions ) {
