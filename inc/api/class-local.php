@@ -45,7 +45,7 @@ class Local extends Base {
 				WP_REST_Server::CREATABLE => 'handle_import',
 			),
 			'/import/elementor/direct' => array(
-				WP_REST_Server::CREATABLE => 'handle_direct_import',
+				WP_REST_Server::CREATABLE => 'handle_direct_local_import',
 			),
 			'/templates'               => array(
 				WP_REST_Server::READABLE => 'library_templates_list',
@@ -59,17 +59,8 @@ class Local extends Base {
 			'/update/settings/'        => array(
 				WP_REST_Server::CREATABLE => 'update_setting',
 			),
-			'/tokens'                  => array(
-				WP_REST_Server::READABLE => 'get_tokens',
-			),
-			'/tokens/save'             => array(
-				WP_REST_Server::CREATABLE => 'save_tokens',
-			),
-			'/tokens/get'              => array(
-				WP_REST_Server::CREATABLE => 'get_token',
-			),
 			'/blocks/insert'           => array(
-				WP_REST_Server::CREATABLE => 'get_blocks_content',
+				WP_REST_Server::CREATABLE => 'get_template_content',
 			),
 		);
 
@@ -110,38 +101,22 @@ class Local extends Base {
 		$editor_id   = $request->get_param( 'editor_post_id' );
 		$is_pro      = (bool) $request->get_param( 'is_pro' );
 		$site_id     = $request->get_param( 'site_id' );
-		$kit_info    = $request->get_param( 'kit' );
 
 		if ( ! $template_id ) {
 			return new WP_REST_Response( array( 'error' => 'Invalid Template ID.' ), 500 );
 		}
 
-		if ( $is_pro && ! Utils::has_valid_license() ) {
-			return new WP_Error( 'license_error', __( 'Invalid or expired license provided.', 'ang' ) );
-		}
-
 		\update_post_meta( $editor_id, '_ang_import_type', 'elementor' );
 		\update_post_meta( $editor_id, '_ang_template_id', $template_id );
 
-		// Add import history.
-		Utils::add_import_log( $template_id, $editor_id, 'elementor' );
-
 		$obj  = new Analog_Importer();
-		$data = $obj->get_data(
+		$data = $obj->get_local_data(
 			array(
 				'template_id'    => $template_id,
 				'editor_post_id' => $editor_id,
-				'license'        => Options::get_instance()->get( 'ang_license_key' ),
 				'method'         => 'elementor',
-				'site_id'        => $site_id,
 			)
 		);
-
-		if ( $kit_info && isset( $kit_info['data'] ) ) {
-			$tokens = $this->fetch_kit_content( $kit_info['data'] );
-
-			$data['tokens'] = $tokens;
-		}
 
 		return new WP_REST_Response( wp_json_encode( maybe_unserialize( $data ) ), 200 );
 	}
@@ -303,17 +278,12 @@ class Local extends Base {
 	 *
 	 * @return WP_Error|WP_REST_Response
 	 */
-	public function handle_direct_import( WP_REST_Request $request ) {
+	public function handle_direct_local_import( WP_REST_Request $request ) {
 		$template  = $request->get_param( 'template' );
 		$with_page = $request->get_param( 'with_page' );
 		$site_id   = $request->get_param( 'site_id' );
-		$kit_info  = $request->get_param( 'kit' );
 
 		$method = $with_page ? 'page' : 'library';
-
-		if ( isset( $template['is_pro'] ) && $template['is_pro'] && ! Utils::has_valid_license() ) {
-			return new WP_Error( 'license_error', __( 'Invalid or expired license provided.', 'ang' ) );
-		}
 
 		// Initiate template import.
 		$obj = new Analog_Importer();
@@ -322,9 +292,7 @@ class Local extends Base {
 			array(
 				'template_id'    => $template['id'],
 				'editor_post_id' => false,
-				'license'        => Options::get_instance()->get( 'ang_license_key' ),
 				'method'         => $method,
-				'site_id'        => $site_id,
 			)
 		);
 
@@ -334,26 +302,82 @@ class Local extends Base {
 
 		// Attach template content to template array for later use.
 		$template['content'] = wp_slash( wp_json_encode( $data['content'] ) );
-		$template['tokens']  = $data['tokens'];
-
-		if ( $kit_info ) {
-			$kit_content = $this->fetch_kit_content( $kit_info['data'] );
-			if ( ! is_wp_error( $kit_content ) ) {
-				$template['tokens'] = $kit_content;
-			}
-		}
 
 		// Finally create the page.
 		$page = $this->create_page( $template, $with_page );
-
-		// Add import history.
-		Utils::add_import_log( $template['id'], $page, $method );
 
 		$data = array(
 			'page' => $page,
 		);
 
 		return new WP_REST_Response( $data, 200 );
+	}
+
+	/**
+	 * Handle local template import.
+	 *
+	 * @since 1.0.0
+	 * @param WP_REST_Request $request Request object.
+	 * @return WP_REST_Response|WP_Error
+	 */
+	public function get_template_content( WP_REST_Request $request ) {
+		$block  = $request->get_param( 'block' );
+		$method = $request->get_param( 'method' );
+
+		if ( ! $block ) {
+			return new WP_Error( 'template_import_error', __( 'Invalid Template ID.', 'analog-library' ) );
+		}
+
+		$data = $this->process_block_import( $block, $method );
+
+		if ( is_wp_error( $data ) ) {
+			return $data;
+		}
+
+		return new WP_REST_Response( $data, 200 );
+	}
+
+	/**
+	 * Process block import functionaliities.
+	 *  1. Imports the remote template.
+	 *  2. Then with retrieved content, creates a page.
+	 *
+	 * @uses \Analog\API\Remote::get_instance()->get_block_content()
+	 * @uses \Elementor\TemplateLibrary\Analog_Importer
+	 *
+	 * @since 1.4.0
+	 *
+	 * @param array  $block Block data.
+	 * @param string $method Import method.
+	 *
+	 * @return array|WP_Error
+	 */
+	protected function process_block_import( $block, $method = 'library' ) {
+
+		$raw_data = Library_Data::prepare_template_content( $block['id'], $method );
+		$importer = new Analog_Importer();
+
+		$data = $importer->get_local_data(
+			array(
+				'editor_post_id' => false,
+			),
+			'display',
+			$raw_data
+		);
+
+		if ( is_wp_error( $data ) ) {
+			return $data;
+		}
+
+		if ( 'library' === $method ) {
+			$page_id = $this->create_section( $block, $data, $method );
+
+			$payload = array( 'id' => $page_id );
+		} else {
+			$payload = array( 'data' => $data );
+		}
+
+		return $payload;
 	}
 
 	/**
@@ -391,260 +415,18 @@ class Local extends Base {
 	}
 
 	/**
-	 * Get registered tokens.
-	 *
-	 * @return WP_REST_Response|array
-	 * @since 1.2
-	 */
-	public function get_tokens() {
-		$query = new WP_Query(
-			array(
-				'post_type'      => 'ang_tokens',
-				'posts_per_page' => - 1,
-			)
-		);
-
-		if ( ! $query->have_posts() ) {
-			return array();
-		}
-
-		$tokens = array();
-
-		while ( $query->have_posts() ) {
-			$query->the_post();
-			$post_id = get_the_ID();
-
-			$tokens[] = array(
-				'id'    => $post_id,
-				'title' => get_the_title(),
-			);
-		}
-
-		wp_reset_postdata();
-
-		return new WP_REST_Response(
-			array(
-				'tokens' => $tokens,
-			),
-			200
-		);
-	}
-
-	/**
-	 * Save tokens.
-	 *
-	 * @param WP_REST_Request $request Request object.
-	 *
-	 * @return WP_Error|WP_REST_Response
-	 * @since 1.2.0
-	 */
-	public function save_tokens( WP_REST_Request $request ) {
-		$belongs_to = $request->get_param( 'id' );
-		$title      = $request->get_param( 'title' );
-		$settings   = $request->get_param( 'settings' );
-
-		if ( ! isset( $belongs_to, $title, $settings ) ) {
-			return new WP_Error( 'kit_params_error', __( 'Invalid param(s).', 'ang' ) );
-		}
-
-		if ( ! $title ) {
-			return new WP_Error( 'kit_title_error', __( 'Please provide a title.', 'ang' ) );
-		}
-
-		$elementor_controls = \get_post_meta( $belongs_to, '_elementor_controls_usage', true );
-
-		$tokens      = json_decode( $settings, true );
-		$kit_manager = new Manager();
-
-		$post_id = $kit_manager->create_kit(
-			$title,
-			array(
-				'_elementor_data'           => $kit_manager->get_kit_content(),
-				'_elementor_page_settings'  => $tokens,
-				'_duplicate_of'             => $belongs_to,
-				'_is_analog_user_kit'       => true,
-				'_elementor_controls_usage' => $elementor_controls,
-			)
-		);
-
-		if ( is_wp_error( $post_id ) ) {
-			return new WP_Error( 'tokens_error', __( 'Unable to create a Kit', 'ang' ) );
-		}
-
-		return new WP_REST_Response(
-			array(
-				'id'      => $post_id,
-				'message' => __( 'The new Theme Style Kit has been saved and applied on this page.', 'ang' ),
-			),
-			200
-		);
-	}
-
-	/**
-	 * Get all templates.
-	 *
-	 * @param WP_REST_Request $request Request object.
-	 *
-	 * @return WP_REST_Response|WP_Error
-	 */
-	public function get_token( WP_REST_Request $request ) {
-		$id = $request->get_param( 'id' );
-
-		if ( ! $id ) {
-			return new WP_Error( 'tokens_error', __( 'Please provide a valid post ID.', 'ang' ) );
-		}
-
-		if ( ! get_post( $id ) ) {
-			return new WP_Error( 'tokens_error', __( 'Invalid Post ID', 'ang' ) );
-		}
-
-		$tokens_data = get_post_meta( $id, '_tokens_data', true );
-
-		return new WP_REST_Response(
-			array(
-				'data' => $tokens_data,
-			),
-			200
-		);
-	}
-
-	/**
-	 * Fetch a Style Kit's tokens.
-	 *
-	 * @since 1.3.8
-	 *
-	 * @param array|string $kit Kit Info.
-	 * @return array|WP_Error Kit tokens or WP_Error object.
-	 */
-	protected function fetch_kit_content( $kit ) {
-		$post_id = false;
-
-		if ( is_array( $kit ) && isset( $kit['id'] ) ) {
-			if ( isset( $kit['is_pro'] ) && $kit['is_pro'] && ! Utils::has_valid_license() ) {
-				return new WP_Error( 'kit_import_error', __( 'Invalid license provided.', 'ang' ) );
-			}
-
-			$kit_manager = new Manager();
-			$import      = $kit_manager->import_kit( $kit );
-
-			if ( ! is_wp_error( $import ) ) {
-				$post_id = $import['id'];
-			}
-		} else {
-			$installed_kits = array_flip( Utils::get_kits( false ) );
-
-			if ( isset( $installed_kits[ $kit ] ) ) {
-				$post_id = $installed_kits[ $kit ];
-			}
-		}
-
-		if ( ! $post_id ) {
-			return new WP_Error( 'invalid_token_data', __( 'Invalid token data returned', 'ang' ) );
-		}
-
-		return array( 'ang_action_tokens' => $post_id );
-	}
-
-	/**
-	 * Handle remote "Blocks" import.
-	 *
-	 * @since 1.3.4
-	 * @param WP_REST_Request $request Request object.
-	 * @return WP_REST_Response|WP_Error
-	 */
-	public function get_blocks_content( WP_REST_Request $request ) {
-		$block  = $request->get_param( 'block' );
-		$method = $request->get_param( 'method' );
-
-		if ( ! $block ) {
-			return new WP_Error( 'block_import_error', __( 'Invalid Block ID.', 'ang' ) );
-		}
-
-		$data = $this->process_block_import( $block, $method );
-
-		if ( is_wp_error( $data ) ) {
-			return $data;
-		}
-
-		return new WP_REST_Response( $data, 200 );
-	}
-
-	/**
-	 * Process block import functionaliities.
-	 *  1. Imports the remote template.
-	 *  2. Then with retrieved content, creates a page.
-	 *
-	 * @uses \Analog\API\Remote::get_instance()->get_block_content()
-	 * @uses \Elementor\TemplateLibrary\Analog_Importer
-	 *
-	 * @since 1.4.0
-	 *
-	 * @param array  $block Block data.
-	 * @param string $method Import method.
-	 *
-	 * @return array|WP_Error
-	 */
-	protected function process_block_import( $block, $method = 'library' ) {
-		$license = Options::get_instance()->get( 'ang_license_key' );
-
-		if ( isset( $block['is_pro'] ) && $block['is_pro'] && ! Utils::has_valid_license() ) {
-			return new WP_Error( 'block_import_error', __( 'Invalid license provided.', 'ang' ) );
-		}
-
-		$raw_data = Remote::get_instance()->get_block_content( $block['id'], $license, $method, $block['siteID'] );
-		$importer = new Analog_Importer();
-
-		$data = $importer->get_data(
-			array(
-				'editor_post_id' => false,
-			),
-			'display',
-			$raw_data
-		);
-
-		if ( is_wp_error( $data ) ) {
-			return $data;
-		}
-
-		if ( 'library' === $method ) {
-			$page_id = $this->create_section( $block, $data, $method );
-
-			$payload = array( 'id' => $page_id );
-		} else {
-			$payload = array( 'data' => $data );
-		}
-
-		return $payload;
-	}
-
-	/**
-	 * v3 library endpoint.
-	 *
-	 * @since 20200218
+	 * Get templates library.
 	 *
 	 * @param \WP_REST_Request $request
-	 * @return \WP_REST_Response
+	 * @return array
 	 */
 	public function library_templates_list( \WP_REST_Request $request ) {
-		$key  = 'ang_library_api_data_v3';
-		$info = get_transient( $key );
-
-		$force = $request->get_param( 'force_update' );
-
-		$info = array(
-			'timestamp' => current_time( 'timestamp' ),
-			'library'   => array(
-				'blocks'        => Library_Data::templates(),
-				'stylekits'     => array(),
-				'templates'     => array(),
-				'template_kits' => array(),
-				'test'		=> array(
-					'test'
-				)
+		return array(
+			'library' => array(
+				'blocks'    => Library_Data::templates(),
+				'templates' => array(),
 			),
 		);
-
-		return $info;
 	}
 }
 
