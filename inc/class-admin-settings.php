@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Admin_Settings Class.
  */
 class Admin_Settings {
-	const OPTION_KEY = 'ang_options';
+	const OPTION_KEY = 'ang_library_options';
 	/**
 	 * Setting pages.
 	 *

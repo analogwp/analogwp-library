@@ -72,23 +72,3 @@ function ang_settings_get_option( $option_name, $default = '' ) {
 
 	return Admin_Settings::get_option( $option_name, $default );
 }
-
-
-/**
- * Update Elementor Kit Option with respect to GSK.
- *
- * @return void
- */
-function ang_update_elementor_kit() {
-	if ( empty( $_POST ) ) { // phpcs:ignore
-		return;
-	}
-
-	$data              = $_POST; // phpcs:ignore
-	$key               = 'global_kit';
-
-	$kit_id = wp_unslash( $data[ $key ] ?? Options::get_instance()->get( $key ) );
-
-	Utils::set_elementor_active_kit( $kit_id );
-}
-add_action( 'ang_update_option', __NAMESPACE__ . '\ang_update_elementor_kit' );

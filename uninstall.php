@@ -8,10 +8,10 @@
 // Exit if accessed directly.
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
-$options = get_option( 'ang_options' );
+$options = get_option( 'ang_library_options' );
 
 if ( is_array( $options ) && isset( $options['remove_on_uninstall'] ) && true === $options['remove_on_uninstall'] ) {
-	delete_option( 'ang_options' );
+	delete_option( 'ang_library_options' );
 	delete_option( '_ang_import_history' );
 	delete_option( 'style_kits_previous_db_version' );
 	delete_option( 'style_kits_db_version' );

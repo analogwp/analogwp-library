@@ -11,7 +11,7 @@ namespace Analog;
  * AnalogWP options registration and management.
  */
 class Options extends Base {
-	const OPTION_KEY = 'ang_options';
+	const OPTION_KEY = 'ang_library_options';
 
 	/**
 	 * Checks whether or not a value is set for the given option.
