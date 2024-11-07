@@ -694,6 +694,38 @@ class Utils extends Base {
 
 		return file_get_contents( $file, ...$args );
 	}
+
+	/**
+	 * Enqueues settings toggle via inline css.
+	 *
+	 * @return void
+	 */
+	public static function enqueue_settings_toggle_css() {
+		$options = Options::get_instance();
+		$css     = '';
+
+		// Hide Elementor Library icon.
+		$hide_elementor_library = $options->get( 'hide_elementor_template_library' );
+		$hide_elementor_library = $hide_elementor_library ? 'none' : 'inherit';
+
+		$library_popup_style = $options->get( 'library_popup_style' );
+
+		$css .= ".elementor-add-template-button {
+					display: ${hide_elementor_library};
+				}";
+
+		if ( isset( $library_popup_style ) && 'full-screen' === $library_popup_style ) {
+			$css .= '#analogwp-templates-modal .dialog-widget-content {
+				width: 100vw !important;
+				height: 100vh !important;
+			}';
+		}
+
+		wp_add_inline_style(
+			'analogwp-components-css',
+			$css
+		);
+	}
 }
 
 new Utils();

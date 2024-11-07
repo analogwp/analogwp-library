@@ -2,17 +2,19 @@ import classnames from 'classnames';
 import Masonry from 'react-masonry-css';
 import styled, { keyframes } from 'styled-components';
 import AnalogContext from '../AnalogContext';
-import { isNewTheme } from '../utils';
 import { NotificationConsumer } from '../Notifications';
 import Star from '../icons/star';
 import Popup from '../popup';
 import Loader from '../icons/loader';
-import ProModal from '../ProModal';
+import Download from '../icons/download';
 import Empty from '../helpers/Empty';
+import Eye from "../icons/eye";
+import Pencil from "../icons/pencil";
+
 
 const { decodeEntities } = wp.htmlEntities;
 const { __, sprintf } = wp.i18n;
-const { Dashicon, Button, Card, CardBody, CardFooter } = wp.components;
+const { Dashicon, Button, Card, CardBody } = wp.components;
 const { addQueryArgs } = wp.url;
 
 const rotateOpacity = keyframes`
@@ -49,7 +51,6 @@ const LoadingThumbs = styled.div`
 
 const Container = styled.div`
 	flex: 1;
-	margin-left: 25px;
 
 	.grid {
 		display: flex;
@@ -121,8 +122,8 @@ const Container = styled.div`
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-		width: 25px;
-		height: 25px;
+		width: 40px;
+		height: 40px;
 		box-shadow: none !important;
 		outline: none !important;
 
@@ -131,12 +132,9 @@ const Container = styled.div`
 		}
 
 		&:before {
-			content: '';
+			content: "";
 			width: 0;
 			height: 0;
-			border-style: solid;
-			border-width: 42px 42px 0 0;
-			border-color: var(--ang-dark-bg) transparent transparent transparent;
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -151,7 +149,7 @@ const Container = styled.div`
 			height: 17px;
 		}
 		&.is-active svg {
-			fill: #FFB443;
+			fill: var(--ang-accent) !important;
 		}
 	}
 
@@ -179,6 +177,7 @@ const Container = styled.div`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+	 	margin-bottom: 36px;
 	}
 
 	 .components-base-control {
@@ -202,7 +201,7 @@ const Container = styled.div`
 		outline: 0;
 		background: transparent;
 		font-weight: bold;
-		color: #060606;
+		color: #4D45BD;
 		font-size: 14.22px;
 	}
 	.inner-popup-header {
@@ -235,13 +234,31 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 	const isValid = ( isPro ) => ! ( isPro && AGWP.license.status !== 'valid' );
 
 	// Masonry breakpoints.
-	const breakpointColumnsObj = {
-		default: 5,
-		2000: 4,
+	let breakpointColumnsObj = {
+		default: 3,
+		2000: 3,
 		1600: 3,
 		1300: 2,
-		900: 1,
+		700: 1,
 	};
+
+	if ( '2c' === AGWP.libraryTemplateCols ) {
+		breakpointColumnsObj = {
+			default: 2,
+			2000: 2,
+			1600: 2,
+			1300: 2,
+			700: 1,
+		};
+	} else if ( 'auto' === AGWP.libraryTemplateCols ) {
+		breakpointColumnsObj = {
+			default: 5,
+			2000: 4,
+			1600: 3,
+			1300: 2,
+			700: 1,
+		};
+	}
 
 	const getScreenshot = ( block ) => {
 		if ( AGWP.isContainer ) {
@@ -329,15 +346,15 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 				{ context.state.syncing && context.state.blocks.length < 1 && (
 					<Empty text={ __( 'Loading Templates...', 'ang' ) } />
 				) }
-
+				{ console.log(  ) }
 				<Masonry
-					breakpointCols={ Boolean( AGWP.is_settings_page ) ? breakpointColumnsObj : 3 }
+					breakpointCols={ breakpointColumnsObj ? breakpointColumnsObj : 3 }
 					className="grid"
 					columnClassName="grid-item block-list"
 				>
 					{ filteredBlocks.length >= 1 && filteredBlocks.map( ( block ) => {
 						let requiresElementorPro = false;
-						if ( block.requiredPlugins && block.requiredPlugins.length > 0 ) {
+						if ( block.requiredPluginsrequiredPlugins && block.requiredPlugins.length > 0 ) {
 							const unresolvedPlugins = block.requiredPlugins.filter( ( plugin ) => plugin !== '' && ! AGWP.activePlugins.includes( plugin )
 							 );
 
@@ -365,29 +382,23 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 											/>
 
 											<div className="actions">
-												{!isValid(block.is_pro) && (
-													<a className="ang-promo"
-													   href="https://analogwp.com/style-kits-pro/?utm_medium=plugin&utm_source=library&utm_campaign=style+kits+pro"
-													   target="_blank">
-														<Button isPrimary>{__('Go Pro', 'ang')}</Button>
-													</a>
-												)}
-												{isValid(block.is_pro) && requiresElementorPro && (
-													<a className="ang-requirements"
-													   href="https://analogwp.com/style-kits-pro/?utm_medium=plugin&utm_source=library&utm_campaign=style+kits+pro"
-													   target="_blank">
-														<img className="required-logo"
-															 src={AGWP.pluginURL + '/assets/img/elementor.svg'}/>
-														<h4 className="title">Elementor PRO</h4>
-														<p className="description">This pattern is using Elementor PRO
-															widgets.</p>
-													</a>
-												)}
+												<a href={AGWP.siteURL + `?post_type=elementor_library&p=${block.id}&preview=true`}
+												   target="_blank">
+													<Button isPrimary>
+														<Eye />
+													</Button>
+												</a>
+												<a href={AGWP.adminURL + `post.php?post=${block.id}&action=elementor`}
+												   target="_blank">
+													<Button isPrimary>
+														<Pencil/>
+													</Button>
+												</a>
 												<NotificationConsumer>
 													{({add}) => (
 														!requiresElementorPro && isValid(block.is_pro) && (
-															<Button isPrimary onClick={() => importBlock(block, add)}>
-																{__('Import', 'ang')}
+															<Button isPrimary onClick={() => importBlock(block, add)} className="is-large">
+																<Download/>&nbsp;{__('Insert', 'ang')}
 															</Button>
 														)
 													)}

@@ -322,3 +322,40 @@ body.custom-library_page_ang-library-settings .wrap {
 	border-left-color: #0073AA;
 	border-radius: 4px;
 }
+
+/**
+ * Form
+ */
+.ang .form-table td {
+	padding: 15px 0 !important;
+}
+
+.ang .form-table th + td {
+	padding: 15px 10px;
+}
+
+.ang .forminp-radio ul {
+	margin: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 320px);
+}
+
+.ang .forminp-media-image {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+}
+
+.ang .forminp-media-image .media-image {
+	height: auto;
+	width: 120px;
+	max-width: 100%;
+	display: block;
+	margin-bottom: 10px;
+	border: 1px solid #E0E0E0;
+}
+
+
+.ang .forminp-media-image .ang-remove-image-btn {
+	margin-left: 10px;
+}

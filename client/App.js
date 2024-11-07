@@ -15,7 +15,20 @@ const Analog = styled.div`
 	font-size: 13px;
 	position: relative;
 
-	--ang-accent: rgb(0, 112, 167);
+	--ang-accent: #4D45BD;
+
+	--ang-top-header-bg: '';
+	--ang-top-header-text: '';
+	--ang-categories-bg: '';
+	--ang-categories-text: '';
+	--ang-library-bg: '';
+	--ang-library-text: '';
+	--ang-thumbnail-border: '';
+	--ang-btn-bg: '';
+	--ang-btn-text: '';
+	--ang-btn-radius: 5px;
+
+	--ang-thumbnail-border: #E0E0E0;
 
 	.ang-notices {
 		position: fixed;
@@ -88,7 +101,7 @@ const Analog = styled.div`
 		outline: 0;
 		background: transparent;
 		font-weight: bold;
-		color: #060606;
+		color: #4D45BD;
 		font-size: 14.22px;
 	}
 

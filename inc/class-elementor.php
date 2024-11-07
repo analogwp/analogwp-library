@@ -24,8 +24,6 @@ class Elementor {
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'enqueue_editor_scripts' ) );
 		add_action( 'elementor/preview/enqueue_styles', array( $this, 'enqueue_editor_scripts' ) );
 
-		add_action( 'wp_ajax_elementor_library_direct_actions', array( $this, 'maybe_add_elementor_data' ) );
-
 		add_action(
 			'elementor/finder/register',
 			static function ( Categories_Manager $categories_manager ) {
@@ -77,35 +75,12 @@ class Elementor {
 			'analog/app/strings',
 			array(
 				'is_settings_page' => false,
-				'global_kit'       => get_option( 'elementor_active_kit' ),
 			)
 		);
 
 		wp_localize_script( 'analogwp-app', 'AGWP', $l10n );
-	}
 
-	/**
-	 * In some cases, A Kit as empty data content inside '_elementor_data'.
-	 *
-	 * Since an export requires that to be non-empty. We programmatically add
-	 * Kit content to kit to make it exportable.
-	 *
-	 * @since 1.6.9
-	 * @return void
-	 */
-	public function maybe_add_elementor_data() {
-		if ( isset( $_REQUEST['library_action'] ) && 'export_template' === $_REQUEST['library_action'] ) {
-			$template_id = filter_input( INPUT_GET, 'template_id' );
-
-			if ( $template_id ) {
-				$template_data = get_post_meta( $template_id, '_elementor_data', true );
-
-				if ( ! $template_data || '[]' === $template_data ) {
-					$kit = new \Analog\Elementor\Kit\Manager();
-					update_post_meta( $template_id, '_elementor_data', $kit->get_kit_content() );
-				}
-			}
-		}
+		Utils::enqueue_settings_toggle_css();
 	}
 }
 

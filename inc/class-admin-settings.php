@@ -51,7 +51,6 @@ class Admin_Settings {
 			$settings[] = include 'settings/class-settings-general.php';
 			$settings[] = include 'settings/class-settings-design.php';
 			$settings[] = include 'settings/class-settings-misc.php';
-			$settings[] = include 'settings/class-settings-version-control.php';
 
 			self::$settings = apply_filters( 'ang_get_settings_pages', $settings );
 		}
@@ -123,18 +122,21 @@ class Admin_Settings {
 
 		do_action( 'ang_settings_start' );
 		wp_enqueue_style( 'ang_settings', ANG_PLUGIN_URL . 'assets/css/admin-settings.css', array(), filemtime( ANG_PLUGIN_DIR . 'assets/css/admin-settings.css' ) );
+
+		// Enqueue all necessary WP Media APIs.
+		wp_enqueue_media();
+
 		wp_enqueue_script( 'ang_settings', ANG_PLUGIN_URL . 'assets/js/admin-settings.js', array( 'jquery', 'wp-util', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'wp-i18n', 'wp-api-fetch' ), filemtime( ANG_PLUGIN_DIR . 'assets/js/admin-settings.js' ), true );
 
 		wp_localize_script(
 			'ang_settings',
 			'ang_settings_data',
 			array(
-				'i18n_nav_warning'          => __( 'The changes you made will be lost if you navigate away from this page.', 'ang' ),
-				'rollback_url'              => wp_nonce_url( admin_url( 'admin-post.php?action=ang_rollback&version=VERSION' ), 'ang_rollback' ),
-				'rollback_versions'         => Utils::get_rollback_versions(),
-				'sitekit_importer_notice'   => __( 'Template Kit file downloaded.', 'ang' ),
-				'sitekit_importer_url_text' => __( 'Import it into Elementor', 'ang' ),
-				'sitekit_importer_url'      => esc_url( admin_url( 'admin.php?page=elementor-tools#tab-import-export-kit' ) ),
+				'i18n_nav_warning'  => __( 'The changes you made will be lost if you navigate away from this page.', 'ang' ),
+				'rollback_url'      => wp_nonce_url( admin_url( 'admin-post.php?action=ang_rollback&version=VERSION' ), 'ang_rollback' ),
+				'rollback_versions' => Utils::get_rollback_versions(),
+				'uploader_title'    => __( 'Select Image', 'ang' ),
+				'uploader_btn_text' => __( 'Use this image', 'ang' ),
 			)
 		);
 
@@ -194,6 +196,54 @@ class Admin_Settings {
 		}
 
 		return ( null === $option_value ) ? $default : $option_value;
+	}
+
+	/**
+	 * Get allowed html tags for settings.
+	 *
+	 * @return array
+	 */
+	public static function get_settings_allowed_html() {
+		return array(
+			'abbr'       => array(
+				'title' => true,
+			),
+			'acronym'    => array(
+				'title' => true,
+			),
+			'b'          => array(),
+			'blockquote' => array(
+				'cite' => true,
+			),
+			'cite'       => array(),
+			'code'       => array(),
+			'del'        => array(
+				'datetime' => true,
+			),
+			'em'         => array(),
+			'i'          => array(),
+			'q'          => array(
+				'cite' => true,
+			),
+			's'          => array(),
+			'strike'     => array(),
+			'strong'     => array(),
+			'a'          => array(
+				'href'   => array(),
+				'title'  => array(),
+				'class'  => array(),
+				'id'     => array(),
+				'target' => array(),
+			),
+			'span'       => array(
+				'title' => array(),
+				'src'   => array(),
+				'alt'   => array(),
+				'class' => array(),
+				'id'    => array(),
+			),
+			'br'         => array(),
+		);
 	}
 
 	/**
@@ -258,6 +308,8 @@ class Admin_Settings {
 			$field_description = self::get_field_description( $value );
 			$description       = $field_description['description'];
 			$tooltip_html      = $field_description['tooltip_html'];
+
+			$allowed_html_tags = self::get_settings_allowed_html();
 
 			// Switch based on type.
 			switch ( $value['type'] ) {
@@ -506,12 +558,14 @@ class Admin_Settings {
 
 					?>
 					<tr valign="top">
-						<th scope="row" class="titledesc">
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
-						</th>
+						<?php if ( ! empty( $value['title'] ) ) : ?>
+							<th scope="row" class="titledesc">
+								<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // phpcs:ignore. ?></label>
+							</th>
+						<?php endif; ?>
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<fieldset>
-								<?php echo $description; // WPCS: XSS ok. ?>
+								<?php echo $description; // phpcs:ignore. ?>
 								<ul>
 								<?php
 								foreach ( $value['options'] as $key => $val ) {
@@ -523,7 +577,7 @@ class Admin_Settings {
 											type="radio"
 											style="<?php echo esc_attr( $value['css'] ); ?>"
 											class="<?php echo esc_attr( $value['class'] ); ?>"
-											<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>
+											<?php echo implode( ' ', $custom_attributes ); // phpcs:ignore. ?>
 											<?php checked( $key, $option_value ); ?>
 											/> <?php echo esc_html( $val ); ?></label>
 									</li>
@@ -594,8 +648,10 @@ class Admin_Settings {
 					if ( ! isset( $value['checkboxgroup'] ) || 'start' === $value['checkboxgroup'] ) {
 						?>
 							<tr valign="top" class="<?php echo esc_attr( implode( ' ', $visibility_class ) ); ?>">
-								<th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ); ?></th>
-								<td class="forminp forminp-checkbox">
+								<?php if ( ! empty( $value['title'] ) ) : ?>
+									<th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ); ?></th>
+								<?php endif; ?>
+								<td class="forminp forminp-checkbox <?php echo empty( $value['title'] ) ? 'no-title' : ''; ?>" colspan="2">
 									<fieldset>
 						<?php
 					} else {
@@ -658,46 +714,50 @@ class Admin_Settings {
 					<?php
 					break;
 
-				case 'starter-kits':
-					$kits = $value['kits'] ?? array();
-					$id   = $value['id'] ?? '';
+				case 'media-image':
+					$option_value = $value['value'];
+					// Get the meta value of video attachment.
+					$image_id      = $option_value;
+					$image_url     = wp_get_attachment_url( $image_id );
+					$display       = 'none';
+					$default_image = $value['default'];
+					$has_image_set = false;
+
+					if ( ! empty( $option_value ) && $option_value !== $default_image ) {
+						$has_image_set = true;
+					}
+
+					if ( ! empty( $image_url ) && ! empty( $option_value ) ) {
+						$display = 'inline-block';
+					} else {
+						$image_url = $default_image;
+					}
 					?>
-						<div id="<?php echo esc_attr( $value['id'] ); ?>">
-							<div class="titledesc">
-								<div class="header">
-									<?php
-									if ( ! empty( $value['title'] ) ) {
-										echo '<h1 id="' . esc_attr( sanitize_title( $value['id'] ) ) . '-content-title">' . esc_html( $value['title'] ) . '</h1>';
-									}
-									?>
-									<a href="<?php echo esc_url( admin_url( 'admin.php?page=ang-library-settings&tab=general&section=starter-kit&refresh=true' ) ); ?>" class="button-secondary"><?php esc_html_e( 'Refresh', 'ang' ); ?></a>
-								</div>
-
-							<?php
-							if ( ! empty( $value['desc'] ) ) {
-								echo '<p id="' . esc_attr( sanitize_title( $value['id'] ) ) . '-content-desc">' . wp_kses_post( $value['desc'] ) . '</p>';
-							}
-							?>
+					<tr valign="top">
+						<?php if ( ! empty( $value['title'] ) ) : ?>
+						<th scope="row" class="titledesc">
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></label>
+						</th>
+						<?php endif; ?>
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
+							<img class="<?php echo esc_attr( $value['type'] ); ?>" id="<?php echo esc_attr( $value['type'] ) . '-' . esc_attr( $value['id'] ); ?>" src="<?php echo esc_url( $image_url ); ?>" />
+							<div>
+								<a href="#" class="ang-upload-image-btn" data-element-id="<?php echo esc_attr( $value['type'] ) . '-' . esc_attr( $value['id'] ); ?>"><?php esc_html_e( 'Change Image', 'ang' ); ?></a>
+								<a href="#" class="ang-remove-image-btn" data-default-image="<?php echo esc_url( $default_image ); ?>" style="display:<?php echo esc_attr( $display ); ?>;"><?php esc_html_e( 'Revert to Default', 'ang' ); ?></a>
+								<input
+									name="<?php echo esc_attr( $value['id'] ); ?>"
+									id="<?php echo esc_attr( $value['id'] ); ?>"
+									type="hidden"
+									style="<?php echo esc_attr( $value['css'] ); ?>"
+									value="<?php echo $has_image_set ? esc_attr( $option_value ) : ''; ?>"
+									class="<?php echo esc_attr( $value['class'] ); ?>"
+									placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
+									<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+									/><?php echo esc_html( $value['suffix'] ); ?>
+									<?php echo $description; // phpcs:ignore. ?>
 							</div>
-							<ul class="<?php echo esc_attr( sanitize_title( $value['id'] ) ); ?>-list">
-							<?php foreach ( $kits as $key => $kit ) : ?>
-								<li class="starter-kit-<?php echo esc_attr( $key ); ?>">
-									<div>
-										<img class="kit-img" src="<?php echo esc_url( $kit['thumbnail_url'] ?? '' ); ?>" alt="<?php echo esc_attr( $kit['title'] ?? '' ); ?>"/>
-									</div>
-
-									<div>
-										<h4 class="kit-title"><?php echo esc_html( $kit['title'] ?? '' ); ?></h4>
-										<span class="kit-description"><?php echo esc_html( $kit['desc'] ?? '' ); ?></span>
-										<div class="kit-btns">
-											<a href="<?php echo esc_url( $kit['download_url'] ); ?>" class="button button-primary kit-download-btn"><?php echo esc_html( $value['download_btn_text'] ?? '' ); ?></a>
-											<a href="<?php echo esc_url( $kit['demo_url'] ); ?>" class="button button-secondary kit-demo-btn" target="_blank"><?php echo esc_html( $value['demo_btn_text'] ?? '' ); ?></a>
-										</div>
-									</div>
-								</li>
-							<?php endforeach; ?>
-							</ul>
-						</div>
+						</td>
+					</tr>
 					<?php
 					break;
 
@@ -718,8 +778,9 @@ class Admin_Settings {
 	 * @return array The description and tip as a 2 element array.
 	 */
 	public static function get_field_description( $value ) {
-		$description  = '';
-		$tooltip_html = '';
+		$description       = '';
+		$tooltip_html      = '';
+		$allowed_html_tags = self::get_settings_allowed_html();
 
 		if ( true === $value['desc_tip'] ) {
 			$tooltip_html = $value['desc'];
@@ -733,15 +794,15 @@ class Admin_Settings {
 		if ( $description && in_array( $value['type'], array( 'textarea', 'radio' ), true ) ) {
 			$description = '<p style="margin-top:0">' . wp_kses_post( $description ) . '</p>';
 		} elseif ( $description && in_array( $value['type'], array( 'checkbox' ), true ) ) {
-			$description = wp_kses_post( $description );
+			$description = wp_kses( $description, $allowed_html_tags );
 		} elseif ( $description ) {
-			$description = '<p class="description">' . wp_kses_post( $description ) . '</p>';
+			$description = '<p class="description">' . wp_kses( $description, $allowed_html_tags ) . '</p>';
 		}
 
 		if ( $tooltip_html && in_array( $value['type'], array( 'checkbox' ), true ) ) {
 			$tooltip_html = '<p class="description">' . $tooltip_html . '</p>';
 		} elseif ( $tooltip_html ) {
-			$tooltip_html = wp_kses_post( $tooltip_html );
+			$tooltip_html = wp_kses( $tooltip_html, $allowed_html_tags );
 		}
 
 		return array(

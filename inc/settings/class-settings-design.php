@@ -33,7 +33,70 @@ class Design extends Settings_Page {
 
 		$settings = apply_filters(
 			'ang_experiments_settings',
-			array()
+			array(
+				array(
+					'title' => esc_html__( 'Library popup style', 'ang' ),
+					'type'  => 'title',
+					'id'    => 'ang_library_popup_style',
+				),
+				array(
+					'id'      => 'library_popup_style',
+					'type'    => 'radio',
+					'options' => array(
+						'compact'     => __( 'Compact (popup)', 'ang' ),
+						'full-screen' => __( 'Fullscreen', 'ang' ),
+					),
+					'default' => 'compact',
+				),
+				array(
+					'type' => 'sectionend',
+					'id'   => 'ang_library_popup_style',
+				),
+				array(
+					'title' => esc_html__( 'Template columns', 'ang' ),
+					'type'  => 'title',
+					'id'    => 'ang_library_template_columns',
+				),
+				array(
+					'id'      => 'library_template_columns',
+					'type'    => 'radio',
+					'options' => array(
+						'2c'   => __( '2 Columns', 'ang' ),
+						'3c'   => __( '3 Columns', 'ang' ),
+						'auto' => __( 'Auto', 'ang' ),
+					),
+					'default' => '3c',
+				),
+				array(
+					'type' => 'sectionend',
+					'id'   => 'ang_library_template_columns',
+				),
+				array(
+					'title' => esc_html__( 'Categories location', 'ang' ),
+					'type'  => 'title',
+					'id'    => 'ang_library_categories_location',
+				),
+				array(
+					'id'      => 'library_categories_location',
+					'type'    => 'radio',
+					'options' => array(
+						'vertical'        => __( 'Sidebar', 'ang' ),
+						'horizontal'      => __( 'Horizontal', 'ang' ),
+						'hide-categories' => __( 'None', 'ang' ),
+					),
+					'default' => 'horizontal',
+				),
+				array(
+					'id'      => 'show_library_categories_template_count',
+					'desc'	  => esc_html__( 'Show categories template count', 'ang' ),
+					'type'    => 'checkbox',
+					'default' => false,
+				),
+				array(
+					'type' => 'sectionend',
+					'id'   => 'ang_library_categories_location',
+				),
+			)
 		);
 
 		return apply_filters( 'ang_get_settings_' . $this->id, $settings );

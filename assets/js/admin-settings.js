@@ -121,46 +121,49 @@
 			}
 		}
 
-		function submitDiscountRequest( e ) {
-			e.preventDefault();
-
-			const email = $( this ).find( 'input[name="email"]' ).val();
-			const fname = $( this ).find( 'input[name="first_name"]' ).val();
-			const lname = $( this ).find( 'input[name="last_name"]' ).val();
-
-			const elSubmitBtn = $( this ).find( 'input[type=submit]' );
-			elSubmitBtn.val( 'Sending...' );
-
-			$.post(
-				'https://analogwp.com/?ang-api=analogwp-templates&request=discount_code',
-				{
-					email: email,
-					first_name: fname,
-					last_name: lname,
-				}
-			).done( function() {
-				status = 'Coupon sent!';
-				elSubmitBtn.val( status );
-				elSubmitBtn.attr( 'disabled', 'disabled' );
-			} ).fail( function() {
-				status = 'Failed to send, please contact support.';
-				elSubmitBtn.val( status );
-				setTimeout( function() {
-					elSubmitBtn.val( 'Send me the coupon' );
-				}, 2000 );
-			} );
-		}
-
-		$( '#js-ang-request-discount' ).on( 'submit', submitDiscountRequest );
-
-		function processKitDownload() {
-			if ( ! $( '.titledesc + #starter-kits-message' ).length ) {
-				const el = $( '.titledesc' ),
-					content = '<div id="starter-kits-message" class="updated inline"><p>' + data.sitekit_importer_notice + '&nbsp;<a href="' + data.sitekit_importer_url + '">' + data.sitekit_importer_url_text + '</a></p></div>';
-
-				el.after( content );
+		$( 'body' ).on(
+			'click',
+			'.ang-upload-image-btn',
+			function (e) {
+				e.preventDefault();
+				const button     = $( this ),
+					customUploader = wp.media(
+						{
+							title: data.uploader_title,
+							library: {
+								type: 'image'
+							},
+							button: {
+								text: data.uploader_btn_text // button label text.
+							},
+							multiple: false // for multiple image selection set to true.
+						}
+					).on(
+						'select',
+						function () {
+							// it also has "open" and "close" events.
+							const attachment       = customUploader.state().get( 'selection' ).first().toJSON();
+							const image_element_id = $( button ).attr( 'data-element-id' );
+							$( `#${image_element_id}` ).attr( 'src', attachment.url );
+							$( button ).next().show();
+							$( button ).next().next().val( attachment.id );
+						}
+					)
+						.open();
 			}
-		}
-		$( '.kit-btns .kit-download-btn' ).on( 'click', processKitDownload );
+		);
+
+		// Removing video.
+		$( 'body' ).on(
+			'click',
+			'.ang-remove-image-btn',
+			function () {
+				const default_image = $( this ).attr( 'data-default-image' );
+				$( this ).parent().prev().attr( 'src', default_image );
+				$( this ).next().val( '' );
+				$( this ).hide();
+				return false;
+			}
+		);
 	} );
 }( jQuery, ang_settings_data, wp ) );

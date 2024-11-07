@@ -49,28 +49,35 @@ class General extends Settings_Page {
 					'id'    => 'ang_general_settings',
 				),
 				array(
+					'id'      => 'hide_elementor_template_library',
+					'desc'    => __( 'Hide default Elementor Template library icon from editor.', 'ang' ),
+					'type'    => 'checkbox',
+					'default' => false,
+				),
+				array(
 					'id'      => 'allow_svg_uploads',
-					'title'   => esc_html_x( 'Enable SVG Uploads', 'settings title', 'ang' ),
-					'desc'    => sprintf(
-					/* translators: %s: Global Style Kit Documentation link */
-						__( 'Helps importing SVGs in templates. %s', 'ang' ),
-						'<a href="https://analogwp.com/docs/enable-svg-imports-in-patterns" target="_blank">' . __( 'Read more', 'ang' ) . '</a>'
-					),
+					'desc'    => esc_html_x( 'Enable SVG Uploads', 'settings title', 'ang' ),
 					'type'    => 'checkbox',
 					'default' => true,
 				),
 				array(
-					'id'    => 'onboarding_link',
-					'title' => esc_html_x( 'Setup', 'settings title', 'ang' ),
-					'desc'  => __( 'Trigger the setup wizard manually', 'ang' ),
-					'to'    => admin_url( 'admin.php?page=analog_onboarding' ),
-					'type'  => 'button',
-					'class' => 'ang-button button-secondary',
-					'value' => __( 'Restart wizard', 'ang' ),
+					'type' => 'sectionend',
+					'id'   => 'ang_general_settings',
+				),
+				array(
+					'type'  => 'title',
+					'title' => esc_html__( 'Placeholder image', 'ang' ),
+					'id'    => 'ang_change_default_placeholder_thumb',
+				),
+				array(
+					'desc'    => __( 'Replace the default placeholder image.', 'ang' ),
+					'id'      => 'default-placeholder-thumb',
+					'default' => ANG_PLUGIN_URL . 'assets/img/placeholder.png',
+					'type'    => 'media-image',
 				),
 				array(
 					'type' => 'sectionend',
-					'id'   => 'ang_general_settings',
+					'id'   => 'ang_change_default_placeholder_thumb',
 				),
 			);
 			$settings = apply_filters( 'ang_' . $this->id . '_settings', $settings );

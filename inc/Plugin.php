@@ -119,6 +119,8 @@ final class Plugin {
 		);
 
 		wp_localize_script( 'analogwp-app', 'AGWP', $i10n );
+
+		Utils::enqueue_settings_toggle_css();
 	}
 
 	/**
@@ -134,6 +136,8 @@ final class Plugin {
 			$domains = array();
 		}
 
+		$options = Options::get_instance();
+
 		$favorites       = get_user_meta( get_current_user_id(), self::$user_meta_prefix, true );
 		$block_favorites = get_user_meta( get_current_user_id(), self::$user_meta_block_prefix, true );
 
@@ -144,35 +148,32 @@ final class Plugin {
 			$block_favorites = array();
 		}
 
-		$global_kit_title = get_the_title( Utils::get_global_kit_id() );
-
 		$plugins = get_option( 'active_plugins' );
 		$plugins = array_map( array( $this, 'filter_plugins' ), $plugins );
 
 		$new_domains = array(
-			'ajaxurl'                 => admin_url( 'admin-ajax.php' ),
-			'favorites'               => $favorites,
-			'blockFavorites'          => $block_favorites,
-			'isPro'                   => Utils::is_pro(),
-			'version'                 => ANG_VERSION,
-			'elementorURL'            => admin_url( 'edit.php?post_type=elementor_library' ),
-			'debugMode'               => ( defined( 'ANALOG_DEV_DEBUG' ) && ANALOG_DEV_DEBUG ),
-			'pluginURL'               => ANG_PLUGIN_URL,
-			'license'                 => Utils::has_pro() ? array(
-				'status'  => Options::get_instance()->get( 'ang_license_key_status' ),
+			'ajaxurl'                            => admin_url( 'admin-ajax.php' ),
+			'favorites'                          => $favorites,
+			'blockFavorites'                     => $block_favorites,
+			'isPro'                              => Utils::is_pro(),
+			'version'                            => ANG_VERSION,
+			'elementorURL'                       => admin_url( 'edit.php?post_type=elementor_library' ),
+			'debugMode'                          => ( defined( 'ANALOG_DEV_DEBUG' ) && ANALOG_DEV_DEBUG ),
+			'pluginURL'                          => ANG_PLUGIN_URL,
+			'license'                            => Utils::has_pro() ? array(
+				'status'  => $options->get( 'ang_license_key_status' ),
 				'message' => get_transient( 'ang_license_message' ),
 			) : false,
-			'globalKit'               => array(
-				array(
-					'label' => $global_kit_title,
-					'value' => $global_kit_title,
-				),
-			),
-			'adminURL'                => admin_url( 'admin.php?page=ang-library-settings&tab=general' ),
-			'globalSkAlwaysEnableURL' => admin_url( 'admin.php?page=style-kits' ),
-			'isContainer'             => Utils::is_container(),
-			'activePlugins'           => array_values( $plugins ),
-			'wp_version'              => get_bloginfo( 'version' ),
+			'adminURL'                           => admin_url(),
+			'siteURL'                            => get_site_url(),
+			'isContainer'                        => Utils::is_container(),
+			'activePlugins'                      => array_values( $plugins ),
+			'wp_version'                         => get_bloginfo( 'version' ),
+
+			// Settings UI toggles.
+			'libraryTemplateCols'                => $options->get( 'library_template_columns' ),
+			'libraryCategoriesLocation'          => $options->get( 'library_categories_location' ),
+			'showLibraryCategoriesTemplateCount' => $options->get( 'show_library_categories_template_count' ),
 		);
 
 		$domains += $new_domains;
@@ -287,7 +288,7 @@ final class Plugin {
 	 * @return Plugin Plugin main instance.
 	 */
 	public static function instance() {
-		return static::$instance;
+		return self::$instance;
 	}
 
 	/**
@@ -299,12 +300,12 @@ final class Plugin {
 	 * @return bool True if the plugin main instance could be loaded, false otherwise.
 	 */
 	public static function load( $main_file ) {
-		if ( null !== static::$instance ) {
+		if ( null !== self::$instance ) {
 			return false;
 		}
 
-		static::$instance = new static( $main_file );
-		static::$instance->register();
+		self::$instance = new self( $main_file );
+		self::$instance->register();
 
 		do_action( 'ang_loaded' );
 

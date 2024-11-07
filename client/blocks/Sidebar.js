@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import AnalogContext from '../AnalogContext';
 const { __ } = wp.i18n;
-const { TextControl, TabPanel, ToggleControl, Button } = wp.components;
+const { TabPanel } = wp.components;
 
 const blockIdentifier = 'all';
 
@@ -10,12 +10,10 @@ const defaultTabs = [
 	blockIdentifier,
 ];
 
-const SidebarWrapper = styled.div`
-	.components-tab-panel__tabs {
-		display: flex;
-		flex-direction: column;
-	}
 
+const sidebarOrientation = ! AGWP.libraryCategoriesLocation ? 'horizontal' : AGWP.libraryCategoriesLocation;
+
+const SidebarWrapper = styled.div`
 	.components-tab-panel__tabs > .components-button {
 		text-transform: capitalize;
 	}
@@ -154,7 +152,7 @@ const Sidebar = ( { state } ) => {
 		let countTemplate = count > 0 ? count : 0;
 		let label = title.replace(/-/g, ' ');
 
-		return [`${label} `, <span key={title}>{countTemplate}</span>];
+		return [`${label} `, AGWP.showLibraryCategoriesTemplateCount ? <span key={title}>{countTemplate}</span> : ''];
 	}
 
 	const tabGenerator = (tabsArray) => {
@@ -221,17 +219,10 @@ const Sidebar = ( { state } ) => {
 			{/*		context.dispatch( { blocksSearchInput: value } );*/}
 			{/*	} }*/}
 			{/*/>*/}
-
-			{/*{ AGWP.license.status !== 'valid' && (*/}
-			{/*	<ToggleControl*/}
-			{/*		label={ AGWP.isContainer ? __( 'Show Pro Patterns', 'ang' ) : __( 'Show Pro Blocks', 'ang' ) }*/}
-			{/*		checked={ ! context.state.showFree }*/}
-			{/*		onChange={ toggleProBlocks }*/}
-			{/*	/>*/}
-			{/*) }*/}
 			{ tabGenerator( categoriesData() ).length >= 1 &&
 			<TabPanel
 				className="block-categories-tabs"
+				orientation={ sidebarOrientation }
 				activeClass="active-tab"
 				initialTabName={ getInitialTab( context.state.blocksTab ) }
 				onSelect={onSelect}

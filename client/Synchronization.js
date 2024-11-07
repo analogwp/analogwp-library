@@ -26,7 +26,7 @@ const Synchronization = () => {
 								} }
 							>
 								{ context.state.syncing ?
-									<Refresh /> :
+									<Refresh  /> :
 									<Refresh /> }
 								{ /*<Refresh />*/ }
 							</Button>
