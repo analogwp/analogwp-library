@@ -56,7 +56,7 @@ class Finder_Shortcuts extends Base_Category {
 				'keywords' => array( 'analog', 'settings' ),
 			),
 			'style-kits' => array(
-				'title'    => __( 'Theme Style Kits', 'ang' ),
+				'title'    => __( 'Theme Analog Library', 'ang' ),
 				'url'      => admin_url( 'admin.php?page=style-kits' ),
 				'icon'     => 'settings',
 				'keywords' => array( 'analog', 'style', 'kits' ),

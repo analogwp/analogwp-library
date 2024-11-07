@@ -156,7 +156,7 @@ const Sidebar = ( { state } ) => {
 	}
 
 	const tabGenerator = (tabsArray) => {
-		const tabs = tabsArray.filter( tab => getItemCount(tab) > 0 );
+		const tabs = tabsArray.filter( tab => tab && getItemCount(tab) > 0 );
 
 		return tabs.map( (item) => ({
 			name: item,
@@ -210,7 +210,7 @@ const Sidebar = ( { state } ) => {
 	}
 
 	return (
-		<SidebarWrapper className="sidebar">
+		<SidebarWrapper className={`sidebar ${!context.state.blockArchive.length ? 'no-templates' : ''}`}>
 			{/*<TextControl*/}
 			{/*	placeholder={ AGWP.isContainer ? __( 'Search Templates', 'ang' ) : __( 'Search Blocks', 'ang' ) }*/}
 			{/*	value={ context.state.blocksSearchInput }*/}

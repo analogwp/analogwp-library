@@ -1214,7 +1214,8 @@
 	display: flex;
 }
 
-#analogwp-templates .hide-categories > .sidebar {
+#analogwp-templates .hide-categories > .sidebar,
+#analogwp-templates .sidebar.no-templates {
 	display: none !important;
 }
 

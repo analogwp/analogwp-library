@@ -58,7 +58,7 @@ class Tools extends Base {
 	}
 
 	/**
-	 * Checks if current screen is Style Kits CPT screen.
+	 * Checks if current screen is Analog Library CPT screen.
 	 *
 	 * @deprecated 1.6.0
 	 *
@@ -100,7 +100,7 @@ class Tools extends Base {
 		check_admin_referer( 'ang_rollback' );
 
 		if ( defined( 'STYLEKIT_DEBUG' ) || ! current_user_can( 'update_plugins' ) ) {
-			wp_die( esc_html__( 'Sorry, you are not allowed to rollback Style Kits plugin for this site.', 'ang' ) );
+			wp_die( esc_html__( 'Sorry, you are not allowed to rollback Analog Library plugin for this site.', 'ang' ) );
 		}
 
 		$rollback_versions = Utils::get_rollback_versions();

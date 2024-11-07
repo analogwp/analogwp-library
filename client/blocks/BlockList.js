@@ -261,11 +261,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 	}
 
 	const getScreenshot = ( block ) => {
-		if ( AGWP.isContainer ) {
-			return block.thumbnail || AGWP.pluginURL + 'assets/img/placeholder.svg';
-		}
-
-		return AGWP.blockMediaURL + block.id + '.jpg';
+		return block.thumbnail || AGWP.pluginURL + 'assets/img/placeholder.svg';
 	};
 
 	const loadingThumbs = () => {

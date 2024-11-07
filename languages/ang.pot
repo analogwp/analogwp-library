@@ -30,7 +30,7 @@ msgstr ""
 
 #. Description of the plugin
 #: analogwp-templates.php
-msgid "Style Kits extends the Elementor theme styles editor with more global styling options. Boost your design workflow in Elementor with intuitive global controls and theme style presets."
+msgid "Analog Library extends the Elementor theme styles editor with more global styling options. Boost your design workflow in Elementor with intuitive global controls and theme style presets."
 msgstr ""
 
 #. Author of the plugin
@@ -51,12 +51,12 @@ msgstr ""
 
 #. translators: %s: WordPress version
 #: analogwp-templates.php:82
-msgid "Style Kits requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING."
+msgid "Analog Library requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING."
 msgstr ""
 
 #. translators: %s: Minimum required Elementor version.
 #: analogwp-templates.php:107
-msgid "Style Kits requires Elementor v%s or newer in order to work. Please update Elementor to the latest version."
+msgid "Analog Library requires Elementor v%s or newer in order to work. Please update Elementor to the latest version."
 msgstr ""
 
 #. translators: %s: Link to update Elementor.
@@ -70,7 +70,7 @@ msgid "Rollback to v%s"
 msgstr ""
 
 #: analogwp-templates.php:166
-msgid "Style Kits is not working because you need to activate the Elementor plugin."
+msgid "Analog Library is not working because you need to activate the Elementor plugin."
 msgstr ""
 
 #: analogwp-templates.php:167
@@ -78,7 +78,7 @@ msgid "Activate Elementor Now"
 msgstr ""
 
 #: analogwp-templates.php:174
-msgid "Style Kits is not working because you need to install the Elementor plugin."
+msgid "Analog Library is not working because you need to install the Elementor plugin."
 msgstr ""
 
 #: analogwp-templates.php:175
@@ -201,7 +201,7 @@ msgstr ""
 
 #: inc/class-onboarding.php:46
 #: inc/class-onboarding.php:47
-msgid "Welcome to Style Kits"
+msgid "Welcome to Analog Library"
 msgstr ""
 
 #: inc/class-onboarding.php:82
@@ -230,7 +230,7 @@ msgid "Enable Elementor container feature"
 msgstr ""
 
 #: inc/class-onboarding.php:106
-msgid "The latest Style Kits version works best with flexbox containers. We will enable the Containers feature in Elementor."
+msgid "The latest Analog Library version works best with flexbox containers. We will enable the Containers feature in Elementor."
 msgstr ""
 
 #: inc/class-onboarding.php:107
@@ -262,7 +262,7 @@ msgid "Install and activate Hello Elementor Theme"
 msgstr ""
 
 #: inc/class-onboarding.php:131
-msgid "Style Kits works best with Elementor Hello theme. This will replace your currently active theme"
+msgid "Analog Library works best with Elementor Hello theme. This will replace your currently active theme"
 msgstr ""
 
 #: inc/class-onboarding.php:132
@@ -294,7 +294,7 @@ msgid "Docs"
 msgstr ""
 
 #: inc/class-onboarding.php:208
-msgid "Setup Elementor properly for a seamless Style Kits Experience."
+msgid "Setup Elementor properly for a seamless Analog Library Experience."
 msgstr ""
 
 #. translators: %s: Link text
@@ -439,7 +439,7 @@ msgstr ""
 msgid "Meet Custom Library for Elementor"
 msgstr ""
 
-#. translators: %s: Link to Style Kits documentation.
+#. translators: %s: Link to Analog Library documentation.
 #: inc/elementor/class-ang-action.php:119
 msgid "Take control of your design in the macro level, with local or global settings for typography and spacing. %s."
 msgstr ""
@@ -455,7 +455,7 @@ msgstr ""
 #: inc/elementor/class-typography.php:1058
 #: inc/elementor/kit/tabs/Theme_Style_Kits.php:46
 #: inc/register-settings.php:28
-msgid "Style Kits"
+msgid "Analog Library"
 msgstr ""
 
 #: inc/elementor/class-ang-action.php:125
@@ -689,12 +689,12 @@ msgid "Settings"
 msgstr ""
 
 #: inc/elementor/class-finder-shortcuts.php:59
-msgid "Theme Style Kits"
+msgid "Theme Analog Library"
 msgstr ""
 
 #: inc/elementor/class-post-type.php:34
 msgctxt "admin menu"
-msgid "Style Kits"
+msgid "Analog Library"
 msgstr ""
 
 #: inc/elementor/class-post-type.php:35
@@ -724,11 +724,11 @@ msgid "View Style Kit"
 msgstr ""
 
 #: inc/elementor/class-post-type.php:42
-msgid "Search Style Kits"
+msgid "Search Analog Library"
 msgstr ""
 
 #: inc/elementor/class-post-type.php:43
-msgid "Parent Style Kits:"
+msgid "Parent Analog Library:"
 msgstr ""
 
 #: inc/elementor/class-post-type.php:44
@@ -740,7 +740,7 @@ msgid "No Style Kit found in Trash."
 msgstr ""
 
 #: inc/elementor/class-tools.php:115
-msgid "Sorry, you are not allowed to rollback Style Kits plugin for this site."
+msgid "Sorry, you are not allowed to rollback Analog Library plugin for this site."
 msgstr ""
 
 #: inc/elementor/class-tools.php:123
@@ -1085,7 +1085,7 @@ msgstr ""
 #: inc/elementor/class-typography.php:2398
 #: inc/elementor/class-typography.php:2455
 #: inc/elementor/class-typography.php:2484
-msgid "Edit in Style Kits"
+msgid "Edit in Analog Library"
 msgstr ""
 
 #: inc/elementor/class-typography.php:1350
@@ -1371,7 +1371,7 @@ msgstr ""
 #: inc/settings/class-settings-general.php:83
 #: assets/js/app.js:27
 #: client/stylekits/stylekits.js:223
-msgid "Local Style Kits"
+msgid "Local Analog Library"
 msgstr ""
 
 #: inc/elementor/kit/Kits_List_Table.php:352
@@ -1383,7 +1383,7 @@ msgid "Import Now"
 msgstr ""
 
 #: inc/elementor/kit/Kits_List_Table.php:363
-msgid "A list of all the imported and custom Style Kits. A global Style Kit is the one that applies globally on your site. You can set a Global Style Kit below."
+msgid "A list of all the imported and custom Analog Library. A global Style Kit is the one that applies globally on your site. You can set a Global Style Kit below."
 msgstr ""
 
 #: inc/elementor/kit/Manager.php:580
@@ -1440,7 +1440,7 @@ msgstr ""
 msgid "Offers controls to customize form column/rows gap, label spacing, and form messages colors."
 msgstr ""
 
-#. translators: %1$s: Link to Style Kits Pro. %2$s: Go Pro text.
+#. translators: %1$s: Link to Analog Library Pro. %2$s: Go Pro text.
 #: inc/elementor/Promotions.php:154
 #: inc/Plugin.php:222
 #: inc/register-settings.php:78
@@ -1465,7 +1465,7 @@ msgid "Accent Background Color"
 msgstr ""
 
 #: inc/elementor/Promotions.php:231
-msgid "Enjoy better background color control in your layouts by adding a third background color class. Available in Style Kits Pro."
+msgid "Enjoy better background color control in your layouts by adding a third background color class. Available in Analog Library Pro."
 msgstr ""
 
 #: inc/elementor/Promotions.php:253
@@ -1475,7 +1475,7 @@ msgstr ""
 
 #: inc/elementor/Promotions.php:263
 #: inc/elementor/Promotions.php:285
-msgid "Extend your container spacing system with more variables, plus many more features with Style Kits Pro."
+msgid "Extend your container spacing system with more variables, plus many more features with Analog Library Pro."
 msgstr ""
 
 #: inc/elementor/Promotions.php:275
@@ -1490,7 +1490,7 @@ msgstr ""
 
 #: inc/elementor/Promotions.php:317
 #: inc/elementor/Promotions.php:340
-msgid "Extend your color system with more variables, plus many more features with Style Kits Pro."
+msgid "Extend your color system with more variables, plus many more features with Analog Library Pro."
 msgstr ""
 
 #: inc/elementor/Promotions.php:330
@@ -1500,12 +1500,12 @@ msgstr ""
 
 #: inc/elementor/Promotions.php:373
 #: inc/elementor/Promotions.php:395
-msgid "Extend your typography system with more variables, plus many more features with Style Kits Pro."
+msgid "Extend your typography system with more variables, plus many more features with Analog Library Pro."
 msgstr ""
 
 #: inc/elementor/Promotions.php:427
 #: inc/elementor/Promotions.php:449
-msgid "Extend your shadows system with more variables, plus many more features with Style Kits Pro."
+msgid "Extend your shadows system with more variables, plus many more features with Analog Library Pro."
 msgstr ""
 
 #: inc/elementor/sections/background-color-classes.php:52
@@ -1534,7 +1534,7 @@ msgid "Dark Background"
 msgstr ""
 
 #: inc/register-settings.php:38
-msgid "Style Kits Library"
+msgid "Analog Library Library"
 msgstr ""
 
 #: inc/register-settings.php:39
@@ -1543,7 +1543,7 @@ msgstr ""
 
 #: inc/register-settings.php:46
 #: inc/settings/views/html-admin-settings.php:28
-msgid "Style Kits Settings"
+msgid "Analog Library Settings"
 msgstr ""
 
 #: inc/settings/class-settings-experiments.php:23
@@ -1559,12 +1559,12 @@ msgid "Inactive"
 msgstr ""
 
 #: inc/settings/class-settings-experiments.php:45
-msgid "Style Kits Experiments"
+msgid "Analog Library Experiments"
 msgstr ""
 
-#. translators: %s: Style Kits Experiments Documentation link
+#. translators: %s: Analog Library Experiments Documentation link
 #: inc/settings/class-settings-experiments.php:48
-msgid "Below you can activate experimental features for Style Kits and Style Kits Pro. We suggest you to turn on backups while using these experiments. %s about how this works."
+msgid "Below you can activate experimental features for Analog Library and Analog Library Pro. We suggest you to turn on backups while using these experiments. %s about how this works."
 msgstr ""
 
 #: inc/settings/class-settings-experiments.php:55
@@ -1603,7 +1603,7 @@ msgctxt "settings title"
 msgid "Global Style Kit"
 msgstr ""
 
-#. translators: %s: Local Style Kits page link
+#. translators: %s: Local Analog Library page link
 #: inc/settings/class-settings-general.php:82
 msgid "This option is now in %s page."
 msgstr ""
@@ -1654,7 +1654,7 @@ msgid "View Demo"
 msgstr ""
 
 #: inc/settings/class-settings-gopro.php:27
-msgid "Style Kits Pro"
+msgid "Analog Library Pro"
 msgstr ""
 
 #: inc/settings/class-settings-misc.php:23
@@ -1682,7 +1682,7 @@ msgid "Remove Data on Uninstall"
 msgstr ""
 
 #: inc/settings/class-settings-misc.php:52
-msgid "Check this box to remove all data stored by Custom Library for Elementor plugin, including license info, user settings, import history etc. Any imported or manually saved Style Kits are not removed."
+msgid "Check this box to remove all data stored by Custom Library for Elementor plugin, including license info, user settings, import history etc. Any imported or manually saved Analog Library are not removed."
 msgstr ""
 
 #: inc/settings/class-settings-version-control.php:25
@@ -1698,7 +1698,7 @@ msgid "If you are having issues with current version of Custom Library for Eleme
 msgstr ""
 
 #: inc/settings/class-settings-version-control.php:49
-msgid "Rollback Style Kits"
+msgid "Rollback Analog Library"
 msgstr ""
 
 #: inc/settings/class-settings-version-control.php:61
@@ -1714,11 +1714,11 @@ msgid "Become a beta tester"
 msgstr ""
 
 #: inc/settings/class-settings-version-control.php:79
-msgid "Check this box to turn on beta updates for Style Kits and Style Kits Pro. The update will not be installed automatically, you always have the option to ignore it."
+msgid "Check this box to turn on beta updates for Analog Library and Analog Library Pro. The update will not be installed automatically, you always have the option to ignore it."
 msgstr ""
 
 #: inc/settings/views/html-admin-settings-gopro.php:14
-msgid "Transform your design workflow in Elementor with Style Kits PRO"
+msgid "Transform your design workflow in Elementor with Analog Library PRO"
 msgstr ""
 
 #: inc/settings/views/html-admin-settings-gopro.php:17
@@ -1742,11 +1742,11 @@ msgid "Hide any Style Kit reference from your clients, based on user roles"
 msgstr ""
 
 #: inc/settings/views/html-admin-settings-gopro.php:22
-msgid "Style Kits front-end switcher"
+msgid "Analog Library front-end switcher"
 msgstr ""
 
 #: inc/settings/views/html-admin-settings-gopro.php:23
-msgid "Selectively de-activate Style Kits Panels from the site settings sidebar"
+msgid "Selectively de-activate Analog Library Panels from the site settings sidebar"
 msgstr ""
 
 #: inc/settings/views/html-admin-settings-gopro.php:25
@@ -1754,7 +1754,7 @@ msgid ".. and much more."
 msgstr ""
 
 #: inc/settings/views/html-admin-settings-gopro.php:26
-msgid "Explore Style Kits Pro"
+msgid "Explore Analog Library Pro"
 msgstr ""
 
 #: inc/settings/views/html-admin-settings.php:53
@@ -1762,7 +1762,7 @@ msgid "Save changes"
 msgstr ""
 
 #: inc/settings/views/html-admin-settings.php:64
-msgid "Upgrade to Style Kits Pro with a 15% discount"
+msgid "Upgrade to Analog Library Pro with a 15% discount"
 msgstr ""
 
 #: inc/settings/views/html-admin-settings.php:69
@@ -1787,7 +1787,7 @@ msgid "privacy policy"
 msgstr ""
 
 #: inc/settings/views/html-admin-settings.php:90
-msgid "Need help with Style Kits?"
+msgid "Need help with Analog Library?"
 msgstr ""
 
 #: inc/settings/views/html-admin-settings.php:91
@@ -1799,7 +1799,7 @@ msgid "Sign up for email updates"
 msgstr ""
 
 #: inc/settings/views/html-admin-settings.php:96
-msgid "Stay in the loop with Style Kits development by signing up to our newsletter."
+msgid "Stay in the loop with Analog Library development by signing up to our newsletter."
 msgstr ""
 
 #: inc/settings/views/html-admin-settings.php:99
@@ -1815,7 +1815,7 @@ msgid "privacy and terms"
 msgstr ""
 
 #: inc/upgrade-functions.php:153
-msgid "Welcome to Style Kits 1.9.5. This version includes a brand new container-based pattern library, and a lot of other improvements."
+msgid "Welcome to Analog Library 1.9.5. This version includes a brand new container-based pattern library, and a lot of other improvements."
 msgstr ""
 
 #: inc/upgrade-functions.php:155
@@ -1823,7 +1823,7 @@ msgid "See what’s new."
 msgstr ""
 
 #: inc/upgrade-functions.php:180
-msgid "The New version of Style Kits introduces a setup wizard. You can trigger it at any time under Style Kits Settings."
+msgid "The New version of Analog Library introduces a setup wizard. You can trigger it at any time under Analog Library Settings."
 msgstr ""
 
 #. translators: Global Style Kit post title.
@@ -1860,12 +1860,12 @@ msgstr ""
 
 #: assets/js/app.js:1
 #: client/api.js:225
-msgid "Add Style Kits"
+msgid "Add Analog Library"
 msgstr ""
 
 #: assets/js/app.js:11
 #: client/ProModal.js:6
-msgid "Get unlimited access to the Style Kits library and features with the PRO version."
+msgid "Get unlimited access to the Analog Library library and features with the PRO version."
 msgstr ""
 
 #: assets/js/app.js:11
@@ -2006,7 +2006,7 @@ msgstr ""
 
 #: assets/js/app.js:27
 #: client/stylekits/stylekits.js:129
-msgid "Manage your Style Kits"
+msgid "Manage your Analog Library"
 msgstr ""
 
 #: assets/js/app.js:27
@@ -2016,7 +2016,7 @@ msgstr ""
 
 #: assets/js/app.js:27
 #: client/stylekits/stylekits.js:223
-msgid "Style Kits are ready-made configurations of theme styles. When you import a Style Kit, it will be available in the"
+msgid "Analog Library are ready-made configurations of theme styles. When you import a Style Kit, it will be available in the"
 msgstr ""
 
 #: assets/js/app.js:27
@@ -2066,7 +2066,7 @@ msgstr ""
 
 #: assets/js/app.js:27
 #: client/stylekits/stylekits.js:379
-msgid "View local Style Kits"
+msgid "View local Analog Library"
 msgstr ""
 
 #: assets/js/app.js:27
@@ -2190,7 +2190,7 @@ msgstr ""
 
 #: assets/js/app.js:43
 #: client/popups/ImportTemplate.js:136
-msgid "Style Kits Docs"
+msgid "Analog Library Docs"
 msgstr ""
 
 #: assets/js/app.js:43

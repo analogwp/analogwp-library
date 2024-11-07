@@ -159,7 +159,7 @@ export function doElementorInsert( content, context = 'template' ) {
 	if ( typeof $e !== 'undefined' ) {
 		const historyId = $e.internal( 'document/history/start-log', {
 			type: 'add',
-			title: `${ __( 'Add Style Kits', 'ang' ) } ${ contextText }`,
+			title: `${ __( 'Add Analog Library', 'ang' ) } ${ contextText }`,
 		} );
 
 		for ( let i = 0; i < content.length; i++ ) {

@@ -378,7 +378,7 @@ class Utils extends Base {
 	}
 
 	/**
-	 * Returns a list of all keys for color controls defined by Style Kits.
+	 * Returns a list of all keys for color controls defined by Analog Library.
 	 *
 	 * @since 1.5.0
 	 * @return array
