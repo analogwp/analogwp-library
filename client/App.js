@@ -165,8 +165,8 @@ class App extends React.Component {
 			count: null,
 			isOpen: false, // Determines whether modal to preview template is open or not.
 			syncing: false,
-			favorites: AGWP.favorites,
-			blockFavorites: AGWP.blockFavorites,
+			favorites: AGWP_LIBRARY.favorites,
+			blockFavorites: AGWP_LIBRARY.blockFavorites,
 			showing_favorites: false,
 			blockArchive: [], // same as archive above just for blocks.
 			showFree: true,
@@ -204,7 +204,7 @@ class App extends React.Component {
 		const hash = location.hash;
 		const validHashes = [ '#blocks' ];
 
-		if ( validHashes.indexOf( hash ) > -1 && AGWP.is_settings_page ) {
+		if ( validHashes.indexOf( hash ) > -1 && AGWP_LIBRARY.is_settings_page ) {
 			this.setState( {
 				tab: hash.substr( 1 ),
 				templates: this.state.archive,
@@ -356,7 +356,7 @@ class App extends React.Component {
 		wp.hooks.doAction( 'analog.refreshLibrary' );
 
 		return await apiFetch( {
-			path: '/agwp/v1/templates/?force_update=true',
+			path: '/agwp-library/v1/templates/?force_update=true',
 		} ).then( data => {
 			const library = data.library;
 

@@ -136,8 +136,8 @@ class Tools extends Base {
 		</style>
 		<?php
 
-		$plugin_slug = 'analog-library';
-		$plugin_name = 'analog-library/analog-library.php';
+		$plugin_slug = 'custom-library-for-elementor';
+		$plugin_name = 'custom-library-for-elementor/custom-library-for-elementor.php';
 
 		$rollback = new Rollback(
 			array(

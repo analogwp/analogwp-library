@@ -11,7 +11,7 @@ const defaultTabs = [
 ];
 
 
-const sidebarOrientation = ! AGWP.libraryCategoriesLocation ? 'horizontal' : AGWP.libraryCategoriesLocation;
+const sidebarOrientation = ! AGWP_LIBRARY.libraryCategoriesLocation ? 'horizontal' : AGWP_LIBRARY.libraryCategoriesLocation;
 
 const SidebarWrapper = styled.div`
 	.components-tab-panel__tabs > .components-button {
@@ -128,7 +128,7 @@ const Sidebar = ( { state } ) => {
 			foundItems = blocks.filter( block => block.tags.indexOf( tab ) > -1 );
 		}
 
-		if ( AGWP.license.status !== 'valid' && context.state.showFree ) {
+		if ( AGWP_LIBRARY.license.status !== 'valid' && context.state.showFree ) {
 			foundItems = foundItems.filter( block => !block.is_pro );
 		}
 
@@ -152,7 +152,7 @@ const Sidebar = ( { state } ) => {
 		let countTemplate = count > 0 ? count : 0;
 		let label = title.replace(/-/g, ' ');
 
-		return [`${label} `, AGWP.showLibraryCategoriesTemplateCount ? <span key={title}>{countTemplate}</span> : ''];
+		return [`${label} `, AGWP_LIBRARY.showLibraryCategoriesTemplateCount ? <span key={title}>{countTemplate}</span> : ''];
 	}
 
 	const tabGenerator = (tabsArray) => {
@@ -184,7 +184,7 @@ const Sidebar = ( { state } ) => {
 			const type = elementor.config.document.type;
             const categories = categoriesData();
 
-			if ( context.state.showFree && AGWP.license.status !== 'valid' ) {
+			if ( context.state.showFree && AGWP_LIBRARY.license.status !== 'valid' ) {
 				return initialTab;
 			}
 
@@ -212,7 +212,7 @@ const Sidebar = ( { state } ) => {
 	return (
 		<SidebarWrapper className={`sidebar ${!context.state.blockArchive.length ? 'no-templates' : ''}`}>
 			{/*<TextControl*/}
-			{/*	placeholder={ AGWP.isContainer ? __( 'Search Templates', 'ang' ) : __( 'Search Blocks', 'ang' ) }*/}
+			{/*	placeholder={ AGWP_LIBRARY.isContainer ? __( 'Search Templates', 'ang' ) : __( 'Search Blocks', 'ang' ) }*/}
 			{/*	value={ context.state.blocksSearchInput }*/}
 			{/*	onChange={ ( value ) => {*/}
 			{/*		context.handleSearch( value, 'patterns' );*/}

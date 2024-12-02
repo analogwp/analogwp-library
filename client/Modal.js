@@ -88,7 +88,7 @@ const Modal = props => {
 					</Button>
 				</a>
 
-				{ ! ( props.template.is_pro && AGWP.license.status !== 'valid' ) && (
+				{ ! ( props.template.is_pro && AGWP_LIBRARY.license.status !== 'valid' ) && (
 					<Button isPrimary onClick={ props.onRequestImport }>
 						{ __( 'Import Template', 'ang' ) }
 					</Button>
@@ -96,7 +96,7 @@ const Modal = props => {
 			</div>
 
 			{ loading && <Img
-				src={ `${ AGWP.pluginURL }assets/img/placeholder.svg` }
+				src={ `${ AGWP_LIBRARY.pluginURL }assets/img/placeholder.svg` }
 				alt="Loading icon"
 			/> }
 

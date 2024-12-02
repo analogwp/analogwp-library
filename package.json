@@ -1,5 +1,5 @@
 {
-  "name": "analog-library",
+  "name": "custom-library-for-elementor",
   "version": "2.1.0",
   "description": "Handfully crafted Elementor templates packs.",
   "main": "/client/index.js",
@@ -8,21 +8,21 @@
     "install-scripts": "composer install && npm install",
     "build": "wp-scripts build --webpack-src-dir=client --output-path=assets/js/app",
     "dev": "wp-scripts start --webpack-src-dir=client --output-path=assets/js/app",
-    "makePot": "wp i18n make-pot . ./languages/analog-library.pot",
-    "convertPot2json": "npx po2json ./languages/analog-library.pot ./languages/analog-library-analogwp-app.json -f jed1.x",
+    "makePot": "wp i18n make-pot . ./languages/custom-library-for-elementor.pot",
+    "convertPot2json": "npx po2json ./languages/custom-library-for-elementor.pot ./languages/custom-library-for-elementor-analogwp-library-app.json -f jed1.x",
     "plugin-zip": "npm run build && wp-scripts plugin-zip",
     "translate": "gulp translate"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/analogwp/analogwp-templates.git"
+    "url": "git+https://github.com/analogwp/custom-library-for-elementor.git"
   },
   "author": "Krishna and John",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/analogwp/analogwp-templates/issues"
+    "url": "https://github.com/analogwp/custom-library-for-elementor/issues"
   },
-  "homepage": "https://github.com/analogwp/analogwp-templates#readme",
+  "homepage": "https://github.com/analogwp/custom-library-for-elementor#readme",
   "dependencies": {
     "classnames": "^2.2.6",
     "react-masonry-css": "^1.0.14",
@@ -42,7 +42,7 @@
     "inc",
     "languages",
     "third-party",
-    "analog-library.php",
+    "custom-library-for-elementor.php",
     "uninstall.php",
     "readme.txt"
   ]

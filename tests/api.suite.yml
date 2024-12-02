@@ -2,7 +2,7 @@ actor: ApiTester
 modules:
     enabled:
         - REST:
-            url: '%WP_URL%/wp-json/agwp/v1'
+            url: '%WP_URL%/wp-json/agwp-library/v1'
             depends: PhpBrowser
             part: Json
         - \Helper\Api

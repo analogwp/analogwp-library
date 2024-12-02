@@ -240,7 +240,7 @@ class Utils extends Base {
 
 			$plugin_information = plugins_api(
 				'plugin_information',
-				array( 'slug' => 'analog-library' )
+				array( 'slug' => 'custom-library-for-elementor' )
 			);
 
 			if ( empty( $plugin_information->versions ) || ! is_array( $plugin_information->versions ) ) {

@@ -227,11 +227,11 @@ const Container = styled.div`
 const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 	const context = React.useContext( AnalogContext );
 
-	const filteredBlocks = context.state.blocks.filter( block => ! ( AGWP.license.status !== 'valid' && context.state.showFree && Boolean( block.is_pro ) ) );
+	const filteredBlocks = context.state.blocks.filter( block => ! ( AGWP_LIBRARY.license.status !== 'valid' && context.state.showFree && Boolean( block.is_pro ) ) );
 
-	const fallbackImg = AGWP.pluginURL + 'assets/img/placeholder.svg';
+	const fallbackImg = AGWP_LIBRARY.pluginURL + 'assets/img/placeholder.svg';
 
-	const isValid = ( isPro ) => ! ( isPro && AGWP.license.status !== 'valid' );
+	const isValid = ( isPro ) => ! ( isPro && AGWP_LIBRARY.license.status !== 'valid' );
 
 	// Masonry breakpoints.
 	let breakpointColumnsObj = {
@@ -242,7 +242,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 		700: 1,
 	};
 
-	if ( '2c' === AGWP.libraryTemplateCols ) {
+	if ( '2c' === AGWP_LIBRARY.libraryTemplateCols ) {
 		breakpointColumnsObj = {
 			default: 2,
 			2000: 2,
@@ -250,7 +250,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 			1300: 2,
 			700: 1,
 		};
-	} else if ( 'auto' === AGWP.libraryTemplateCols ) {
+	} else if ( 'auto' === AGWP_LIBRARY.libraryTemplateCols ) {
 		breakpointColumnsObj = {
 			default: 5,
 			2000: 4,
@@ -261,7 +261,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 	}
 
 	const getScreenshot = ( block ) => {
-		return block.thumbnail || AGWP.pluginURL + 'assets/img/placeholder.svg';
+		return block.thumbnail || AGWP_LIBRARY.pluginURL + 'assets/img/placeholder.svg';
 	};
 
 	const loadingThumbs = () => {
@@ -271,7 +271,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 				<img
 					key={ i }
 					className="thumb"
-					src={ `${ AGWP.pluginURL }assets/img/placeholder.svg` }
+					src={ `${ AGWP_LIBRARY.pluginURL }assets/img/placeholder.svg` }
 					alt="Loading icon"
 				/>
 			);
@@ -299,7 +299,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 					{ state.state.blockImported && (
 						<React.Fragment>
 							<p>
-								{ sprintf( __( 'The %s has been imported and is now available in the', 'ang' ), AGWP.isContainer ? 'container' : 'section' ) }
+								{ sprintf( __( 'The %s has been imported and is now available in the', 'ang' ), AGWP_LIBRARY.isContainer ? 'container' : 'section' ) }
 								{ ' ' }
 								<a
 									target="_blank"
@@ -307,10 +307,10 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 									href={ addQueryArgs( 'edit.php', {
 										post_type: 'elementor_library',
 										tabs_group: true,
-										elementor_library_type: AGWP.isContainer ? 'container' : 'section',
+										elementor_library_type: AGWP_LIBRARY.isContainer ? 'container' : 'section',
 									} ) }
 								>
-									{ sprintf( __( 'Elementor %s library', 'ang' ), AGWP.isContainer ? 'container' : 'section' ) }
+									{ sprintf( __( 'Elementor %s library', 'ang' ), AGWP_LIBRARY.isContainer ? 'container' : 'section' ) }
 								</a>.
 							</p>
 							<p>
@@ -351,7 +351,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 					{ filteredBlocks.length >= 1 && filteredBlocks.map( ( block ) => {
 						let requiresElementorPro = false;
 						if ( block.requiredPluginsrequiredPlugins && block.requiredPlugins.length > 0 ) {
-							const unresolvedPlugins = block.requiredPlugins.filter( ( plugin ) => plugin !== '' && ! AGWP.activePlugins.includes( plugin )
+							const unresolvedPlugins = block.requiredPlugins.filter( ( plugin ) => plugin !== '' && ! AGWP_LIBRARY.activePlugins.includes( plugin )
 							 );
 
 							// We are intentionally hiding patterns for now.
@@ -378,13 +378,13 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 											/>
 
 											<div className="actions">
-												<a href={AGWP.siteURL + `?post_type=elementor_library&p=${block.id}&preview=true`}
+												<a href={AGWP_LIBRARY.siteURL + `?post_type=elementor_library&p=${block.id}&preview=true`}
 												   target="_blank">
 													<Button isPrimary>
 														<Eye />
 													</Button>
 												</a>
-												<a href={AGWP.adminURL + `post.php?post=${block.id}&action=elementor`}
+												<a href={AGWP_LIBRARY.adminURL + `post.php?post=${block.id}&action=elementor`}
 												   target="_blank">
 													<Button isPrimary>
 														<Pencil/>

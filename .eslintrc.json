@@ -23,7 +23,7 @@
 	"globals": {
 		"wp": true,
 		"window": true,
-		"AGWP": true,
+		"AGWP_LIBRARY": true,
 		"elementor": true,
 		"Backbone": true,
 		"ElementorConfig": true,

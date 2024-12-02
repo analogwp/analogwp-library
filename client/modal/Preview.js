@@ -92,7 +92,7 @@ const Preview = ( props ) => {
 					</Button>
 				</a>
 
-				{ ! ( props.template.is_pro && AGWP.license.status !== 'valid' ) && (
+				{ ! ( props.template.is_pro && AGWP_LIBRARY.license.status !== 'valid' ) && (
 					<Button isPrimary onClick={ onRequestImport }>
 						{ props.insertText || __( 'Import Template', 'ang' ) }
 					</Button>
@@ -100,7 +100,7 @@ const Preview = ( props ) => {
 			</div>
 
 			{ loading && <Img
-				src={ `${ AGWP.pluginURL }assets/img/placeholder.svg` }
+				src={ `${ AGWP_LIBRARY.pluginURL }assets/img/placeholder.svg` }
 				alt={ __( 'Loading icon', 'ang' ) }
 			/> }
 

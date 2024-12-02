@@ -15,7 +15,7 @@
  * Author URI:  https://analogwp.com/
  * License:     GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: analog-library
+ * Text Domain: custom-library-for-elementor
  * Elementor tested up to: 3.25.3
  * Elementor Pro tested up to: 3.23.3
  */
@@ -23,7 +23,7 @@
 defined( 'ABSPATH' ) || exit;
 
 define( 'ANG_ELEMENTOR_MINIMUM', '3.10.0' );
-define( 'ANG_PHP_MINIMUM', '7.0' );
+define( 'ANG_PHP_MINIMUM', '7.4' );
 define( 'ANG_WP_MINIMUM', '6.0' );
 define( 'ANG_VERSION', '2.1.0' );
 define( 'ANG_PLUGIN_FILE', __FILE__ );

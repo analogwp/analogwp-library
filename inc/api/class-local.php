@@ -67,7 +67,7 @@ class Local extends Base {
 		foreach ( $endpoints as $endpoint => $details ) {
 			foreach ( $details as $method => $callback ) {
 				register_rest_route(
-					'agwp/v1',
+					'agwp-library/v1',
 					$endpoint,
 					array(
 						'methods'             => $method,
@@ -325,7 +325,7 @@ class Local extends Base {
 		$method = $request->get_param( 'method' );
 
 		if ( ! $block ) {
-			return new WP_Error( 'template_import_error', __( 'Invalid Template ID.', 'analog-library' ) );
+			return new WP_Error( 'template_import_error', __( 'Invalid Template ID.', 'custom-library-for-elementor' ) );
 		}
 
 		$data = $this->process_block_import( $block, $method );

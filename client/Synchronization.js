@@ -34,7 +34,7 @@ const Synchronization = () => {
 					</NotificationConsumer>
 				) }
 			</AnalogContext.Consumer>
-			{ ! AGWP.is_settings_page && (
+			{ ! AGWP_LIBRARY.is_settings_page && (
 				<Button className="close-modal">
 					<XMark
 						className="icons"

@@ -50,7 +50,7 @@ class Elementor {
 		wp_enqueue_style( 'analogwp-elementor-modal', ANG_PLUGIN_URL . 'assets/css/elementor-modal.css', array( 'dashicons' ), filemtime( ANG_PLUGIN_DIR . 'assets/css/elementor-modal.css' ) );
 
 		wp_enqueue_script(
-			'analogwp-app',
+			'analogwp-library-app',
 			ANG_PLUGIN_URL . 'assets/js/app/index.js',
 			array(
 				'react',
@@ -65,7 +65,7 @@ class Elementor {
 			filemtime( ANG_PLUGIN_DIR . 'assets/js/app/index.js' ),
 			true
 		);
-		wp_set_script_translations( 'analogwp-app', 'analog-library', ANG_PLUGIN_DIR . 'languages' );
+		wp_set_script_translations( 'analogwp-library-app', 'custom-library-for-elementor', ANG_PLUGIN_DIR . 'languages' );
 
 		wp_enqueue_style( 'wp-components' );
 
@@ -78,7 +78,7 @@ class Elementor {
 			)
 		);
 
-		wp_localize_script( 'analogwp-app', 'AGWP', $l10n );
+		wp_localize_script( 'analogwp-library-app', 'AGWP_LIBRARY', $l10n );
 
 		Utils::enqueue_settings_toggle_css();
 	}

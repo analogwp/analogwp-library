@@ -1,13 +1,17 @@
 {
-    "name": "analogwp/analog-library",
+    "name": "analogwp/custom-library-for-elementor",
     "description": "Custom Library for Elementor adds a number of intuitive styling controls in the Elementor editor that allow you to apply styles globally or per page.",
     "type": "wordpress-plugin",
     "license": "GPL-2.0",
     "authors": [
         {
             "name": "Krishna Kant Chourasiya",
-            "email": "krishna@smalltowndev.com"
-        }
+            "email": "krishna@analogwp.com"
+        },
+		{
+			"name": "John Fraskos",
+			"email": "john@analogwp.com"
+		}
     ],
     "minimum-stability": "dev",
   	"prefer-stable": true,
