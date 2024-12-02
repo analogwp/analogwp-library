@@ -20,3 +20,4 @@ tests/cache/*
 tests/error.log
 .DS_Store
 .zip
+make-pot.pot
