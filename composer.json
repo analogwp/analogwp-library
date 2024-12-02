@@ -4,13 +4,17 @@
     "type": "wordpress-plugin",
     "license": "GPL-2.0",
     "authors": [
+		{
+			"name": "AnalogWP",
+			"email": "hello@analogwp.com"
+		},
         {
             "name": "Krishna Kant Chourasiya",
-            "email": "krishna@analogwp.com"
+            "email": "lushkant@gmail.com"
         },
 		{
 			"name": "John Fraskos",
-			"email": "john@analogwp.com"
+			"email": "jfraskos@gmail.com"
 		}
     ],
     "minimum-stability": "dev",

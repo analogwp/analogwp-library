@@ -6,11 +6,12 @@
   "private": true,
   "scripts": {
     "install-scripts": "composer install && npm install",
-    "build": "wp-scripts build --webpack-src-dir=client --output-path=assets/js/app",
-    "dev": "wp-scripts start --webpack-src-dir=client --output-path=assets/js/app",
+    "build-app": "wp-scripts build --webpack-src-dir=client --output-path=assets/js/app",
+    "dev-app": "wp-scripts start --webpack-src-dir=client --output-path=assets/js/app",
     "makePot": "wp i18n make-pot . ./languages/custom-library-for-elementor.pot",
     "convertPot2json": "npx po2json ./languages/custom-library-for-elementor.pot ./languages/custom-library-for-elementor-analogwp-library-app.json -f jed1.x",
-    "plugin-zip": "npm run build && wp-scripts plugin-zip",
+    "build": "gulp build",
+    "gh:release": "gulp github-build",
     "translate": "gulp translate"
   },
   "repository": {
@@ -32,10 +33,23 @@
     "styled-components": "^4.1.3"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
     "@wordpress/scripts": "^30.4.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "del": "^5.1.0",
     "gulp": "^5.0.0",
+    "gulp-babel": "8.0.0",
     "gulp-checktextdomain": "^2.3.0",
-    "gulp-run-command": "^0.0.10"
+    "gulp-copy": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-rsync": "^0.0.8",
+    "gulp-run-command": "^0.0.10",
+    "gulp-uglify": "^3.0.2",
+    "gulp-zip": "^5.0.1"
   },
   "files": [
     "assets",
