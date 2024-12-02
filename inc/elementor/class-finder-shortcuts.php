@@ -31,7 +31,7 @@ class Finder_Shortcuts extends Base_Category {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Custom Library for Elementor Shortcuts', 'ang' );
+		return __( 'Custom Library for Elementor Shortcuts', 'custom-library-for-elementor' );
 	}
 
 	/**
@@ -44,19 +44,19 @@ class Finder_Shortcuts extends Base_Category {
 	public function get_category_items( array $options = array() ) {
 		return array(
 			'library'    => array(
-				'title'    => __( 'Templates Library', 'ang' ),
+				'title'    => __( 'Templates Library', 'custom-library-for-elementor' ),
 				'url'      => admin_url( 'admin.php?page=analog_library' ),
 				'icon'     => 'library-download',
 				'keywords' => array( 'analog', 'library', 'settings' ),
 			),
 			'settings'   => array(
-				'title'    => __( 'Settings', 'ang' ),
+				'title'    => __( 'Settings', 'custom-library-for-elementor' ),
 				'url'      => admin_url( 'admin.php?page=ang-library-settings' ),
 				'icon'     => 'settings',
 				'keywords' => array( 'analog', 'settings' ),
 			),
 			'style-kits' => array(
-				'title'    => __( 'Theme Analog Library', 'ang' ),
+				'title'    => __( 'Theme Analog Library', 'custom-library-for-elementor' ),
 				'url'      => admin_url( 'admin.php?page=style-kits' ),
 				'icon'     => 'settings',
 				'keywords' => array( 'analog', 'style', 'kits' ),

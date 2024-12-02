@@ -100,7 +100,7 @@ class Tools extends Base {
 		check_admin_referer( 'ang_rollback' );
 
 		if ( defined( 'STYLEKIT_DEBUG' ) || ! current_user_can( 'update_plugins' ) ) {
-			wp_die( esc_html__( 'Sorry, you are not allowed to rollback Analog Library plugin for this site.', 'ang' ) );
+			wp_die( esc_html__( 'Sorry, you are not allowed to rollback Analog Library plugin for this site.', 'custom-library-for-elementor' ) );
 		}
 
 		$rollback_versions = Utils::get_rollback_versions();
@@ -108,7 +108,7 @@ class Tools extends Base {
 		$version = filter_input( INPUT_GET, 'version', FILTER_SANITIZE_STRING );
 
 		if ( ! $version || ! in_array( $version, $rollback_versions, true ) ) {
-			wp_die( esc_html__( 'Error occurred, the version selected is invalid. Try selecting different version.', 'ang' ) );
+			wp_die( esc_html__( 'Error occurred, the version selected is invalid. Try selecting different version.', 'custom-library-for-elementor' ) );
 		}
 
 		?>
@@ -152,7 +152,7 @@ class Tools extends Base {
 
 		wp_die(
 			'',
-			esc_html__( 'Rollback to Previous Version', 'ang' ),
+			esc_html__( 'Rollback to Previous Version', 'custom-library-for-elementor' ),
 			array(
 				'response' => 200,
 			)

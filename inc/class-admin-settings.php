@@ -71,7 +71,7 @@ class Admin_Settings {
 		do_action( 'ang_update_options_' . $current_tab );
 		do_action( 'ang_update_options' );
 
-		self::add_message( __( 'Your settings have been saved.', 'ang' ) );
+		self::add_message( __( 'Your settings have been saved.', 'custom-library-for-elementor' ) );
 
 		// Clear any unwanted data and flush rules.
 		update_option( 'ang_queue_flush_rewrite_rules', 'yes' );
@@ -132,11 +132,11 @@ class Admin_Settings {
 			'ang_settings',
 			'ang_settings_data',
 			array(
-				'i18n_nav_warning'  => __( 'The changes you made will be lost if you navigate away from this page.', 'ang' ),
+				'i18n_nav_warning'  => __( 'The changes you made will be lost if you navigate away from this page.', 'custom-library-for-elementor' ),
 				'rollback_url'      => wp_nonce_url( admin_url( 'admin-post.php?action=ang_rollback&version=VERSION' ), 'ang_rollback' ),
 				'rollback_versions' => Utils::get_rollback_versions(),
-				'uploader_title'    => __( 'Select Image', 'ang' ),
-				'uploader_btn_text' => __( 'Use this image', 'ang' ),
+				'uploader_title'    => __( 'Select Image', 'custom-library-for-elementor' ),
+				'uploader_btn_text' => __( 'Use this image', 'custom-library-for-elementor' ),
 			)
 		);
 
@@ -611,7 +611,7 @@ class Admin_Settings {
 												<?php checked( isset( $option_value[ $key ] ) ? $option_value[ $key ] : 0, true ); ?>
 											/>
 											<span>
-												<span><?php esc_html_e( 'Toggle', 'ang' ); ?></span>
+												<span><?php esc_html_e( 'Toggle', 'custom-library-for-elementor' ); ?></span>
 											</span>
 											<p><?php echo esc_html( $val ); ?></p>
 										</label>
@@ -678,7 +678,7 @@ class Admin_Settings {
 								<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>
 							/> <?php echo $description; // WPCS: XSS ok. ?>
 							<?php if ( $value['switch'] ) { ?>
-								<span><?php esc_html_e( 'Toggle', 'ang' ); ?></span>
+								<span><?php esc_html_e( 'Toggle', 'custom-library-for-elementor' ); ?></span>
 							<?php } ?>
 						</label> <?php echo $tooltip_html; // WPCS: XSS ok. ?>
 					<?php
@@ -742,8 +742,8 @@ class Admin_Settings {
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
 							<img class="<?php echo esc_attr( $value['type'] ); ?>" id="<?php echo esc_attr( $value['type'] ) . '-' . esc_attr( $value['id'] ); ?>" src="<?php echo esc_url( $image_url ); ?>" />
 							<div>
-								<a href="#" class="ang-upload-image-btn" data-element-id="<?php echo esc_attr( $value['type'] ) . '-' . esc_attr( $value['id'] ); ?>"><?php esc_html_e( 'Change Image', 'ang' ); ?></a>
-								<a href="#" class="ang-remove-image-btn" data-default-image="<?php echo esc_url( $default_image ); ?>" style="display:<?php echo esc_attr( $display ); ?>;"><?php esc_html_e( 'Revert to Default', 'ang' ); ?></a>
+								<a href="#" class="ang-upload-image-btn" data-element-id="<?php echo esc_attr( $value['type'] ) . '-' . esc_attr( $value['id'] ); ?>"><?php esc_html_e( 'Change Image', 'custom-library-for-elementor' ); ?></a>
+								<a href="#" class="ang-remove-image-btn" data-default-image="<?php echo esc_url( $default_image ); ?>" style="display:<?php echo esc_attr( $display ); ?>;"><?php esc_html_e( 'Revert to Default', 'custom-library-for-elementor' ); ?></a>
 								<input
 									name="<?php echo esc_attr( $value['id'] ); ?>"
 									id="<?php echo esc_attr( $value['id'] ); ?>"

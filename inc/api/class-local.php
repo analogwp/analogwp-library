@@ -403,13 +403,13 @@ class Local extends Base {
 		$value = $request->get_param( 'value' );
 
 		if ( ! $key ) {
-			return new WP_Error( 'settings_error', __( 'No options key provided.', 'ang' ) );
+			return new WP_Error( 'settings_error', __( 'No options key provided.', 'custom-library-for-elementor' ) );
 		}
 
 		Options::get_instance()->set( $key, $value );
 
 		return new WP_REST_Response(
-			array( 'message' => __( 'Setting updated.', 'ang' ) ),
+			array( 'message' => __( 'Setting updated.', 'custom-library-for-elementor' ) ),
 			200
 		);
 	}

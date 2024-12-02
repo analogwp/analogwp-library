@@ -212,7 +212,7 @@ const Sidebar = ( { state } ) => {
 	return (
 		<SidebarWrapper className={`sidebar ${!context.state.blockArchive.length ? 'no-templates' : ''}`}>
 			{/*<TextControl*/}
-			{/*	placeholder={ AGWP_LIBRARY.isContainer ? __( 'Search Templates', 'ang' ) : __( 'Search Blocks', 'ang' ) }*/}
+			{/*	placeholder={ AGWP_LIBRARY.isContainer ? __( 'Search Templates', 'custom-library-for-elementor' ) : __( 'Search Blocks', 'custom-library-for-elementor' ) }*/}
 			{/*	value={ context.state.blocksSearchInput }*/}
 			{/*	onChange={ ( value ) => {*/}
 			{/*		context.handleSearch( value, 'patterns' );*/}

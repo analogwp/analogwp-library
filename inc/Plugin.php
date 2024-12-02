@@ -107,7 +107,7 @@ final class Plugin {
 			filemtime( ANG_PLUGIN_DIR . 'assets/js/app/index.js' ),
 			true
 		);
-		wp_set_script_translations( 'analogwp-library-app', 'ang', ANG_PLUGIN_DIR . 'languages' );
+		wp_set_script_translations( 'analogwp-library-app', 'custom-library-for-elementor', ANG_PLUGIN_DIR . 'languages' );
 
 		$i10n = apply_filters( // phpcs:ignore
 			'analog/app/strings',
@@ -207,7 +207,7 @@ final class Plugin {
 	 * @return array An array of plugin action links.
 	 */
 	public function plugin_action_links( $links ) {
-		$settings_link = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=ang-library-settings' ), __( 'Settings', 'ang' ) );
+		$settings_link = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=ang-library-settings' ), __( 'Settings', 'custom-library-for-elementor' ) );
 
 		array_unshift( $links, $settings_link );
 
@@ -277,7 +277,7 @@ final class Plugin {
 	 * @return void
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'ang', false, dirname( ANG_PLUGIN_BASE ) . '/languages/' );
+		load_plugin_textdomain( 'custom-library-for-elementor', false, dirname( ANG_PLUGIN_BASE ) . '/languages/' );
 	}
 
 	/**

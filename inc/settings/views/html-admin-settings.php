@@ -25,7 +25,7 @@ if ( ! $tab_exists ) {
 }
 ?>
 <div class="wrap ang <?php echo esc_attr( $current_tab ); ?>">
-	<h1 class="menu-title"><?php esc_html_e( 'Library Settings', 'ang' ); ?></h1>
+	<h1 class="menu-title"><?php esc_html_e( 'Library Settings', 'custom-library-for-elementor' ); ?></h1>
 	<div class="ang-wrapper">
 		<form method="<?php echo esc_attr( apply_filters( 'ang_settings_form_method_tab_' . $current_tab, 'post' ) ); ?>" id="mainform" action="" enctype="multipart/form-data">
 			<nav class="nav-tab-wrapper ang-nav-tab-wrapper">
@@ -50,7 +50,7 @@ if ( ! $tab_exists ) {
 				?>
 				<p class="submit">
 					<?php if ( empty( $GLOBALS['hide_save_button'] ) ) : ?>
-						<button name="save" class="button-primary ang-save-button" type="submit" value="<?php esc_attr_e( 'Save changes', 'ang' ); ?>"><?php esc_html_e( 'Save changes', 'ang' ); ?></button>
+						<button name="save" class="button-primary ang-save-button" type="submit" value="<?php esc_attr_e( 'Save changes', 'custom-library-for-elementor' ); ?>"><?php esc_html_e( 'Save changes', 'custom-library-for-elementor' ); ?></button>
 					<?php endif; ?>
 					<?php wp_nonce_field( 'ang-library-settings' ); ?>
 				</p>

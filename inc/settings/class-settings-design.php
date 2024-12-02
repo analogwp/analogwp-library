@@ -20,7 +20,7 @@ class Design extends Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'design';
-		$this->label = __( 'Design', 'ang' );
+		$this->label = __( 'Design', 'custom-library-for-elementor' );
 		parent::__construct();
 	}
 
@@ -35,7 +35,7 @@ class Design extends Settings_Page {
 			'ang_experiments_settings',
 			array(
 				array(
-					'title' => esc_html__( 'Library popup style', 'ang' ),
+					'title' => esc_html__( 'Library popup style', 'custom-library-for-elementor' ),
 					'type'  => 'title',
 					'id'    => 'ang_library_popup_style',
 				),
@@ -43,8 +43,8 @@ class Design extends Settings_Page {
 					'id'      => 'library_popup_style',
 					'type'    => 'radio',
 					'options' => array(
-						'compact'     => __( 'Compact (popup)', 'ang' ),
-						'full-screen' => __( 'Fullscreen', 'ang' ),
+						'compact'     => __( 'Compact (popup)', 'custom-library-for-elementor' ),
+						'full-screen' => __( 'Fullscreen', 'custom-library-for-elementor' ),
 					),
 					'default' => 'compact',
 				),
@@ -53,7 +53,7 @@ class Design extends Settings_Page {
 					'id'   => 'ang_library_popup_style',
 				),
 				array(
-					'title' => esc_html__( 'Template columns', 'ang' ),
+					'title' => esc_html__( 'Template columns', 'custom-library-for-elementor' ),
 					'type'  => 'title',
 					'id'    => 'ang_library_template_columns',
 				),
@@ -61,9 +61,9 @@ class Design extends Settings_Page {
 					'id'      => 'library_template_columns',
 					'type'    => 'radio',
 					'options' => array(
-						'2c'   => __( '2 Columns', 'ang' ),
-						'3c'   => __( '3 Columns', 'ang' ),
-						'auto' => __( 'Auto', 'ang' ),
+						'2c'   => __( '2 Columns', 'custom-library-for-elementor' ),
+						'3c'   => __( '3 Columns', 'custom-library-for-elementor' ),
+						'auto' => __( 'Auto', 'custom-library-for-elementor' ),
 					),
 					'default' => '3c',
 				),
@@ -72,7 +72,7 @@ class Design extends Settings_Page {
 					'id'   => 'ang_library_template_columns',
 				),
 				array(
-					'title' => esc_html__( 'Categories location', 'ang' ),
+					'title' => esc_html__( 'Categories location', 'custom-library-for-elementor' ),
 					'type'  => 'title',
 					'id'    => 'ang_library_categories_location',
 				),
@@ -80,15 +80,15 @@ class Design extends Settings_Page {
 					'id'      => 'library_categories_location',
 					'type'    => 'radio',
 					'options' => array(
-						'vertical'        => __( 'Sidebar', 'ang' ),
-						'horizontal'      => __( 'Horizontal', 'ang' ),
-						'hide-categories' => __( 'None', 'ang' ),
+						'vertical'        => __( 'Sidebar', 'custom-library-for-elementor' ),
+						'horizontal'      => __( 'Horizontal', 'custom-library-for-elementor' ),
+						'hide-categories' => __( 'None', 'custom-library-for-elementor' ),
 					),
 					'default' => 'horizontal',
 				),
 				array(
 					'id'      => 'show_library_categories_template_count',
-					'desc'	  => esc_html__( 'Show categories template count', 'ang' ),
+					'desc'	  => esc_html__( 'Show categories template count', 'custom-library-for-elementor' ),
 					'type'    => 'checkbox',
 					'default' => false,
 				),

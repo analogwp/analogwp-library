@@ -299,7 +299,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 					{ state.state.blockImported && (
 						<React.Fragment>
 							<p>
-								{ sprintf( __( 'The %s has been imported and is now available in the', 'ang' ), AGWP_LIBRARY.isContainer ? 'container' : 'section' ) }
+								{ sprintf( __( 'The %s has been imported and is now available in the', 'custom-library-for-elementor' ), AGWP_LIBRARY.isContainer ? 'container' : 'section' ) }
 								{ ' ' }
 								<a
 									target="_blank"
@@ -310,7 +310,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 										elementor_library_type: AGWP_LIBRARY.isContainer ? 'container' : 'section',
 									} ) }
 								>
-									{ sprintf( __( 'Elementor %s library', 'ang' ), AGWP_LIBRARY.isContainer ? 'container' : 'section' ) }
+									{ sprintf( __( 'Elementor %s library', 'custom-library-for-elementor' ), AGWP_LIBRARY.isContainer ? 'container' : 'section' ) }
 								</a>.
 							</p>
 							<p>
@@ -324,7 +324,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 										} );
 									} }
 								>
-									{ __( 'Ok, thanks', 'ang' ) } <Dashicon icon="yes" />
+									{ __( 'Ok, thanks', 'custom-library-for-elementor' ) } <Dashicon icon="yes" />
 								</Button>
 							</p>
 						</React.Fragment>
@@ -336,11 +336,11 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 			<Container className="blocks-area">
 
 				{ ! context.state.syncing && context.state.blocks.length < 1 && (
-					<Empty text={ __( 'No Templates found', 'ang' ) } />
+					<Empty text={ __( 'No Templates found', 'custom-library-for-elementor' ) } />
 				) }
 
 				{ context.state.syncing && context.state.blocks.length < 1 && (
-					<Empty text={ __( 'Loading Templates...', 'ang' ) } />
+					<Empty text={ __( 'Loading Templates...', 'custom-library-for-elementor' ) } />
 				) }
 				{ console.log(  ) }
 				<Masonry
@@ -365,7 +365,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 								<Card>
 									<CardBody>
 										{block.is_pro && (
-											<span className="pro">{__('Pro', 'ang')}</span>
+											<span className="pro">{__('Pro', 'custom-library-for-elementor')}</span>
 										)}
 
 										<figure>
@@ -394,7 +394,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 													{({add}) => (
 														!requiresElementorPro && isValid(block.is_pro) && (
 															<Button isPrimary onClick={() => importBlock(block, add)} className="is-large">
-																<Download/>&nbsp;{__('Insert', 'ang')}
+																<Download/>&nbsp;{__('Insert', 'custom-library-for-elementor')}
 															</Button>
 														)
 													)}
@@ -413,7 +413,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 								</Card>
 								<div className="content">
 									<h3>{decodeEntities(block.title)}</h3>
-									{block.is_pro && <span className="pro">{__('Pro', 'ang')}</span>}
+									{block.is_pro && <span className="pro">{__('Pro', 'custom-library-for-elementor')}</span>}
 								</div>
 							</div>
 						);

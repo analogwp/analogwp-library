@@ -40,8 +40,8 @@ final class Admin extends Base {
 		if ( $is_analog_screen ) {
 			$text = sprintf(
 				/* translators: 1: Custom Library for Elementor, 2: Link to plugin review */
-				__( 'Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!', 'ang' ),
-				'<strong>' . __( 'Custom Library for Elementor', 'ang' ) . '</strong>',
+				__( 'Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!', 'custom-library-for-elementor' ),
+				'<strong>' . __( 'Custom Library for Elementor', 'custom-library-for-elementor' ) . '</strong>',
 				'<a href="https://analogwp.com/admin-review" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
 			);
 		}
@@ -62,8 +62,8 @@ final class Admin extends Base {
 	public function plugin_row_meta( $plugin_meta, $plugin_file ) {
 		if ( ANG_PLUGIN_BASE === $plugin_file ) {
 			$row_meta = array(
-				'ang_docs'    => '<a href="https://analogwp.com/docs/" aria-label="' . esc_attr( __( 'View Documentation', 'ang' ) ) . '" target="_blank">' . __( 'Documentation', 'ang' ) . '</a>',
-				'ang_support' => '<a href="https://analogwp.com/support/" aria-label="' . esc_attr( __( 'Get Support', 'ang' ) ) . '" target="_blank">' . __( 'Get Support', 'ang' ) . '</a>',
+				'ang_docs'    => '<a href="https://analogwp.com/docs/" aria-label="' . esc_attr( __( 'View Documentation', 'custom-library-for-elementor' ) ) . '" target="_blank">' . __( 'Documentation', 'custom-library-for-elementor' ) . '</a>',
+				'ang_support' => '<a href="https://analogwp.com/support/" aria-label="' . esc_attr( __( 'Get Support', 'custom-library-for-elementor' ) ) . '" target="_blank">' . __( 'Get Support', 'custom-library-for-elementor' ) . '</a>',
 			);
 
 			$plugin_meta = array_merge( $plugin_meta, $row_meta );

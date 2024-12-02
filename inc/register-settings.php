@@ -24,7 +24,7 @@ function register_menu() {
 	$menu_slug = 'analog_library';
 
 	add_menu_page(
-		esc_html__( 'Custom Library for Elementor', 'ang' ),
+		esc_html__( 'Custom Library for Elementor', 'custom-library-for-elementor' ),
 		esc_html__( 'Custom Library', 'ang-library' ),
 		$permission,
 		$menu_slug,
@@ -35,8 +35,8 @@ function register_menu() {
 
 	add_submenu_page(
 		$menu_slug,
-		__( 'Custom Library Settings', 'ang' ),
-		__( 'Settings', 'ang' ),
+		__( 'Custom Library Settings', 'custom-library-for-elementor' ),
+		__( 'Settings', 'custom-library-for-elementor' ),
 		'manage_options',
 		'ang-library-settings',
 		'Analog\Settings\new_settings_page'

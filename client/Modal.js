@@ -79,18 +79,18 @@ const Modal = props => {
 		<Container loading={ loading }>
 			<div className="frame-header">
 				<Button isSecondary onClick={ props.onRequestClose }>
-					{ __( 'Exit preview', 'ang' ) }
+					{ __( 'Exit preview', 'custom-library-for-elementor' ) }
 				</Button>
 
 				<a href={ props.template.url } rel="noopener noreferrer" target="_blank">
 					<Button isSecondary>
-						{ __( 'Open in new tab', 'ang' ) }
+						{ __( 'Open in new tab', 'custom-library-for-elementor' ) }
 					</Button>
 				</a>
 
 				{ ! ( props.template.is_pro && AGWP_LIBRARY.license.status !== 'valid' ) && (
 					<Button isPrimary onClick={ props.onRequestImport }>
-						{ __( 'Import Template', 'ang' ) }
+						{ __( 'Import Template', 'custom-library-for-elementor' ) }
 					</Button>
 				) }
 			</div>

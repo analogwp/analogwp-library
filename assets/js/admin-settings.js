@@ -10,7 +10,7 @@
 				e.preventDefault();
 			}
 			const elSubmitBtn = $( '#ang-newsletter-submit' );
-			let status = __( 'Subscribing', 'ang' );
+			let status = __( 'Subscribing', 'custom-library-for-elementor' );
 			const angEmail = $( '#ang-newsletter-email' ).val();
 			elSubmitBtn.text( status );
 
@@ -23,14 +23,14 @@
 					email: angEmail,
 				},
 				error: function() {
-					status = __( 'Failed', 'ang' );
+					status = __( 'Failed', 'custom-library-for-elementor' );
 					elSubmitBtn.text( status );
 					setTimeout( function() {
-						elSubmitBtn.text( __( 'Subscribe up to newsletter', 'ang' ) );
+						elSubmitBtn.text( __( 'Subscribe up to newsletter', 'custom-library-for-elementor' ) );
 					}, 2000 );
 				},
 				success: function() {
-					status = __( 'Subscribed', 'ang' );
+					status = __( 'Subscribed', 'custom-library-for-elementor' );
 					elSubmitBtn.text( status );
 					elSubmitBtn.attr( 'disabled', 'disabled' );
 				},

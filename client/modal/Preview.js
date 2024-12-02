@@ -83,25 +83,25 @@ const Preview = ( props ) => {
 		<Container loading={ loading } { ...rest }>
 			<div className="frame-header">
 				<Button isSecondary onClick={ onRequestClose }>
-					{ __( 'Back to Library', 'ang' ) }
+					{ __( 'Back to Library', 'custom-library-for-elementor' ) }
 				</Button>
 
 				<a href={ previewURL } rel="noopener noreferrer" target="_blank">
 					<Button isSecondary>
-						{ __( 'Open in new tab', 'ang' ) }
+						{ __( 'Open in new tab', 'custom-library-for-elementor' ) }
 					</Button>
 				</a>
 
 				{ ! ( props.template.is_pro && AGWP_LIBRARY.license.status !== 'valid' ) && (
 					<Button isPrimary onClick={ onRequestImport }>
-						{ props.insertText || __( 'Import Template', 'ang' ) }
+						{ props.insertText || __( 'Import Template', 'custom-library-for-elementor' ) }
 					</Button>
 				) }
 			</div>
 
 			{ loading && <Img
 				src={ `${ AGWP_LIBRARY.pluginURL }assets/img/placeholder.svg` }
-				alt={ __( 'Loading icon', 'ang' ) }
+				alt={ __( 'Loading icon', 'custom-library-for-elementor' ) }
 			/> }
 
 			<FocusableIframe src={ previewURL } onLoad={ () => setLoading( false ) } />

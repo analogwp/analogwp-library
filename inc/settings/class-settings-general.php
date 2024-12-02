@@ -23,7 +23,7 @@ class General extends Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'general';
-		$this->label = __( 'General', 'ang' );
+		$this->label = __( 'General', 'custom-library-for-elementor' );
 
 		parent::__construct();
 	}
@@ -44,19 +44,19 @@ class General extends Settings_Page {
 
 			$settings = array(
 				array(
-					'title' => esc_html__( 'General Settings', 'ang' ),
+					'title' => esc_html__( 'General Settings', 'custom-library-for-elementor' ),
 					'type'  => 'title',
 					'id'    => 'ang_general_settings',
 				),
 				array(
 					'id'      => 'hide_elementor_template_library',
-					'desc'    => __( 'Hide default Elementor Template library icon from editor.', 'ang' ),
+					'desc'    => __( 'Hide default Elementor Template library icon from editor.', 'custom-library-for-elementor' ),
 					'type'    => 'checkbox',
 					'default' => false,
 				),
 				array(
 					'id'      => 'allow_svg_uploads',
-					'desc'    => esc_html_x( 'Enable SVG Uploads', 'settings title', 'ang' ),
+					'desc'    => esc_html_x( 'Enable SVG Uploads', 'settings title', 'custom-library-for-elementor' ),
 					'type'    => 'checkbox',
 					'default' => true,
 				),
@@ -66,11 +66,11 @@ class General extends Settings_Page {
 				),
 				array(
 					'type'  => 'title',
-					'title' => esc_html__( 'Placeholder image', 'ang' ),
+					'title' => esc_html__( 'Placeholder image', 'custom-library-for-elementor' ),
 					'id'    => 'ang_change_default_placeholder_thumb',
 				),
 				array(
-					'desc'    => __( 'Replace the default placeholder image.', 'ang' ),
+					'desc'    => __( 'Replace the default placeholder image.', 'custom-library-for-elementor' ),
 					'id'      => 'default-placeholder-thumb',
 					'default' => ANG_PLUGIN_URL . 'assets/img/placeholder.png',
 					'type'    => 'media-image',
