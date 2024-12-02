@@ -29,7 +29,7 @@ function register_menu() {
 		$permission,
 		$menu_slug,
 		'Analog\Settings\settings_page',
-		ANG_PLUGIN_URL . 'assets/img/triangle.svg',
+		AGWP_LIBRARY_PLUGIN_URL . 'assets/img/triangle.svg',
 		'58.6'
 	);
 

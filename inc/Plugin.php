@@ -64,7 +64,7 @@ final class Plugin {
 	 */
 	public function register() {
 		add_action( 'init', array( self::$instance, 'load_textdomain' ) );
-		add_filter( 'plugin_action_links_' . plugin_basename( ANG_PLUGIN_FILE ), array( self::$instance, 'plugin_action_links' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( AGWP_LIBRARY_PLUGIN_FILE ), array( self::$instance, 'plugin_action_links' ) );
 		add_action( 'admin_enqueue_scripts', array( self::$instance, 'scripts' ) );
 		add_filter( 'analog/app/strings', array( self::$instance, 'send_strings_to_app' ) );
 
@@ -88,11 +88,11 @@ final class Plugin {
 
 		wp_enqueue_style( 'wp-components' );
 		wp_enqueue_style( 'analog-google-fonts', 'https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap', array(), '20221016' );
-		wp_enqueue_style( 'analogwp-components-css', ANG_PLUGIN_URL . 'assets/css/sk-components.css', array(), filemtime( ANG_PLUGIN_DIR . 'assets/css/sk-components.css' ) );
+		wp_enqueue_style( 'analogwp-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/sk-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/sk-components.css' ) );
 
 		wp_enqueue_script(
 			'analogwp-library-app',
-			ANG_PLUGIN_URL . 'assets/js/app/index.js',
+			AGWP_LIBRARY_PLUGIN_URL . 'assets/js/app/index.js',
 			array(
 				'react',
 				'react-dom',
@@ -104,10 +104,10 @@ final class Plugin {
 				'wp-api-fetch',
 				'wp-html-entities',
 			),
-			filemtime( ANG_PLUGIN_DIR . 'assets/js/app/index.js' ),
+			filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/app/index.js' ),
 			true
 		);
-		wp_set_script_translations( 'analogwp-library-app', 'custom-library-for-elementor', ANG_PLUGIN_DIR . 'languages' );
+		wp_set_script_translations( 'analogwp-library-app', 'custom-library-for-elementor', AGWP_LIBRARY_PLUGIN_DIR . 'languages' );
 
 		$i10n = apply_filters( // phpcs:ignore
 			'analog/app/strings',
@@ -156,10 +156,10 @@ final class Plugin {
 			'favorites'                          => $favorites,
 			'blockFavorites'                     => $block_favorites,
 			'isPro'                              => Utils::is_pro(),
-			'version'                            => ANG_VERSION,
+			'version'                            => AGWP_LIBRARY_VERSION,
 			'elementorURL'                       => admin_url( 'edit.php?post_type=elementor_library' ),
 			'debugMode'                          => ( defined( 'ANALOG_DEV_DEBUG' ) && ANALOG_DEV_DEBUG ),
-			'pluginURL'                          => ANG_PLUGIN_URL,
+			'pluginURL'                          => AGWP_LIBRARY_PLUGIN_URL,
 			'license'                            => Utils::has_pro() ? array(
 				'status'  => $options->get( 'ang_license_key_status' ),
 				'message' => get_transient( 'ang_license_message' ),
@@ -223,40 +223,40 @@ final class Plugin {
 	 * @return void
 	 */
 	private function includes() {
-		require_once ANG_PLUGIN_DIR . 'inc/Core/Storage/Transients.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Storage/Transients.php';
 
-		require_once ANG_PLUGIN_DIR . 'inc/register-settings.php';
-		require_once ANG_PLUGIN_DIR . 'inc/settings-helpers.php';
-		require_once ANG_PLUGIN_DIR . 'inc/class-base.php';
-		require_once ANG_PLUGIN_DIR . 'inc/class-import-image.php';
-		require_once ANG_PLUGIN_DIR . 'inc/class-options.php';
-		require_once ANG_PLUGIN_DIR . 'inc/Core/SVGs/Allow.php';
-		require_once ANG_PLUGIN_DIR . 'inc/Consumer.php';
-		require_once ANG_PLUGIN_DIR . 'inc/admin/Notice.php';
-		require_once ANG_PLUGIN_DIR . 'inc/admin/Notices.php';
-		require_once ANG_PLUGIN_DIR . 'inc/Utils.php';
-		require_once ANG_PLUGIN_DIR . 'inc/api/class-remote.php';
-		require_once ANG_PLUGIN_DIR . 'inc/api/class-local.php';
-		require_once ANG_PLUGIN_DIR . 'inc/class-analog-importer.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/register-settings.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/settings-helpers.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-base.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-import-image.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-options.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/SVGs/Allow.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Consumer.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/admin/Notice.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/admin/Notices.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Utils.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/api/class-remote.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/api/class-local.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-analog-importer.php';
 
-		require_once ANG_PLUGIN_DIR . 'inc/Core/Data/class-base-db.php';
-		require_once ANG_PLUGIN_DIR . 'inc/Core/Data/class-templates-db.php';
-		require_once ANG_PLUGIN_DIR . 'inc/Core/Data/class-library-data.php';
-		require_once ANG_PLUGIN_DIR . 'inc/Core/class-library-init.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Data/class-base-db.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Data/class-templates-db.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Data/class-library-data.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/class-library-init.php';
 
-		require_once ANG_PLUGIN_DIR . 'inc/class-elementor.php';
-		require_once ANG_PLUGIN_DIR . 'inc/class-cron.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-elementor.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-cron.php';
 
-		require_once ANG_PLUGIN_DIR . 'inc/elementor/trait-document.php';
-		require_once ANG_PLUGIN_DIR . 'inc/elementor/class-tools.php';
-		require_once ANG_PLUGIN_DIR . 'inc/Database_Upgrader.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/elementor/trait-document.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/elementor/class-tools.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Database_Upgrader.php';
 
-		require_once ANG_PLUGIN_DIR . 'inc/admin/class-admin.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/admin/class-admin.php';
 
-		require_once ANG_PLUGIN_DIR . 'inc/class-beta-testers.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-beta-testers.php';
 
 		if ( defined( 'WP_CLI' ) && \WP_CLI ) {
-			require_once ANG_PLUGIN_DIR . 'inc/cli/commands.php';
+			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/cli/commands.php';
 		}
 	}
 
@@ -277,7 +277,7 @@ final class Plugin {
 	 * @return void
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'custom-library-for-elementor', false, dirname( ANG_PLUGIN_BASE ) . '/languages/' );
+		load_plugin_textdomain( 'custom-library-for-elementor', false, dirname( AGWP_LIBRARY_PLUGIN_BASE ) . '/languages/' );
 	}
 
 	/**
@@ -327,7 +327,7 @@ final class Analog_Templates {
 	 *
 	 * @var string
 	 */
-	public static $version = ANG_VERSION;
+	public static $version = AGWP_LIBRARY_VERSION;
 
 	public function __construct() {}
 }

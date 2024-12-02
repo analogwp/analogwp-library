@@ -60,7 +60,7 @@ final class Admin extends Base {
 	 * @return array An array of modified plugin row meta links.
 	 */
 	public function plugin_row_meta( $plugin_meta, $plugin_file ) {
-		if ( ANG_PLUGIN_BASE === $plugin_file ) {
+		if ( AGWP_LIBRARY_PLUGIN_BASE === $plugin_file ) {
 			$row_meta = array(
 				'ang_docs'    => '<a href="https://analogwp.com/docs/" aria-label="' . esc_attr( __( 'View Documentation', 'custom-library-for-elementor' ) ) . '" target="_blank">' . __( 'Documentation', 'custom-library-for-elementor' ) . '</a>',
 				'ang_support' => '<a href="https://analogwp.com/support/" aria-label="' . esc_attr( __( 'Get Support', 'custom-library-for-elementor' ) ) . '" target="_blank">' . __( 'Get Support', 'custom-library-for-elementor' ) . '</a>',

@@ -90,10 +90,10 @@ class Beta_Testers {
 
 		delete_site_transient( $this->transient_key );
 
-		$plugin_slug  = basename( ANG_PLUGIN_FILE, '.php' );
+		$plugin_slug  = basename( AGWP_LIBRARY_PLUGIN_FILE, '.php' );
 		$beta_version = $this->get_beta_version();
 
-		if ( 'false' !== $beta_version && version_compare( $beta_version, ANG_VERSION, '>' ) ) {
+		if ( 'false' !== $beta_version && version_compare( $beta_version, AGWP_LIBRARY_VERSION, '>' ) ) {
 			$response              = new \stdClass();
 			$response->plugin      = $plugin_slug;
 			$response->slug        = $plugin_slug;
@@ -101,7 +101,7 @@ class Beta_Testers {
 			$response->url         = 'https://analogwp.com/';
 			$response->package     = sprintf( 'https://downloads.wordpress.org/plugin/analogwp-templates.%s.zip', $beta_version );
 
-			$transient->response[ ANG_PLUGIN_BASE ] = $response;
+			$transient->response[ AGWP_LIBRARY_PLUGIN_BASE ] = $response;
 		}
 
 		return $transient;

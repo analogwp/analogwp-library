@@ -231,7 +231,7 @@ class Utils extends Base {
 		// @TODO: Remove when ready for rollbacks.
 		return array();
 
-		$rollback_versions = get_transient( 'ang_rollback_versions_' . ANG_VERSION );
+		$rollback_versions = get_transient( 'ang_rollback_versions_' . AGWP_LIBRARY_VERSION );
 
 		if ( false === $rollback_versions ) {
 			$max_versions = 20;
@@ -262,7 +262,7 @@ class Utils extends Base {
 					continue;
 				}
 
-				if ( version_compare( $version, ANG_VERSION, '>=' ) ) {
+				if ( version_compare( $version, AGWP_LIBRARY_VERSION, '>=' ) ) {
 					continue;
 				}
 
@@ -270,7 +270,7 @@ class Utils extends Base {
 				$rollback_versions[] = $version;
 			}
 
-			set_transient( 'ang_rollback_versions_' . ANG_VERSION, $rollback_versions, WEEK_IN_SECONDS );
+			set_transient( 'ang_rollback_versions_' . AGWP_LIBRARY_VERSION, $rollback_versions, WEEK_IN_SECONDS );
 		}
 
 		return $rollback_versions;

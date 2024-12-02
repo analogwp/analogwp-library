@@ -121,12 +121,12 @@ class Admin_Settings {
 		global $current_section, $current_tab;
 
 		do_action( 'ang_settings_start' );
-		wp_enqueue_style( 'ang_settings', ANG_PLUGIN_URL . 'assets/css/admin-settings.css', array(), filemtime( ANG_PLUGIN_DIR . 'assets/css/admin-settings.css' ) );
+		wp_enqueue_style( 'ang_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/admin-settings.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/admin-settings.css' ) );
 
 		// Enqueue all necessary WP Media APIs.
 		wp_enqueue_media();
 
-		wp_enqueue_script( 'ang_settings', ANG_PLUGIN_URL . 'assets/js/admin-settings.js', array( 'jquery', 'wp-util', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'wp-i18n', 'wp-api-fetch' ), filemtime( ANG_PLUGIN_DIR . 'assets/js/admin-settings.js' ), true );
+		wp_enqueue_script( 'ang_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/admin-settings.js', array( 'jquery', 'wp-util', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'wp-i18n', 'wp-api-fetch' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/admin-settings.js' ), true );
 
 		wp_localize_script(
 			'ang_settings',

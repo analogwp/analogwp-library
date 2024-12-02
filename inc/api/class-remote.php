@@ -80,7 +80,7 @@ class Remote extends Base {
 		add_action( 'ang_loaded_templates', array( $this, 'set_templates_info' ) );
 
 		self::$api_call_args = array(
-			'plugin_version' => ANG_VERSION,
+			'plugin_version' => AGWP_LIBRARY_VERSION,
 			'url'            => home_url(),
 		);
 	}

@@ -27,7 +27,7 @@ class Elementor {
 		add_action(
 			'elementor/finder/register',
 			static function ( Categories_Manager $categories_manager ) {
-				include_once ANG_PLUGIN_DIR . 'inc/elementor/class-finder-shortcuts.php';
+				include_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/elementor/class-finder-shortcuts.php';
 				$categories_manager->register( new Finder_Shortcuts() );
 			}
 		);
@@ -42,16 +42,16 @@ class Elementor {
 	public function enqueue_editor_scripts() {
 
 		// Independent components.
-		wp_enqueue_style( 'analogwp-components-css', ANG_PLUGIN_URL . 'assets/css/sk-components.css', array(), filemtime( ANG_PLUGIN_DIR . 'assets/css/sk-components.css' ) );
+		wp_enqueue_style( 'analogwp-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/sk-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/sk-components.css' ) );
 
 		do_action( 'ang_loaded_templates' );
 
-		wp_enqueue_script( 'analogwp-elementor-modal', ANG_PLUGIN_URL . 'assets/js/elementor-modal.js', array( 'jquery' ), filemtime( ANG_PLUGIN_DIR . 'assets/js/elementor-modal.js' ), false );
-		wp_enqueue_style( 'analogwp-elementor-modal', ANG_PLUGIN_URL . 'assets/css/elementor-modal.css', array( 'dashicons' ), filemtime( ANG_PLUGIN_DIR . 'assets/css/elementor-modal.css' ) );
+		wp_enqueue_script( 'analogwp-elementor-modal', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/elementor-modal.js', array( 'jquery' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/elementor-modal.js' ), false );
+		wp_enqueue_style( 'analogwp-elementor-modal', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/elementor-modal.css', array( 'dashicons' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/elementor-modal.css' ) );
 
 		wp_enqueue_script(
 			'analogwp-library-app',
-			ANG_PLUGIN_URL . 'assets/js/app/index.js',
+			AGWP_LIBRARY_PLUGIN_URL . 'assets/js/app/index.js',
 			array(
 				'react',
 				'react-dom',
@@ -62,10 +62,10 @@ class Elementor {
 				'wp-api-fetch',
 				'wp-html-entities',
 			),
-			filemtime( ANG_PLUGIN_DIR . 'assets/js/app/index.js' ),
+			filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/app/index.js' ),
 			true
 		);
-		wp_set_script_translations( 'analogwp-library-app', 'custom-library-for-elementor', ANG_PLUGIN_DIR . 'languages' );
+		wp_set_script_translations( 'analogwp-library-app', 'custom-library-for-elementor', AGWP_LIBRARY_PLUGIN_DIR . 'languages' );
 
 		wp_enqueue_style( 'wp-components' );
 

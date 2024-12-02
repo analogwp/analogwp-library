@@ -16,20 +16,20 @@
  * License:     GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: custom-library-for-elementor
- * Elementor tested up to: 3.25.3
- * Elementor Pro tested up to: 3.23.3
+ * Elementor tested up to: 3.25.10
+ * Elementor Pro tested up to: 3.23.4
  */
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'ANG_ELEMENTOR_MINIMUM', '3.10.0' );
-define( 'ANG_PHP_MINIMUM', '7.4' );
-define( 'ANG_WP_MINIMUM', '6.0' );
-define( 'ANG_VERSION', '2.1.0' );
-define( 'ANG_PLUGIN_FILE', __FILE__ );
-define( 'ANG_PLUGIN_URL', plugin_dir_url( ANG_PLUGIN_FILE ) );
-define( 'ANG_PLUGIN_DIR', plugin_dir_path( ANG_PLUGIN_FILE ) );
-define( 'ANG_PLUGIN_BASE', plugin_basename( ANG_PLUGIN_FILE ) );
+define( 'AGWP_LIBRARY_ELEMENTOR_MINIMUM', '3.10.0' );
+define( 'AGWP_LIBRARY_PHP_MINIMUM', '7.4' );
+define( 'AGWP_LIBRARY_WP_MINIMUM', '6.0' );
+define( 'AGWP_LIBRARY_VERSION', '2.1.0' );
+define( 'AGWP_LIBRARY_PLUGIN_FILE', __FILE__ );
+define( 'AGWP_LIBRARY_PLUGIN_URL', plugin_dir_url( AGWP_LIBRARY_PLUGIN_FILE ) );
+define( 'AGWP_LIBRARY_PLUGIN_DIR', plugin_dir_path( AGWP_LIBRARY_PLUGIN_FILE ) );
+define( 'AGWP_LIBRARY_PLUGIN_BASE', plugin_basename( AGWP_LIBRARY_PLUGIN_FILE ) );
 
 /**
  * Handles plugin activation.
@@ -41,10 +41,10 @@ define( 'ANG_PLUGIN_BASE', plugin_basename( ANG_PLUGIN_FILE ) );
  * @return void
  */
 function analog_activate_plugin() {
-	if ( version_compare( PHP_VERSION, ANG_PHP_MINIMUM, '<' ) ) {
+	if ( version_compare( PHP_VERSION, AGWP_LIBRARY_PHP_MINIMUM, '<' ) ) {
 		wp_die(
 			/* translators: %s: version number */
-			esc_html( sprintf( __( 'Custom Library for Elementor requires PHP version %s', 'custom-library-for-elementor' ), ANG_PHP_MINIMUM ) ),
+			esc_html( sprintf( __( 'Custom Library for Elementor requires PHP version %s', 'custom-library-for-elementor' ), AGWP_LIBRARY_PHP_MINIMUM ) ),
 			esc_html__( 'Error Activating', 'custom-library-for-elementor' )
 		);
 	}
@@ -62,7 +62,7 @@ register_activation_hook( __FILE__, 'analog_activate_plugin' );
  * @return void
  */
 function analog_deactivate_plugin() {
-	if ( version_compare( PHP_VERSION, ANG_PHP_MINIMUM, '<' ) ) {
+	if ( version_compare( PHP_VERSION, AGWP_LIBRARY_PHP_MINIMUM, '<' ) ) {
 		return;
 	}
 
@@ -79,7 +79,7 @@ register_deactivation_hook( __FILE__, 'analog_deactivate_plugin' );
  */
 function analog_fail_wp_version() {
 	/* translators: %s: WordPress version */
-	$message      = sprintf( esc_html__( 'Analog Library requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.', 'custom-library-for-elementor' ), ANG_WP_MINIMUM );
+	$message      = sprintf( esc_html__( 'Analog Library requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.', 'custom-library-for-elementor' ), AGWP_LIBRARY_WP_MINIMUM );
 	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
 
 	echo wp_kses_post( $html_message );
@@ -104,9 +104,9 @@ function analog_require_minimum_elementor() {
 	$update_url = wp_nonce_url( $link, 'upgrade-plugin_' . $file_path );
 
 	/* translators: %s: Minimum required Elementor version. */
-	$message = '<p>' . sprintf( __( 'Analog Library requires Elementor v%s or newer in order to work. Please update Elementor to the latest version.', 'custom-library-for-elementor' ), ANG_ELEMENTOR_MINIMUM ) . '</p>';
+	$message = '<p>' . sprintf( __( 'Analog Library requires Elementor v%s or newer in order to work. Please update Elementor to the latest version.', 'custom-library-for-elementor' ), AGWP_LIBRARY_ELEMENTOR_MINIMUM ) . '</p>';
 
-	$versions = get_transient( 'ang_rollback_versions_' . ANG_VERSION );
+	$versions = get_transient( 'ang_rollback_versions_' . AGWP_LIBRARY_VERSION );
 
 	$message .= '<p>';
 	/* translators: %s: Link to update Elementor. */
@@ -193,10 +193,10 @@ if ( is_readable( $vendor_file ) ) {
 add_action(
 	'plugins_loaded',
 	static function() {
-		if ( version_compare( PHP_VERSION, ANG_PHP_MINIMUM, '<' ) ) {
+		if ( version_compare( PHP_VERSION, AGWP_LIBRARY_PHP_MINIMUM, '<' ) ) {
 			wp_die(
 			/* translators: %s: version number */
-				esc_html( sprintf( __( 'Custom Library for Elementor requires PHP version %s', 'custom-library-for-elementor' ), ANG_PHP_MINIMUM ) ),
+				esc_html( sprintf( __( 'Custom Library for Elementor requires PHP version %s', 'custom-library-for-elementor' ), AGWP_LIBRARY_PHP_MINIMUM ) ),
 				esc_html__( 'Error Activating', 'custom-library-for-elementor' )
 			);
 		}
@@ -206,24 +206,24 @@ add_action(
 			return;
 		}
 
-		if ( ! version_compare( ELEMENTOR_VERSION, ANG_ELEMENTOR_MINIMUM, '>=' ) ) {
+		if ( ! version_compare( ELEMENTOR_VERSION, AGWP_LIBRARY_ELEMENTOR_MINIMUM, '>=' ) ) {
 			// Include files temporarily, required for rollbacks to work.
-			require_once ANG_PLUGIN_DIR . 'inc/class-base.php';
-			require_once ANG_PLUGIN_DIR . 'inc/Core/Storage/Transients.php';
-			require_once ANG_PLUGIN_DIR . 'inc/elementor/class-tools.php';
-			require_once ANG_PLUGIN_DIR . 'inc/Utils.php';
+			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-base.php';
+			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Storage/Transients.php';
+			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/elementor/class-tools.php';
+			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Utils.php';
 
 			add_action( 'admin_notices', 'analog_require_minimum_elementor' );
 			return;
 		}
 
-		if ( ! version_compare( get_bloginfo( 'version' ), ANG_WP_MINIMUM, '>=' ) ) {
+		if ( ! version_compare( get_bloginfo( 'version' ), AGWP_LIBRARY_WP_MINIMUM, '>=' ) ) {
 			add_action( 'admin_notices', 'analog_fail_wp_version' );
 			return;
 		}
 
-		require_once ANG_PLUGIN_DIR . 'inc/Plugin.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Plugin.php';
 
-		\Analog\Plugin::load( ANG_PLUGIN_FILE );
+		\Analog\Plugin::load( AGWP_LIBRARY_PLUGIN_FILE );
 	}
 );

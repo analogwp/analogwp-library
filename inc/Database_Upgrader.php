@@ -40,7 +40,7 @@ class Database_Upgrader {
 
 		$version = get_option( self::OPTION, '0.0.0' );
 
-		if ( version_compare( ANG_VERSION, $version, '=' ) ) {
+		if ( version_compare( AGWP_LIBRARY_VERSION, $version, '=' ) ) {
 			return;
 		}
 
@@ -72,7 +72,7 @@ class Database_Upgrader {
 	 */
 	protected function finish_up( $previous_version ) {
 		update_option( self::PREVIOUS_OPTION, $previous_version );
-		update_option( self::OPTION, ANG_VERSION );
+		update_option( self::OPTION, AGWP_LIBRARY_VERSION );
 	}
 
 	/**
