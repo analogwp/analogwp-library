@@ -6,11 +6,11 @@ name: Build Test
 on:
     push:
         branches:
-            - main
+            - develop
         paths-ignore:
             - 'pages/**'
     pull_request:
-        branches: [ main ]
+        branches: [ develop ]
 
 jobs:
 
