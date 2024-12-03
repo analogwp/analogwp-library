@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Analog\Plugin.
+ * Class Analog\CustomLibrary\Plugin.
  *
  * @copyright 2024 SmallTownDev
  * @package Analog

@@ -209,7 +209,7 @@ add_action(
 		if ( ! version_compare( ELEMENTOR_VERSION, AGWP_LIBRARY_ELEMENTOR_MINIMUM, '>=' ) ) {
 			// Include files temporarily, required for rollbacks to work.
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-base.php';
-			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Storage/Transients.php';
+			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Storage/class-transients.php';
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/elementor/class-tools.php';
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Utils.php';
 
@@ -222,7 +222,7 @@ add_action(
 			return;
 		}
 
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Plugin.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-plugin.php';
 
 		\Analog\Plugin::load( AGWP_LIBRARY_PLUGIN_FILE );
 	}
