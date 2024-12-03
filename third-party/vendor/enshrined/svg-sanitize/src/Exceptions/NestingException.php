@@ -1,6 +1,6 @@
 <?php
 
-namespace Analog\Dependencies\enshrined\svgSanitize\Exceptions;
+namespace AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\Exceptions;
 
 use Exception;
 class NestingException extends \Exception

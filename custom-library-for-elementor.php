@@ -2,7 +2,7 @@
 /**
  * Plugin main file.
  *
- * @package     Analog
+ * @package     AnalogWP/CustomLibrary
  * @copyright   2024 SmallTownDev
  * @link        https://analogwp.com/custom-library-for-elementor
  *
@@ -10,7 +10,7 @@
  * Plugin Name: Custom Library for Elementor
  * Plugin URI:  https://analogwp.com/custom-library-for-elementor
  * Description: Custom Library for Elementor extends the Elementor library with a custom library of your own templates. Boost your design workflow in Elementor with this plugin.
- * Version:     2.1.0
+ * Version:     0.1.0
  * Author:      AnalogWP
  * Author URI:  https://analogwp.com/
  * License:     GPL2
@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 define( 'AGWP_LIBRARY_ELEMENTOR_MINIMUM', '3.10.0' );
 define( 'AGWP_LIBRARY_PHP_MINIMUM', '7.4' );
 define( 'AGWP_LIBRARY_WP_MINIMUM', '6.0' );
-define( 'AGWP_LIBRARY_VERSION', '2.1.0' );
+define( 'AGWP_LIBRARY_VERSION', '0.1.0' );
 define( 'AGWP_LIBRARY_PLUGIN_FILE', __FILE__ );
 define( 'AGWP_LIBRARY_PLUGIN_URL', plugin_dir_url( AGWP_LIBRARY_PLUGIN_FILE ) );
 define( 'AGWP_LIBRARY_PLUGIN_DIR', plugin_dir_path( AGWP_LIBRARY_PLUGIN_FILE ) );
@@ -36,7 +36,6 @@ define( 'AGWP_LIBRARY_PLUGIN_BASE', plugin_basename( AGWP_LIBRARY_PLUGIN_FILE ) 
  *
  * Throws an error if the plugin is activated on an older version than PHP 5.6.
  *
- * @since 1.6.0
  * @access private
  * @return void
  */
@@ -57,7 +56,6 @@ register_activation_hook( __FILE__, 'analog_custom_library_activate_plugin' );
 /**
  * Handles plugin deactivation.
  *
- * @since 1.6.0
  * @access private
  * @return void
  */
@@ -74,7 +72,6 @@ register_deactivation_hook( __FILE__, 'analog_custom_library_deactivate_plugin' 
 /**
  * Fail loading, if WordPress version requirements not met.
  *
- * @since 1.1
  * @return void
  */
 function analog_custom_library_fail_wp_version() {
@@ -187,8 +184,6 @@ if ( is_readable( $vendor_file ) ) {
 
 /**
  * Fire up plugin instance.
- *
- * @since 1.6.0 Add PHP version check.
  */
 add_action(
 	'plugins_loaded',
@@ -211,7 +206,7 @@ add_action(
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-base.php';
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Storage/class-transients.php';
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/elementor/class-tools.php';
-			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Utils.php';
+			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-utils.php';
 
 			add_action( 'admin_notices', 'analog_custom_library_require_minimum_elementor' );
 			return;
@@ -224,6 +219,6 @@ add_action(
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-plugin.php';
 
-		\Analog\Plugin::load( AGWP_LIBRARY_PLUGIN_FILE );
+		\AnalogWP\CustomLibrary\Plugin::load( AGWP_LIBRARY_PLUGIN_FILE );
 	}
 );

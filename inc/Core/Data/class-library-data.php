@@ -2,10 +2,10 @@
 /**
  * Library Data handler.
  *
- * @package Custom Library for Elementor
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Core\Data;
+namespace AnalogWP\CustomLibrary\Core\Data;
 
 /**
  * Class Library_Data.

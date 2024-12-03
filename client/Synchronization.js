@@ -15,7 +15,7 @@ const Synchronization = () => {
 					<NotificationConsumer>
 						{ ( { add } ) => (
 							<Button
-								className={ classNames( 'ang-sync', {
+								className={ classNames( 'analog-custom-library-sync', {
 									'is-active': context.state.syncing,
 								} ) }
 								onClick={ e => {

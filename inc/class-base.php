@@ -2,15 +2,15 @@
 /**
  * Base class.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog;
+namespace AnalogWP\CustomLibrary;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Analog plugin.
+ * AnalogWP Custom Library plugin.
  *
  * The main plugin handler class is responsible for initializing Analog. The
  * class registers and all the components required to run the plugin.
@@ -115,7 +115,6 @@ class Base {
 	 *
 	 * Checks whether the required arguments exist in the specified arguments.
 	 *
-	 * @since 1.2.1
 	 * @access private
 	 *
 	 * @param array $required_args  Required arguments to check whether they

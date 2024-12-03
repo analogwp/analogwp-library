@@ -1,21 +1,19 @@
 <?php
 /**
- * Analog Settings Page/Tab
+ * AnalogWP\CustomLibrary Settings Page/Tab
  *
  * @author      AnalogWP
  * @category    Admin
- * @package     Analog/Admin
- * @since       1.3.8
+ * @package     AnalogWP/CustomLibrary
  */
 
-namespace Analog\Settings;
+namespace AnalogWP\CustomLibrary\Settings;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
  * Settings_Page.
  *
- * @since 1.3.8
  */
 abstract class Settings_Page {
 
@@ -37,16 +35,15 @@ abstract class Settings_Page {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'ang_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
-		add_action( 'ang_sections_' . $this->id, array( $this, 'output_sections' ) );
-		add_action( 'ang_settings_' . $this->id, array( $this, 'output' ) );
-		add_action( 'ang_settings_save_' . $this->id, array( $this, 'save' ) );
+		add_filter( 'analog_custom_library_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
+		add_action( 'analog_custom_library_sections_' . $this->id, array( $this, 'output_sections' ) );
+		add_action( 'analog_custom_library_settings_' . $this->id, array( $this, 'output' ) );
+		add_action( 'analog_custom_library_settings_save_' . $this->id, array( $this, 'save' ) );
 	}
 
 	/**
 	 * Get settings page ID.
 	 *
-	 * @since 3.0.0
 	 * @return string
 	 */
 	public function get_id() {
@@ -56,7 +53,6 @@ abstract class Settings_Page {
 	/**
 	 * Get settings page label.
 	 *
-	 * @since 3.0.0
 	 * @return string
 	 */
 	public function get_label() {
@@ -71,7 +67,7 @@ abstract class Settings_Page {
 	 * @return mixed
 	 */
 	public function add_settings_page( $pages ) {
-		if ( 'extensions' === $this->id && ! has_filter( 'ang_get_settings_' . $this->id ) ) {
+		if ( 'extensions' === $this->id && ! has_filter( 'analog_custom_library_get_settings_' . $this->id ) ) {
 			return $pages;
 		}
 
@@ -86,7 +82,7 @@ abstract class Settings_Page {
 	 * @return array
 	 */
 	public function get_settings() {
-		return apply_filters( 'ang_get_settings_' . $this->id, array() );
+		return apply_filters( 'analog_custom_library_get_settings_' . $this->id, array() );
 	}
 
 	/**
@@ -95,7 +91,7 @@ abstract class Settings_Page {
 	 * @return array
 	 */
 	public function get_sections() {
-		return apply_filters( 'ang_get_sections_' . $this->id, array() );
+		return apply_filters( 'analog_custom_library_get_sections_' . $this->id, array() );
 	}
 
 	/**
@@ -115,7 +111,7 @@ abstract class Settings_Page {
 		$array_keys = array_keys( $sections );
 
 		foreach ( $sections as $id => $label ) {
-			echo '<li><a href="' . esc_url( admin_url( 'admin.php?page=ang-library-settings&tab=' . $this->id . '&section=' . sanitize_title( $id ) ) ) . '" class="' . ( $current_section === $id ? 'current' : '' ) . '">' . esc_html( $label ) . '</a> ' . ( end( $array_keys ) === $id ? '' : '|' ) . ' </li>';
+			echo '<li><a href="' . esc_url( admin_url( 'admin.php?page=analog-custom-library-settings&tab=' . $this->id . '&section=' . sanitize_title( $id ) ) ) . '" class="' . ( $current_section === $id ? 'current' : '' ) . '">' . esc_html( $label ) . '</a> ' . ( end( $array_keys ) === $id ? '' : '|' ) . ' </li>';
 		}
 
 		echo '</ul><br class="clear" />';
@@ -140,7 +136,7 @@ abstract class Settings_Page {
 		Admin_Settings::save_fields( $settings );
 
 		if ( $current_section ) {
-			do_action( 'ang_update_options_' . $this->id . '_' . $current_section );
+			do_action( 'analog_custom_library_update_options_' . $this->id . '_' . $current_section );
 		}
 	}
 }

@@ -73,7 +73,7 @@ export default class Notifications extends React.Component {
 
 		return (
 			<NotificationsContext.Provider value={ { add } }>
-				<div className="ang-notices">{ this.getNotices() }</div>
+				<div className="analog-custom-library-notices">{ this.getNotices() }</div>
 				{ children }
 			</NotificationsContext.Provider>
 		);

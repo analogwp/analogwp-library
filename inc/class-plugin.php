@@ -1,26 +1,23 @@
 <?php
 /**
- * Class Analog\CustomLibrary\Plugin.
- *
- * @copyright 2024 SmallTownDev
- * @package Analog
- */
-
-namespace Analog;
-
-use Analog\Admin\Notices;
-
-/**
  * Main class for the plugin.
  *
- * @since 1.6.0
+ * @copyright 2024 SmallTownDev
+ * @package AnalogWP\CustomLibrary
+ */
+
+namespace AnalogWP\CustomLibrary;
+
+use AnalogWP\CustomLibrary\Admin\Notices;
+
+/**
+ * Class AnalogWP\CustomLibrary\Plugin.
  */
 final class Plugin {
 
 	/**
 	 * Main instance of the plugin.
 	 *
-	 * @since 1.6.0
 	 * @var Plugin|null
 	 */
 	private static $instance;
@@ -49,8 +46,6 @@ final class Plugin {
 	/**
 	 * Sets the plugin main file.
 	 *
-	 * @since 1.6.0
-	 *
 	 * @param string $main_file Absolute path to the plugin main file.
 	 */
 	public function __construct( $main_file ) {
@@ -59,8 +54,6 @@ final class Plugin {
 
 	/**
 	 * Registers the plugin with WordPress.
-	 *
-	 * @since 1.6.0
 	 */
 	public function register() {
 		add_action( 'init', array( self::$instance, 'load_textdomain' ) );
@@ -113,7 +106,7 @@ final class Plugin {
 			'analog/app/strings',
 			array(
 				'is_settings_page'  => 'toplevel_page_analog_custom_library' === $hook,
-				'rollback_url'      => wp_nonce_url( admin_url( 'admin-post.php?action=ang_rollback&version=VERSION' ), 'ang_rollback' ),
+				'rollback_url'      => wp_nonce_url( admin_url( 'admin-post.php?action=analog_custom_library_rollback&version=VERSION' ), 'analog_custom_library_rollback' ),
 				'rollback_versions' => Utils::get_rollback_versions(),
 			)
 		);
@@ -128,7 +121,6 @@ final class Plugin {
 	 *
 	 * @param array $domains List of translatable strings.
 	 *
-	 * @since 1.3.4
 	 * @return array
 	 */
 	public function send_strings_to_app( $domains ) {
@@ -161,8 +153,8 @@ final class Plugin {
 			'debugMode'                          => ( defined( 'ANALOG_DEV_DEBUG' ) && ANALOG_DEV_DEBUG ),
 			'pluginURL'                          => AGWP_LIBRARY_PLUGIN_URL,
 			'license'                            => Utils::has_pro() ? array(
-				'status'  => $options->get( 'ang_license_key_status' ),
-				'message' => get_transient( 'ang_license_message' ),
+				'status'  => $options->get( 'analog_custom_library_license_key_status' ),
+				'message' => get_transient( 'analog_custom_library_license_message' ),
 			) : false,
 			'adminURL'                           => admin_url(),
 			'siteURL'                            => get_site_url(),
@@ -199,7 +191,6 @@ final class Plugin {
 	 *
 	 * Fired by `plugin_action_links` filter.
 	 *
-	 * @since 1.3.1
 	 * @access public
 	 *
 	 * @param array $links An array of plugin action links.
@@ -207,7 +198,7 @@ final class Plugin {
 	 * @return array An array of plugin action links.
 	 */
 	public function plugin_action_links( $links ) {
-		$settings_link = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=ang-library-settings' ), __( 'Settings', 'custom-library-for-elementor' ) );
+		$settings_link = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=analog-custom-library-settings' ), __( 'Settings', 'custom-library-for-elementor' ) );
 
 		array_unshift( $links, $settings_link );
 
@@ -217,27 +208,25 @@ final class Plugin {
 	/**
 	 * Include required files.
 	 *
-	 * @since 1.6.0
-	 *
 	 * @access private
 	 * @return void
 	 */
 	private function includes() {
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Storage/Transients.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Storage/class-transients.php';
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/register-settings.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/settings-helpers.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-base.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-import-image.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-options.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/SVGs/Allow.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Consumer.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/admin/Notice.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/admin/Notices.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Utils.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/SVGs/class-allow.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-consumer.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/admin/class-notice.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/admin/class-notices.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-utils.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/api/class-remote.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/api/class-local.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-analog-importer.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-analogwp-custom-library-importer.php';
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Data/class-base-db.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Data/class-templates-db.php';
@@ -245,11 +234,10 @@ final class Plugin {
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/class-library-init.php';
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-elementor.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-cron.php';
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/elementor/trait-document.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/elementor/class-tools.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Database_Upgrader.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-database-upgrader.php';
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/admin/class-admin.php';
 
@@ -263,7 +251,6 @@ final class Plugin {
 	/**
 	 * Returns Elementor instance.
 	 *
-	 * @since 1.6.1
 	 * @return \Elementor\Plugin
 	 */
 	public static function elementor() {
@@ -283,8 +270,6 @@ final class Plugin {
 	/**
 	 * Retrieves the main instance of the plugin.
 	 *
-	 * @since 1.6.0
-	 *
 	 * @return Plugin Plugin main instance.
 	 */
 	public static function instance() {
@@ -293,8 +278,6 @@ final class Plugin {
 
 	/**
 	 * Loads the plugin main instance and initializes it.
-	 *
-	 * @since 1.6.0
 	 *
 	 * @param string $main_file Absolute path to the plugin main file.
 	 * @return bool True if the plugin main instance could be loaded, false otherwise.
@@ -307,27 +290,8 @@ final class Plugin {
 		self::$instance = new self( $main_file );
 		self::$instance->register();
 
-		do_action( 'ang_loaded' );
+		do_action( 'analog_custom_library_loaded' );
 
 		return true;
 	}
-}
-
-/**
- * Class Analog_Templates.
- *
- * Required for backwards compatibility with Pro.
- *
- * @package Analog
- */
-final class Analog_Templates {
-
-	/**
-	 * Current plugin version.
-	 *
-	 * @var string
-	 */
-	public static $version = AGWP_LIBRARY_VERSION;
-
-	public function __construct() {}
 }

@@ -9,7 +9,7 @@ $wp_functions = json_decode( file_get_contents( 'vendor/sniccowp/php-scoper-word
 $wp_constants = json_decode( file_get_contents( 'vendor/sniccowp/php-scoper-wordpress-excludes/generated/exclude-wordpress-constants.json' ), true );
 
 return [
-	'prefix'            => 'Analog\\Dependencies',
+	'prefix'            => 'AnalogWP\\CustomLibrary\\Dependencies',
 	'finders'           => array(
 		// Enshrined/SVG-Sanitize.
 		Finder::create()

@@ -1,13 +1,13 @@
 <?php
 
-namespace Analog\Dependencies\enshrined\svgSanitize;
+namespace AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize;
 
-use Analog\Dependencies\enshrined\svgSanitize\data\AllowedAttributes;
-use Analog\Dependencies\enshrined\svgSanitize\data\AllowedTags;
-use Analog\Dependencies\enshrined\svgSanitize\data\AttributeInterface;
-use Analog\Dependencies\enshrined\svgSanitize\data\TagInterface;
-use Analog\Dependencies\enshrined\svgSanitize\data\XPath;
-use Analog\Dependencies\enshrined\svgSanitize\ElementReference\Resolver;
+use AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\data\AllowedAttributes;
+use AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\data\AllowedTags;
+use AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\data\AttributeInterface;
+use AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\data\TagInterface;
+use AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\data\XPath;
+use AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\ElementReference\Resolver;
 /**
  * Class Sanitizer
  *

@@ -2,15 +2,13 @@
 /**
  * Format content during Elementor import.
  *
- * @package Analog
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog;
+namespace AnalogWP\CustomLibrary;
 
 /**
  * Elementor Formatter.
- *
- * @since 1.1
  */
 class Formatter {
 

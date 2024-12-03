@@ -1,20 +1,19 @@
 <?php
 /**
- * Class Analog\Core\SVGs\Allow
+ * Class AnalogWP\CustomLibrary\Core\SVGs\Allow
  *
- * @package   Analog
- * @copyright 2022 Dashwork Studio Pvt. Ltd.
+ * @package   AnalogWP\CustomLibrary
+ * @copyright 2024 SmallTownDev
  */
 
-namespace Analog\Core\SVGs;
+namespace AnalogWP\CustomLibrary\Core\SVGs;
 
-use Analog\Options;
-use Analog\Dependencies\enshrined\svgSanitize\Sanitizer;
+use AnalogWP\CustomLibrary\Options;
+use AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\Sanitizer;
 
 /**
  * Class enabling SVG uploads and imports.
  *
- * @since 1.9.5
  * @access private
  * @ignore
  */

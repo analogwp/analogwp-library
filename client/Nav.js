@@ -55,7 +55,7 @@ const Nav = () => {
 
 	return (
 		<span id="sk-library-tab">
-			<TabPanel className="ang-nav"
+			<TabPanel className="analog-custom-library-nav"
 				onSelect={onSelect}
 				tabs={tabsGenerator(ITEMS)}>
 				{

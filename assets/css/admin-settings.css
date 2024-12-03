@@ -1,5 +1,5 @@
 @media screen and (min-width: 768px) {
-	.ang-wrapper {
+	.analog-custom-library-wrapper {
 		display: grid;
 		grid-template-columns: 8fr 3fr;
 		column-gap: 40px;
@@ -14,17 +14,17 @@
 		padding: 15px 0;
 	}
 
-	body.custom-library_page_ang-library-settings .wrap {
+	body.custom-library_page_analog-custom-library-settings .wrap {
 		margin: 0;
 		padding: 20px 30px 30px;
 	}
 }
 
-body.custom-library_page_ang-library-settings #wpcontent {
+body.custom-library_page_analog-custom-library-settings #wpcontent {
 	padding: 0;
 }
 
-body.custom-library_page_ang-library-settings .wrap {
+body.custom-library_page_analog-custom-library-settings .wrap {
 	margin: 0;
 	padding: 40px 60px 60px;
 }
@@ -36,20 +36,20 @@ body.custom-library_page_ang-library-settings .wrap {
 	line-height: 1.2;
 }
 
-.ang-wrapper > form {
+.analog-custom-library-wrapper > form {
 	background: #fff;
 	border-radius: 8px;
 }
 
-.ang-wrapper > form .tab-content {
+.analog-custom-library-wrapper > form .tab-content {
 	padding: 30px;
 }
 
-.ang-wrapper .ang-nav-tab-wrapper {
+.analog-custom-library-wrapper .analog-custom-library-nav-tab-wrapper {
 	border-bottom: 1px solid #E2E2E4;
 	padding: 0;
 }
-.ang-nav-tab-wrapper .ang-nav-tab {
+.analog-custom-library-nav-tab-wrapper .analog-custom-library-nav-tab {
 	padding: 16px 24px;
 	display: inline-block;
 	text-decoration: none;
@@ -57,14 +57,14 @@ body.custom-library_page_ang-library-settings .wrap {
 	font-size: 16px;
 	line-height: 1.4;
 }
-.ang-nav-tab-wrapper .ang-nav-tab-active {
+.analog-custom-library-nav-tab-wrapper .analog-custom-library-nav-tab-active {
 	border-bottom: 2px solid #0073AA;
 	color: #0073AA;
 }
 
-.ang-nav-tab-wrapper .ang-nav-tab:hover,
-.ang-nav-tab-wrapper .ang-nav-tab:active,
-.ang-nav-tab-wrapper .ang-nav-tab:focus {
+.analog-custom-library-nav-tab-wrapper .analog-custom-library-nav-tab:hover,
+.analog-custom-library-nav-tab-wrapper .analog-custom-library-nav-tab:active,
+.analog-custom-library-nav-tab-wrapper .analog-custom-library-nav-tab:focus {
 	color: #0073AA;
 	outline: none;
 	box-shadow: none;

@@ -37,7 +37,7 @@ const SidebarWrapper = styled.div`
 	}
 
 	.components-base-control.components-toggle-control {
-		border-bottom: 1px solid var(--ang-border);
+		border-bottom: 1px solid var(--analog-custom-library-border);
 	}
 
 	.block-categories-tabs .components-button {
@@ -57,7 +57,7 @@ const SidebarWrapper = styled.div`
 	.block-categories-tabs .components-button.active-tab {
 		box-shadow: none;
 		font-weight: bold;
-		color: var(--ang-primary) !important;
+		color: var(--analog-custom-library-primary) !important;
 	}
 
 	.block-categories-tabs
@@ -69,7 +69,7 @@ const SidebarWrapper = styled.div`
 	}
 
 	.block-categories-tabs .components-button:not([aria-disabled=true]):active {
-		color: var(--ang-primary) !important;
+		color: var(--analog-custom-library-primary) !important;
 	}
 
 	.block-categories-tabs label,

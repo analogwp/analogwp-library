@@ -9,9 +9,9 @@
 			if ( e.preventDefault ) {
 				e.preventDefault();
 			}
-			const elSubmitBtn = $( '#ang-newsletter-submit' );
+			const elSubmitBtn = $( '#analog-custom-library-newsletter-submit' );
 			let status = __( 'Subscribing', 'custom-library-for-elementor' );
-			const angEmail = $( '#ang-newsletter-email' ).val();
+			const angEmail = $( '#analog-custom-library-newsletter-email' ).val();
 			elSubmitBtn.text( status );
 
 			$.ajax( {
@@ -38,7 +38,7 @@
 
 			return false;
 		}
-		$( '#ang-newsletter' ).submit( processNewsletter );
+		$( '#analog-custom-library-newsletter' ).submit( processNewsletter );
 
 		// Process Plugin Rollback.
 		function processPluginRollback( e ) {
@@ -62,7 +62,7 @@
 				changed = true;
 			} );
 
-			$( '.ang-nav-tab-wrapper a' ).click( function() {
+			$( '.analog-custom-library-nav-tab-wrapper a' ).click( function() {
 				if ( changed ) {
 					window.onbeforeunload = function() {
 						return data.i18n_nav_warning;
@@ -123,7 +123,7 @@
 
 		$( 'body' ).on(
 			'click',
-			'.ang-upload-image-btn',
+			'.analog-custom-library-upload-image-btn',
 			function (e) {
 				e.preventDefault();
 				const button     = $( this ),
@@ -156,7 +156,7 @@
 		// Removing video.
 		$( 'body' ).on(
 			'click',
-			'.ang-remove-image-btn',
+			'.analog-custom-library-remove-image-btn',
 			function () {
 				const default_image = $( this ).attr( 'data-default-image' );
 				$( this ).parent().prev().attr( 'src', default_image );

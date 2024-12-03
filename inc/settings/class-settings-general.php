@@ -2,14 +2,12 @@
 /**
  * Analog General Settings
  *
- * @package Analog/Admin
- * @since 1.3.8
+ * @package AnalogWP\CustomLibrary/Admin
  */
 
-namespace Analog\Settings;
+namespace AnalogWP\CustomLibrary\Settings;
 
-use Analog\Utils;
-use Analog\API\Remote;
+use AnalogWP\CustomLibrary\API\Remote;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -46,7 +44,7 @@ class General extends Settings_Page {
 				array(
 					'title' => esc_html__( 'General Settings', 'custom-library-for-elementor' ),
 					'type'  => 'title',
-					'id'    => 'ang_general_settings',
+					'id'    => 'analog_custom_library_general_settings',
 				),
 				array(
 					'id'      => 'hide_elementor_template_library',
@@ -62,12 +60,12 @@ class General extends Settings_Page {
 				),
 				array(
 					'type' => 'sectionend',
-					'id'   => 'ang_general_settings',
+					'id'   => 'analog_custom_library_general_settings',
 				),
 				array(
 					'type'  => 'title',
 					'title' => esc_html__( 'Placeholder image', 'custom-library-for-elementor' ),
-					'id'    => 'ang_change_default_placeholder_thumb',
+					'id'    => 'analog_custom_library_change_default_placeholder_thumb',
 				),
 				array(
 					'desc'    => __( 'Replace the default placeholder image.', 'custom-library-for-elementor' ),
@@ -77,13 +75,13 @@ class General extends Settings_Page {
 				),
 				array(
 					'type' => 'sectionend',
-					'id'   => 'ang_change_default_placeholder_thumb',
+					'id'   => 'analog_custom_library_change_default_placeholder_thumb',
 				),
 			);
-			$settings = apply_filters( 'ang_' . $this->id . '_settings', $settings );
+			$settings = apply_filters( 'analog_custom_library_' . $this->id . '_settings', $settings );
 		}
 
-		return apply_filters( 'ang_get_settings_' . $this->id, $settings );
+		return apply_filters( 'analog_custom_library_get_settings_' . $this->id, $settings );
 	}
 
 	/**
@@ -96,7 +94,7 @@ class General extends Settings_Page {
 
 		Admin_Settings::save_fields( $settings );
 		if ( $current_section ) {
-			do_action( 'ang_update_options_' . $this->id . '_' . $current_section );
+			do_action( 'analog_custom_library_update_options_' . $this->id . '_' . $current_section );
 		}
 	}
 }

@@ -1,17 +1,16 @@
 <?php
 /**
- * Class Analog\Admin\Notices.
+ * Class AnalogWP\CustomLibrary\Admin\Notices.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Admin;
+namespace AnalogWP\CustomLibrary\Admin;
 
 /**
  * Class managing admin Notices.
  *
- * @package Analog\Admin
- * @since 1.5.0
+ * @package AnalogWP\CustomLibrary\Admin
  * @access private
  * @ignore
  */
@@ -19,7 +18,6 @@ final class Notices {
 	/**
 	 * Registers functionality through WordPress hooks.
 	 *
-	 * @since 1.5.0
 	 */
 	public function register() {
 		$callback = function() {
@@ -39,7 +37,6 @@ final class Notices {
 	/**
 	 * Renders admin notices.
 	 *
-	 * @since 1.5.0
 	 *
 	 * @param string $hook_suffix The current admin screen hook suffix.
 	 */
@@ -66,7 +63,6 @@ final class Notices {
 	/**
 	 * Gets available admin notices.
 	 *
-	 * @since 1.5.0
 	 *
 	 * @return array List of Notice instances.
 	 */
@@ -74,7 +70,6 @@ final class Notices {
 		/**
 		 * Filters the list of available admin notices.
 		 *
-		 * @since 1.5.0
 		 *
 		 * @param array $notices List of Notice instances.
 		 */
@@ -94,7 +89,6 @@ final class Notices {
 	 * Registers all the admin scripts and enqueues them.
 	 * Fired by `admin_enqueue_scripts` action.
 	 *
-	 * @since 1.5.0
 	 * @access public
 	 */
 	public function enqueue_scripts() {

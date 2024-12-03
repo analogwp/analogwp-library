@@ -2,26 +2,26 @@
 /**
  * Class for importing a template.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
 namespace Elementor\TemplateLibrary;
 
-use Analog\API\Remote;
-use Analog\Core\Data\Library_Data;
-use Analog\Formatter;
-use Analog\Plugin;
+use AnalogWP\CustomLibrary\API\Remote;
+use AnalogWP\CustomLibrary\Core\Data\Library_Data;
+use AnalogWP\CustomLibrary\Formatter;
+use AnalogWP\CustomLibrary\Plugin;
 use Elementor\TemplateLibrary\Classes\Images;
-use Analog\Utils;
+use AnalogWP\CustomLibrary\Utils;
 
 /**
- * Class Analog_Importer.
+ * Class AnalogWP_Custom_Library_Importer.
  *
  * @package Elementor\TemplateLibrary
  */
-class Analog_Importer extends Source_Remote {
+class AnalogWP_Custom_Library_Importer extends Source_Remote {
 	/**
-	 * Analog_Importer constructor.
+	 * AnalogWP_Custom_Library_Importer constructor.
 	 */
 	public function __construct() {
 		if ( ! function_exists( 'wp_crop_image' ) ) {
@@ -38,7 +38,6 @@ class Analog_Importer extends Source_Remote {
 	 * @param string      $context Optional. The context. Default is `display`.
 	 * @param object|bool $data Template/block import data.
 	 *
-	 * @since 1.4.0 $data was added.
 	 *
 	 * @return array Remote Template data.
 	 */

@@ -2,12 +2,12 @@
 /**
  * Class Database_Upgrader.
  *
- * @package Analog
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog;
+namespace AnalogWP\CustomLibrary;
 
-use Analog\API\Remote;
+use AnalogWP\CustomLibrary\API\Remote;
 
 /**
  * Class Database_Upgrader
@@ -19,14 +19,14 @@ class Database_Upgrader {
 	 *
 	 * @var string
 	 */
-	const OPTION = 'style_kits_db_version';
+	const OPTION = 'analog_custom_library_db_version';
 
 	/**
 	 * The slug of database option.
 	 *
 	 * @var string
 	 */
-	const PREVIOUS_OPTION = 'style_kits_previous_db_version';
+	const PREVIOUS_OPTION = 'analog_custom_library_previous_db_version';
 
 	/**
 	 * Hooked into admin_init and walks through an array of upgrade methods.
@@ -35,7 +35,7 @@ class Database_Upgrader {
 	 */
 	public function init() {
 		$routines = array(
-			'2.1.0' => 'upgrade_2_1',
+			'0.1.0' => 'upgrade_0_1_0',
 		);
 
 		$version = get_option( self::OPTION, '0.0.0' );
@@ -80,7 +80,7 @@ class Database_Upgrader {
 	 *
 	 * @return void
 	 */
-	protected function upgrade_2_1() {
+	protected function upgrade_0_1_0() {
 		// Refresh templates library.
 		Remote::get_instance()->get_templates_info( true );
 	}

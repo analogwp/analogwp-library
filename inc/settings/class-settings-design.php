@@ -2,11 +2,10 @@
 /**
  * Analog Design Settings.
  *
- * @package Analog/Admin
- * @since 1.9.0
+ * @package AnalogWP/CustomLibrary/Admin
  */
 
-namespace Analog\Settings;
+namespace AnalogWP\CustomLibrary\Settings;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -32,12 +31,12 @@ class Design extends Settings_Page {
 	public function get_settings() {
 
 		$settings = apply_filters(
-			'ang_experiments_settings',
+			'analog_custom_library_experiments_settings',
 			array(
 				array(
 					'title' => esc_html__( 'Library popup style', 'custom-library-for-elementor' ),
 					'type'  => 'title',
-					'id'    => 'ang_library_popup_style',
+					'id'    => 'analog_custom_library_popup_style',
 				),
 				array(
 					'id'      => 'library_popup_style',
@@ -50,12 +49,12 @@ class Design extends Settings_Page {
 				),
 				array(
 					'type' => 'sectionend',
-					'id'   => 'ang_library_popup_style',
+					'id'   => 'analog_custom_library_popup_style',
 				),
 				array(
 					'title' => esc_html__( 'Template columns', 'custom-library-for-elementor' ),
 					'type'  => 'title',
-					'id'    => 'ang_library_template_columns',
+					'id'    => 'analog_custom_library_template_columns',
 				),
 				array(
 					'id'      => 'library_template_columns',
@@ -69,12 +68,12 @@ class Design extends Settings_Page {
 				),
 				array(
 					'type' => 'sectionend',
-					'id'   => 'ang_library_template_columns',
+					'id'   => 'analog_custom_library_template_columns',
 				),
 				array(
 					'title' => esc_html__( 'Categories location', 'custom-library-for-elementor' ),
 					'type'  => 'title',
-					'id'    => 'ang_library_categories_location',
+					'id'    => 'analog_custom_library_categories_location',
 				),
 				array(
 					'id'      => 'library_categories_location',
@@ -94,12 +93,12 @@ class Design extends Settings_Page {
 				),
 				array(
 					'type' => 'sectionend',
-					'id'   => 'ang_library_categories_location',
+					'id'   => 'analog_custom_library_categories_location',
 				),
 			)
 		);
 
-		return apply_filters( 'ang_get_settings_' . $this->id, $settings );
+		return apply_filters( 'analog_custom_library_get_settings_' . $this->id, $settings );
 	}
 
 	/**

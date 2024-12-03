@@ -1,9 +1,9 @@
 :root {
-	--ang-accent: #5C32B6;
+	--analog-custom-library-accent: #5C32B6;
 }
 
 .elementor-add-analogwp-button {
-	background-color: var(--ang-accent);
+	background-color: var(--analog-custom-library-accent);
 	margin-left: 5px;
 }
 
@@ -41,7 +41,7 @@
 	margin: 0;
 }
 
-#analogwp-templates-modal .ang-notices p {
+#analogwp-templates-modal .analog-custom-library-notices p {
 	margin: 0;
 }
 
@@ -56,8 +56,8 @@ button[data-action="save_token"] {
 	background-color: #8d62a0 !important;
 }
 
-.dialog-widget.ang-notice,
-.elementor-panel .ang-notice {
+.dialog-widget.analog-custom-library-notice,
+.elementor-panel .analog-custom-library-notice {
 	display: inline-block;
 	padding: 10px;
 	line-height: 1.4;
@@ -68,53 +68,53 @@ button[data-action="save_token"] {
 	border-radius: 4px;
 }
 
-.elementor-panel .ang-notice.desc {
+.elementor-panel .analog-custom-library-notice.desc {
 	background: transparent !important;
 	border: 1px solid rgba(255, 255, 255, .3) !important;
 	color: inherit !important;
 }
 
-.dialog-widget.ang-notice a,
-.elementor-panel .ang-notice a {
+.dialog-widget.analog-custom-library-notice a,
+.elementor-panel .analog-custom-library-notice a {
 	text-decoration: underline;
 }
 
-.dialog-widget.ang-notice a:hover,
-.elementor-panel .ang-notice a:hover {
+.dialog-widget.analog-custom-library-notice a:hover,
+.elementor-panel .analog-custom-library-notice a:hover {
 	text-decoration: none;
 }
 
-.dialog-widget.ang-notice {
+.dialog-widget.analog-custom-library-notice {
 	padding: 10px !important;
 	left: 10px !important;
 	width: 260px !important;
 }
 
-.dialog-widget.ang-notice.yellow,
-.elementor-panel .ang-notice.yellow {
+.dialog-widget.analog-custom-library-notice.yellow,
+.elementor-panel .analog-custom-library-notice.yellow {
 	background: #FDEAB9 !important;
 }
 
-.dialog-widget.ang-notice.blue,
-.elementor-panel .ang-notice.blue {
+.dialog-widget.analog-custom-library-notice.blue,
+.elementor-panel .analog-custom-library-notice.blue {
 	background: #E6F6FF !important;
 	margin: 2px 0;
 	float: right;
 	padding: 6px 8px;
 }
 
-.dialog-widget.ang-notice.description,
-.elementor-panel .ang-notice.description {
+.dialog-widget.analog-custom-library-notice.description,
+.elementor-panel .analog-custom-library-notice.description {
 	width: 100%;
 	background: #E6F6FF !important;
 }
 
-.dialog-widget.ang-notice.description a,
-.elementor-panel .ang-notice.description a{
+.dialog-widget.analog-custom-library-notice.description a,
+.elementor-panel .analog-custom-library-notice.description a{
 	color: currentColor;
 }
 
-.elementor-panel .ang-notice.blue:hover {
+.elementor-panel .analog-custom-library-notice.blue:hover {
 	border-bottom-color: transparent;
 }
 
@@ -123,7 +123,7 @@ button[data-action="save_token"] {
 }
 
 @media (prefers-color-scheme: dark) {
-	.elementor-panel .ang-notice {
+	.elementor-panel .analog-custom-library-notice {
 		background: #EFEFEF;;
 		border: none;
 	}
@@ -150,11 +150,11 @@ button[data-action="save_token"] {
 	border-top-color: #727477;
 }
 
-.ang-description-wide .elementor-control-field-description {
+.analog-custom-library-description-wide .elementor-control-field-description {
 	display: block;
 }
 
-#ang-stylekit-update .dialog-message p + p {
+#analog-custom-library-stylekit-update .dialog-message p + p {
 	margin-top: 20px;
 }
 

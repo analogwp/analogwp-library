@@ -14,12 +14,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Analog\\Dependencies\\enshrined\\svgSanitize\\": "src"
+            "AnalogWP\\CustomLibrary\\Dependencies\\enshrined\\svgSanitize\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Analog\\Dependencies\\enshrined\\svgSanitize\\Tests\\": "tests"
+            "AnalogWP\\CustomLibrary\\Dependencies\\enshrined\\svgSanitize\\Tests\\": "tests"
         }
     },
     "require": {

@@ -2,10 +2,10 @@
 /**
  * Elementor Finder shortcuts for Analog.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog;
+namespace AnalogWP\CustomLibrary;
 
 use Elementor\Core\Common\Modules\Finder\Base_Category;
 
@@ -16,12 +16,11 @@ class Finder_Shortcuts extends Base_Category {
 	/**
 	 * Get ID.
 	 *
-	 * @since 2.0.0
 	 * @access public
 	 * @return string
 	 */
 	public function get_id() {
-		return 'ang-shortcuts';
+		return 'analog-custom-library-shortcuts';
 	}
 
 	/**
@@ -51,7 +50,7 @@ class Finder_Shortcuts extends Base_Category {
 			),
 			'settings'   => array(
 				'title'    => __( 'Settings', 'custom-library-for-elementor' ),
-				'url'      => admin_url( 'admin.php?page=ang-library-settings' ),
+				'url'      => admin_url( 'admin.php?page=analog-custom-library-settings' ),
 				'icon'     => 'settings',
 				'keywords' => array( 'analog', 'settings' ),
 			),

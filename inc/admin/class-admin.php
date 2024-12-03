@@ -1,19 +1,18 @@
 <?php
 /**
- * Class Analog\Admin.
+ * Class AnalogWP\CustomLibrary\Admin.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Admin;
+namespace AnalogWP\CustomLibrary\Admin;
 
-use Analog\Base;
+use AnalogWP\CustomLibrary\Base;
 
 /**
  * Class to handle Admin related funtionality.
  *
- * @since 1.4.0
- * @package Analog
+ * @package AnalogWP\CustomLibrary
  */
 final class Admin extends Base {
 	/**
@@ -34,7 +33,7 @@ final class Admin extends Base {
 	 * @return string Updated footer text.
 	 */
 	public function footer_text( $text ) {
-		$current_screen   = get_current_screen();
+		$current_screen                  = get_current_screen();
 		$is_analog_custom_library_screen = 'analog_custom_library' === $current_screen->parent_base;
 
 		if ( $is_analog_custom_library_screen ) {
@@ -62,8 +61,8 @@ final class Admin extends Base {
 	public function plugin_row_meta( $plugin_meta, $plugin_file ) {
 		if ( AGWP_LIBRARY_PLUGIN_BASE === $plugin_file ) {
 			$row_meta = array(
-				'ang_docs'    => '<a href="https://analogwp.com/docs/" aria-label="' . esc_attr( __( 'View Documentation', 'custom-library-for-elementor' ) ) . '" target="_blank">' . __( 'Documentation', 'custom-library-for-elementor' ) . '</a>',
-				'ang_support' => '<a href="https://analogwp.com/support/" aria-label="' . esc_attr( __( 'Get Support', 'custom-library-for-elementor' ) ) . '" target="_blank">' . __( 'Get Support', 'custom-library-for-elementor' ) . '</a>',
+				'analog_custom_library_docs'    => '<a href="https://analogwp.com/docs/" aria-label="' . esc_attr( __( 'View Documentation', 'custom-library-for-elementor' ) ) . '" target="_blank">' . __( 'Documentation', 'custom-library-for-elementor' ) . '</a>',
+				'analog_custom_library_support' => '<a href="https://analogwp.com/support/" aria-label="' . esc_attr( __( 'Get Support', 'custom-library-for-elementor' ) ) . '" target="_blank">' . __( 'Get Support', 'custom-library-for-elementor' ) . '</a>',
 			);
 
 			$plugin_meta = array_merge( $plugin_meta, $row_meta );

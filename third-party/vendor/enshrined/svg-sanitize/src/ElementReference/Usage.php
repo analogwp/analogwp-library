@@ -1,6 +1,6 @@
 <?php
 
-namespace Analog\Dependencies\enshrined\svgSanitize\ElementReference;
+namespace AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\ElementReference;
 
 class Usage
 {

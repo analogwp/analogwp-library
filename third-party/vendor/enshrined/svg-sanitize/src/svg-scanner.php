@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php 
-namespace Analog\Dependencies;
+namespace AnalogWP\CustomLibrary\Dependencies;
 
 /*
  * Simple program that uses svg-sanitizer
@@ -58,7 +58,7 @@ if (empty($files_to_scan)) {
  * Make sure to allow custom attributes,
  * and to remove remote references.
  */
-$sanitizer = new \Analog\Dependencies\enshrined\svgSanitize\Sanitizer();
+$sanitizer = new \AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\Sanitizer();
 $sanitizer->removeRemoteReferences(\true);
 /*
  * Scan each file specified to be scanned.

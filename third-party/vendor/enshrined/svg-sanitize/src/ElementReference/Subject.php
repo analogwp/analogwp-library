@@ -1,6 +1,6 @@
 <?php
 
-namespace Analog\Dependencies\enshrined\svgSanitize\ElementReference;
+namespace AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\ElementReference;
 
 class Subject
 {
@@ -54,7 +54,7 @@ class Subject
     public function hasInfiniteLoop(array $subjects = [], $level = 1)
     {
         if ($level > $this->useNestingLimit) {
-            throw new \Analog\Dependencies\enshrined\svgSanitize\Exceptions\NestingException('Nesting level too high, aborting', 1570713498, null, $this->getElement());
+            throw new \AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\Exceptions\NestingException('Nesting level too high, aborting', 1570713498, null, $this->getElement());
         }
         if (\in_array($this, $subjects, \true)) {
             return \true;

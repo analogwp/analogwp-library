@@ -2,28 +2,25 @@
 /**
  * Utility class.
  *
- * @package Analog
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog;
+namespace AnalogWP\CustomLibrary;
 
-use Analog\Core\Storage\Transients;
+use AnalogWP\CustomLibrary\Core\Storage\Transients;
 use Elementor\Core\Base\Document;
 use Elementor\Core\Kits\Manager;
 use Elementor\TemplateLibrary\Source_Local;
-use WP_Query;
 
 /**
  * Helper functions.
  *
- * @package Analog
+ * @package AnalogWP\CustomLibrary
  */
 class Utils extends Base {
 
 	/**
 	 * Transients object.
-	 *
-	 * @since 1.6.0
 	 *
 	 * @var Transients
 	 */
@@ -31,8 +28,6 @@ class Utils extends Base {
 
 	/**
 	 * Utils constructor.
-	 *
-	 * @since 1.6.0
 	 */
 	public function __construct() {
 		if ( ! $this->transients ) {
@@ -77,17 +72,14 @@ class Utils extends Base {
 	/**
 	 * Get import log data.
 	 *
-	 * @since  1.1
 	 * @return array
 	 */
 	public static function get_import_log() {
-		return \get_option( '_ang_import_history' );
+		return \get_option( '_analog_custom_library_import_history' );
 	}
 
 	/**
 	 * Recording import details on import.
-	 *
-	 * @since 1.1
 	 *
 	 * @param int    $id Template ID.
 	 * @param int    $post_id Post ID, in which this template was imported to.
@@ -105,7 +97,7 @@ class Utils extends Base {
 
 		$imports[] = compact( 'id', 'post_id', 'method', 'time' );
 
-		update_option( '_ang_import_history', $imports );
+		update_option( '_analog_custom_library_import_history', $imports );
 	}
 
 	/**
@@ -117,7 +109,7 @@ class Utils extends Base {
 	public static function get_tokens( $prefix = true ) {
 		$posts = \get_posts(
 			array(
-				'post_type'      => 'ang_tokens',
+				'post_type'      => 'analog_custom_library_tokens',
 				'posts_per_page' => -1,
 			)
 		);
@@ -170,7 +162,6 @@ class Utils extends Base {
 	 * Delete all meta containing files data. And delete the actual
 	 * files from the upload directory.
 	 *
-	 * @since 1.2.1
 	 * @access public
 	 */
 	public static function clear_elementor_cache() {
@@ -182,7 +173,6 @@ class Utils extends Base {
 	 *
 	 * @param array $args Arguments.
 	 *
-	 * @since 1.2.3
 	 * @return array
 	 */
 	public static function get_public_post_types( $args = array() ) {
@@ -212,8 +202,6 @@ class Utils extends Base {
 		 *
 		 * Allow 3rd party plugins to filters the public post types elementor should work on
 		 *
-		 * @since 1.3.0
-		 *
 		 * @param array $post_types Elementor supported public post types.
 		 */
 		return apply_filters( 'analog/utils/get_public_post_types', $post_types );
@@ -222,7 +210,6 @@ class Utils extends Base {
 	/**
 	 * Get valid rollback versions.
 	 *
-	 * @since 1.3.7
 	 * @return array|mixed
 	 */
 	public static function get_rollback_versions() {
@@ -231,7 +218,7 @@ class Utils extends Base {
 		// @TODO: Remove when ready for rollbacks.
 		return array();
 
-		$rollback_versions = get_transient( 'ang_rollback_versions_' . AGWP_LIBRARY_VERSION );
+		$rollback_versions = get_transient( 'analog_custom_library_rollback_versions_' . AGWP_LIBRARY_VERSION );
 
 		if ( false === $rollback_versions ) {
 			$max_versions = 20;
@@ -270,7 +257,7 @@ class Utils extends Base {
 				$rollback_versions[] = $version;
 			}
 
-			set_transient( 'ang_rollback_versions_' . AGWP_LIBRARY_VERSION, $rollback_versions, WEEK_IN_SECONDS );
+			set_transient( 'analog_custom_library_rollback_versions_' . AGWP_LIBRARY_VERSION, $rollback_versions, WEEK_IN_SECONDS );
 		}
 
 		return $rollback_versions;
@@ -280,7 +267,6 @@ class Utils extends Base {
 	 * Convert string to boolean.
 	 *
 	 * @param array $data Array object.
-	 * @since 1.3.8
 	 * @return array
 	 */
 	public static function convert_string_to_boolean( $data ) {
@@ -305,18 +291,15 @@ class Utils extends Base {
 	 *
 	 * @param array $settings Post Meta settings.
 	 *
-	 * @since 1.3.15
 	 * @return array Modified settings array.
 	 */
 	public static function remove_stored_kit_keys( $settings ) {
 		/**
 		 * List of settings key prefixes that needs to be removed prior to updating an SK.
-		 *
-		 * @since 1.3.15
 		 */
 		$allowed = apply_filters(
 			'analog/stylekit/allowed/setting/prefixes',
-			array( 'ang_', 'hide', 'background_background', 'background_color', 'background_grad', 'custom_css' )
+			array( 'analog_custom_library_', 'hide', 'background_background', 'background_color', 'background_grad', 'custom_css' )
 		);
 
 		return array_filter(
@@ -340,7 +323,6 @@ class Utils extends Base {
 	 * @param int   $post_id Post ID for which Style Kit will be updated.
 	 * @param array $tokens Style Kit data.
 	 *
-	 * @since 1.3.15
 	 * @return void
 	 */
 	public static function update_style_kit_for_post( $post_id, array $tokens ) {
@@ -367,12 +349,11 @@ class Utils extends Base {
 	 * Check if current user has a valid license.
 	 *
 	 * @access public
-	 * @since 1.4.0
 	 * @return bool Whether license is valid or not.
 	 */
 	public static function has_valid_license() {
-		$license = Options::get_instance()->get( 'ang_license_key' );
-		$message = Options::get_instance()->get( 'ang_license_key_status' );
+		$license = Options::get_instance()->get( 'analog_custom_library_license_key' );
+		$message = Options::get_instance()->get( 'analog_custom_library_license_key_status' );
 
 		return ! empty( $license ) && 'valid' === $message;
 	}
@@ -380,21 +361,20 @@ class Utils extends Base {
 	/**
 	 * Returns a list of all keys for color controls defined by Custom Library for Elementor.
 	 *
-	 * @since 1.5.0
 	 * @return array
 	 */
 	public static function get_keys_for_color_controls() {
 		$keys = array(
-			'ang_color_accent_primary',
-			'ang_color_accent_secondary',
-			'ang_color_text',
-			'ang_color_heading',
-			'ang_background_light_background',
-			'ang_background_light_text',
-			'ang_background_light_heading',
-			'ang_background_dark_background',
-			'ang_background_dark_text',
-			'ang_background_dark_heading',
+			'analog_custom_library_color_accent_primary',
+			'analog_custom_library_color_accent_secondary',
+			'analog_custom_library_color_text',
+			'analog_custom_library_color_heading',
+			'analog_custom_library_background_light_background',
+			'analog_custom_library_background_light_text',
+			'analog_custom_library_background_light_heading',
+			'analog_custom_library_background_dark_background',
+			'analog_custom_library_background_dark_text',
+			'analog_custom_library_background_dark_heading',
 		);
 
 		return apply_filters( 'analog_custom_library_color_scheme_items', $keys );
@@ -420,7 +400,6 @@ class Utils extends Base {
 	 *
 	 * @param bool $prefix Whether to prefix Global Kit with "Global :".
 	 *
-	 * @since 1.6.0
 	 * @return array
 	 */
 	public static function get_kits( $prefix = true ) {
@@ -469,7 +448,6 @@ class Utils extends Base {
 	 * Log a message to CLI.
 	 *
 	 * @param string $message CLI message to output.
-	 * @since 1.6.0
 	 * @return string|void Return message if in CLI, or void.
 	 */
 	public static function cli_log( $message ) {
@@ -481,7 +459,6 @@ class Utils extends Base {
 	/**
 	 * Get Style Kit Pro link.
 	 *
-	 * @since 1.6.0
 	 * @access public
 	 * @static
 	 *
@@ -515,8 +492,6 @@ class Utils extends Base {
 
 	/**
 	 * Allow to remove method for an hook when, it's a class method used and class don't have variable, but you know the class name.
-	 *
-	 * @since 1.6.0
 	 *
 	 * @param string $hook_name Hook/action name to remove.
 	 * @param string $class_name Class name. `Colors::class` for example.
@@ -555,8 +530,6 @@ class Utils extends Base {
 	 * Check if the installed version of Elementor is older than a specified version.
 	 *
 	 * @param string $version Version number.
-	 *
-	 * @since 1.8.0
 	 *
 	 * @return bool
 	 */
@@ -651,14 +624,12 @@ class Utils extends Base {
 	 * @return bool
 	 */
 	public static function is_pro() {
-		$status = Options::get_instance()->get( 'ang_license_key_status' );
+		$status = Options::get_instance()->get( 'analog_custom_library_license_key_status' );
 		return self::has_pro() && 'valid' === $status;
 	}
 
 	/**
 	 * Returns sanitized super global value from super globals if exists.
-	 *
-	 * @since 2.0.5
 	 *
 	 * @param $super_global
 	 * @param $key
@@ -680,8 +651,6 @@ class Utils extends Base {
 
 	/**
 	 * Returns file content.
-	 *
-	 * @since 2.0.5
 	 *
 	 * @param $file
 	 * @param mixed ...$args

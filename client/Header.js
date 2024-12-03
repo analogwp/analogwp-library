@@ -17,7 +17,7 @@ const Container = styled.div`
 	background: #4D45BD;
 	border-bottom: 1px solid #DFDFDF;
 
-	.ang-container {
+	.analog-custom-library-container {
 		display: flex;
 	    justify-content: space-between;
 	    align-items: center;
@@ -83,7 +83,7 @@ const Header = () => {
 
 	return (
 		<Container theme={ theme }>
-			<div className="ang-container">
+			<div className="analog-custom-library-container">
 				<div className="logo">
 					<h2>Library</h2>
 				</div>

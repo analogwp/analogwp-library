@@ -2,12 +2,12 @@
 /**
  * Elementor core integration.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog;
+namespace AnalogWP\CustomLibrary;
 
-use Analog\Core\Library_Init;
+use AnalogWP\CustomLibrary\Core\Library_Init;
 use Elementor\Core\Common\Modules\Finder\Categories_Manager;
 
 /**
@@ -44,7 +44,7 @@ class Elementor {
 		// Independent components.
 		wp_enqueue_style( 'analogwp-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/sk-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/sk-components.css' ) );
 
-		do_action( 'ang_loaded_templates' );
+		do_action( 'analog_custom_library_loaded_templates' );
 
 		wp_enqueue_script( 'analogwp-elementor-modal', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/elementor-modal.js', array( 'jquery' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/elementor-modal.js' ), false );
 		wp_enqueue_style( 'analogwp-elementor-modal', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/elementor-modal.css', array( 'dashicons' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/elementor-modal.css' ) );

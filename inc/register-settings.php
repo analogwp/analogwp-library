@@ -2,13 +2,10 @@
 /**
  * Register admin screen.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Settings;
-
-use Analog\Utils;
-use WP_Screen;
+namespace AnalogWP\CustomLibrary\Settings;
 
 /**
  * Register plugin menu.
@@ -17,7 +14,7 @@ use WP_Screen;
  */
 function register_menu() {
 	$permission = 'manage_options';
-	if ( has_filter( 'ang_user_roles_enabled', '__return_true' ) ) {
+	if ( has_filter( 'analog_custom_library_user_roles_enabled', '__return_true' ) ) {
 		$permission = 'read';
 	}
 
@@ -25,10 +22,10 @@ function register_menu() {
 
 	add_menu_page(
 		esc_html__( 'Custom Library for Elementor', 'custom-library-for-elementor' ),
-		esc_html__( 'Custom Library', 'ang-library' ),
+		esc_html__( 'Custom Library', 'custom-library-for-elementor' ),
 		$permission,
 		$menu_slug,
-		'Analog\Settings\settings_page',
+		'AnalogWP\CustomLibrary\Settings\settings_page',
 		AGWP_LIBRARY_PLUGIN_URL . 'assets/img/triangle.svg',
 		'58.6'
 	);
@@ -38,14 +35,14 @@ function register_menu() {
 		__( 'Custom Library Settings', 'custom-library-for-elementor' ),
 		__( 'Settings', 'custom-library-for-elementor' ),
 		'manage_options',
-		'ang-library-settings',
-		'Analog\Settings\new_settings_page'
+		'analog-custom-library-settings',
+		'AnalogWP\CustomLibrary\Settings\new_settings_page'
 	);
 
 	// Remove duplicate menu hack.
 	remove_submenu_page( $menu_slug, $menu_slug );
 
-	add_action( 'load-style-kits_page_settings', 'Analog\Settings\settings_page_init' );
+	add_action( 'load-style-kits_page_settings', 'AnalogWP\CustomLibrary\Settings\settings_page_init' );
 }
 
 add_action( 'admin_menu', __NAMESPACE__ . '\register_menu' );
@@ -59,15 +56,15 @@ function settings_page_init() {
 	Admin_Settings::get_settings_pages();
 
 	// Add any posted messages.
-	if ( ! empty( $_GET['ang_error'] ) ) { // phpcs:ignore
-		Admin_Settings::add_error( wp_kses_post( wp_unslash( $_GET['ang_error'] ) ) ); // phpcs:ignore
+	if ( ! empty( $_GET['analog_custom_library_error'] ) ) { // phpcs:ignore
+		Admin_Settings::add_error( wp_kses_post( wp_unslash( $_GET['analog_custom_library_error'] ) ) ); // phpcs:ignore
 	}
 
-	if ( ! empty( $_GET['ang_message'] ) ) { // phpcs:ignore
-		Admin_Settings::add_message( wp_kses_post( wp_unslash( $_GET['ang_message'] ) ) ); // phpcs:ignore
+	if ( ! empty( $_GET['analog_custom_library_message'] ) ) { // phpcs:ignore
+		Admin_Settings::add_message( wp_kses_post( wp_unslash( $_GET['analog_custom_library_message'] ) ) ); // phpcs:ignore
 	}
 
-	do_action( 'ang_settings_page_init' );
+	do_action( 'analog_custom_library_settings_page_init' );
 }
 
 /**
@@ -79,7 +76,7 @@ function save_settings() {
 	global $current_tab, $current_section;
 
 	// We should only save on the settings page.
-	if ( ! is_admin() || ! isset( $_GET['page'] ) || 'ang-library-settings' !== $_GET['page'] ) { // phpcs:ignore
+	if ( ! is_admin() || ! isset( $_GET['page'] ) || 'analog-custom-library-settings' !== $_GET['page'] ) { // phpcs:ignore
 		return;
 	}
 
@@ -93,14 +90,14 @@ function save_settings() {
 	// Save settings if data has been posted.
 	if ( '' !== $current_section && apply_filters( "ang_save_settings_{$current_tab}_{$current_section}", ! empty( $_POST['save'] ) ) ) { // phpcs:ignore
 		Admin_Settings::save();
-	} elseif ( '' === $current_section && apply_filters( "ang_save_settings_{$current_tab}", ! empty( $_POST['save'] ) || isset( $_POST['ang-license_activate'] ) ) ) { // phpcs:ignore
+	} elseif ( '' === $current_section && apply_filters( "ang_save_settings_{$current_tab}", ! empty( $_POST['save'] ) ) ) { // phpcs:ignore
 		Admin_Settings::save();
 	}
 }
 
 
 // Handle saving settings earlier than load-{page} hook to avoid race conditions in conditional menus.
-add_action( 'wp_loaded', 'Analog\Settings\save_settings' );
+add_action( 'wp_loaded', 'AnalogWP\CustomLibrary\Settings\save_settings' );
 
 /**
  * Add settings page.
@@ -117,7 +114,7 @@ function new_settings_page() {
  * @return void
  */
 function settings_page() {
-	do_action( 'ang_loaded_templates' );
+	do_action( 'analog_custom_library_loaded_templates' );
 	?>
 	<style>body { background: #F1F1F1; }</style>
 	<div id="analogwp-templates" class=""></div>
@@ -154,4 +151,4 @@ function create_options() {
 		}
 	}
 }
-add_action( 'init', 'Analog\Settings\create_options' );
+add_action( 'init', 'AnalogWP\CustomLibrary\Settings\create_options' );

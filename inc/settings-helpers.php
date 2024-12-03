@@ -2,14 +2,10 @@
 /**
  * Helper functions for Page Settings.
  *
- * @package Analog
- * @since 1.3.8
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Settings;
-
-use Analog\Options;
-use Analog\Utils;
+namespace AnalogWP\CustomLibrary\Settings;
 
 /**
  * Clean variables using sanitize_text_field. Arrays are cleaned recursively.
@@ -18,9 +14,9 @@ use Analog\Utils;
  * @param string|array $var Data to sanitize.
  * @return string|array
  */
-function ang_clean( $var ) {
+function analog_custom_library_clean( $var ) {
 	if ( is_array( $var ) ) {
-		return array_map( __NAMESPACE__ . '\ang_clean', $var );
+		return array_map( __NAMESPACE__ . '\analog_custom_library_clean', $var );
 	}
 
 	return is_scalar( $var ) ? sanitize_text_field( $var ) : $var;
@@ -33,10 +29,10 @@ function ang_clean( $var ) {
  *
  * @param array $options Opens array to output.
  */
-function ang_admin_fields( $options ) {
+function analog_custom_library_admin_fields( $options ) {
 
 	if ( ! class_exists( 'Admin_Settings', false ) ) {
-		include dirname( __FILE__ ) . '/class-admin-settings.php';
+		include __DIR__ . '/class-admin-settings.php';
 	}
 
 	Admin_Settings::output_fields( $options );
@@ -48,10 +44,10 @@ function ang_admin_fields( $options ) {
  * @param array $options Option fields to save.
  * @param array $data Passed data.
  */
-function ang_update_options( $options, $data = null ) {
+function analog_custom_library_update_options( $options, $data = null ) {
 
 	if ( ! class_exists( 'Admin_Settings', false ) ) {
-		include dirname( __FILE__ ) . '/class-admin-settings.php';
+		include __DIR__ . '/class-admin-settings.php';
 	}
 
 	Admin_Settings::save_fields( $options, $data );
@@ -64,10 +60,10 @@ function ang_update_options( $options, $data = null ) {
  * @param mixed $default Default value to save.
  * @return string
  */
-function ang_settings_get_option( $option_name, $default = '' ) {
+function analog_custom_library_settings_get_option( $option_name, $default = '' ) {
 
 	if ( ! class_exists( 'Admin_Settings', false ) ) {
-		include dirname( __FILE__ ) . '/class-admin-settings.php';
+		include __DIR__ . '/class-admin-settings.php';
 	}
 
 	return Admin_Settings::get_option( $option_name, $default );

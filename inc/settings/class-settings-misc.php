@@ -2,11 +2,10 @@
 /**
  * Analog Miscelleneous Settings
  *
- * @package Analog/Admin
- * @since 1.3.8
+ * @package AnalogWP\CustomLibrary/Admin
  */
 
-namespace Analog\Settings;
+namespace AnalogWP\CustomLibrary\Settings;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -32,11 +31,11 @@ class Misc extends Settings_Page {
 	 */
 	public function get_settings() {
 		$settings = apply_filters(
-			'ang_misc_settings',
+			'analog_custom_library_misc_settings',
 			array(
 				array(
 					'type' => 'title',
-					'id'   => 'ang_misc',
+					'id'   => 'analog_custom_library_misc',
 				),
 				array(
 					'title'         => __( 'Remove Data on Uninstall', 'custom-library-for-elementor' ),
@@ -48,12 +47,12 @@ class Misc extends Settings_Page {
 				),
 				array(
 					'type' => 'sectionend',
-					'id'   => 'ang_misc',
+					'id'   => 'analog_custom_library_misc',
 				),
 			)
 		);
 
-		return apply_filters( 'ang_get_settings_' . $this->id, $settings );
+		return apply_filters( 'analog_custom_library_get_settings_' . $this->id, $settings );
 	}
 
 	/**

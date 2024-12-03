@@ -1,19 +1,18 @@
 <?php
 /**
- * Class Analog\Admin\Notice.
+ * Class AnalogWP\CustomLibrary\Admin\Notice.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Admin;
+namespace AnalogWP\CustomLibrary\Admin;
 
-use Analog\Consumer;
+use AnalogWP\CustomLibrary\Consumer;
 
 /**
  * Class Notice
  *
- * @package Analog\Admin
- * @since 1.5
+ * @package AnalogWP\CustomLibrary\Admin
  */
 final class Notice {
 	const TYPE_SUCCESS = 'success';
@@ -24,7 +23,6 @@ final class Notice {
 	/**
 	 * The action for the nonce
 	 *
-	 * @since 1.5.0
 	 * @access protected
 	 * @var string
 	 */
@@ -33,7 +31,6 @@ final class Notice {
 	/**
 	 * The nonce field.
 	 *
-	 * @since 0.5.0
 	 * @access protected
 	 * @var string
 	 */

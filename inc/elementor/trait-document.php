@@ -2,13 +2,12 @@
 /**
  * Elementor document trait.
  *
- * @since 1.3.9
- * @package Analog
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Elementor;
+namespace AnalogWP\CustomLibrary\Elementor;
 
-use Analog\Plugin;
+use AnalogWP\CustomLibrary\Plugin;
 use Elementor\Core\Settings\Manager;
 
 trait Document {
@@ -31,7 +30,6 @@ trait Document {
 	/**
 	 * Get Post ID.
 	 *
-	 * @since 1.3.11
 	 * @return false|int
 	 */
 	public function get_post_id() {

@@ -2,17 +2,16 @@
 /**
  * Image importer class.
  *
- * @package Analog
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Classes;
+namespace AnalogWP\CustomLibrary\Classes;
 
-use Analog\Base;
+use AnalogWP\CustomLibrary\Base;
 
 /**
  * Image Importer class.
  *
- * @since 1.3.4
  */
 class Import_Image extends Base {
 	/**

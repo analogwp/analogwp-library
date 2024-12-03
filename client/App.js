@@ -15,22 +15,22 @@ const Analog = styled.div`
 	font-size: 13px;
 	position: relative;
 
-	--ang-accent: #4D45BD;
+	--analog-custom-library-accent: #4D45BD;
 
-	--ang-top-header-bg: '';
-	--ang-top-header-text: '';
-	--ang-categories-bg: '';
-	--ang-categories-text: '';
-	--ang-library-bg: '';
-	--ang-library-text: '';
-	--ang-thumbnail-border: '';
-	--ang-btn-bg: '';
-	--ang-btn-text: '';
-	--ang-btn-radius: 5px;
+	--analog-custom-library-top-header-bg: '';
+	--analog-custom-library-top-header-text: '';
+	--analog-custom-library-categories-bg: '';
+	--analog-custom-library-categories-text: '';
+	--analog-custom-library-library-bg: '';
+	--analog-custom-library-library-text: '';
+	--analog-custom-library-thumbnail-border: '';
+	--analog-custom-library-btn-bg: '';
+	--analog-custom-library-btn-text: '';
+	--analog-custom-library-btn-radius: 5px;
 
-	--ang-thumbnail-border: #E0E0E0;
+	--analog-custom-library-thumbnail-border: #E0E0E0;
 
-	.ang-notices {
+	.analog-custom-library-notices {
 		position: fixed;
 		right: 0;
 		top: 75px;
@@ -39,14 +39,14 @@ const Analog = styled.div`
 	}
 
 	.components-form-toggle.is-checked .components-form-toggle__track {
-		background-color: var(--ang-primary);
+		background-color: var(--analog-custom-library-primary);
 	}
 
 	.components-form-toggle .components-form-toggle__input:focus + .components-form-toggle__track {
-		box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ang-primary);
+		box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--analog-custom-library-primary);
 	}
 
-	.ang-button {
+	.analog-custom-library-button {
 		font-size: 14.22px;
 		font-weight: bold;
 		text-align: center;
@@ -111,7 +111,7 @@ const Analog = styled.div`
 	}
 
 	.button-accent {
-		background: var(--ang-accent);
+		background: var(--analog-custom-library-accent);
 		border: 0;
 		border-radius: 0;
 		text-transform: uppercase;
@@ -141,10 +141,10 @@ const Analog = styled.div`
 		font-weight: 500;
 	}
 
-	.ang-link {
-		color: var(--ang-accent);
+	.analog-custom-library-link {
+		color: var(--analog-custom-library-accent);
 		text-transform: uppercase;
-		border-bottom: 1px solid var(--ang-accent);
+		border-bottom: 1px solid var(--analog-custom-library-accent);
 		font-size: 12.64px;
 		letter-spacing: 1px;
 		text-decoration: none;

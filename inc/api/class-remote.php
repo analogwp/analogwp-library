@@ -2,21 +2,21 @@
 /**
  * APIs.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\API;
+namespace AnalogWP\CustomLibrary\API;
 
-use \Analog\Base;
-use Analog\Options;
-use Analog\Utils;
+use AnalogWP\CustomLibrary\Base;
+use AnalogWP\CustomLibrary\Options;
+use AnalogWP\CustomLibrary\Utils;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
  * Handle Remote API requests.
  *
- * @package Analog\API
+ * @package AnalogWP\CustomLibrary\API
  */
 class Remote extends Base {
 	const STORE_URL = 'https://analogwp.com/';
@@ -32,7 +32,6 @@ class Remote extends Base {
 	/**
 	 * Style kits API endpoint.
 	 *
-	 * @since 1.3.4
 	 * @var string API endpoint for style kits.
 	 */
 	private static $kits_endpoint = self::STORE_URL . 'wp-json/analogwp/v2/stylekits/';
@@ -40,7 +39,6 @@ class Remote extends Base {
 	/**
 	 * Blocks API endpoint.
 	 *
-	 * @since 1.4.0
 	 * @var string API endpoint for style kits.
 	 */
 	private static $blocks_endpoint = self::STORE_URL . 'wp-json/analogwp/v1/blocks/';
@@ -77,7 +75,7 @@ class Remote extends Base {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'ang_loaded_templates', array( $this, 'set_templates_info' ) );
+		add_action( 'analog_custom_library_loaded_templates', array( $this, 'set_templates_info' ) );
 
 		self::$api_call_args = array(
 			'plugin_version' => AGWP_LIBRARY_VERSION,
@@ -91,7 +89,7 @@ class Remote extends Base {
 	 * @return string
 	 */
 	public static function transient_key() {
-		$key = 'analogwp_template_info';
+		$key = 'analog_custom_library_info';
 
 		if ( Utils::is_container() ) {
 			$key .= '_v3';
@@ -235,7 +233,6 @@ class Remote extends Base {
 	/**
 	 * Get Style Kit tokens data from remote server.
 	 *
-	 * @since 1.3.4
 	 * @param array $kit Style Kit details.
 	 *
 	 * @return array|mixed|object
@@ -248,7 +245,7 @@ class Remote extends Base {
 		$body_args = array_merge(
 			$body_args,
 			array(
-				'license' => Options::get_instance()->get( 'ang_license_key' ),
+				'license' => Options::get_instance()->get( 'analog_custom_library_license_key' ),
 				'url'     => home_url(),
 				'site_id' => $kit['site_id'],
 			)

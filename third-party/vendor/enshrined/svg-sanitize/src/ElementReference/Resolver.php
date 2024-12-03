@@ -1,10 +1,10 @@
 <?php
 
-namespace Analog\Dependencies\enshrined\svgSanitize\ElementReference;
+namespace AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\ElementReference;
 
-use Analog\Dependencies\enshrined\svgSanitize\data\XPath;
-use Analog\Dependencies\enshrined\svgSanitize\Exceptions\NestingException;
-use Analog\Dependencies\enshrined\svgSanitize\Helper;
+use AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\data\XPath;
+use AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\Exceptions\NestingException;
+use AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\Helper;
 class Resolver
 {
     /**

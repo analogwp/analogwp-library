@@ -2,25 +2,19 @@
 /**
  * Analog Elementor Tools.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Elementor;
+namespace AnalogWP\CustomLibrary\Elementor;
 
-use Analog\Base;
-use Analog\Plugin;
-use Analog\Utils;
-use Elementor\Core\Base\Document;
+use AnalogWP\CustomLibrary\Base;
+use AnalogWP\CustomLibrary\Utils;
 use Elementor\Rollback;
-use Elementor\TemplateLibrary\Source_Local;
-use Elementor\User;
-use WP_Post;
 
 /**
  * Analog Elementor Tools.
  *
- * @package Analog\Elementor
- * @since 1.2.1
+ * @package AnalogWP\CustomLibrary\Elementor
  */
 class Tools extends Base {
 	/**
@@ -43,7 +37,7 @@ class Tools extends Base {
 	 * Add all actions and filters.
 	 */
 	private function add_actions() {
-		add_action( 'admin_post_ang_rollback', array( $this, 'post_ang_rollback' ) );
+		add_action( 'admin_post_analog_custom_library_rollback', array( $this, 'post_analog_custom_library_rollback' ) );
 	}
 
 	/**
@@ -71,7 +65,7 @@ class Tools extends Base {
 			return false;
 		}
 
-		return 'edit' === $current_screen->base && 'ang_tokens' === $current_screen->post_type;
+		return 'edit' === $current_screen->base && 'analog_custom_library_tokens' === $current_screen->post_type;
 	}
 
 	/**
@@ -83,7 +77,7 @@ class Tools extends Base {
 	private function get_stylekit_global_link() {
 		return add_query_arg(
 			array(
-				'action'  => 'ang_make_global',
+				'action'  => 'analog_custom_library_make_global',
 				'post_id' => get_the_ID(),
 			),
 			admin_url( 'admin-ajax.php' )
@@ -94,10 +88,9 @@ class Tools extends Base {
 	 * Rollback AnalogWP version.
 	 *
 	 * @return void
-	 * @since 1.2.3
 	 */
-	public function post_ang_rollback() {
-		check_admin_referer( 'ang_rollback' );
+	public function post_analog_custom_library_rollback() {
+		check_admin_referer( 'analog_custom_library_rollback' );
 
 		if ( defined( 'STYLEKIT_DEBUG' ) || ! current_user_can( 'update_plugins' ) ) {
 			wp_die( esc_html__( 'Sorry, you are not allowed to rollback Custom Library for Elementor plugin for this site.', 'custom-library-for-elementor' ) );
@@ -162,7 +155,6 @@ class Tools extends Base {
 	/**
 	 * Fetch a post.
 	 *
-	 * @since 1.6.1
 	 * @param int|string $id Post ID.
 	 *
 	 * @return mixed

@@ -2,16 +2,15 @@
 /**
  * Beta Testers.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog;
+namespace AnalogWP\CustomLibrary;
 
 /**
  * Class BetaTesters
 
- * @package Analog
- * @since 1.4.0
+ * @package AnalogWP\CustomLibrary
  */
 class Beta_Testers {
 	/**
@@ -34,7 +33,7 @@ class Beta_Testers {
 			return;
 		}
 
-		$this->transient_key = md5( 'ang_beta_testers_response_key' );
+		$this->transient_key = md5( 'analog_custom_library_beta_testers_response_key' );
 
 		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'check_version' ) );
 	}

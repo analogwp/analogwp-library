@@ -108,7 +108,7 @@ const Container = styled.div`
 				transform: translateY(20px);
 				opacity: 0;
 			}
-			.ang-promo {
+			.analog-custom-library-promo {
 				text-decoration: none;
 			}
 		}
@@ -149,7 +149,7 @@ const Container = styled.div`
 			height: 17px;
 		}
 		&.is-active svg {
-			fill: var(--ang-accent) !important;
+			fill: var(--analog-custom-library-accent) !important;
 		}
 	}
 

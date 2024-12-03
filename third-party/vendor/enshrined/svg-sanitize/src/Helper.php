@@ -1,6 +1,6 @@
 <?php
 
-namespace Analog\Dependencies\enshrined\svgSanitize;
+namespace AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize;
 
 class Helper
 {

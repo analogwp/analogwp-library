@@ -1,6 +1,6 @@
 <?php
 
-namespace Analog\Dependencies\enshrined\svgSanitize\data;
+namespace AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\data;
 
 /**
  * Interface TagInterface

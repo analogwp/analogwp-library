@@ -1,16 +1,20 @@
 <?php
+/**
+ * Notice consumer.
+ *
+ * @package AnalogWP\CustomLibrary
+ */
 
-namespace Analog;
+namespace AnalogWP\CustomLibrary;
 
-use Analog\Admin\Notice;
+use AnalogWP\CustomLibrary\Admin\Notice;
 
 /**
  * Class Consumer.
  *
  * Classname changed from User to Consumer due to a conflict with Elementor/User class usage.
  *
- * @since 1.5.0
- * @package Analog
+ * @package AnalogWP\CustomLibrary
  */
 final class Consumer {
 	const ADMIN_NOTICES_KEY = 'analog_custom_library_admin_notices';
@@ -18,7 +22,6 @@ final class Consumer {
 	/**
 	 * Init.
 	 *
-	 * @since 1.5.0
 	 * @access public
 	 */
 	public function register() {
@@ -33,7 +36,7 @@ final class Consumer {
 	 *
 	 * Fired by `wp_ajax_elementor_set_admin_notice_viewed` action.
 	 *
-	 * @since 1.5.0
+	 *
 	 * @access public
 	 * @static
 	 */
@@ -60,7 +63,7 @@ final class Consumer {
 	 *
 	 * Whether the notice was viewed by the user.
 	 *
-	 * @since 1.5.0
+	 *
 	 * @access public
 	 * @static
 	 *
@@ -79,7 +82,7 @@ final class Consumer {
 	 *
 	 * Retrieve the list of notices for the current user.
 	 *
-	 * @since 1.5.0
+	 *
 	 * @access private
 	 * @static
 	 *

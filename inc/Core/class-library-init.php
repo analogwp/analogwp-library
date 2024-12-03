@@ -2,12 +2,12 @@
 /**
  * Library initialization.
  *
- * @package Custom Library for Elementor
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Core;
+namespace AnalogWP\CustomLibrary\Core;
 
-use Analog\Core\Data\Templates_DB;
+use AnalogWP\CustomLibrary\Core\Data\Templates_DB;
 use Elementor\TemplateLibrary\Source_Local;
 
 /**

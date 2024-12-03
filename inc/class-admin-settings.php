@@ -1,14 +1,14 @@
 <?php
 /**
- * Analog Admin Settings Class
+ * Custom Library Admin Settings Class
  *
- * @package  Analog/Admin
+ * @package  AnalogWP/CustomLibrary/Admin
  */
 
-namespace Analog\Settings;
+namespace AnalogWP\CustomLibrary\Settings;
 
-use Analog\Utils;
-use Analog\Options;
+use AnalogWP\CustomLibrary\Utils;
+use AnalogWP\CustomLibrary\Options;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Admin_Settings Class.
  */
 class Admin_Settings {
-	const OPTION_KEY = 'ang_library_options';
+	const OPTION_KEY = 'analog_custom_library_options';
 	/**
 	 * Setting pages.
 	 *
@@ -52,7 +52,7 @@ class Admin_Settings {
 			$settings[] = include 'settings/class-settings-design.php';
 			$settings[] = include 'settings/class-settings-misc.php';
 
-			self::$settings = apply_filters( 'ang_get_settings_pages', $settings );
+			self::$settings = apply_filters( 'analog_custom_library_get_settings_pages', $settings );
 		}
 
 		return self::$settings;
@@ -64,19 +64,19 @@ class Admin_Settings {
 	public static function save() {
 		global $current_tab;
 
-		check_admin_referer( 'ang-library-settings' );
+		check_admin_referer( 'analog-custom-library-settings' );
 
 		// Trigger actions.
-		do_action( 'ang_settings_save_' . $current_tab );
-		do_action( 'ang_update_options_' . $current_tab );
-		do_action( 'ang_update_options' );
+		do_action( 'analog_custom_library_settings_save_' . $current_tab );
+		do_action( 'analog_custom_library_update_options_' . $current_tab );
+		do_action( 'analog_custom_library_update_options' );
 
 		self::add_message( __( 'Your settings have been saved.', 'custom-library-for-elementor' ) );
 
 		// Clear any unwanted data and flush rules.
-		update_option( 'ang_queue_flush_rewrite_rules', 'yes' );
+		update_option( 'analog_custom_library_queue_flush_rewrite_rules', 'yes' );
 
-		do_action( 'ang_settings_saved' );
+		do_action( 'analog_custom_library_settings_saved' );
 	}
 
 	/**
@@ -120,20 +120,20 @@ class Admin_Settings {
 	public static function output() {
 		global $current_section, $current_tab;
 
-		do_action( 'ang_settings_start' );
-		wp_enqueue_style( 'ang_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/admin-settings.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/admin-settings.css' ) );
+		do_action( 'analog_custom_library_settings_start' );
+		wp_enqueue_style( 'analog_custom_library_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/admin-settings.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/admin-settings.css' ) );
 
 		// Enqueue all necessary WP Media APIs.
 		wp_enqueue_media();
 
-		wp_enqueue_script( 'ang_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/admin-settings.js', array( 'jquery', 'wp-util', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'wp-i18n', 'wp-api-fetch' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/admin-settings.js' ), true );
+		wp_enqueue_script( 'analog_custom_library_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/admin-settings.js', array( 'jquery', 'wp-util', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'wp-i18n', 'wp-api-fetch' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/admin-settings.js' ), true );
 
 		wp_localize_script(
-			'ang_settings',
-			'ang_settings_data',
+			'analog_custom_library_settings',
+			'analog_custom_library_settings_data',
 			array(
 				'i18n_nav_warning'  => __( 'The changes you made will be lost if you navigate away from this page.', 'custom-library-for-elementor' ),
-				'rollback_url'      => wp_nonce_url( admin_url( 'admin-post.php?action=ang_rollback&version=VERSION' ), 'ang_rollback' ),
+				'rollback_url'      => wp_nonce_url( admin_url( 'admin-post.php?action=analog_custom_library_rollback&version=VERSION' ), 'analog_custom_library_rollback' ),
 				'rollback_versions' => Utils::get_rollback_versions(),
 				'uploader_title'    => __( 'Select Image', 'custom-library-for-elementor' ),
 				'uploader_btn_text' => __( 'Use this image', 'custom-library-for-elementor' ),
@@ -141,7 +141,7 @@ class Admin_Settings {
 		);
 
 		// Get tabs for the settings page.
-		$tabs = apply_filters( 'ang_settings_tabs_array', array() );
+		$tabs = apply_filters( 'analog_custom_library_settings_tabs_array', array() );
 
 		include __DIR__ . '/settings/views/html-admin-settings.php';
 	}
@@ -150,11 +150,11 @@ class Admin_Settings {
 	 * Get a setting from the settings API.
 	 *
 	 * @param string $option_name Option name.
-	 * @param mixed  $default     Default value.
+	 * @param mixed  $default_value     Default value.
 	 * @return mixed
 	 */
-	public static function get_option( $option_name = false, $default = '' ) {
-		$options = get_option( self::OPTION_KEY );
+	public static function get_option( $option_name = false, $default_value = '' ) {
+		$options = get_option( self::OPTION_KEY, array() );
 
 		if ( ! $option_name ) {
 			return $options;
@@ -195,7 +195,7 @@ class Admin_Settings {
 			$option_value = stripslashes( $option_value );
 		}
 
-		return ( null === $option_value ) ? $default : $option_value;
+		return ( null === $option_value ) ? $default_value : $option_value;
 	}
 
 	/**
@@ -326,7 +326,7 @@ class Admin_Settings {
 					}
 					echo '<table class="form-table">' . "\n\n";
 					if ( ! empty( $value['id'] ) ) {
-						do_action( 'ang_settings_' . sanitize_title( $value['id'] ) );
+						do_action( 'analog_custom_library_settings_' . sanitize_title( $value['id'] ) );
 					}
 					break;
 
@@ -347,11 +347,11 @@ class Admin_Settings {
 				// Section Ends.
 				case 'sectionend':
 					if ( ! empty( $value['id'] ) ) {
-						do_action( 'ang_settings_' . sanitize_title( $value['id'] ) . '_end' );
+						do_action( 'analog_custom_library_settings_' . sanitize_title( $value['id'] ) . '_end' );
 					}
 					echo '</table>';
 					if ( ! empty( $value['id'] ) ) {
-						do_action( 'ang_settings_' . sanitize_title( $value['id'] ) . '_after' );
+						do_action( 'analog_custom_library_settings_' . sanitize_title( $value['id'] ) . '_after' );
 					}
 					break;
 
@@ -425,9 +425,9 @@ class Admin_Settings {
 					break;
 				case 'action':
 					$option_value = $value['value'];
-					echo '<table class="form-table ang-action">' . "\n\n";
+					echo '<table class="form-table analog-custom-library-action">' . "\n\n";
 					if ( ! empty( $value['id'] ) ) {
-						do_action( 'ang_settings_' . sanitize_title( $value['id'] ) );
+						do_action( 'analog_custom_library_settings_' . sanitize_title( $value['id'] ) );
 					}
 					?>
 					<tr valign="top" id="<?php echo esc_attr( $value['id'] ); ?>">
@@ -438,7 +438,7 @@ class Admin_Settings {
 							<?php if ( ! empty( $value['desc'] ) ) : ?>
 								<span class="description"><?php echo esc_html( $value['desc'] ); ?></span>
 							<?php endif; ?>
-							<?php wp_nonce_field( 'ang_nonce', 'ang_nonce' ); ?>
+							<?php wp_nonce_field( 'analog_custom_library_nonce', 'analog_custom_library_nonce' ); ?>
 							<input type="submit" class="<?php echo esc_attr( $value['class'] ); ?>" name="<?php echo esc_attr( $value['id'] ); ?>" value="<?php echo esc_attr( $option_value ); ?>"/>
 						</td>
 					</tr>
@@ -763,7 +763,7 @@ class Admin_Settings {
 
 				// Default: run an action.
 				default:
-					do_action( 'ang_admin_field_' . $value['type'], $value );
+					do_action( 'analog_custom_library_admin_field_' . $value['type'], $value );
 					break;
 			}
 		}
@@ -860,7 +860,7 @@ class Admin_Settings {
 					break;
 				case 'multiselect':
 				case 'multi-checkbox':
-					$value = array_filter( array_map( __NAMESPACE__ . '\ang_clean', (array) $raw_value ) );
+					$value = array_filter( array_map( __NAMESPACE__ . '\analog_custom_library_clean', (array) $raw_value ) );
 					break;
 				case 'select':
 					$allowed_values = empty( $option['options'] ) ? array() : array_map( 'strval', array_keys( $option['options'] ) );
@@ -872,23 +872,19 @@ class Admin_Settings {
 					$value   = in_array( $raw_value, $allowed_values, true ) ? $raw_value : $default;
 					break;
 				default:
-					$value = ang_clean( $raw_value );
+					$value = analog_custom_library_clean( $raw_value );
 					break;
 			}
 
 			/**
 			 * Sanitize the value of an option.
-			 *
-			 * @since 2.4.0
 			 */
-			$value = apply_filters( 'ang_admin_settings_sanitize_option', $value, $option, $raw_value );
+			$value = apply_filters( 'analog_custom_library_admin_settings_sanitize_option', $value, $option, $raw_value );
 
 			/**
 			 * Sanitize the value of an option by option name.
-			 *
-			 * @since 2.4.0
 			 */
-			$value = apply_filters( "ang_admin_settings_sanitize_option_$option_name", $value, $option, $raw_value );
+			$value = apply_filters( "analog_custom_library_admin_settings_sanitize_option_$option_name", $value, $option, $raw_value );
 
 			if ( is_null( $value ) ) {
 				continue;
@@ -912,7 +908,7 @@ class Admin_Settings {
 			/**
 			 * Fire an action before saved.
 			 */
-			do_action( 'ang_update_option', $option );
+			do_action( 'analog_custom_library_update_option', $option );
 		}
 
 		// Save all options in our array.

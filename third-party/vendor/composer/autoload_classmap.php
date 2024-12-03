@@ -6,16 +6,16 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Analog\\Dependencies\\enshrined\\svgSanitize\\ElementReference\\Resolver' => $vendorDir . '/enshrined/svg-sanitize/src/ElementReference/Resolver.php',
-    'Analog\\Dependencies\\enshrined\\svgSanitize\\ElementReference\\Subject' => $vendorDir . '/enshrined/svg-sanitize/src/ElementReference/Subject.php',
-    'Analog\\Dependencies\\enshrined\\svgSanitize\\ElementReference\\Usage' => $vendorDir . '/enshrined/svg-sanitize/src/ElementReference/Usage.php',
-    'Analog\\Dependencies\\enshrined\\svgSanitize\\Exceptions\\NestingException' => $vendorDir . '/enshrined/svg-sanitize/src/Exceptions/NestingException.php',
-    'Analog\\Dependencies\\enshrined\\svgSanitize\\Helper' => $vendorDir . '/enshrined/svg-sanitize/src/Helper.php',
-    'Analog\\Dependencies\\enshrined\\svgSanitize\\Sanitizer' => $vendorDir . '/enshrined/svg-sanitize/src/Sanitizer.php',
-    'Analog\\Dependencies\\enshrined\\svgSanitize\\data\\AllowedAttributes' => $vendorDir . '/enshrined/svg-sanitize/src/data/AllowedAttributes.php',
-    'Analog\\Dependencies\\enshrined\\svgSanitize\\data\\AllowedTags' => $vendorDir . '/enshrined/svg-sanitize/src/data/AllowedTags.php',
-    'Analog\\Dependencies\\enshrined\\svgSanitize\\data\\AttributeInterface' => $vendorDir . '/enshrined/svg-sanitize/src/data/AttributeInterface.php',
-    'Analog\\Dependencies\\enshrined\\svgSanitize\\data\\TagInterface' => $vendorDir . '/enshrined/svg-sanitize/src/data/TagInterface.php',
-    'Analog\\Dependencies\\enshrined\\svgSanitize\\data\\XPath' => $vendorDir . '/enshrined/svg-sanitize/src/data/XPath.php',
+    'AnalogWP\\CustomLibrary\\Dependencies\\enshrined\\svgSanitize\\ElementReference\\Resolver' => $vendorDir . '/enshrined/svg-sanitize/src/ElementReference/Resolver.php',
+    'AnalogWP\\CustomLibrary\\Dependencies\\enshrined\\svgSanitize\\ElementReference\\Subject' => $vendorDir . '/enshrined/svg-sanitize/src/ElementReference/Subject.php',
+    'AnalogWP\\CustomLibrary\\Dependencies\\enshrined\\svgSanitize\\ElementReference\\Usage' => $vendorDir . '/enshrined/svg-sanitize/src/ElementReference/Usage.php',
+    'AnalogWP\\CustomLibrary\\Dependencies\\enshrined\\svgSanitize\\Exceptions\\NestingException' => $vendorDir . '/enshrined/svg-sanitize/src/Exceptions/NestingException.php',
+    'AnalogWP\\CustomLibrary\\Dependencies\\enshrined\\svgSanitize\\Helper' => $vendorDir . '/enshrined/svg-sanitize/src/Helper.php',
+    'AnalogWP\\CustomLibrary\\Dependencies\\enshrined\\svgSanitize\\Sanitizer' => $vendorDir . '/enshrined/svg-sanitize/src/Sanitizer.php',
+    'AnalogWP\\CustomLibrary\\Dependencies\\enshrined\\svgSanitize\\data\\AllowedAttributes' => $vendorDir . '/enshrined/svg-sanitize/src/data/AllowedAttributes.php',
+    'AnalogWP\\CustomLibrary\\Dependencies\\enshrined\\svgSanitize\\data\\AllowedTags' => $vendorDir . '/enshrined/svg-sanitize/src/data/AllowedTags.php',
+    'AnalogWP\\CustomLibrary\\Dependencies\\enshrined\\svgSanitize\\data\\AttributeInterface' => $vendorDir . '/enshrined/svg-sanitize/src/data/AttributeInterface.php',
+    'AnalogWP\\CustomLibrary\\Dependencies\\enshrined\\svgSanitize\\data\\TagInterface' => $vendorDir . '/enshrined/svg-sanitize/src/data/TagInterface.php',
+    'AnalogWP\\CustomLibrary\\Dependencies\\enshrined\\svgSanitize\\data\\XPath' => $vendorDir . '/enshrined/svg-sanitize/src/data/XPath.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
 );

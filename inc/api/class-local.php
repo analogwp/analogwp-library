@@ -2,29 +2,28 @@
 /**
  * APIs.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\API;
+namespace AnalogWP\CustomLibrary\API;
 
-use Analog\Plugin;
-use Analog\Base;
-use Analog\Options;
-use Analog\Utils;
-use Elementor\TemplateLibrary\Analog_Importer;
+use AnalogWP\CustomLibrary\Plugin;
+use AnalogWP\CustomLibrary\Base;
+use AnalogWP\CustomLibrary\Options;
+use AnalogWP\CustomLibrary\Utils;
+use Elementor\TemplateLibrary\AnalogWP_Custom_Library_Importer;
 use WP_Error;
-use WP_Query;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_REST_Server;
-use Analog\Core\Data\Library_Data;
+use AnalogWP\CustomLibrary\Core\Data\Library_Data;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
  * Local APIs.
  *
- * @package Analog\API
+ * @package AnalogWP\CustomLibrary\API
  */
 class Local extends Base {
 	/**
@@ -106,10 +105,10 @@ class Local extends Base {
 			return new WP_REST_Response( array( 'error' => 'Invalid Template ID.' ), 500 );
 		}
 
-		\update_post_meta( $editor_id, '_ang_import_type', 'elementor' );
-		\update_post_meta( $editor_id, '_ang_template_id', $template_id );
+		\update_post_meta( $editor_id, '_analog_custom_library_import_type', 'elementor' );
+		\update_post_meta( $editor_id, '_analog_custom_library_template_id', $template_id );
 
-		$obj  = new Analog_Importer();
+		$obj  = new AnalogWP_Custom_Library_Importer();
 		$data = $obj->get_local_data(
 			array(
 				'template_id'    => $template_id,
@@ -199,7 +198,7 @@ class Local extends Base {
 		 * Small hack to later avoid loading default values in Elementor.
 		 */
 		if ( is_array( $template['tokens'] ) ) {
-			$template['tokens']['ang_recently_imported'] = 'yes';
+			$template['tokens']['analog_custom_library_recently_imported'] = 'yes';
 		}
 		\update_post_meta( $new_post_id, '_elementor_data', $template['content'] );
 		\update_post_meta( $new_post_id, '_elementor_page_settings', wp_slash( $template['tokens'] ) );
@@ -207,8 +206,8 @@ class Local extends Base {
 		\update_post_meta( $new_post_id, '_elementor_edit_mode', 'builder' );
 
 		if ( $new_post_id && ! is_wp_error( $new_post_id ) ) {
-			\update_post_meta( $new_post_id, '_ang_import_type', $with_page ? 'page' : 'library' );
-			\update_post_meta( $new_post_id, '_ang_template_id', $template['id'] );
+			\update_post_meta( $new_post_id, '_analog_custom_library_import_type', $with_page ? 'page' : 'library' );
+			\update_post_meta( $new_post_id, '_analog_custom_library_template_id', $template['id'] );
 			\update_post_meta( $new_post_id, '_wp_page_template', ! empty( $template['page_template'] ) ? $template['page_template'] : 'elementor_canvas' );
 
 			if ( ! $with_page ) {
@@ -224,7 +223,6 @@ class Local extends Base {
 	/**
 	 * Creates a 'Section' for Elementor.
 	 *
-	 * @since 1.4.0
 	 *
 	 * @uses wp_insert_post()
 	 *
@@ -252,10 +250,10 @@ class Local extends Base {
 			\update_post_meta( $post_id, '_elementor_template_type', $type );
 			\update_post_meta( $post_id, '_wp_page_template', 'default' );
 
-			\update_post_meta( $post_id, '_ang_import_type', $method );
+			\update_post_meta( $post_id, '_analog_custom_library_import_type', $method );
 			\update_post_meta(
 				$post_id,
-				'_ang_template_id',
+				'_analog_custom_library_template_id',
 				array(
 					'site_id' => $block['siteID'],
 					'id'      => $block['id'],
@@ -273,7 +271,7 @@ class Local extends Base {
 	 *
 	 * @param WP_REST_Request $request Request object.
 	 *
-	 * @uses \Elementor\TemplateLibrary\Analog_Importer
+	 * @uses \Elementor\TemplateLibrary\AnalogWP_Custom_Library_Importer
 	 * @uses Utils::convert_string_to_boolean()
 	 *
 	 * @return WP_Error|WP_REST_Response
@@ -286,7 +284,7 @@ class Local extends Base {
 		$method = $with_page ? 'page' : 'library';
 
 		// Initiate template import.
-		$obj = new Analog_Importer();
+		$obj = new AnalogWP_Custom_Library_Importer();
 
 		$data = $obj->get_data(
 			array(
@@ -316,7 +314,6 @@ class Local extends Base {
 	/**
 	 * Handle local template import.
 	 *
-	 * @since 1.0.0
 	 * @param WP_REST_Request $request Request object.
 	 * @return WP_REST_Response|WP_Error
 	 */
@@ -343,9 +340,8 @@ class Local extends Base {
 	 *  2. Then with retrieved content, creates a page.
 	 *
 	 * @uses \Analog\API\Remote::get_instance()->get_block_content()
-	 * @uses \Elementor\TemplateLibrary\Analog_Importer
+	 * @uses \Elementor\TemplateLibrary\AnalogWP_Custom_Library_Importer
 	 *
-	 * @since 1.4.0
 	 *
 	 * @param array  $block Block data.
 	 * @param string $method Import method.
@@ -355,7 +351,7 @@ class Local extends Base {
 	protected function process_block_import( $block, $method = 'library' ) {
 
 		$raw_data = Library_Data::prepare_template_content( $block['id'], $method );
-		$importer = new Analog_Importer();
+		$importer = new AnalogWP_Custom_Library_Importer();
 
 		$data = $importer->get_local_data(
 			array(

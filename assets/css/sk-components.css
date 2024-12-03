@@ -1,10 +1,10 @@
 #analogwp-templates {
-	--ang-primary: #413EC5;
-	--ang-border: #DFDFDF;
-	--ang-main-text: #474747;
-	--ang-sec-text: #828282;
-	--ang-dark-bg: #252421;
-	--ang-sec-bg: #D1D0ED;
+	--analog-custom-library-primary: #413EC5;
+	--analog-custom-library-border: #DFDFDF;
+	--analog-custom-library-main-text: #474747;
+	--analog-custom-library-sec-text: #828282;
+	--analog-custom-library-dark-bg: #252421;
+	--analog-custom-library-sec-bg: #D1D0ED;
 	font-family: Inter, 'sans-serif';
 }
 
@@ -52,7 +52,7 @@
 }
 
 #analogwp-templates button {
-	border-radius: var(--ang-btn-radius, 5px) !important;
+	border-radius: var(--analog-custom-library-btn-radius, 5px) !important;
 }
 
 #sk-library-tab .components-button {
@@ -160,7 +160,7 @@
 	margin-right: 10px !important;
 }
 
-#analogwp-templates .block-list .actions .ang-requirements {
+#analogwp-templates .block-list .actions .analog-custom-library-requirements {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -170,18 +170,18 @@
 	text-align: center;
 }
 
-#analogwp-templates .block-list .actions .ang-requirements img {
+#analogwp-templates .block-list .actions .analog-custom-library-requirements img {
 	width: 45px;
 	height: 45px;
 }
 
 
-#analogwp-templates .block-list .actions .ang-requirements .title {
+#analogwp-templates .block-list .actions .analog-custom-library-requirements .title {
 	font-weight: bold;
 	font-size: 16px;
 }
 
-#analogwp-templates .block-list .actions .ang-requirements p {
+#analogwp-templates .block-list .actions .analog-custom-library-requirements p {
 	margin: 0 0 10px;
 	font-weight: 500;
 }
@@ -361,7 +361,7 @@
 /*START*/
 .analogwp-content li .components-card,
 .analogwp-content div.block-list .components-card {
-	border: 1px solid var(--ang-thumbnail-border);
+	border: 1px solid var(--analog-custom-library-thumbnail-border);
 }
 
 /*Body*/
@@ -408,7 +408,7 @@
 	text-transform: uppercase;
 	font-size: 14px;
 	padding: 8px 16px;
-	background-color: var(--ang-dark-bg);
+	background-color: var(--analog-custom-library-dark-bg);
 	color: #fff;
 	text-align: center;
 }
