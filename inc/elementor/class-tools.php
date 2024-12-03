@@ -58,7 +58,7 @@ class Tools extends Base {
 	}
 
 	/**
-	 * Checks if current screen is Analog Library CPT screen.
+	 * Checks if current screen is Custom Library for Elementor CPT screen.
 	 *
 	 * @deprecated 1.6.0
 	 *
@@ -100,7 +100,7 @@ class Tools extends Base {
 		check_admin_referer( 'ang_rollback' );
 
 		if ( defined( 'STYLEKIT_DEBUG' ) || ! current_user_can( 'update_plugins' ) ) {
-			wp_die( esc_html__( 'Sorry, you are not allowed to rollback Analog Library plugin for this site.', 'custom-library-for-elementor' ) );
+			wp_die( esc_html__( 'Sorry, you are not allowed to rollback Custom Library for Elementor plugin for this site.', 'custom-library-for-elementor' ) );
 		}
 
 		$rollback_versions = Utils::get_rollback_versions();

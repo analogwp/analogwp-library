@@ -49,7 +49,7 @@ class Utils extends Base {
 				return;
 			}
 
-			$this->transients->delete( 'analog_get_kits' );
+			$this->transients->delete( 'analog_custom_library_get_kits' );
 		};
 
 		add_action( 'delete_post', $delete_kit_cache );
@@ -378,7 +378,7 @@ class Utils extends Base {
 	}
 
 	/**
-	 * Returns a list of all keys for color controls defined by Analog Library.
+	 * Returns a list of all keys for color controls defined by Custom Library for Elementor.
 	 *
 	 * @since 1.5.0
 	 * @return array
@@ -397,7 +397,7 @@ class Utils extends Base {
 			'ang_background_dark_heading',
 		);
 
-		return apply_filters( 'analog_color_scheme_items', $keys );
+		return apply_filters( 'analog_custom_library_color_scheme_items', $keys );
 	}
 
 	/**
@@ -425,7 +425,7 @@ class Utils extends Base {
 	 */
 	public static function get_kits( $prefix = true ) {
 		$transients = self::get_instance()->transients;
-		$posts      = $transients->get( 'analog_get_kits' );
+		$posts      = $transients->get( 'analog_custom_library_get_kits' );
 
 		if ( ! $posts ) {
 			$posts = \get_posts(
@@ -444,7 +444,7 @@ class Utils extends Base {
 				)
 			);
 
-			$transients->set( 'analog_get_kits', $posts, WEEK_IN_SECONDS );
+			$transients->set( 'analog_custom_library_get_kits', $posts, WEEK_IN_SECONDS );
 		}
 
 		$kits = array();

@@ -82,7 +82,7 @@ class Import_Image extends Base {
 			$wpdb->prepare(
 				"
 					SELECT post_id FROM {$wpdb->postmeta}
-						WHERE meta_key = '_analog_image_hash'
+						WHERE meta_key = '_analog_custom_library_image_hash'
 						AND meta_value = %s
 					",
 				$this->get_hash_image( $attachment['url'] )
@@ -178,7 +178,7 @@ class Import_Image extends Base {
 		$metadata = \wp_generate_attachment_metadata( $post_id, $upload['file'] );
 
 		\wp_update_attachment_metadata( $post_id, $metadata );
-		\update_post_meta( $post_id, '_analog_image_hash', $this->get_hash_image( $attachment['url'] ) );
+		\update_post_meta( $post_id, '_analog_custom_library_image_hash', $this->get_hash_image( $attachment['url'] ) );
 
 		$new_attachment = array(
 			'id'  => $post_id,

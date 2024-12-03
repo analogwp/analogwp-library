@@ -159,7 +159,7 @@ export function doElementorInsert( content, context = 'template' ) {
 	if ( typeof $e !== 'undefined' ) {
 		const historyId = $e.internal( 'document/history/start-log', {
 			type: 'add',
-			title: `${ __( 'Add Analog Library', 'custom-library-for-elementor' ) } ${ contextText }`,
+			title: `${ __( 'Add Custom Library for Elementor', 'custom-library-for-elementor' ) } ${ contextText }`,
 		} );
 
 		for ( let i = 0; i < content.length; i++ ) {

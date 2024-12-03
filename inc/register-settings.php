@@ -21,7 +21,7 @@ function register_menu() {
 		$permission = 'read';
 	}
 
-	$menu_slug = 'analog_library';
+	$menu_slug = 'analog_custom_library';
 
 	add_menu_page(
 		esc_html__( 'Custom Library for Elementor', 'custom-library-for-elementor' ),

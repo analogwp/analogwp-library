@@ -45,7 +45,7 @@ class Finder_Shortcuts extends Base_Category {
 		return array(
 			'library'    => array(
 				'title'    => __( 'Templates Library', 'custom-library-for-elementor' ),
-				'url'      => admin_url( 'admin.php?page=analog_library' ),
+				'url'      => admin_url( 'admin.php?page=analog_custom_library' ),
 				'icon'     => 'library-download',
 				'keywords' => array( 'analog', 'library', 'settings' ),
 			),
@@ -56,7 +56,7 @@ class Finder_Shortcuts extends Base_Category {
 				'keywords' => array( 'analog', 'settings' ),
 			),
 			'style-kits' => array(
-				'title'    => __( 'Theme Analog Library', 'custom-library-for-elementor' ),
+				'title'    => __( 'Theme Custom Library for Elementor', 'custom-library-for-elementor' ),
 				'url'      => admin_url( 'admin.php?page=style-kits' ),
 				'icon'     => 'settings',
 				'keywords' => array( 'analog', 'style', 'kits' ),

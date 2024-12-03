@@ -13,7 +13,7 @@ use Analog\Admin\Notice;
  * @package Analog
  */
 final class Consumer {
-	const ADMIN_NOTICES_KEY = 'analog_admin_notices';
+	const ADMIN_NOTICES_KEY = 'analog_custom_library_admin_notices';
 
 	/**
 	 * Init.
@@ -22,8 +22,8 @@ final class Consumer {
 	 * @access public
 	 */
 	public function register() {
-		add_action( 'wp_ajax_analog_set_admin_notice_viewed', array( __CLASS__, 'ajax_set_admin_notice_viewed' ) );
-		add_action( 'admin_post_analog_set_admin_notice_viewed', array( __CLASS__, 'ajax_set_admin_notice_viewed' ) );
+		add_action( 'wp_ajax_analog_custom_library_set_admin_notice_viewed', array( __CLASS__, 'ajax_set_admin_notice_viewed' ) );
+		add_action( 'admin_post_analog_custom_library_set_admin_notice_viewed', array( __CLASS__, 'ajax_set_admin_notice_viewed' ) );
 	}
 
 	/**

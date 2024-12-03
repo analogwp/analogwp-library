@@ -35,9 +35,9 @@ final class Admin extends Base {
 	 */
 	public function footer_text( $text ) {
 		$current_screen   = get_current_screen();
-		$is_analog_screen = 'analog_library' === $current_screen->parent_base;
+		$is_analog_custom_library_screen = 'analog_custom_library' === $current_screen->parent_base;
 
-		if ( $is_analog_screen ) {
+		if ( $is_analog_custom_library_screen ) {
 			$text = sprintf(
 				/* translators: 1: Custom Library for Elementor, 2: Link to plugin review */
 				__( 'Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!', 'custom-library-for-elementor' ),

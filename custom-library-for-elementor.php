@@ -40,7 +40,7 @@ define( 'AGWP_LIBRARY_PLUGIN_BASE', plugin_basename( AGWP_LIBRARY_PLUGIN_FILE ) 
  * @access private
  * @return void
  */
-function analog_activate_plugin() {
+function analog_custom_library_activate_plugin() {
 	if ( version_compare( PHP_VERSION, AGWP_LIBRARY_PHP_MINIMUM, '<' ) ) {
 		wp_die(
 			/* translators: %s: version number */
@@ -49,10 +49,10 @@ function analog_activate_plugin() {
 		);
 	}
 
-	do_action( 'analog_activation' );
+	do_action( 'analog_custom_library_activation' );
 }
 
-register_activation_hook( __FILE__, 'analog_activate_plugin' );
+register_activation_hook( __FILE__, 'analog_custom_library_activate_plugin' );
 
 /**
  * Handles plugin deactivation.
@@ -61,15 +61,15 @@ register_activation_hook( __FILE__, 'analog_activate_plugin' );
  * @access private
  * @return void
  */
-function analog_deactivate_plugin() {
+function analog_custom_library_deactivate_plugin() {
 	if ( version_compare( PHP_VERSION, AGWP_LIBRARY_PHP_MINIMUM, '<' ) ) {
 		return;
 	}
 
-	do_action( 'analog_deactivation' );
+	do_action( 'analog_custom_library_deactivation' );
 }
 
-register_deactivation_hook( __FILE__, 'analog_deactivate_plugin' );
+register_deactivation_hook( __FILE__, 'analog_custom_library_deactivate_plugin' );
 
 /**
  * Fail loading, if WordPress version requirements not met.
@@ -77,9 +77,9 @@ register_deactivation_hook( __FILE__, 'analog_deactivate_plugin' );
  * @since 1.1
  * @return void
  */
-function analog_fail_wp_version() {
+function analog_custom_library_fail_wp_version() {
 	/* translators: %s: WordPress version */
-	$message      = sprintf( esc_html__( 'Analog Library requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.', 'custom-library-for-elementor' ), AGWP_LIBRARY_WP_MINIMUM );
+	$message      = sprintf( esc_html__( 'Custom Library for Elementor requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.', 'custom-library-for-elementor' ), AGWP_LIBRARY_WP_MINIMUM );
 	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
 
 	echo wp_kses_post( $html_message );
@@ -90,7 +90,7 @@ function analog_fail_wp_version() {
  *
  * @return mixed
  */
-function analog_require_minimum_elementor() {
+function analog_custom_library_require_minimum_elementor() {
 	$file_path = 'elementor/elementor.php';
 
 	$link = add_query_arg(
@@ -104,7 +104,7 @@ function analog_require_minimum_elementor() {
 	$update_url = wp_nonce_url( $link, 'upgrade-plugin_' . $file_path );
 
 	/* translators: %s: Minimum required Elementor version. */
-	$message = '<p>' . sprintf( __( 'Analog Library requires Elementor v%s or newer in order to work. Please update Elementor to the latest version.', 'custom-library-for-elementor' ), AGWP_LIBRARY_ELEMENTOR_MINIMUM ) . '</p>';
+	$message = '<p>' . sprintf( __( 'Custom Library for Elementor requires Elementor v%s or newer in order to work. Please update Elementor to the latest version.', 'custom-library-for-elementor' ), AGWP_LIBRARY_ELEMENTOR_MINIMUM ) . '</p>';
 
 	$versions = get_transient( 'ang_rollback_versions_' . AGWP_LIBRARY_VERSION );
 
@@ -128,7 +128,7 @@ function analog_require_minimum_elementor() {
  *
  * @return mixed|bool
  */
-function analog_fail_load() {
+function analog_custom_library_fail_load() {
 	if ( ! function_exists( 'get_current_screen' ) ) {
 		require_once ABSPATH . 'wp-admin/includes/screen.php';
 	}
@@ -163,7 +163,7 @@ function analog_fail_load() {
 		}
 
 		$activation_url = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $file_path . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $file_path );
-		$message        = '<p>' . __( 'Analog Library is not working because you need to activate the Elementor plugin.', 'custom-library-for-elementor' ) . '</p>';
+		$message        = '<p>' . __( 'Custom Library for Elementor is not working because you need to activate the Elementor plugin.', 'custom-library-for-elementor' ) . '</p>';
 		$message       .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $activation_url, __( 'Activate Elementor Now', 'custom-library-for-elementor' ) ) . '</p>';
 	} elseif ( $is_not_installed ) {
 		if ( ! current_user_can( 'install_plugins' ) ) {
@@ -171,7 +171,7 @@ function analog_fail_load() {
 		}
 
 		$install_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ), 'install-plugin_elementor' );
-		$message     = '<p>' . __( 'Analog Library is not working because you need to install the Elementor plugin.', 'custom-library-for-elementor' ) . '</p>';
+		$message     = '<p>' . __( 'Custom Library for Elementor is not working because you need to install the Elementor plugin.', 'custom-library-for-elementor' ) . '</p>';
 		$message    .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $install_url, __( 'Install Elementor Now', 'custom-library-for-elementor' ) ) . '</p>';
 	}
 
@@ -202,7 +202,7 @@ add_action(
 		}
 
 		if ( ! did_action( 'elementor/loaded' ) ) {
-			add_action( 'admin_notices', 'analog_fail_load' );
+			add_action( 'admin_notices', 'analog_custom_library_fail_load' );
 			return;
 		}
 
@@ -213,12 +213,12 @@ add_action(
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/elementor/class-tools.php';
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Utils.php';
 
-			add_action( 'admin_notices', 'analog_require_minimum_elementor' );
+			add_action( 'admin_notices', 'analog_custom_library_require_minimum_elementor' );
 			return;
 		}
 
 		if ( ! version_compare( get_bloginfo( 'version' ), AGWP_LIBRARY_WP_MINIMUM, '>=' ) ) {
-			add_action( 'admin_notices', 'analog_fail_wp_version' );
+			add_action( 'admin_notices', 'analog_custom_library_fail_wp_version' );
 			return;
 		}
 

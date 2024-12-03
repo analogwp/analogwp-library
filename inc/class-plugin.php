@@ -30,14 +30,14 @@ final class Plugin {
 	 *
 	 * @var string
 	 */
-	public static $user_meta_prefix = 'analog_library_favorites';
+	public static $user_meta_prefix = 'analog_custom_library_favorites';
 
 	/**
 	 * Holds key for Favorite blocks user meta.
 	 *
 	 * @var string
 	 */
-	public static $user_meta_block_prefix = 'analog_block_favorites';
+	public static $user_meta_block_prefix = 'analog_custom_library_block_favorites';
 
 	/**
 	 * Database Upgrader.
@@ -82,7 +82,7 @@ final class Plugin {
 	 * @param string $hook Current page hook.
 	 */
 	public function scripts( $hook ) {
-		if ( 'toplevel_page_analog_library' !== $hook ) {
+		if ( 'toplevel_page_analog_custom_library' !== $hook ) {
 			return;
 		}
 
@@ -112,7 +112,7 @@ final class Plugin {
 		$i10n = apply_filters( // phpcs:ignore
 			'analog/app/strings',
 			array(
-				'is_settings_page'  => 'toplevel_page_analog_library' === $hook,
+				'is_settings_page'  => 'toplevel_page_analog_custom_library' === $hook,
 				'rollback_url'      => wp_nonce_url( admin_url( 'admin-post.php?action=ang_rollback&version=VERSION' ), 'ang_rollback' ),
 				'rollback_versions' => Utils::get_rollback_versions(),
 			)

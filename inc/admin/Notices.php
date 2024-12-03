@@ -78,7 +78,7 @@ final class Notices {
 		 *
 		 * @param array $notices List of Notice instances.
 		 */
-		$notices = apply_filters( 'analog_admin_notices', array() );
+		$notices = apply_filters( 'analog_custom_library_admin_notices', array() );
 
 		return array_filter(
 			$notices,

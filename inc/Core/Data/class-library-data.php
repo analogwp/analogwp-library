@@ -2,7 +2,7 @@
 /**
  * Library Data handler.
  *
- * @package Analog Library
+ * @package Custom Library for Elementor
  */
 
 namespace Analog\Core\Data;

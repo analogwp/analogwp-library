@@ -28,7 +28,7 @@ final class Notice {
 	 * @access protected
 	 * @var string
 	 */
-	public static $nonce_action = 'analog_admin_notice';
+	public static $nonce_action = 'analog_custom_library_admin_notice';
 
 	/**
 	 * The nonce field.
@@ -126,7 +126,7 @@ final class Notice {
 			}
 		} else {
 			$allowed_html = apply_filters(
-				'analog_admin_notices_html',
+				'analog_custom_library_admin_notices_html',
 				array(
 					'a'      => array(
 						'href'   => array(),
