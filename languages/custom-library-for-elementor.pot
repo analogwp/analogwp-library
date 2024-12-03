@@ -59,13 +59,13 @@ msgstr ""
 
 #: custom-library-for-elementor.php:82
 msgid ""
-"Analog Library requires WordPress version %s+. Because you are using an "
+"Custom Library for Elementor requires WordPress version %s+. Because you are using an "
 "earlier version, the plugin is currently NOT RUNNING."
 msgstr ""
 
 #: custom-library-for-elementor.php:107
 msgid ""
-"Analog Library requires Elementor v%s or newer in order to work. Please "
+"Custom Library for Elementor requires Elementor v%s or newer in order to work. Please "
 "update Elementor to the latest version."
 msgstr ""
 
@@ -80,7 +80,7 @@ msgstr ""
 
 #: custom-library-for-elementor.php:166
 msgid ""
-"Analog Library is not working because you need to activate the Elementor "
+"Custom Library for Elementor is not working because you need to activate the Elementor "
 "plugin."
 msgstr ""
 
@@ -90,7 +90,7 @@ msgstr ""
 
 #: custom-library-for-elementor.php:174
 msgid ""
-"Analog Library is not working because you need to install the Elementor "
+"Custom Library for Elementor is not working because you need to install the Elementor "
 "plugin."
 msgstr ""
 
@@ -167,7 +167,7 @@ msgstr ""
 
 #: client/api.js:162
 #: assets/js/app/index.js:276
-msgid "Add Analog Library"
+msgid "Add Custom Library for Elementor"
 msgstr ""
 
 #: client/Synchronization.js:24
@@ -180,7 +180,7 @@ msgstr ""
 
 #: client/ProModal.js:6
 msgid ""
-"Get unlimited access to the Analog Library library and features with the "
+"Get unlimited access to the Custom Library for Elementor library and features with the "
 "PRO version."
 msgstr ""
 
@@ -298,7 +298,7 @@ msgid "Show categories template count"
 msgstr ""
 
 #: inc/elementor/class-tools.php:103
-msgid "Sorry, you are not allowed to rollback Analog Library plugin for this site."
+msgid "Sorry, you are not allowed to rollback Custom Library for Elementor plugin for this site."
 msgstr ""
 
 #: inc/elementor/class-tools.php:111
@@ -320,7 +320,7 @@ msgid "Templates Library"
 msgstr ""
 
 #: inc/elementor/class-finder-shortcuts.php:59
-msgid "Theme Analog Library"
+msgid "Theme Custom Library for Elementor"
 msgstr ""
 
 #: inc/api/class-local.php:328
