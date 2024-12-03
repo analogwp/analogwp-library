@@ -218,13 +218,13 @@ class App extends React.Component {
 		window.addEventListener( 'hashchange', this.switchTabs, false );
 		window.addEventListener( 'DOMContentLoaded', this.switchTabs, false );
 
-		if ( window.localStorage.getItem( 'analog::show-free' ) === 'false' ) {
+		if ( window.localStorage.getItem( 'analog-custom-library::show-free' ) === 'false' ) {
 			this.setState( {
 				showFree: false,
 			} );
 		}
 
-		if ( window.localStorage.getItem( 'analog::show-pro' ) === 'false' ) {
+		if ( window.localStorage.getItem( 'analog-custom-library::show-pro' ) === 'false' ) {
 			this.setState( {
 				showPro: false,
 			} );
@@ -378,7 +378,7 @@ class App extends React.Component {
 		this.setState( {
 			group: false,
 		} );
-		window.localStorage.setItem( 'analog::group-block', false );
+		window.localStorage.setItem( 'analog-custom-library::group-block', false );
 
 		const filteredBlocks = this.state.blockArchive.filter(
 			block => block.id in this.state.blockFavorites

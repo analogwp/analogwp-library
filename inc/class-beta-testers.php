@@ -53,7 +53,7 @@ class Beta_Testers {
 		if ( false === $beta_version ) {
 			$beta_version = 'false';
 
-			$response = wp_remote_get( 'https://plugins.svn.wordpress.org/analogwp-templates/trunk/readme.txt' );
+			$response = wp_remote_get( 'https://plugins.svn.wordpress.org/custom-library-for-elementor/trunk/readme.txt' );
 
 			if ( ! is_wp_error( $response ) && ! empty( $response['body'] ) ) {
 				preg_match( '/Beta tag: (.*)/i', $response['body'], $matches );
@@ -98,7 +98,7 @@ class Beta_Testers {
 			$response->slug        = $plugin_slug;
 			$response->new_version = $beta_version;
 			$response->url         = 'https://analogwp.com/';
-			$response->package     = sprintf( 'https://downloads.wordpress.org/plugin/analogwp-templates.%s.zip', $beta_version );
+			$response->package     = sprintf( 'https://downloads.wordpress.org/plugin/custom-library-for-elementor.%s.zip', $beta_version );
 
 			$transient->response[ AGWP_LIBRARY_PLUGIN_BASE ] = $response;
 		}

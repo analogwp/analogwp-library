@@ -25,8 +25,8 @@ function register_menu() {
 		esc_html__( 'Custom Library', 'custom-library-for-elementor' ),
 		$permission,
 		$menu_slug,
-		'AnalogWP\CustomLibrary\Settings\settings_page',
-		AGWP_LIBRARY_PLUGIN_URL . 'assets/img/triangle.svg',
+		__NAMESPACE__ . '\settings_page',
+		AGWP_LIBRARY_PLUGIN_URL . 'assets/img/analog.svg',
 		'58.6'
 	);
 
@@ -36,13 +36,13 @@ function register_menu() {
 		__( 'Settings', 'custom-library-for-elementor' ),
 		'manage_options',
 		'analog-custom-library-settings',
-		'AnalogWP\CustomLibrary\Settings\new_settings_page'
+		__NAMESPACE__ . '\new_settings_page'
 	);
 
 	// Remove duplicate menu hack.
 	remove_submenu_page( $menu_slug, $menu_slug );
 
-	add_action( 'load-style-kits_page_settings', 'AnalogWP\CustomLibrary\Settings\settings_page_init' );
+	add_action( 'load-style-kits_page_settings', __NAMESPACE__ . '\settings_page_init' );
 }
 
 add_action( 'admin_menu', __NAMESPACE__ . '\register_menu' );
@@ -97,7 +97,7 @@ function save_settings() {
 
 
 // Handle saving settings earlier than load-{page} hook to avoid race conditions in conditional menus.
-add_action( 'wp_loaded', 'AnalogWP\CustomLibrary\Settings\save_settings' );
+add_action( 'wp_loaded', __NAMESPACE__ . '\save_settings' );
 
 /**
  * Add settings page.
@@ -117,7 +117,7 @@ function settings_page() {
 	do_action( 'analog_custom_library_loaded_templates' );
 	?>
 	<style>body { background: #F1F1F1; }</style>
-	<div id="analogwp-templates" class=""></div>
+	<div id="analog-custom-library" class=""></div>
 	<?php
 }
 
@@ -131,7 +131,7 @@ function create_options() {
 		return false;
 	}
 	// Include settings so that we can run through defaults.
-	include_once dirname( __FILE__ ) . '/class-admin-settings.php';
+	include_once __DIR__ . '/class-admin-settings.php';
 
 	$settings = array_filter( Admin_Settings::get_settings_pages() );
 
@@ -151,4 +151,4 @@ function create_options() {
 		}
 	}
 }
-add_action( 'init', 'AnalogWP\CustomLibrary\Settings\create_options' );
+add_action( 'init', __NAMESPACE__ . '\create_options' );

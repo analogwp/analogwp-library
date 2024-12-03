@@ -684,7 +684,7 @@ class Utils extends Base {
 				}";
 
 		if ( isset( $library_popup_style ) && 'full-screen' === $library_popup_style ) {
-			$css .= '#analogwp-templates-modal .dialog-widget-content {
+			$css .= '#analog-custom-library-modal .dialog-widget-content {
 				width: 100vw !important;
 				height: 100vh !important;
 			}';

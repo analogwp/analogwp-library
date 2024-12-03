@@ -175,7 +175,7 @@ const Sidebar = ( { state } ) => {
 			showFree: ! context.state.showFree,
 		} );
 
-		window.localStorage.setItem( 'analog::show-free', ! context.state.showFree );
+		window.localStorage.setItem( 'analog-custom-library::show-free', ! context.state.showFree );
 	}
 
 	const getInitialTab = (defaultTab) => {

@@ -7,7 +7,7 @@
 	margin-left: 5px;
 }
 
-#analogwp-templates-modal .dialog-widget-content {
+#analog-custom-library-modal .dialog-widget-content {
 	width: 90vw;
 	height: 90vh;
     overflow-y: auto;
@@ -16,32 +16,32 @@
 	border-radius: 8px !important;
 }
 
-#analogwp-templates-modal p {
+#analog-custom-library-modal p {
 	margin: 1em 0;
 }
 
-#analogwp-templates {
+#analog-custom-library {
 	background-color: #F1F1F1;
     text-align: left;
 }
 
-#analogwp-templates input[type=checkbox]:checked:before {
+#analog-custom-library input[type=checkbox]:checked:before {
 	margin: -5px 0 0 -9px;
 }
 
-#analogwp-templates label {
+#analog-custom-library label {
 	cursor: pointer;
 }
 
-#analogwp-templates-modal .dialog-message {
+#analog-custom-library-modal .dialog-message {
     padding: 0;
 }
 
-#analogwp-templates > div {
+#analog-custom-library > div {
 	margin: 0;
 }
 
-#analogwp-templates-modal .analog-custom-library-notices p {
+#analog-custom-library-modal .analog-custom-library-notices p {
 	margin: 0;
 }
 
@@ -171,9 +171,9 @@ button[data-action="save_token"] {
 	color: #39b54a;
 }
 
-#analogwp-templates,
-#analogwp-templates-modal .dialog-message,
-#analogwp-templates-modal .dialog-content {
+#analog-custom-library,
+#analog-custom-library-modal .dialog-message,
+#analog-custom-library-modal .dialog-content {
 	height: 100%;
 }
 

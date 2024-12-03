@@ -1,6 +1,6 @@
 import App from './App';
 
-const containerElementID = 'analogwp-templates';
+const containerElementID = 'analog-custom-library';
 
 const waitForEl = ( selector, callback ) => {
 	if ( ! document.getElementById( containerElementID ) ) {

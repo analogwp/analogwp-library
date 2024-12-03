@@ -84,7 +84,7 @@ final class Plugin {
 		wp_enqueue_style( 'analogwp-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/sk-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/sk-components.css' ) );
 
 		wp_enqueue_script(
-			'analogwp-library-app',
+			'analog-custom-library-app',
 			AGWP_LIBRARY_PLUGIN_URL . 'assets/js/app/index.js',
 			array(
 				'react',
@@ -100,7 +100,7 @@ final class Plugin {
 			filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/app/index.js' ),
 			true
 		);
-		wp_set_script_translations( 'analogwp-library-app', 'custom-library-for-elementor', AGWP_LIBRARY_PLUGIN_DIR . 'languages' );
+		wp_set_script_translations( 'analog-custom-library-app', 'custom-library-for-elementor', AGWP_LIBRARY_PLUGIN_DIR . 'languages' );
 
 		$i10n = apply_filters( // phpcs:ignore
 			'analog/app/strings',
@@ -111,7 +111,7 @@ final class Plugin {
 			)
 		);
 
-		wp_localize_script( 'analogwp-library-app', 'AGWP_LIBRARY', $i10n );
+		wp_localize_script( 'analog-custom-library-app', 'AGWP_LIBRARY', $i10n );
 
 		Utils::enqueue_settings_toggle_css();
 	}

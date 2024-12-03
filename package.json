@@ -9,7 +9,7 @@
     "build-app": "wp-scripts build --webpack-src-dir=client --output-path=assets/js/app",
     "dev-app": "wp-scripts start --webpack-src-dir=client --output-path=assets/js/app",
     "makePot": "npx @wp-blocks/make-pot . ./languages/",
-    "convertPot2json": "npx po2json ./languages/custom-library-for-elementor.pot ./languages/custom-library-for-elementor-analogwp-library-app.json -f jed1.x",
+    "convertPot2json": "npx po2json ./languages/custom-library-for-elementor.pot ./languages/custom-library-for-elementor-analog-custom-library-app.json -f jed1.x",
     "build": "gulp build",
     "gh:release": "gulp github-build",
     "translate": "gulp translate"

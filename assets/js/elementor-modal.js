@@ -16,7 +16,7 @@ const analog = window.analog = window.analog || {};
 						((window.analogModal = elementorCommon.dialogsManager.createWidget(
 							"lightbox",
 							{
-								id: "analogwp-templates-modal",
+								id: "analog-custom-library-modal",
 								headerMessage: "What is this???",
 								message: "",
 								hide: {
@@ -32,9 +32,9 @@ const analog = window.analog = window.analog || {};
 								},
 								onShow: function() {
 									const content = window.analogModal.getElements("content");
-									content.append('<div id="analogwp-templates" class="wrap"></div>');
+									content.append('<div id="analog-custom-library" class="wrap"></div>');
 									var event = new Event("modal-close");
-									$("#analogwp-templates").on(
+									$("#analog-custom-library").on(
 										"click",
 										".close-modal",
 										function() {
