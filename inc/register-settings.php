@@ -22,33 +22,8 @@ function register_menu() {
 		__NAMESPACE__ . '\settings_page',
 		1
 	);
-
-	// Remove duplicate menu hack.
-	remove_submenu_page( $menu_slug, $menu_slug );
-
-	add_action( 'load-style-kits_page_settings', __NAMESPACE__ . '\settings_page_init' );
 }
 
-
-/**
- * Loads methods into memory for use within settings.
- */
-function settings_page_init() {
-
-	// Include settings pages.
-	Admin_Settings::get_settings_pages();
-
-	// Add any posted messages.
-	if ( ! empty( $_GET['analog_custom_library_error'] ) ) { // phpcs:ignore
-		Admin_Settings::add_error( wp_kses_post( wp_unslash( $_GET['analog_custom_library_error'] ) ) ); // phpcs:ignore
-	}
-
-	if ( ! empty( $_GET['analog_custom_library_message'] ) ) { // phpcs:ignore
-		Admin_Settings::add_message( wp_kses_post( wp_unslash( $_GET['analog_custom_library_message'] ) ) ); // phpcs:ignore
-	}
-
-	do_action( 'analog_custom_library_settings_page_init' );
-}
 add_action( 'admin_menu', __NAMESPACE__ . '\register_menu', 30 );
 
 /**
@@ -88,21 +63,8 @@ add_action( 'wp_loaded', __NAMESPACE__ . '\save_settings' );
  *
  * @return void
  */
-function new_settings_page() {
-	Admin_Settings::output();
-}
-
-/**
- * Add settings page.
- *
- * @return void
- */
 function settings_page() {
-	do_action( 'analog_custom_library_loaded_templates' );
-	?>
-	<style>body { background: #F1F1F1; }</style>
-	<div id="analog-custom-library" class=""></div>
-	<?php
+	Admin_Settings::output();
 }
 
 /**
