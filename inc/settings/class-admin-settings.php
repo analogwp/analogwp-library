@@ -742,8 +742,8 @@ class Admin_Settings {
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
 							<img class="<?php echo esc_attr( $value['type'] ); ?>" id="<?php echo esc_attr( $value['type'] ) . '-' . esc_attr( $value['id'] ); ?>" src="<?php echo esc_url( $image_url ); ?>" />
 							<div>
-								<a href="#" class="ang-upload-image-btn" data-element-id="<?php echo esc_attr( $value['type'] ) . '-' . esc_attr( $value['id'] ); ?>"><?php esc_html_e( 'Change Image', 'custom-library-for-elementor' ); ?></a>
-								<a href="#" class="ang-remove-image-btn" data-default-image="<?php echo esc_url( $default_image ); ?>" style="display:<?php echo esc_attr( $display ); ?>;"><?php esc_html_e( 'Revert to Default', 'custom-library-for-elementor' ); ?></a>
+								<a href="#" class="analog-custom-library-upload-image-btn" data-element-id="<?php echo esc_attr( $value['type'] ) . '-' . esc_attr( $value['id'] ); ?>"><?php esc_html_e( 'Change Image', 'custom-library-for-elementor' ); ?></a>
+								<a href="#" class="analog-custom-library-remove-image-btn" data-default-image="<?php echo esc_url( $default_image ); ?>" style="display:<?php echo esc_attr( $display ); ?>;"><?php esc_html_e( 'Revert to Default', 'custom-library-for-elementor' ); ?></a>
 								<input
 									name="<?php echo esc_attr( $value['id'] ); ?>"
 									id="<?php echo esc_attr( $value['id'] ); ?>"

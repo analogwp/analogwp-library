@@ -131,4 +131,5 @@ class Register_Settings {
 	}
 }
 
+// Instantiate settings.
 Register_Settings::get_instance();

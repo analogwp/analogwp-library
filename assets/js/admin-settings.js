@@ -166,4 +166,4 @@
 			}
 		);
 	} );
-}( jQuery, ang_settings_data, wp ) );
+}( jQuery, analog_custom_library_settings_data, wp ) );

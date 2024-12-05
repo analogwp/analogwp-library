@@ -2,12 +2,13 @@
 /**
  * Analog General Settings
  *
- * @package AnalogWP\CustomLibrary/Admin
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace AnalogWP\CustomLibrary\Settings;
+namespace AnalogWP\CustomLibrary\Settings\Tabs;
 
-use AnalogWP\CustomLibrary\API\Remote;
+use AnalogWP\CustomLibrary\Settings\Admin_Settings;
+use AnalogWP\CustomLibrary\Settings\Settings_Page;
 
 defined( 'ABSPATH' ) || exit;
 
