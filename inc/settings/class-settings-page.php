@@ -12,8 +12,7 @@ namespace AnalogWP\CustomLibrary\Settings;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Settings_Page.
- *
+ * class Settings_Page.
  */
 abstract class Settings_Page {
 

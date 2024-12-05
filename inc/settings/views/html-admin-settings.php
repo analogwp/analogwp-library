@@ -21,7 +21,7 @@ if ( ! $tab_exists ) {
 	exit;
 }
 ?>
-<div class="wrap ang <?php echo esc_attr( $current_tab ); ?>">
+<div class="wrap ang-custom-library <?php echo esc_attr( $current_tab ); ?>">
 	<h1 class="menu-title"><?php esc_html_e( 'Library Settings', 'custom-library-for-elementor' ); ?></h1>
 	<div class="analog-custom-library-wrapper">
 		<form method="<?php echo esc_attr( apply_filters( 'analog_custom_library_settings_form_method_tab_' . $current_tab, 'post' ) ); ?>" id="mainform" action="" enctype="multipart/form-data">
@@ -55,6 +55,28 @@ if ( ! $tab_exists ) {
 		</form>
 		<div class="sidebar">
 			<?php do_action( 'analog_custom_library_sidebar_start' ); ?>
+
+			<div class="plugin-banner">
+				<div class="header">
+					<div class="brand">
+						<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<rect width="48" height="48" rx="24" fill="#4D45BD"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M31.1282 14.0869H14.0869V31.1282H16.1219V16.1217H31.1282V14.0869Z" fill="white"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M34.4349 17.3933H17.3936V34.4346H34.4349V17.3933Z" fill="white"/>
+						</svg>
+						<h4>Custom Library for Elementor</h4>
+					</div>
+					<p class="version">
+						v1.0
+					</p>
+				</div>
+				<ul class="feature-list">
+					<li>Submit a support ticket</li>
+					<li>View documentation</li>
+					<li>Explore all features</li>
+				</ul>
+			</div>
+
 			<?php do_action( 'analog_custom_library_sidebar_end' ); ?>
 		</div>
 	</div>

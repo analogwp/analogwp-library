@@ -214,8 +214,8 @@ final class Plugin {
 	private function includes() {
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Storage/class-transients.php';
 
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/register-settings.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/settings-helpers.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/settings/class-register-settings.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/settings/settings-helpers.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-base.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-import-image.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-options.php';
