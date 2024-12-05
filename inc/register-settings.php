@@ -13,30 +13,14 @@ namespace AnalogWP\CustomLibrary\Settings;
  * @return void
  */
 function register_menu() {
-	$permission = 'manage_options';
-	if ( has_filter( 'analog_custom_library_user_roles_enabled', '__return_true' ) ) {
-		$permission = 'read';
-	}
-
-	$menu_slug = 'analog_custom_library';
-
-	add_menu_page(
-		esc_html__( 'Custom Library for Elementor', 'custom-library-for-elementor' ),
-		esc_html__( 'Custom Library', 'custom-library-for-elementor' ),
-		$permission,
-		$menu_slug,
-		__NAMESPACE__ . '\settings_page',
-		AGWP_LIBRARY_PLUGIN_URL . 'assets/img/analog.svg',
-		'58.6'
-	);
-
 	add_submenu_page(
-		$menu_slug,
+		'elementor',
 		__( 'Custom Library Settings', 'custom-library-for-elementor' ),
-		__( 'Settings', 'custom-library-for-elementor' ),
+		__( 'AnalogWP Custom Library', 'custom-library-for-elementor' ),
 		'manage_options',
 		'analog-custom-library-settings',
-		__NAMESPACE__ . '\new_settings_page'
+		__NAMESPACE__ . '\settings_page',
+		1
 	);
 
 	// Remove duplicate menu hack.
@@ -45,7 +29,6 @@ function register_menu() {
 	add_action( 'load-style-kits_page_settings', __NAMESPACE__ . '\settings_page_init' );
 }
 
-add_action( 'admin_menu', __NAMESPACE__ . '\register_menu' );
 
 /**
  * Loads methods into memory for use within settings.
@@ -66,6 +49,7 @@ function settings_page_init() {
 
 	do_action( 'analog_custom_library_settings_page_init' );
 }
+add_action( 'admin_menu', __NAMESPACE__ . '\register_menu', 30 );
 
 /**
  * Handle saving of settings.
