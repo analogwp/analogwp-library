@@ -49,10 +49,15 @@ class Register_Settings {
 	 * @return void
 	 */
 	public function register_menu() {
+		// Return early if Elementor menu isn't registered yet.
+		if ( ! did_action( 'elementor/admin/menu/after_register' ) ) {
+			return;
+		}
+
 		add_submenu_page(
 			'elementor',
 			__( 'Custom Library Settings', 'custom-library-for-elementor' ),
-			__( 'AnalogWP Custom Library', 'custom-library-for-elementor' ),
+			__( 'Custom Library', 'custom-library-for-elementor' ),
 			'manage_options',
 			'analog-custom-library-settings',
 			array( $this, 'settings_page' ),
