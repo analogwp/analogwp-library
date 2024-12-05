@@ -71,7 +71,7 @@ class General extends Settings_Page {
 				array(
 					'desc'    => __( 'Replace the default placeholder image.', 'custom-library-for-elementor' ),
 					'id'      => 'default-placeholder-thumb',
-					'default' => AGWP_LIBRARY_PLUGIN_URL . 'assets/img/placeholder.png',
+					'default' => AGWP_LIBRARY_PLUGIN_URL . 'assets/img/placeholder.svg',
 					'type'    => 'media-image',
 				),
 				array(
