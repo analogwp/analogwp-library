@@ -36,7 +36,6 @@ final class Consumer {
 	 *
 	 * Fired by `wp_ajax_elementor_set_admin_notice_viewed` action.
 	 *
-	 *
 	 * @access public
 	 * @static
 	 */
@@ -63,7 +62,6 @@ final class Consumer {
 	 *
 	 * Whether the notice was viewed by the user.
 	 *
-	 *
 	 * @access public
 	 * @static
 	 *
@@ -81,7 +79,6 @@ final class Consumer {
 	 * Get user notices.
 	 *
 	 * Retrieve the list of notices for the current user.
-	 *
 	 *
 	 * @access private
 	 * @static

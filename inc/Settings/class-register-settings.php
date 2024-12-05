@@ -109,7 +109,7 @@ class Register_Settings {
 			return false;
 		}
 		// Include settings so that we can run through defaults.
-		include_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/settings/class-admin-settings.php';
+		include_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/class-admin-settings.php';
 
 		$settings = array_filter( Admin_Settings::get_settings_pages() );
 

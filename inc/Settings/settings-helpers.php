@@ -32,7 +32,7 @@ function analog_custom_library_clean( $var ) {
 function analog_custom_library_admin_fields( $options ) {
 
 	if ( ! class_exists( 'Admin_Settings', false ) ) {
-		include __DIR__ . '/class-admin-settings.php';
+		include AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/class-admin-settings.php';
 	}
 
 	Admin_Settings::output_fields( $options );
@@ -47,7 +47,7 @@ function analog_custom_library_admin_fields( $options ) {
 function analog_custom_library_update_options( $options, $data = null ) {
 
 	if ( ! class_exists( 'Admin_Settings', false ) ) {
-		include __DIR__ . '/class-admin-settings.php';
+		include AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/class-admin-settings.php';
 	}
 
 	Admin_Settings::save_fields( $options, $data );
@@ -63,7 +63,7 @@ function analog_custom_library_update_options( $options, $data = null ) {
 function analog_custom_library_settings_get_option( $option_name, $default = '' ) {
 
 	if ( ! class_exists( 'Admin_Settings', false ) ) {
-		include __DIR__ . '/class-admin-settings.php';
+		include AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/class-admin-settings.php';
 	}
 
 	return Admin_Settings::get_option( $option_name, $default );

@@ -27,7 +27,7 @@ class Elementor {
 		add_action(
 			'elementor/finder/register',
 			static function ( Categories_Manager $categories_manager ) {
-				include_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/elementor/class-finder-shortcuts.php';
+				include_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Elementor/class-finder-shortcuts.php';
 				$categories_manager->register( new Finder_Shortcuts() );
 			}
 		);

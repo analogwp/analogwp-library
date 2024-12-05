@@ -5,7 +5,7 @@
  * @package AnalogWP\CustomLibrary
  */
 
-namespace AnalogWP\CustomLibrary\Settings\views;
+namespace AnalogWP\CustomLibrary\Settings\Views;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

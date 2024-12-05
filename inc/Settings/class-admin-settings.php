@@ -46,7 +46,7 @@ class Admin_Settings {
 		if ( empty( self::$settings ) ) {
 			$settings = array();
 
-			include_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/settings/class-settings-page.php';
+			include_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/class-settings-page.php';
 
 			$settings[] = include 'Tabs/class-settings-general.php';
 			$settings[] = include 'Tabs/class-settings-design.php';
@@ -143,7 +143,7 @@ class Admin_Settings {
 		// Get tabs for the settings page.
 		$tabs = apply_filters( 'analog_custom_library_settings_tabs_array', array() );
 
-		include AGWP_LIBRARY_PLUGIN_DIR . 'inc/settings/views/html-admin-settings.php';
+		include AGWP_LIBRARY_PLUGIN_DIR . 'inc/settings/Views/html-admin-settings.php';
 	}
 
 	/**
