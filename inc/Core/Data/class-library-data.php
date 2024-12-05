@@ -2,10 +2,10 @@
 /**
  * Library Data handler.
  *
- * @package Analog Library
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Core\Data;
+namespace AnalogWP\CustomLibrary\Core\Data;
 
 /**
  * Class Library_Data.
@@ -64,6 +64,8 @@ final class Library_Data {
 
 	/**
 	 * Get template data.
+	 *
+	 * @param int $template_id Template ID.
 	 *
 	 * @return array|\WP_Error
 	 */

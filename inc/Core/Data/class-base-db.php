@@ -2,10 +2,10 @@
 /**
  * Base library database.
  *
- * @package Analog Library
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Core\Data;
+namespace AnalogWP\CustomLibrary\Core\Data;
 
 /**
  * Class Base_DB.
@@ -87,10 +87,10 @@ abstract class Base_DB {
 	public function insert( $data, $type = '' ) {
 		global $wpdb;
 
-		// Set default values
+		// Set default values.
 		$data = wp_parse_args( $data, $this->get_column_defaults() );
 
-		do_action( 'ang_pre_insert_' . $type, $data );
+		do_action( 'analog_custom_library_pre_insert_' . $type, $data );
 
 		// Initialise column format array.
 		$column_formats = $this->get_columns();
@@ -108,7 +108,7 @@ abstract class Base_DB {
 		$wpdb->insert( $this->table_name, $data, $column_formats );
 		$wpdb_insert_id = $wpdb->insert_id;
 
-		do_action( 'ang_post_insert_' . $type, $wpdb_insert_id, $data );
+		do_action( 'analog_custom_library_post_insert_' . $type, $wpdb_insert_id, $data );
 
 		return $wpdb_insert_id;
 	}
@@ -221,7 +221,7 @@ abstract class Base_DB {
 				$is_local_url = true;
 			}
 
-			$check_tlds = apply_filters( 'ang_validate_tlds', true );
+			$check_tlds = apply_filters( 'analog_custom_library_validate_tlds', true );
 			if ( $check_tlds ) {
 				$tlds_to_check = apply_filters(
 					'edd_sl_url_tlds',
@@ -241,7 +241,7 @@ abstract class Base_DB {
 
 			if ( substr_count( $host, '.' ) > 1 ) {
 				$subdomains_to_check = apply_filters(
-					'ang_url_subdomains',
+					'analog_custom_library_url_subdomains',
 					array(
 						'dev.',
 						'*.staging.',
@@ -261,7 +261,7 @@ abstract class Base_DB {
 			}
 		}
 
-		return apply_filters( 'ang_is_local_url', $is_local_url, $url );
+		return apply_filters( 'analog_custom_library_is_local_url', $is_local_url, $url );
 	}
 
 	/**
@@ -273,17 +273,17 @@ abstract class Base_DB {
 	public function clean_site_url( $url ) {
 		$url = strtolower( $url );
 
-		if ( apply_filters( 'ang_strip_www', true ) ) {
+		if ( apply_filters( 'analog_custom_library_strip_www', true ) ) {
 			// strip www subdomain.
 			$url = str_replace( array( '://www.', ':/www.' ), '://', $url );
 		}
 
-		if ( apply_filters( 'ang_strip_protocol', true ) ) {
+		if ( apply_filters( 'analog_custom_library_strip_protocol', true ) ) {
 			// strip protocol.
 			$url = str_replace( array( 'http://', 'https://', 'http:/', 'https:/' ), '', $url );
 		}
 
-		if ( apply_filters( 'ang_strip_port_number', true ) ) {
+		if ( apply_filters( 'analog_custom_library_strip_port_number', true ) ) {
 			$port = wp_parse_url( $url, PHP_URL_PORT );
 			if ( $port ) {
 				// strip port number.

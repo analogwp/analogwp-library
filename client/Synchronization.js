@@ -15,14 +15,14 @@ const Synchronization = () => {
 					<NotificationConsumer>
 						{ ( { add } ) => (
 							<Button
-								className={ classNames( 'ang-sync', {
+								className={ classNames( 'analog-custom-library-sync', {
 									'is-active': context.state.syncing,
 								} ) }
 								onClick={ e => {
 									e.preventDefault();
 									context.forceRefresh()
-										.then( () => add( __( 'Library is now synced', 'ang' ) ) )
-										.catch( () => add( __( 'Something is not right, please try again.', 'ang' ), 'error' ) );
+										.then( () => add( __( 'Library is now synced', 'custom-library-for-elementor' ) ) )
+										.catch( () => add( __( 'Something is not right, please try again.', 'custom-library-for-elementor' ), 'error' ) );
 								} }
 							>
 								{ context.state.syncing ?
@@ -34,7 +34,7 @@ const Synchronization = () => {
 					</NotificationConsumer>
 				) }
 			</AnalogContext.Consumer>
-			{ ! AGWP.is_settings_page && (
+			{ ! AGWP_LIBRARY.is_settings_page && (
 				<Button className="close-modal">
 					<XMark
 						className="icons"

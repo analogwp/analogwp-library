@@ -2,10 +2,10 @@
 /**
  * Library templates database.
  *
- * @package Analog Library
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Core\Data;
+namespace AnalogWP\CustomLibrary\Core\Data;
 
 /**
  * Class Templates_DB.
@@ -16,7 +16,7 @@ class Templates_DB extends Base_DB {
 	 *
 	 * @var string
 	 */
-	public $cache_group = 'ang_custom_sync_templates';
+	public $cache_group = 'analog_custom_library_custom_sync_templates';
 
 	/**
 	 * Templates_DB constructor.

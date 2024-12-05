@@ -17,6 +17,6 @@ modules:
             tablePrefix: "%TEST_TABLE_PREFIX%"
             domain: "%WP_DOMAIN%"
             adminEmail: "%ADMIN_EMAIL%"
-            title: "Test"        
-            plugins: ['analogwp-templates/analogwp-templates.php']
-            activatePlugins: ['analogwp-templates/analogwp-templates.php']
+            title: "Test"
+            plugins: ['custom-library-for-elementor/custom-library-for-elementor.php']
+            activatePlugins: ['custom-library-for-elementor/custom-library-for-elementor.php']

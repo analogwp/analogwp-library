@@ -5,7 +5,7 @@ import 'regenerator-runtime/runtime';
 
 export async function markFavorite( id, favorite = true, type = 'template' ) {
 	return await apiFetch( {
-		path: '/agwp/v1/mark_favorite',
+		path: '/agwp-library/v1/mark_favorite',
 		method: 'post',
 		data: {
 			id: id,
@@ -16,14 +16,14 @@ export async function markFavorite( id, favorite = true, type = 'template' ) {
 }
 
 export async function requestTemplateList() {
-	return await apiFetch( { path: '/agwp/v1/templates' } ).then(
+	return await apiFetch( { path: '/agwp-library/v1/templates' } ).then(
 		response => response
 	);
 }
 
 export async function requestDirectImport( template, withPage = false, kit = false ) {
 	return await apiFetch( {
-		path: '/agwp/v1/import/elementor/direct',
+		path: '/agwp-library/v1/import/elementor/direct',
 		method: 'post',
 		data: {
 			template,
@@ -38,7 +38,7 @@ export async function requestDirectImport( template, withPage = false, kit = fal
 
 export async function requestBlockContent( block, method ) {
 	return await apiFetch( {
-		path: '/agwp/v1/blocks/insert',
+		path: '/agwp-library/v1/blocks/insert',
 		method: 'post',
 		data: {
 			block,
@@ -48,7 +48,7 @@ export async function requestBlockContent( block, method ) {
 }
 
 export async function getSettings() {
-	return await apiFetch( { path: '/agwp/v1/get/settings' } ).then(
+	return await apiFetch( { path: '/agwp-library/v1/get/settings' } ).then(
 		response => response
 	);
 }
@@ -60,7 +60,7 @@ export async function requestSettingUpdate( key, value ) {
 	}
 
 	return await apiFetch( {
-		path: '/agwp/v1/update/settings',
+		path: '/agwp-library/v1/update/settings',
 		method: 'POST',
 		data: {
 			key,
@@ -71,7 +71,7 @@ export async function requestSettingUpdate( key, value ) {
 
 export async function requestLicenseInfo( action = 'check' ) {
 	return await apiFetch( {
-		path: '/agwp/v1/license',
+		path: '/agwp-library/v1/license',
 		method: 'post',
 		data: {
 			action,
@@ -82,7 +82,7 @@ export async function requestLicenseInfo( action = 'check' ) {
 }
 
 export async function getLicenseStatus() {
-	return await apiFetch( { path: '/agwp/v1/license/status' } ).then(
+	return await apiFetch( { path: '/agwp-library/v1/license/status' } ).then(
 		response => response
 	);
 }
@@ -91,7 +91,7 @@ export async function requestElementorImport( template, kit ) {
 	let elementsLength = elementor.elements.length;
 
 	if ( template.version ) {
-		if ( parseFloat( AGWP.version ) < parseFloat( template.version ) ) {
+		if ( parseFloat( AGWP_LIBRARY.version ) < parseFloat( template.version ) ) {
 			elementorCommon.dialogsManager.createWidget( 'alert', {
 				message: 'This template requires an updated version, please update your plugin to latest version.',
 			} ).show();
@@ -105,7 +105,7 @@ export async function requestElementorImport( template, kit ) {
 					false;
 
 	return await apiFetch( {
-		path: '/agwp/v1/import/elementor',
+		path: '/agwp-library/v1/import/elementor',
 		method: 'post',
 		data: {
 			template_id: template.id,
@@ -148,10 +148,10 @@ export async function requestElementorImport( template, kit ) {
  * @returns void
  */
 export function doElementorInsert( content, context = 'template' ) {
-	let contextText = __( 'Template', 'ang' );
+	let contextText = __( 'Template', 'custom-library-for-elementor' );
 
 	if ( context === 'block' ) {
-		contextText = __( 'Block', 'ang' );
+		contextText = __( 'Block', 'custom-library-for-elementor' );
 	}
 
 	let insertIndex = analog.insertIndex || -1;
@@ -159,7 +159,7 @@ export function doElementorInsert( content, context = 'template' ) {
 	if ( typeof $e !== 'undefined' ) {
 		const historyId = $e.internal( 'document/history/start-log', {
 			type: 'add',
-			title: `${ __( 'Add Analog Library', 'ang' ) } ${ contextText }`,
+			title: `${ __( 'Add Custom Library for Elementor', 'custom-library-for-elementor' ) } ${ contextText }`,
 		} );
 
 		for ( let i = 0; i < content.length; i++ ) {

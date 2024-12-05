@@ -108,7 +108,7 @@ const Container = styled.div`
 				transform: translateY(20px);
 				opacity: 0;
 			}
-			.ang-promo {
+			.analog-custom-library-promo {
 				text-decoration: none;
 			}
 		}
@@ -149,7 +149,7 @@ const Container = styled.div`
 			height: 17px;
 		}
 		&.is-active svg {
-			fill: var(--ang-accent) !important;
+			fill: var(--analog-custom-library-accent) !important;
 		}
 	}
 
@@ -227,11 +227,11 @@ const Container = styled.div`
 const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 	const context = React.useContext( AnalogContext );
 
-	const filteredBlocks = context.state.blocks.filter( block => ! ( AGWP.license.status !== 'valid' && context.state.showFree && Boolean( block.is_pro ) ) );
+	const filteredBlocks = context.state.blocks.filter( block => ! ( AGWP_LIBRARY.license.status !== 'valid' && context.state.showFree && Boolean( block.is_pro ) ) );
 
-	const fallbackImg = AGWP.pluginURL + 'assets/img/placeholder.svg';
+	const fallbackImg = AGWP_LIBRARY.pluginURL + 'assets/img/placeholder.svg';
 
-	const isValid = ( isPro ) => ! ( isPro && AGWP.license.status !== 'valid' );
+	const isValid = ( isPro ) => ! ( isPro && AGWP_LIBRARY.license.status !== 'valid' );
 
 	// Masonry breakpoints.
 	let breakpointColumnsObj = {
@@ -242,7 +242,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 		700: 1,
 	};
 
-	if ( '2c' === AGWP.libraryTemplateCols ) {
+	if ( '2c' === AGWP_LIBRARY.libraryTemplateCols ) {
 		breakpointColumnsObj = {
 			default: 2,
 			2000: 2,
@@ -250,7 +250,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 			1300: 2,
 			700: 1,
 		};
-	} else if ( 'auto' === AGWP.libraryTemplateCols ) {
+	} else if ( 'auto' === AGWP_LIBRARY.libraryTemplateCols ) {
 		breakpointColumnsObj = {
 			default: 5,
 			2000: 4,
@@ -261,7 +261,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 	}
 
 	const getScreenshot = ( block ) => {
-		return block.thumbnail || AGWP.pluginURL + 'assets/img/placeholder.svg';
+		return block.thumbnail || AGWP_LIBRARY.pluginURL + 'assets/img/placeholder.svg';
 	};
 
 	const loadingThumbs = () => {
@@ -271,7 +271,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 				<img
 					key={ i }
 					className="thumb"
-					src={ `${ AGWP.pluginURL }assets/img/placeholder.svg` }
+					src={ `${ AGWP_LIBRARY.pluginURL }assets/img/placeholder.svg` }
 					alt="Loading icon"
 				/>
 			);
@@ -299,7 +299,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 					{ state.state.blockImported && (
 						<React.Fragment>
 							<p>
-								{ sprintf( __( 'The %s has been imported and is now available in the', 'ang' ), AGWP.isContainer ? 'container' : 'section' ) }
+								{ sprintf( __( 'The %s has been imported and is now available in the', 'custom-library-for-elementor' ), AGWP_LIBRARY.isContainer ? 'container' : 'section' ) }
 								{ ' ' }
 								<a
 									target="_blank"
@@ -307,10 +307,10 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 									href={ addQueryArgs( 'edit.php', {
 										post_type: 'elementor_library',
 										tabs_group: true,
-										elementor_library_type: AGWP.isContainer ? 'container' : 'section',
+										elementor_library_type: AGWP_LIBRARY.isContainer ? 'container' : 'section',
 									} ) }
 								>
-									{ sprintf( __( 'Elementor %s library', 'ang' ), AGWP.isContainer ? 'container' : 'section' ) }
+									{ sprintf( __( 'Elementor %s library', 'custom-library-for-elementor' ), AGWP_LIBRARY.isContainer ? 'container' : 'section' ) }
 								</a>.
 							</p>
 							<p>
@@ -324,7 +324,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 										} );
 									} }
 								>
-									{ __( 'Ok, thanks', 'ang' ) } <Dashicon icon="yes" />
+									{ __( 'Ok, thanks', 'custom-library-for-elementor' ) } <Dashicon icon="yes" />
 								</Button>
 							</p>
 						</React.Fragment>
@@ -336,11 +336,11 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 			<Container className="blocks-area">
 
 				{ ! context.state.syncing && context.state.blocks.length < 1 && (
-					<Empty text={ __( 'No Templates found', 'ang' ) } />
+					<Empty text={ __( 'No Templates found', 'custom-library-for-elementor' ) } />
 				) }
 
 				{ context.state.syncing && context.state.blocks.length < 1 && (
-					<Empty text={ __( 'Loading Templates...', 'ang' ) } />
+					<Empty text={ __( 'Loading Templates...', 'custom-library-for-elementor' ) } />
 				) }
 				{ console.log(  ) }
 				<Masonry
@@ -351,7 +351,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 					{ filteredBlocks.length >= 1 && filteredBlocks.map( ( block ) => {
 						let requiresElementorPro = false;
 						if ( block.requiredPluginsrequiredPlugins && block.requiredPlugins.length > 0 ) {
-							const unresolvedPlugins = block.requiredPlugins.filter( ( plugin ) => plugin !== '' && ! AGWP.activePlugins.includes( plugin )
+							const unresolvedPlugins = block.requiredPlugins.filter( ( plugin ) => plugin !== '' && ! AGWP_LIBRARY.activePlugins.includes( plugin )
 							 );
 
 							// We are intentionally hiding patterns for now.
@@ -365,7 +365,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 								<Card>
 									<CardBody>
 										{block.is_pro && (
-											<span className="pro">{__('Pro', 'ang')}</span>
+											<span className="pro">{__('Pro', 'custom-library-for-elementor')}</span>
 										)}
 
 										<figure>
@@ -378,13 +378,13 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 											/>
 
 											<div className="actions">
-												<a href={AGWP.siteURL + `?post_type=elementor_library&p=${block.id}&preview=true`}
+												<a href={AGWP_LIBRARY.siteURL + `?post_type=elementor_library&p=${block.id}&preview=true`}
 												   target="_blank">
 													<Button isPrimary>
 														<Eye />
 													</Button>
 												</a>
-												<a href={AGWP.adminURL + `post.php?post=${block.id}&action=elementor`}
+												<a href={AGWP_LIBRARY.adminURL + `post.php?post=${block.id}&action=elementor`}
 												   target="_blank">
 													<Button isPrimary>
 														<Pencil/>
@@ -394,7 +394,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 													{({add}) => (
 														!requiresElementorPro && isValid(block.is_pro) && (
 															<Button isPrimary onClick={() => importBlock(block, add)} className="is-large">
-																<Download/>&nbsp;{__('Insert', 'ang')}
+																<Download/>&nbsp;{__('Insert', 'custom-library-for-elementor')}
 															</Button>
 														)
 													)}
@@ -413,7 +413,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 								</Card>
 								<div className="content">
 									<h3>{decodeEntities(block.title)}</h3>
-									{block.is_pro && <span className="pro">{__('Pro', 'ang')}</span>}
+									{block.is_pro && <span className="pro">{__('Pro', 'custom-library-for-elementor')}</span>}
 								</div>
 							</div>
 						);

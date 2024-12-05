@@ -11,7 +11,7 @@ const defaultTabs = [
 ];
 
 
-const sidebarOrientation = ! AGWP.libraryCategoriesLocation ? 'horizontal' : AGWP.libraryCategoriesLocation;
+const sidebarOrientation = ! AGWP_LIBRARY.libraryCategoriesLocation ? 'horizontal' : AGWP_LIBRARY.libraryCategoriesLocation;
 
 const SidebarWrapper = styled.div`
 	.components-tab-panel__tabs > .components-button {
@@ -37,14 +37,14 @@ const SidebarWrapper = styled.div`
 	}
 
 	.components-base-control.components-toggle-control {
-		border-bottom: 1px solid var(--ang-border);
+		border-bottom: 1px solid var(--analog-custom-library-btn-border);
 	}
 
 	.block-categories-tabs .components-button {
 		border-radius: 0;
 		padding: 10px 0;
 		font-size: 16px;
-		color: #060606;
+		color: var(--analog-custom-library-categories-text);
 		justify-content: space-between;
 	}
 
@@ -57,7 +57,7 @@ const SidebarWrapper = styled.div`
 	.block-categories-tabs .components-button.active-tab {
 		box-shadow: none;
 		font-weight: bold;
-		color: var(--ang-primary) !important;
+		color: var(--analog-custom-library-categories-active-text) !important;
 	}
 
 	.block-categories-tabs
@@ -69,7 +69,7 @@ const SidebarWrapper = styled.div`
 	}
 
 	.block-categories-tabs .components-button:not([aria-disabled=true]):active {
-		color: var(--ang-primary) !important;
+		color: var(--analog-custom-library-primary) !important;
 	}
 
 	.block-categories-tabs label,
@@ -128,7 +128,7 @@ const Sidebar = ( { state } ) => {
 			foundItems = blocks.filter( block => block.tags.indexOf( tab ) > -1 );
 		}
 
-		if ( AGWP.license.status !== 'valid' && context.state.showFree ) {
+		if ( AGWP_LIBRARY.license.status !== 'valid' && context.state.showFree ) {
 			foundItems = foundItems.filter( block => !block.is_pro );
 		}
 
@@ -152,7 +152,7 @@ const Sidebar = ( { state } ) => {
 		let countTemplate = count > 0 ? count : 0;
 		let label = title.replace(/-/g, ' ');
 
-		return [`${label} `, AGWP.showLibraryCategoriesTemplateCount ? <span key={title}>{countTemplate}</span> : ''];
+		return [`${label} `, AGWP_LIBRARY.showLibraryCategoriesTemplateCount ? <span key={title}>{countTemplate}</span> : ''];
 	}
 
 	const tabGenerator = (tabsArray) => {
@@ -175,7 +175,7 @@ const Sidebar = ( { state } ) => {
 			showFree: ! context.state.showFree,
 		} );
 
-		window.localStorage.setItem( 'analog::show-free', ! context.state.showFree );
+		window.localStorage.setItem( 'analog-custom-library::show-free', ! context.state.showFree );
 	}
 
 	const getInitialTab = (defaultTab) => {
@@ -184,7 +184,7 @@ const Sidebar = ( { state } ) => {
 			const type = elementor.config.document.type;
             const categories = categoriesData();
 
-			if ( context.state.showFree && AGWP.license.status !== 'valid' ) {
+			if ( context.state.showFree && AGWP_LIBRARY.license.status !== 'valid' ) {
 				return initialTab;
 			}
 
@@ -212,7 +212,7 @@ const Sidebar = ( { state } ) => {
 	return (
 		<SidebarWrapper className={`sidebar ${!context.state.blockArchive.length ? 'no-templates' : ''}`}>
 			{/*<TextControl*/}
-			{/*	placeholder={ AGWP.isContainer ? __( 'Search Templates', 'ang' ) : __( 'Search Blocks', 'ang' ) }*/}
+			{/*	placeholder={ AGWP_LIBRARY.isContainer ? __( 'Search Templates', 'custom-library-for-elementor' ) : __( 'Search Blocks', 'custom-library-for-elementor' ) }*/}
 			{/*	value={ context.state.blocksSearchInput }*/}
 			{/*	onChange={ ( value ) => {*/}
 			{/*		context.handleSearch( value, 'patterns' );*/}

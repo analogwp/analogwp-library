@@ -9,13 +9,13 @@
 			if ( e.preventDefault ) {
 				e.preventDefault();
 			}
-			const elSubmitBtn = $( '#ang-newsletter-submit' );
-			let status = __( 'Subscribing', 'ang' );
-			const angEmail = $( '#ang-newsletter-email' ).val();
+			const elSubmitBtn = $( '#analog-custom-library-newsletter-submit' );
+			let status = __( 'Subscribing', 'custom-library-for-elementor' );
+			const angEmail = $( '#analog-custom-library-newsletter-email' ).val();
 			elSubmitBtn.text( status );
 
 			$.ajax( {
-				url: 'https://analogwp.com/?ang-api=asdf&request=subscribe_newsletter',
+				url: 'https://analogwp.com/?ang-api=analog-custom-library&request=earlybird-optin',
 				cache: ! 1,
 				type: 'POST',
 				dataType: 'JSON',
@@ -23,14 +23,14 @@
 					email: angEmail,
 				},
 				error: function() {
-					status = __( 'Failed', 'ang' );
+					status = __( 'Failed', 'custom-library-for-elementor' );
 					elSubmitBtn.text( status );
 					setTimeout( function() {
-						elSubmitBtn.text( __( 'Subscribe up to newsletter', 'ang' ) );
+						elSubmitBtn.text( __( 'Subscribe up to newsletter', 'custom-library-for-elementor' ) );
 					}, 2000 );
 				},
 				success: function() {
-					status = __( 'Subscribed', 'ang' );
+					status = __( 'Subscribed', 'custom-library-for-elementor' );
 					elSubmitBtn.text( status );
 					elSubmitBtn.attr( 'disabled', 'disabled' );
 				},
@@ -38,7 +38,7 @@
 
 			return false;
 		}
-		$( '#ang-newsletter' ).submit( processNewsletter );
+		$( '#analog-custom-library-newsletter' ).submit( processNewsletter );
 
 		// Process Plugin Rollback.
 		function processPluginRollback( e ) {
@@ -62,7 +62,7 @@
 				changed = true;
 			} );
 
-			$( '.ang-nav-tab-wrapper a' ).click( function() {
+			$( '.analog-custom-library-nav-tab-wrapper a' ).click( function() {
 				if ( changed ) {
 					window.onbeforeunload = function() {
 						return data.i18n_nav_warning;
@@ -78,7 +78,7 @@
 		} );
 
 		// Select all/none
-		$( '.ang' ).on( 'click', '.select_all', function() {
+		$( '.ang-custom-library' ).on( 'click', '.select_all', function() {
 			$( this )
 				.closest( 'td' )
 				.find( 'select option' )
@@ -90,7 +90,7 @@
 			return false;
 		} );
 
-		$( '.ang' ).on( 'click', '.select_none', function() {
+		$( '.ang-custom-library' ).on( 'click', '.select_none', function() {
 			$( this )
 				.closest( 'td' )
 				.find( 'select option' )
@@ -123,7 +123,7 @@
 
 		$( 'body' ).on(
 			'click',
-			'.ang-upload-image-btn',
+			'.analog-custom-library-upload-image-btn',
 			function (e) {
 				e.preventDefault();
 				const button     = $( this ),
@@ -156,7 +156,7 @@
 		// Removing video.
 		$( 'body' ).on(
 			'click',
-			'.ang-remove-image-btn',
+			'.analog-custom-library-remove-image-btn',
 			function () {
 				const default_image = $( this ).attr( 'data-default-image' );
 				$( this ).parent().prev().attr( 'src', default_image );
@@ -166,4 +166,4 @@
 			}
 		);
 	} );
-}( jQuery, ang_settings_data, wp ) );
+}( jQuery, analog_custom_library_settings_data, wp ) );

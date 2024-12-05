@@ -3,10 +3,10 @@ const { __ } = wp.i18n;
 const { TabPanel } = wp.components;
 
 const ITEMS = [
-	{ key: 'blocks', label: AGWP.isContainer ? __( 'Templates', 'ang' ) : __( 'Blocks', 'ang' ) },
-	{ key: 'templates', label: __( 'Templates', 'ang' ) },
+	{ key: 'blocks', label: AGWP_LIBRARY.isContainer ? __( 'Templates', 'custom-library-for-elementor' ) : __( 'Blocks', 'custom-library-for-elementor' ) },
+	{ key: 'templates', label: __( 'Templates', 'custom-library-for-elementor' ) },
 	// dont change the "styleKits" casing here
-	// { key: 'styleKits', label: __( 'Styles', 'ang' ) },
+	// { key: 'styleKits', label: __( 'Styles', 'custom-library-for-elementor' ) },
 ];
 
 const Nav = () => {
@@ -55,7 +55,7 @@ const Nav = () => {
 
 	return (
 		<span id="sk-library-tab">
-			<TabPanel className="ang-nav"
+			<TabPanel className="analog-custom-library-nav"
 				onSelect={onSelect}
 				tabs={tabsGenerator(ITEMS)}>
 				{

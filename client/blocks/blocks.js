@@ -21,7 +21,7 @@ const initialState = {
 	modalActive: false,
 };
 
-const sidebarClassName = ! AGWP.libraryCategoriesLocation ? 'horizontal' : AGWP.libraryCategoriesLocation;
+const sidebarClassName = ! AGWP_LIBRARY.libraryCategoriesLocation ? 'horizontal' : AGWP_LIBRARY.libraryCategoriesLocation;
 
 export default class Blocks extends Component {
 	static contextType = AnalogContext;
@@ -47,7 +47,7 @@ export default class Blocks extends Component {
 	}
 
 	handleImport( block, add ) {
-		const method = ( Boolean( AGWP.is_settings_page ) ) ? 'library' : 'elementor';
+		const method = ( Boolean( AGWP_LIBRARY.is_settings_page ) ) ? 'library' : 'elementor';
 
 		requestBlockContent( block, method )
 			.then( ( response ) => {

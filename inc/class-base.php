@@ -2,15 +2,15 @@
 /**
  * Base class.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog;
+namespace AnalogWP\CustomLibrary;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Analog plugin.
+ * AnalogWP Custom Library plugin.
  *
  * The main plugin handler class is responsible for initializing Analog. The
  * class registers and all the components required to run the plugin.
@@ -36,7 +36,7 @@ class Base {
 	 */
 	public function __clone() {
 		// Cloning instances of the class is forbidden.
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'ang' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'custom-library-for-elementor' ), '1.0.0' );
 	}
 
 	/**
@@ -46,7 +46,7 @@ class Base {
 	 */
 	public function __wakeup() {
 		// Unserializing instances of the class is forbidden.
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'ang' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'custom-library-for-elementor' ), '1.0.0' );
 	}
 
 	/**
@@ -115,7 +115,6 @@ class Base {
 	 *
 	 * Checks whether the required arguments exist in the specified arguments.
 	 *
-	 * @since 1.2.1
 	 * @access private
 	 *
 	 * @param array $required_args  Required arguments to check whether they

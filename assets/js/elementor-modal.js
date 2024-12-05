@@ -16,7 +16,7 @@ const analog = window.analog = window.analog || {};
 						((window.analogModal = elementorCommon.dialogsManager.createWidget(
 							"lightbox",
 							{
-								id: "analogwp-templates-modal",
+								id: "analog-custom-library-modal",
 								headerMessage: "What is this???",
 								message: "",
 								hide: {
@@ -32,9 +32,9 @@ const analog = window.analog = window.analog || {};
 								},
 								onShow: function() {
 									const content = window.analogModal.getElements("content");
-									content.append('<div id="analogwp-templates" class="wrap"></div>');
+									content.append('<div id="analog-custom-library" class="wrap"></div>');
 									var event = new Event("modal-close");
-									$("#analogwp-templates").on(
+									$("#analog-custom-library").on(
 										"click",
 										".close-modal",
 										function() {
@@ -62,13 +62,13 @@ const analog = window.analog = window.analog || {};
 
 				(text = text.replace(
 					'<div class="elementor-add-section-drag-title',
-					'<div class="elementor-add-section-area-button elementor-add-analogwp-button" title="AnalogWP Templates">&nbsp;</div> <div class="elementor-add-section-drag-title'
+					'<div class="elementor-add-section-area-button elementor-add-analog-custom-library-button" title="AnalogWP Custom Library">&nbsp;</div> <div class="elementor-add-section-drag-title'
 				)),
 					template.text(text),
 					elementor.on("preview:loaded", function() {
 						$(elementor.$previewContents[0].body).on(
 							"click",
-							".elementor-add-analogwp-button",
+							".elementor-add-analog-custom-library-button",
 							modal
 						);
 					});

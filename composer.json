@@ -1,13 +1,21 @@
 {
-    "name": "analogwp/analog-library",
+    "name": "analogwp/custom-library-for-elementor",
     "description": "Custom Library for Elementor adds a number of intuitive styling controls in the Elementor editor that allow you to apply styles globally or per page.",
     "type": "wordpress-plugin",
     "license": "GPL-2.0",
     "authors": [
+		{
+			"name": "AnalogWP",
+			"email": "hello@analogwp.com"
+		},
         {
             "name": "Krishna Kant Chourasiya",
-            "email": "krishna@smalltowndev.com"
-        }
+            "email": "lushkant@gmail.com"
+        },
+		{
+			"name": "John Fraskos",
+			"email": "jfraskos@gmail.com"
+		}
     ],
     "minimum-stability": "dev",
   	"prefer-stable": true,
@@ -19,8 +27,9 @@
         }
 	},
 	"require": {
-	  "enshrined/svg-sanitize": "^0.15.4"
-	},
+        "enshrined/svg-sanitize": "^0.15.4",
+        "freemius/wordpress-sdk": "^2.10"
+    },
     "require-dev": {
         "civicrm/composer-downloads-plugin": "*",
         "ergebnis/composer-normalize": "*",
@@ -36,17 +45,5 @@
 		}
 	  }
 	},
-  "scripts": {
-	"post-install-cmd": [
-	  "@prefix-dependencies"
-	],
-	"post-update-cmd": [
-	  "@prefix-dependencies"
-	],
-	"prefix-dependencies": [
-	  "php-scoper add-prefix --output-dir=./third-party --force --quiet",
-	  "echo '{ \"autoload\": { \"classmap\": [\"\"] } }' > ./third-party/composer.json",
-	  "@composer dump-autoload --working-dir ./third-party --no-dev --classmap-authoritative"
-	]
-  }
+  "scripts": {}
 }

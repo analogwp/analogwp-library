@@ -4,7 +4,7 @@ export const getPageComponents = () => {
 	return <Blocks />;
 };
 
-export const debugMode = () => Boolean( AGWP.debugMode );
+export const debugMode = () => Boolean( AGWP_LIBRARY.debugMode );
 
 export const Log = ( what ) => {
 	if ( debugMode ) {

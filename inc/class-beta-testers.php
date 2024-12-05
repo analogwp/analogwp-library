@@ -2,16 +2,15 @@
 /**
  * Beta Testers.
  *
- * @package AnalogWP
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog;
+namespace AnalogWP\CustomLibrary;
 
 /**
  * Class BetaTesters
 
- * @package Analog
- * @since 1.4.0
+ * @package AnalogWP\CustomLibrary
  */
 class Beta_Testers {
 	/**
@@ -34,7 +33,7 @@ class Beta_Testers {
 			return;
 		}
 
-		$this->transient_key = md5( 'ang_beta_testers_response_key' );
+		$this->transient_key = md5( 'analog_custom_library_beta_testers_response_key' );
 
 		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'check_version' ) );
 	}
@@ -54,7 +53,7 @@ class Beta_Testers {
 		if ( false === $beta_version ) {
 			$beta_version = 'false';
 
-			$response = wp_remote_get( 'https://plugins.svn.wordpress.org/analogwp-templates/trunk/readme.txt' );
+			$response = wp_remote_get( 'https://plugins.svn.wordpress.org/custom-library-for-elementor/trunk/readme.txt' );
 
 			if ( ! is_wp_error( $response ) && ! empty( $response['body'] ) ) {
 				preg_match( '/Beta tag: (.*)/i', $response['body'], $matches );
@@ -90,18 +89,18 @@ class Beta_Testers {
 
 		delete_site_transient( $this->transient_key );
 
-		$plugin_slug  = basename( ANG_PLUGIN_FILE, '.php' );
+		$plugin_slug  = basename( AGWP_LIBRARY_PLUGIN_FILE, '.php' );
 		$beta_version = $this->get_beta_version();
 
-		if ( 'false' !== $beta_version && version_compare( $beta_version, ANG_VERSION, '>' ) ) {
+		if ( 'false' !== $beta_version && version_compare( $beta_version, AGWP_LIBRARY_VERSION, '>' ) ) {
 			$response              = new \stdClass();
 			$response->plugin      = $plugin_slug;
 			$response->slug        = $plugin_slug;
 			$response->new_version = $beta_version;
 			$response->url         = 'https://analogwp.com/';
-			$response->package     = sprintf( 'https://downloads.wordpress.org/plugin/analogwp-templates.%s.zip', $beta_version );
+			$response->package     = sprintf( 'https://downloads.wordpress.org/plugin/custom-library-for-elementor.%s.zip', $beta_version );
 
-			$transient->response[ ANG_PLUGIN_BASE ] = $response;
+			$transient->response[ AGWP_LIBRARY_PLUGIN_BASE ] = $response;
 		}
 
 		return $transient;

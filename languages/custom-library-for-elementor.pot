@@ -1,0 +1,445 @@
+# Copyright (C) 2024 custom-library-for-elementor
+# This file is distributed under the GPL2 license.
+#: assets/js/app/index.js:1
+msgid ""
+msgstr ""
+"Project-Id-Version: custom-library-for-elementor 0.1.0\n"
+"Report-Msgid-Bugs-To: AnalogWP <EMAIL>\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"POT-Creation-Date: 2024-12-05T12:15:14.237Z\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"Last-Translator: AnalogWP <EMAIL>\n"
+"Language-Team: AnalogWP <EMAIL>\n"
+"X-Generator: @wp-blocks/make-pot 1.4.0\n"
+"Language: en\n"
+"domain: X-Domain: custom-library-for-elementor\n"
+
+#: custom-library-for-elementor.php
+#: inc/Admin/class-admin.php:43
+#. Name of the plugin
+msgid "Custom Library for Elementor"
+msgstr ""
+
+#: custom-library-for-elementor.php
+#. Url of the plugin
+msgid "https://analogwp.com/custom-library-for-elementor"
+msgstr ""
+
+#: custom-library-for-elementor.php
+#. Description of the plugin
+msgid ""
+"Custom Library for Elementor extends the Elementor library with a custom "
+"library of your own templates. Boost your design workflow in Elementor with "
+"this plugin."
+msgstr ""
+
+#: custom-library-for-elementor.php
+#. Author of the plugin
+msgid "AnalogWP"
+msgstr ""
+
+#: custom-library-for-elementor.php
+#. Author URI of the plugin
+msgid "https://analogwp.com/"
+msgstr ""
+
+#: custom-library-for-elementor.php:46
+#: custom-library-for-elementor.php:235
+msgid "Custom Library for Elementor requires PHP version %s"
+msgstr ""
+
+#: custom-library-for-elementor.php:47
+#: custom-library-for-elementor.php:236
+msgid "Error Activating"
+msgstr ""
+
+#: custom-library-for-elementor.php:79
+msgid ""
+"Custom Library for Elementor requires WordPress version %s+. Because you "
+"are using an earlier version, the plugin is currently NOT RUNNING."
+msgstr ""
+
+#: custom-library-for-elementor.php:104
+msgid ""
+"Custom Library for Elementor requires Elementor v%s or newer in order to "
+"work. Please update Elementor to the latest version."
+msgstr ""
+
+#: custom-library-for-elementor.php:110
+msgid "Update Elementor Now"
+msgstr ""
+
+# %s: Version number.
+#: custom-library-for-elementor.php:116
+msgid "Rollback to v%s"
+msgstr ""
+
+#: custom-library-for-elementor.php:163
+msgid ""
+"Custom Library for Elementor is not working because you need to activate "
+"the Elementor plugin."
+msgstr ""
+
+#: custom-library-for-elementor.php:164
+msgid "Activate Elementor Now"
+msgstr ""
+
+#: custom-library-for-elementor.php:171
+msgid ""
+"Custom Library for Elementor is not working because you need to install the "
+"Elementor plugin."
+msgstr ""
+
+#: custom-library-for-elementor.php:172
+msgid "Install Elementor Now"
+msgstr ""
+
+#: inc/class-utils.php:126
+#: inc/class-utils.php:438
+msgid "Global: %s"
+msgstr ""
+
+#: inc/class-plugin.php:201
+#: inc/Elementor/class-finder-shortcuts.php:52
+msgid "Settings"
+msgstr ""
+
+#: inc/class-base.php:39
+#: inc/class-base.php:49
+msgid "Something went wrong."
+msgstr ""
+
+#: client/api.js:151
+#: assets/js/app/index.js:276
+msgid "Template"
+msgstr ""
+
+#: client/api.js:154
+#: assets/js/app/index.js:276
+msgid "Block"
+msgstr ""
+
+#: client/api.js:162
+#: assets/js/app/index.js:276
+msgid "Add Custom Library for Elementor"
+msgstr ""
+
+#: client/Synchronization.js:24
+msgid "Library is now synced"
+msgstr ""
+
+#: client/Synchronization.js:25
+msgid "Something is not right, please try again."
+msgstr ""
+
+#: client/ProModal.js:6
+msgid ""
+"Get unlimited access to the Custom Library for Elementor library and "
+"features with the PRO version."
+msgstr ""
+
+#: client/ProModal.js:7
+msgid "View Plans"
+msgstr ""
+
+#: client/Nav.js:6
+#: client/Nav.js:7
+msgid "Templates"
+msgstr ""
+
+#: client/Nav.js:6
+msgid "Blocks"
+msgstr ""
+
+#: client/Modal.js:82
+msgid "Exit preview"
+msgstr ""
+
+#: client/Modal.js:87
+#: client/modal/Preview.js:91
+msgid "Open in new tab"
+msgstr ""
+
+#: client/Modal.js:93
+#: client/modal/Preview.js:97
+msgid "Import Template"
+msgstr ""
+
+#: inc/Settings/class-register-settings.php:54
+msgid "Custom Library Settings"
+msgstr ""
+
+#: inc/Settings/class-register-settings.php:55
+msgid "AnalogWP Custom Library"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:74
+msgid "Your settings have been saved."
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:135
+msgid "The changes you made will be lost if you navigate away from this page."
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:138
+msgid "Select Image"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:139
+msgid "Use this image"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:614
+#: inc/Settings/class-admin-settings.php:681
+msgid "Toggle"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:745
+msgid "Change Image"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:746
+msgid "Revert to Default"
+msgstr ""
+
+#: inc/Elementor/class-tools.php:96
+msgid ""
+"Sorry, you are not allowed to rollback Custom Library for Elementor plugin "
+"for this site."
+msgstr ""
+
+#: inc/Elementor/class-tools.php:104
+msgid ""
+"Error occurred, the version selected is invalid. Try selecting different "
+"version."
+msgstr ""
+
+#: inc/Elementor/class-tools.php:148
+msgid "Rollback to Previous Version"
+msgstr ""
+
+#: inc/Elementor/class-finder-shortcuts.php:33
+msgid "Custom Library for Elementor Shortcuts"
+msgstr ""
+
+#: inc/Elementor/class-finder-shortcuts.php:46
+msgid "Templates Library"
+msgstr ""
+
+#: inc/Elementor/class-finder-shortcuts.php:58
+msgid "Theme Custom Library for Elementor"
+msgstr ""
+
+#: inc/Core/class-library-init.php:56
+msgid "Library Handover"
+msgstr ""
+
+#: inc/API/class-local.php:307
+msgid "Invalid Template ID."
+msgstr ""
+
+#: inc/API/class-local.php:382
+msgid "No options key provided."
+msgstr ""
+
+#: inc/API/class-local.php:388
+msgid "Setting updated."
+msgstr ""
+
+#: inc/Admin/class-notice.php:169
+msgid "Custom Library for Elementor Logo"
+msgstr ""
+
+# 1: Custom Library for Elementor, 2: Link to plugin review
+#: inc/Admin/class-admin.php:42
+msgid ""
+"Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your "
+"support!"
+msgstr ""
+
+#: inc/Admin/class-admin.php:64
+msgid "View Documentation"
+msgstr ""
+
+#: inc/Admin/class-admin.php:64
+msgid "Documentation"
+msgstr ""
+
+#: inc/Admin/class-admin.php:65
+msgid "Get Support"
+msgstr ""
+
+#: client/modal/Preview.js:86
+msgid "Back to Library"
+msgstr ""
+
+#: client/modal/Preview.js:104
+msgid "Loading icon"
+msgstr ""
+
+#: client/blocks/BlockList.js:302
+msgid "The %s has been imported and is now available in the"
+msgstr ""
+
+#: client/blocks/BlockList.js:313
+msgid "Elementor %s library"
+msgstr ""
+
+#: client/blocks/BlockList.js:327
+msgid "Ok, thanks"
+msgstr ""
+
+#: client/blocks/BlockList.js:339
+msgid "No Templates found"
+msgstr ""
+
+#: client/blocks/BlockList.js:343
+msgid "Loading Templates..."
+msgstr ""
+
+#: client/blocks/BlockList.js:368
+#: client/blocks/BlockList.js:416
+msgid "Pro"
+msgstr ""
+
+#: client/blocks/BlockList.js:397
+msgid "Insert"
+msgstr ""
+
+#: assets/js/admin-settings.js:13
+msgid "Subscribing"
+msgstr ""
+
+#: assets/js/admin-settings.js:26
+msgid "Failed"
+msgstr ""
+
+#: assets/js/admin-settings.js:29
+msgid "Subscribe up to newsletter"
+msgstr ""
+
+#: assets/js/admin-settings.js:33
+msgid "Subscribed"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-settings.php:25
+msgid "Library Settings"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-settings.php:50
+msgid "Save changes"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-misc.php:25
+msgid "Misc"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-misc.php:44
+msgid "Remove Data on Uninstall"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-misc.php:45
+msgid ""
+"Check this box to remove all data stored by Custom Library for Elementor "
+"plugin, including license info, user settings, import history etc."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:25
+msgid "General"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:46
+msgid "General Settings"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:52
+msgid "Hide default Elementor Template library icon from editor."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:68
+msgid "Placeholder image"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:72
+msgid "Replace the default placeholder image."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:25
+msgid "Design"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:40
+msgid "Library popup style"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:48
+msgid "Compact (popup)"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:49
+msgid "Fullscreen"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:58
+msgid "Template columns"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:66
+msgid "2 Columns"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:67
+msgid "3 Columns"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:68
+msgid "Auto"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:77
+msgid "Categories location"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:85
+msgid "Sidebar"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:86
+msgid "Horizontal"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:87
+msgid "None"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:93
+msgid "Show categories template count"
+msgstr ""
+
+#: inc/Core/SVGs/class-allow-svg.php:89
+msgid "Unable to sanitize this file hence it wasn't uploaded!"
+msgstr ""
+
+#: inc/Core/SVGs/class-allow-svg.php:171
+msgid "Full Size"
+msgstr ""
+
+#: inc/Core/SVGs/class-allow-svg.php:172
+msgid "Thumbnail"
+msgstr ""
+
+#: inc/Core/SVGs/class-allow-svg.php:173
+msgid "Medium"
+msgstr ""
+
+#: inc/Core/SVGs/class-allow-svg.php:174
+msgid "Large"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:58
+msgctxt "settings title"
+msgid "Enable SVG Uploads"
+msgstr ""

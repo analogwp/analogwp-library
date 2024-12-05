@@ -2,7 +2,7 @@ import { Waypoint } from 'react-waypoint';
 
 const Image = ( { template, ...attributes } ) => {
 	const { thumbnail, title } = template;
-	const [ image, setImage ] = React.useState( AGWP.pluginURL + 'assets/img/placeholder.svg' );
+	const [ image, setImage ] = React.useState( AGWP_LIBRARY.pluginURL + 'assets/img/placeholder.svg' );
 
 	return (
 		<Waypoint onEnter={ () => {

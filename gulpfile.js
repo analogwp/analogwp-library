@@ -1,16 +1,77 @@
 const gulp = require( 'gulp' );
+const copy = require( 'gulp-copy' );
+const zip = require( 'gulp-zip' );
+const del = require( 'del' );
 const run = require( 'gulp-run-command' ).default;
+const babel = require( 'gulp-babel' );
+const uglify = require( 'gulp-uglify' );
+const rename = require( 'gulp-rename' );
 const checktextdomain = require( 'gulp-checktextdomain' );
+const rsync = require( 'gulp-rsync' );
+const fs = require( 'fs' );
 
-gulp.task( 'build', run( 'npm run build' ) )
-gulp.task( 'makePot', run( 'npm run makePot' ) );
-gulp.task( 'convertPot2json', run('npm run convertPot2json' ) );
+const project = 'custom-library-for-elementor';
+const buildFiles = [
+	'./**',
+	'!build',
+	'!build/**',
+	'!node_modules/**',
+	'!client/**',
+	'!*.json',
+	'!*.map',
+	'!*.xml',
+	'!gulpfile.js',
+	'!*.log',
+	'!*.DS_Store',
+	'!*.gitignore',
+	'!TODO',
+	'!*.git',
+	'!*.DS_Store',
+	'!yarn.lock',
+	'!*.md',
+	'!package.lock',
+	'!.babelrc',
+	'!.eslintignore',
+	'!.eslintrc.json',
+	'!webpack.config.js',
+	'!phpcs.xml.dist',
+	'!composer.lock',
+	'!codeception.dist.yml',
+	'!tests/**',
+];
+
+const buildDestination = `./build/${ project }/`;
+const buildZipDestination = './build/';
+const cleanFiles = [ `./build/${ project }/`, `./build/${ project }.zip` ];
+
+gulp.task( 'scriptBuildApp', run( 'npm run build-app' ) );
+gulp.task( 'scriptMakePot', run( 'npm run makePot' ) );
+gulp.task( 'scriptConvertPot2json', run('npm run convertPot2json' ) );
+gulp.task( 'composerNoDev', run( 'composer install --no-dev' ) );
+
+gulp.task( 'clean', function( done ) {
+	return del( cleanFiles );
+	done(); // eslint-disable-line
+} );
+
+gulp.task( 'copy', function( done ) {
+	return gulp.src( buildFiles )
+		.pipe( copy( buildDestination ) );
+	done(); // eslint-disable-line
+} );
+
+gulp.task( 'zip', function( done ) {
+	return gulp.src( buildDestination + '/**', { base: 'build' } )
+		.pipe( zip( project + '.zip' ) )
+		.pipe( gulp.dest( buildZipDestination ) );
+	done(); // eslint-disable-line
+} );
 
 gulp.task( 'checktextdomain', ( done ) => {
 	gulp
 		.src( [ '**/*.php', '!build/**', '!languages/**', '!./inc/class-licensemanager.php' ] )
 		.pipe( checktextdomain( {
-			text_domain: 'ang',
+			text_domain: 'custom-library-for-elementor',
 			keywords: [
 				'__:1,2d',
 				'_e:1,2d',
@@ -32,10 +93,15 @@ gulp.task( 'checktextdomain', ( done ) => {
 	done();
 } );
 
-gulp.task( 'translate', gulp.series(
+gulp.task( 'build', gulp.series(
+	'composerNoDev',
 	'checktextdomain',
-	'makePot',
-	'convertPot2json',
+	'scriptBuildApp',
+	'scriptMakePot',
+	'scriptConvertPot2json',
+	'clean',
+	'copy',
+	'zip',
 	function( done ) {
 		done();
 	} )
@@ -43,7 +109,38 @@ gulp.task( 'translate', gulp.series(
 
 gulp.task( 'github-build', gulp.series(
 	'checktextdomain',
+	'scriptBuildApp',
+	'scriptMakePot',
+	'scriptConvertPot2json',
+	'clean',
+	'copy',
+	'zip',
 	function( done ) {
 		done();
 	} )
 );
+
+gulp.task( 'deploy', gulp.series(
+	'build',
+	function() {
+		// Dirs and Files to sync
+		const rsyncPaths = [ buildDestination ];
+		const config = JSON.parse( fs.readFileSync( './gulp.config.json' ) );
+
+		// Default options for rsync
+		const rsyncConf = {
+			emptyDirectories: true,
+			compress: true,
+			archive: true,
+			progress: true,
+			root: './build/',
+			exclude: ['node_modules', '.svn', '.git'],
+			hostname: config.play.hostname,
+			username: config.play.username,
+			destination: `~/files/wp-content/plugins/`,
+		};
+
+		// Use gulp-rsync to sync the files
+		return gulp.src( rsyncPaths ).pipe( rsync( rsyncConf ) );
+	}
+) );

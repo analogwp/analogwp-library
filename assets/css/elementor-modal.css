@@ -1,13 +1,13 @@
 :root {
-	--ang-accent: #5C32B6;
+	--analog-custom-library-accent: #5C32B6;
 }
 
-.elementor-add-analogwp-button {
-	background-color: var(--ang-accent);
+.elementor-add-analog-custom-library-button {
+	background-color: var(--analog-custom-library-accent);
 	margin-left: 5px;
 }
 
-#analogwp-templates-modal .dialog-widget-content {
+#analog-custom-library-modal .dialog-widget-content {
 	width: 90vw;
 	height: 90vh;
     overflow-y: auto;
@@ -16,39 +16,38 @@
 	border-radius: 8px !important;
 }
 
-#analogwp-templates-modal p {
+#analog-custom-library-modal p {
 	margin: 1em 0;
 }
 
-#analogwp-templates {
-	background-color: #F1F1F1;
+#analog-custom-library {
     text-align: left;
 }
 
-#analogwp-templates input[type=checkbox]:checked:before {
+#analog-custom-library input[type=checkbox]:checked:before {
 	margin: -5px 0 0 -9px;
 }
 
-#analogwp-templates label {
+#analog-custom-library label {
 	cursor: pointer;
 }
 
-#analogwp-templates-modal .dialog-message {
+#analog-custom-library-modal .dialog-message {
     padding: 0;
 }
 
-#analogwp-templates > div {
+#analog-custom-library > div {
 	margin: 0;
 }
 
-#analogwp-templates-modal .ang-notices p {
+#analog-custom-library-modal .analog-custom-library-notices p {
 	margin: 0;
 }
 
-.elementor-add-analogwp-button {
-	background-color: #B37DF5;
+.elementor-add-analog-custom-library-button {
+	background-image: url('../img/icon.svg');
 	background-repeat: no-repeat;
-	background-size: 20px;
+	background-size: 14px;
 	background-position: center;
 }
 
@@ -56,8 +55,8 @@ button[data-action="save_token"] {
 	background-color: #8d62a0 !important;
 }
 
-.dialog-widget.ang-notice,
-.elementor-panel .ang-notice {
+.dialog-widget.analog-custom-library-notice,
+.elementor-panel .analog-custom-library-notice {
 	display: inline-block;
 	padding: 10px;
 	line-height: 1.4;
@@ -68,53 +67,53 @@ button[data-action="save_token"] {
 	border-radius: 4px;
 }
 
-.elementor-panel .ang-notice.desc {
+.elementor-panel .analog-custom-library-notice.desc {
 	background: transparent !important;
 	border: 1px solid rgba(255, 255, 255, .3) !important;
 	color: inherit !important;
 }
 
-.dialog-widget.ang-notice a,
-.elementor-panel .ang-notice a {
+.dialog-widget.analog-custom-library-notice a,
+.elementor-panel .analog-custom-library-notice a {
 	text-decoration: underline;
 }
 
-.dialog-widget.ang-notice a:hover,
-.elementor-panel .ang-notice a:hover {
+.dialog-widget.analog-custom-library-notice a:hover,
+.elementor-panel .analog-custom-library-notice a:hover {
 	text-decoration: none;
 }
 
-.dialog-widget.ang-notice {
+.dialog-widget.analog-custom-library-notice {
 	padding: 10px !important;
 	left: 10px !important;
 	width: 260px !important;
 }
 
-.dialog-widget.ang-notice.yellow,
-.elementor-panel .ang-notice.yellow {
+.dialog-widget.analog-custom-library-notice.yellow,
+.elementor-panel .analog-custom-library-notice.yellow {
 	background: #FDEAB9 !important;
 }
 
-.dialog-widget.ang-notice.blue,
-.elementor-panel .ang-notice.blue {
+.dialog-widget.analog-custom-library-notice.blue,
+.elementor-panel .analog-custom-library-notice.blue {
 	background: #E6F6FF !important;
 	margin: 2px 0;
 	float: right;
 	padding: 6px 8px;
 }
 
-.dialog-widget.ang-notice.description,
-.elementor-panel .ang-notice.description {
+.dialog-widget.analog-custom-library-notice.description,
+.elementor-panel .analog-custom-library-notice.description {
 	width: 100%;
 	background: #E6F6FF !important;
 }
 
-.dialog-widget.ang-notice.description a,
-.elementor-panel .ang-notice.description a{
+.dialog-widget.analog-custom-library-notice.description a,
+.elementor-panel .analog-custom-library-notice.description a{
 	color: currentColor;
 }
 
-.elementor-panel .ang-notice.blue:hover {
+.elementor-panel .analog-custom-library-notice.blue:hover {
 	border-bottom-color: transparent;
 }
 
@@ -123,7 +122,7 @@ button[data-action="save_token"] {
 }
 
 @media (prefers-color-scheme: dark) {
-	.elementor-panel .ang-notice {
+	.elementor-panel .analog-custom-library-notice {
 		background: #EFEFEF;;
 		border: none;
 	}
@@ -150,30 +149,13 @@ button[data-action="save_token"] {
 	border-top-color: #727477;
 }
 
-.ang-description-wide .elementor-control-field-description {
+.analog-custom-library-description-wide .elementor-control-field-description {
 	display: block;
 }
 
-#ang-stylekit-update .dialog-message p + p {
-	margin-top: 20px;
-}
-
-#ang-stylekit-update .dialog-lightbox-ang_apply {
-	color: #3ab54b;
-	border-left: 1px solid #e6e9ec;
-}
-
-#ang-has-globalkit .dialog-header {
-	line-height: 1.4;
-}
-
-#ang-has-globalkit .dialog-ang_apply {
-	color: #39b54a;
-}
-
-#analogwp-templates,
-#analogwp-templates-modal .dialog-message,
-#analogwp-templates-modal .dialog-content {
+#analog-custom-library,
+#analog-custom-library-modal .dialog-message,
+#analog-custom-library-modal .dialog-content {
 	height: 100%;
 }
 

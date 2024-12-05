@@ -15,22 +15,7 @@ const Analog = styled.div`
 	font-size: 13px;
 	position: relative;
 
-	--ang-accent: #4D45BD;
-
-	--ang-top-header-bg: '';
-	--ang-top-header-text: '';
-	--ang-categories-bg: '';
-	--ang-categories-text: '';
-	--ang-library-bg: '';
-	--ang-library-text: '';
-	--ang-thumbnail-border: '';
-	--ang-btn-bg: '';
-	--ang-btn-text: '';
-	--ang-btn-radius: 5px;
-
-	--ang-thumbnail-border: #E0E0E0;
-
-	.ang-notices {
+	.analog-custom-library-notices {
 		position: fixed;
 		right: 0;
 		top: 75px;
@@ -39,14 +24,14 @@ const Analog = styled.div`
 	}
 
 	.components-form-toggle.is-checked .components-form-toggle__track {
-		background-color: var(--ang-primary);
+		background-color: var(--analog-custom-library-primary);
 	}
 
 	.components-form-toggle .components-form-toggle__input:focus + .components-form-toggle__track {
-		box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ang-primary);
+		box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--analog-custom-library-primary);
 	}
 
-	.ang-button {
+	.analog-custom-library-button {
 		font-size: 14.22px;
 		font-weight: bold;
 		text-align: center;
@@ -111,7 +96,7 @@ const Analog = styled.div`
 	}
 
 	.button-accent {
-		background: var(--ang-accent);
+		background: var(--analog-custom-library-accent);
 		border: 0;
 		border-radius: 0;
 		text-transform: uppercase;
@@ -141,10 +126,10 @@ const Analog = styled.div`
 		font-weight: 500;
 	}
 
-	.ang-link {
-		color: var(--ang-accent);
+	.analog-custom-library-link {
+		color: var(--analog-custom-library-accent);
 		text-transform: uppercase;
-		border-bottom: 1px solid var(--ang-accent);
+		border-bottom: 1px solid var(--analog-custom-library-accent);
 		font-size: 12.64px;
 		letter-spacing: 1px;
 		text-decoration: none;
@@ -165,8 +150,8 @@ class App extends React.Component {
 			count: null,
 			isOpen: false, // Determines whether modal to preview template is open or not.
 			syncing: false,
-			favorites: AGWP.favorites,
-			blockFavorites: AGWP.blockFavorites,
+			favorites: AGWP_LIBRARY.favorites,
+			blockFavorites: AGWP_LIBRARY.blockFavorites,
 			showing_favorites: false,
 			blockArchive: [], // same as archive above just for blocks.
 			showFree: true,
@@ -204,7 +189,7 @@ class App extends React.Component {
 		const hash = location.hash;
 		const validHashes = [ '#blocks' ];
 
-		if ( validHashes.indexOf( hash ) > -1 && AGWP.is_settings_page ) {
+		if ( validHashes.indexOf( hash ) > -1 && AGWP_LIBRARY.is_settings_page ) {
 			this.setState( {
 				tab: hash.substr( 1 ),
 				templates: this.state.archive,
@@ -218,13 +203,13 @@ class App extends React.Component {
 		window.addEventListener( 'hashchange', this.switchTabs, false );
 		window.addEventListener( 'DOMContentLoaded', this.switchTabs, false );
 
-		if ( window.localStorage.getItem( 'analog::show-free' ) === 'false' ) {
+		if ( window.localStorage.getItem( 'analog-custom-library::show-free' ) === 'false' ) {
 			this.setState( {
 				showFree: false,
 			} );
 		}
 
-		if ( window.localStorage.getItem( 'analog::show-pro' ) === 'false' ) {
+		if ( window.localStorage.getItem( 'analog-custom-library::show-pro' ) === 'false' ) {
 			this.setState( {
 				showPro: false,
 			} );
@@ -356,7 +341,7 @@ class App extends React.Component {
 		wp.hooks.doAction( 'analog.refreshLibrary' );
 
 		return await apiFetch( {
-			path: '/agwp/v1/templates/?force_update=true',
+			path: '/agwp-library/v1/templates/?force_update=true',
 		} ).then( data => {
 			const library = data.library;
 
@@ -378,7 +363,7 @@ class App extends React.Component {
 		this.setState( {
 			group: false,
 		} );
-		window.localStorage.setItem( 'analog::group-block', false );
+		window.localStorage.setItem( 'analog-custom-library::group-block', false );
 
 		const filteredBlocks = this.state.blockArchive.filter(
 			block => block.id in this.state.blockFavorites

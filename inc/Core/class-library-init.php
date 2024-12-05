@@ -2,12 +2,12 @@
 /**
  * Library initialization.
  *
- * @package Analog Library
+ * @package AnalogWP\CustomLibrary
  */
 
-namespace Analog\Core;
+namespace AnalogWP\CustomLibrary\Core;
 
-use Analog\Core\Data\Templates_DB;
+use AnalogWP\CustomLibrary\Core\Data\Templates_DB;
 use Elementor\TemplateLibrary\Source_Local;
 
 /**
@@ -52,8 +52,8 @@ class Library_Init {
 	 */
 	public function register_meta_boxes() {
 		add_meta_box(
-			'analog-library-id',
-			esc_html__( 'Library Handover', 'ang' ),
+			'custom-library-for-elementor-id',
+			esc_html__( 'Library Handover', 'custom-library-for-elementor' ),
 			array( $this, 'render_library_metabox' ),
 			Source_Local::CPT,
 			'side'
@@ -67,11 +67,11 @@ class Library_Init {
 	 * @return void
 	 */
 	public function handle_save_meta_boxes( int $post_ID ) {
-		if ( ! isset( $_POST['analog_library_meta_nonce'] ) ) {
+		if ( ! isset( $_POST['analog_custom_library_meta_nonce'] ) ) {
 			return;
 		}
 
-		check_admin_referer( 'analog-library-meta', 'analog_library_meta_nonce' );
+		check_admin_referer( 'custom-library-for-elementor-meta', 'analog_custom_library_meta_nonce' );
 
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
@@ -82,8 +82,8 @@ class Library_Init {
 		}
 
 		$keys = array(
-			'analog_sync_to_library',
-			'analog_is_template_live',
+			'analog_custom_library_sync_to_library',
+			'analog_custom_library_is_template_live',
 		);
 
 		foreach ( $keys as $key ) {
@@ -102,19 +102,19 @@ class Library_Init {
 	 * @return void
 	 */
 	public function render_library_metabox( $post ) {
-		$sync_to_library  = get_post_meta( $post->ID, 'analog_sync_to_library', true );
-		$is_template_live = get_post_meta( $post->ID, 'analog_is_template_live', true );
+		$sync_to_library  = get_post_meta( $post->ID, 'analog_custom_library_sync_to_library', true );
+		$is_template_live = get_post_meta( $post->ID, 'analog_custom_library_is_template_live', true );
 
 		ob_start();
-		wp_nonce_field( 'analog-library-meta', 'analog_library_meta_nonce' );
+		wp_nonce_field( 'custom-library-for-elementor-meta', 'analog_custom_library_meta_nonce' );
 		?>
 		<div>
-			<label for="analog_sync_to_library"><input type="checkbox" name="analog_sync_to_library" id="analog_sync_to_library" value="1" <?php checked( $sync_to_library, 1 ); ?>>
+			<label for="analog_custom_library_sync_to_library"><input type="checkbox" name="analog_custom_library_sync_to_library" id="analog_custom_library_sync_to_library" value="1" <?php checked( $sync_to_library, 1 ); ?>>
 				&nbsp;Add to library</label>
 		</div>
 
 		<div>
-			<label for="analog_is_template_live"><input type="checkbox" name="analog_is_template_live" id="analog_is_template_live" value="1" <?php checked( $is_template_live, 1 ); ?>>
+			<label for="analog_custom_library_is_template_live"><input type="checkbox" name="analog_custom_library_is_template_live" id="analog_custom_library_is_template_live" value="1" <?php checked( $is_template_live, 1 ); ?>>
 				&nbsp;Is Live</label>
 		</div>
 		<?php
@@ -131,7 +131,7 @@ class Library_Init {
 	public function prepare_template_for_save( $post_id ) {
 
 		$tags             = get_the_terms( $post_id, 'elementor_library_category' );
-		$keywords         = get_the_terms( $post_id, 'analog_library_keyword' );
+		$keywords         = get_the_terms( $post_id, 'analog_custom_library_keyword' );
 		$required_plugins = get_post_meta( $post_id, 'required_plugins', true );
 
 		$template_data = array(
@@ -143,7 +143,7 @@ class Library_Init {
 			'modified'         => get_the_modified_date( 'U', $post_id ),
 			'tags'             => ( ! is_wp_error( $tags ) && $tags ) ? wp_list_pluck( $tags, 'name' ) : false,
 			'keywords'         => ( ! is_wp_error( $keywords ) && $keywords ) ? wp_list_pluck( $keywords, 'name' ) : false,
-			'is_live'          => (bool) get_post_meta( $post_id, 'analog_is_template_live', true ),
+			'is_live'          => (bool) get_post_meta( $post_id, 'analog_custom_library_is_template_live', true ),
 			'is_pro'           => (bool) get_post_meta( $post_id, 'is_pro', true ),
 			'version'          => get_post_meta( $post_id, 'required_version', true ),
 			'uses_container'   => (bool) get_post_meta( $post_id, 'uses_container', true ),
@@ -153,7 +153,7 @@ class Library_Init {
 			'required_plugins' => $required_plugins,
 		);
 
-		return apply_filters( 'analog_template_data', $template_data, $post_id );
+		return apply_filters( 'analog_custom_library_template_data', $template_data, $post_id );
 	}
 
 	/**
@@ -223,7 +223,7 @@ class Library_Init {
 			return;
 		}
 
-		$sync = (bool) isset( $_POST['analog_sync_to_library'] ) ? 1 : 0;
+		$sync = (bool) isset( $_POST['analog_custom_library_sync_to_library'] ) ? 1 : 0;
 
 		if ( ! $sync ) {
 			// Delete if template exists in library.
@@ -231,7 +231,7 @@ class Library_Init {
 			return;
 		}
 
-		$transient_key = 'analog_push_template_' . $post->ID;
+		$transient_key = 'analog_custom_library_push_template_' . $post->ID;
 		if ( ! get_transient( $transient_key ) ) {
 			// First we prepare.
 			$data = $this->prepare_template_for_save( $post_ID );

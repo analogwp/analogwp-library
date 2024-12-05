@@ -1,6 +1,6 @@
 import App from './App';
 
-const containerElementID = 'analogwp-templates';
+const containerElementID = 'analog-custom-library';
 
 const waitForEl = ( selector, callback ) => {
 	if ( ! document.getElementById( containerElementID ) ) {
@@ -16,7 +16,7 @@ const waitForEl = ( selector, callback ) => {
 
 // We don't use a variable here because in Elementor modal the element is added dynamically.
 waitForEl( document.getElementById( containerElementID ), () => {
-	if ( window.AGWP && window.AGWP.wp_version && window.AGWP.wp_version >= '6.2' ) {
+	if ( window.AGWP_LIBRARY && window.AGWP_LIBRARY.wp_version && window.AGWP_LIBRARY.wp_version >= '6.2' ) {
 		const { createRoot } = wp.element;
 		const containerRoot = createRoot( document.getElementById( containerElementID ) );
 		containerRoot.render( <App /> );
