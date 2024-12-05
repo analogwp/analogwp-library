@@ -2,7 +2,7 @@
 /**
  * Custom Library Admin Settings Class
  *
- * @package  AnalogWP/CustomLibrary/Admin
+ * @package  AnalogWP/CustomLibrary
  */
 
 namespace AnalogWP\CustomLibrary\Settings;

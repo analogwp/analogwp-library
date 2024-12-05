@@ -62,13 +62,13 @@ const analog = window.analog = window.analog || {};
 
 				(text = text.replace(
 					'<div class="elementor-add-section-drag-title',
-					'<div class="elementor-add-section-area-button elementor-add-analogwp-button" title="AnalogWP Templates">&nbsp;</div> <div class="elementor-add-section-drag-title'
+					'<div class="elementor-add-section-area-button elementor-add-analog-custom-library-button" title="AnalogWP Custom Library">&nbsp;</div> <div class="elementor-add-section-drag-title'
 				)),
 					template.text(text),
 					elementor.on("preview:loaded", function() {
 						$(elementor.$previewContents[0].body).on(
 							"click",
-							".elementor-add-analogwp-button",
+							".elementor-add-analog-custom-library-button",
 							modal
 						);
 					});

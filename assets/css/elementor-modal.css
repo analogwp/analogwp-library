@@ -2,7 +2,7 @@
 	--analog-custom-library-accent: #5C32B6;
 }
 
-.elementor-add-analogwp-button {
+.elementor-add-analog-custom-library-button {
 	background-color: var(--analog-custom-library-accent);
 	margin-left: 5px;
 }
@@ -45,10 +45,10 @@
 	margin: 0;
 }
 
-.elementor-add-analogwp-button {
-	background-color: #B37DF5;
+.elementor-add-analog-custom-library-button {
+	background-image: url('../img/icon.svg');
 	background-repeat: no-repeat;
-	background-size: 20px;
+	background-size: 14px;
 	background-position: center;
 }
 
@@ -152,23 +152,6 @@ button[data-action="save_token"] {
 
 .analog-custom-library-description-wide .elementor-control-field-description {
 	display: block;
-}
-
-#analog-custom-library-stylekit-update .dialog-message p + p {
-	margin-top: 20px;
-}
-
-#ang-stylekit-update .dialog-lightbox-ang_apply {
-	color: #3ab54b;
-	border-left: 1px solid #e6e9ec;
-}
-
-#ang-has-globalkit .dialog-header {
-	line-height: 1.4;
-}
-
-#ang-has-globalkit .dialog-ang_apply {
-	color: #39b54a;
 }
 
 #analog-custom-library,

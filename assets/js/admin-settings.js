@@ -15,7 +15,7 @@
 			elSubmitBtn.text( status );
 
 			$.ajax( {
-				url: 'https://analogwp.com/?ang-api=asdf&request=subscribe_newsletter',
+				url: 'https://analogwp.com/?ang-api=analog-custom-library&request=earlybird-optin',
 				cache: ! 1,
 				type: 'POST',
 				dataType: 'JSON',
@@ -78,7 +78,7 @@
 		} );
 
 		// Select all/none
-		$( '.ang' ).on( 'click', '.select_all', function() {
+		$( '.ang-custom-library' ).on( 'click', '.select_all', function() {
 			$( this )
 				.closest( 'td' )
 				.find( 'select option' )
@@ -90,7 +90,7 @@
 			return false;
 		} );
 
-		$( '.ang' ).on( 'click', '.select_none', function() {
+		$( '.ang-custom-library' ).on( 'click', '.select_none', function() {
 			$( this )
 				.closest( 'td' )
 				.find( 'select option' )

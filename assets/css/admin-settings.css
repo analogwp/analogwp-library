@@ -29,7 +29,7 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	padding: 40px 60px 60px;
 }
 
-.ang .menu-title {
+.ang-custom-library .menu-title {
 	margin-bottom: 30px;
 	font-weight: 500;
 	font-size: 32px;
@@ -70,23 +70,23 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	box-shadow: none;
 }
 
-.ang .tab-content .title {
+.ang-custom-library .tab-content .title {
 	color: #3C434A;
 	font-size: 14px;
 	font-weight: 700;
 	line-height: 1.3;
 }
 
-.ang .tab-content .titledesc {
+.ang-custom-library .tab-content .titledesc {
 	color: #3C434A;
 }
 
-.ang .forminp .description {
+.ang-custom-library .forminp .description {
 	display: block;
 	margin-top: 10px;
 }
 
-.ang .forminp-button {
+.ang-custom-library .forminp-button {
 	padding: 15px 10px;
 	display: flex;
 	gap: 10px;
@@ -94,11 +94,11 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 }
 
 
-.ang .forminp-button .description {
+.ang-custom-library .forminp-button .description {
 	margin-top: 0;
 }
 
-.ang .collapsible {
+.ang-custom-library .collapsible {
 	border: none;
 	border-top: 1px solid#e2e4e7;
 	border-bottom: 1px solid#e2e4e7;
@@ -112,7 +112,7 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	cursor: pointer;
 }
 
-.ang .collapsible:after, .ang .collapsible.active:after {
+.ang-custom-library .collapsible:after, .ang-custom-library .collapsible.active:after {
 	font-family: 'Dashicons';
 	font-size: 20px;
 	color: #000;
@@ -120,19 +120,19 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	margin-left: 5px;
 }
 
-.ang .collapsible:after {
+.ang-custom-library .collapsible:after {
 	content: "\f140";
 }
 
-.ang .collapsible.active:after {
+.ang-custom-library .collapsible.active:after {
 	content: "\f142";;
 }
 
-.ang .collapsible.active, .ang .collapsible:hover {
+.ang-custom-library .collapsible.active, .ang-custom-library .collapsible:hover {
 	background-color: #fff;
 }
 
-.ang .collapsible-content {
+.ang-custom-library .collapsible-content {
 	padding: 0 18px;
 	background-color: white;
 	max-height: 0;
@@ -141,28 +141,28 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 }
 
 
-.ang #ang-starter-kits .titledesc .header,
-.ang .ang-starter-kits-list li {
+.ang-custom-library #ang-starter-kits .titledesc .header,
+.ang-custom-library .ang-custom-library-starter-kits-list li {
 	display: flex;
 	gap: 20px;
 	align-items: center;
 	margin-top: 25px;
 }
 
-.ang .ang-starter-kits-list img {
+.ang-custom-library .ang-custom-library-starter-kits-list img {
 	width: 160px;
 	border-radius: 5px;
 	height: auto;
 }
 
-.ang .ang-starter-kits-list .kit-title {
+.ang-custom-library .ang-custom-library-starter-kits-list .kit-title {
 	font-size: 18px;
 	font-weight: 500;
 	margin-top: 0;
 	margin-bottom: 10px;
 }
 
-.ang .ang-starter-kits-list .kit-description {
+.ang-custom-library .ang-custom-library-starter-kits-list .kit-description {
 	display: inline-block;
 	font-size: 14px;
 	color: #50575e;
@@ -170,117 +170,74 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	margin-bottom: 20px;
 }
 
-.ang .ang-starter-kits-list .kit-btns > * {
+.ang-custom-library .ang-custom-library-starter-kits-list .kit-btns > * {
 	margin-right: 5px;
 	margin-top: 5px;
 }
 
-.ang #ang-starter-kits + .submit {
+.ang-custom-library #ang-starter-kits + .submit {
 	display: none;
 }
 
-.ang.gopro .submit {
+.ang-custom-library.gopro .submit {
 	display: none;
 }
-.ang.gopro .ang-button.ang-gopro-button {
+.ang-custom-library.gopro .ang-custom-library-button.ang-custom-library-gopro-button {
 	display: inline-block;
 	margin-top: 30px;
 }
 
-.ang.gopro h1 {
+.ang-custom-library.gopro h1 {
 	margin-top: 15px;
 	font-weight: 600;
 	font-size: 20px;
 	line-height: 30px;
 }
 
-.ang.gopro .gopro-content ul {
+.ang-custom-library.gopro .gopro-content ul {
 	list-style: disc;
 	list-style-position: inside;
 }
 
-.ang.gopro .gopro-content li {
+.ang-custom-library.gopro .gopro-content li {
 	line-height: 1.5;
 }
 
-.ang.gopro .gopro-content p, li {
+.ang-custom-library.gopro .gopro-content p, li {
 	font-size: 15px;
 }
 
-.ang.gopro form {
+.ang-custom-library.gopro form {
 	position: relative;
 }
 
-.ang.gopro form {
+.ang-custom-library.gopro form {
 	height: calc(100% - 10%);
 }
 
 @media screen and ( min-width: 1920px ) {
-	.ang.gopro form {
+	.ang-custom-library.gopro form {
 		height: auto;
 	}
 }
 
 @media screen and (max-width: 768px) {
-	.ang.gopro form {
+	.ang-custom-library.gopro form {
 		padding-bottom: 250px;
 	}
 }
 
-.ang.gopro .gopro-content img {
+.ang-custom-library.gopro .gopro-content img {
 	width: 100%;
 }
 
-.ang.gopro .tab-content .ang-button {
+.ang-custom-library.gopro .tab-content .ang-custom-library-button {
 	display: inline-block;
 	margin-top: 10px;
 }
 
-.ang .ang-enhanced-select {
+.ang-custom-library .ang-custom-library-enhanced-select {
 	min-width: 150px;
-}
-
-.ang .sidebar .promo,
-.ang .sidebar .upgrade-box {
-	background: #fff;
-	border-radius: 8px;
-	padding: 5px 30px 25px;
-	margin-bottom: 30px;
-}
-
-.ang .sidebar .social {
-	display: flex;
-	gap: 15px;
-}
-
-.ang .upgrade-box li {
-	list-style: disc;
-	font-size: 1.1em;
-}
-
-.ang .upgrade-box h3 {
-	line-height: 1.4em;
-}
-
-.ang .upgrade-box .regular-text {
-	width: 100%;
-	margin-bottom: 8px;
-}
-
-.ang .upgrade-box + .promo {
-	margin-top: 30px;
-}
-
-.ang .sidebar .form-newsletter input {
-	width: 100%;
-}
-
-.ang .sidebar .form-newsletter .ang-button {
-	margin-top: 10px;
-}
-
-.ang .sidebar .social > a {
-	text-decoration: none;
 }
 
 .experiment-indicator {
@@ -301,12 +258,84 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	background: #39b54a;
 }
 
+/**
+ * Sidebar
+ */
+.ang-custom-library .sidebar .plugin-banner,
+.ang-custom-library .sidebar .promo,
+.ang-custom-library .sidebar .upgrade-box {
+	background: #fff;
+	border-radius: 8px;
+	padding: 30px 30px 25px;
+	margin-bottom: 30px;
+}
+
+.ang-custom-library .sidebar .plugin-banner .header,
+.ang-custom-library .sidebar .plugin-banner .header .brand  {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	justify-items: center;
+	align-items: center;
+}
+
+.ang-custom-library .sidebar .plugin-banner .header {
+	margin-bottom: 20px;
+}
+
+.ang-custom-library .sidebar .plugin-banner .header .brand h4 {
+	font-size: 18px;
+	line-height: 1.4;
+	margin: 0;
+}
+
+
+.ang-custom-library .sidebar .plugin-banner .feature-list li {
+	padding: 16px 0;
+	border-top: 1px solid #E2E2E4;
+}
+
+.ang-custom-library .sidebar .social {
+	display: flex;
+	gap: 15px;
+}
+
+.ang-custom-library .upgrade-box li {
+	list-style: disc;
+	font-size: 1.1em;
+}
+
+.ang-custom-library .upgrade-box h3 {
+	line-height: 1.4em;
+}
+
+.ang-custom-library .upgrade-box .regular-text {
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.ang-custom-library .upgrade-box + .promo {
+	margin-top: 30px;
+}
+
+.ang-custom-library .sidebar .form-newsletter input {
+	width: 100%;
+}
+
+.ang-custom-library .sidebar .form-newsletter .ang-custom-library-button {
+	margin-top: 10px;
+}
+
+.ang-custom-library .sidebar .social > a {
+	text-decoration: none;
+}
+
 .gopro-content ul li::marker {
 	font-size: 18px;
 	line-height: 0;
 }
 
-.ang-save-button.button-primary {
+.ang-custom-library-save-button.button-primary {
 	background: #0073AA;
 	padding: 12px;
 	font-weight: 400;
@@ -317,36 +346,40 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 /**
  * Notices
  */
-.ang .notice-success,
-.ang div.updated {
-	border-left-color: #0073AA;
+.ang-custom-library .notice-success,
+.ang-custom-library div.updated {
+	border: none;
+	border-left: solid 4px #0073AA;
 	border-radius: 4px;
+	background: #CCEEFF;
+	box-shadow: none;
+	color: #0073AA;
 }
 
 /**
  * Form
  */
-.ang .form-table td {
+.ang-custom-library .form-table td {
 	padding: 15px 0 !important;
 }
 
-.ang .form-table th + td {
+.ang-custom-library .form-table th + td {
 	padding: 15px 10px;
 }
 
-.ang .forminp-radio ul {
+.ang-custom-library .forminp-radio ul {
 	margin: 0;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 320px);
 }
 
-.ang .forminp-media-image {
+.ang-custom-library .forminp-media-image {
 	display: flex;
 	gap: 15px;
 	align-items: center;
 }
 
-.ang .forminp-media-image .media-image {
+.ang-custom-library .forminp-media-image .media-image {
 	height: auto;
 	width: 120px;
 	max-width: 100%;
@@ -356,6 +389,7 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 }
 
 
-.ang .forminp-media-image .ang-remove-image-btn {
+.ang-custom-library .forminp-media-image .ang-custom-library-remove-image-btn {
 	margin-left: 10px;
 }
+
