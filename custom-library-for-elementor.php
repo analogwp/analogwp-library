@@ -22,7 +22,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AGWP_LIBRARY_ELEMENTOR_MINIMUM', '3.10.0' );
+define( 'AGWP_LIBRARY_ELEMENTOR_MINIMUM', '3.20.0' );
 define( 'AGWP_LIBRARY_PHP_MINIMUM', '7.4' );
 define( 'AGWP_LIBRARY_WP_MINIMUM', '6.0' );
 define( 'AGWP_LIBRARY_VERSION', '0.1.0' );
@@ -182,12 +182,53 @@ if ( is_readable( $vendor_file ) ) {
 	require_once $vendor_file;
 }
 
+if ( ! function_exists( 'analog_custom_library_for_elementor_fs' ) ) {
+	/**
+	 * A helper function for easy Freemius SDK access.
+	 */
+	function analog_custom_library_for_elementor_fs() {
+		global $custom_library_for_elementor_fs;
+
+		if ( ! isset( $custom_library_for_elementor_fs ) ) {
+			// Manually include the Freemius SDK (not needed if using Composer).
+
+			$custom_library_for_elementor_fs = fs_dynamic_init(
+				array(
+					'id'             => '17229',
+					'slug'           => 'custom-library-for-elementor',
+					'type'           => 'plugin',
+					'public_key'     => 'pk_933cd86a01a4af4c84ed15dae1d5f',
+					'is_premium'     => false,
+					'has_addons'     => false,
+					'has_paid_plans' => false,
+					'menu'           => array(
+						'slug'       => 'analog-custom-library-settings',
+						'first-path' => 'admin.php?page=analog-custom-library-settings',
+						'account'    => false,
+						'support'    => false,
+						'parent'     => array(
+							'slug' => 'elementor',
+						),
+					),
+				)
+			);
+		}
+
+		return $custom_library_for_elementor_fs;
+	}
+
+	// Init Freemius.
+	analog_custom_library_for_elementor_fs();
+	// Signal that SDK was initiated.
+	do_action( 'analog_custom_library_for_elementor_fs_loaded' );
+}
+
 /**
  * Fire up plugin instance.
  */
 add_action(
 	'plugins_loaded',
-	static function() {
+	static function () {
 		if ( version_compare( PHP_VERSION, AGWP_LIBRARY_PHP_MINIMUM, '<' ) ) {
 			wp_die(
 			/* translators: %s: version number */
