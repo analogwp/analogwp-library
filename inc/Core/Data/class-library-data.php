@@ -65,6 +65,8 @@ final class Library_Data {
 	/**
 	 * Get template data.
 	 *
+	 * @param int $template_id Template ID.
+	 *
 	 * @return array|\WP_Error
 	 */
 	public static function prepare_template_content( $template_id ) {

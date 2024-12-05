@@ -175,8 +175,8 @@ function analog_custom_library_fail_load() {
 	echo '<div class="error"><p>' . $message . '</p></div>'; // @codingStandardsIgnoreLine
 }
 
-// Third party dependencies.
-$vendor_file = __DIR__ . '/third-party/vendor/scoper-autoload.php';
+// Load dependencies.
+$vendor_file = __DIR__ . '/vendor/autoload.php';
 
 if ( is_readable( $vendor_file ) ) {
 	require_once $vendor_file;

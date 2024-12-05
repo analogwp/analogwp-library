@@ -7,7 +7,6 @@
 
 namespace AnalogWP\CustomLibrary;
 
-use AnalogWP\CustomLibrary\API\Remote;
 
 /**
  * Class Database_Upgrader
@@ -82,6 +81,5 @@ class Database_Upgrader {
 	 */
 	protected function upgrade_0_1_0() {
 		// Refresh templates library.
-		Remote::get_instance()->get_templates_info( true );
 	}
 }

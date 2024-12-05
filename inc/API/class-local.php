@@ -121,23 +121,6 @@ class Local extends Base {
 	}
 
 	/**
-	 * Get all templates.
-	 *
-	 * @param WP_REST_Request $request Request object.
-	 *
-	 * @return array
-	 */
-	public function templates_list( WP_REST_Request $request ) {
-		$force_update = $request->get_param( 'force_update' );
-
-		if ( $force_update ) {
-			return Remote::get_instance()->get_templates_info( true );
-		}
-
-		return Remote::get_instance()->get_templates_info();
-	}
-
-	/**
 	 * Mark a template or block as favorite.
 	 *
 	 * @param WP_REST_Request $request Request object.
@@ -222,7 +205,6 @@ class Local extends Base {
 
 	/**
 	 * Creates a 'Section' for Elementor.
-	 *
 	 *
 	 * @uses wp_insert_post()
 	 *
@@ -339,9 +321,7 @@ class Local extends Base {
 	 *  1. Imports the remote template.
 	 *  2. Then with retrieved content, creates a page.
 	 *
-	 * @uses \Analog\API\Remote::get_instance()->get_block_content()
 	 * @uses \Elementor\TemplateLibrary\AnalogWP_Custom_Library_Importer
-	 *
 	 *
 	 * @param array  $block Block data.
 	 * @param string $method Import method.
@@ -413,7 +393,7 @@ class Local extends Base {
 	/**
 	 * Get templates library.
 	 *
-	 * @param \WP_REST_Request $request
+	 * @param \WP_REST_Request $request WP REST request instance.
 	 * @return array
 	 */
 	public function library_templates_list( \WP_REST_Request $request ) {

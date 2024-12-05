@@ -9,7 +9,7 @@
 namespace AnalogWP\CustomLibrary\Core\SVGs;
 
 use AnalogWP\CustomLibrary\Options;
-use AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\Sanitizer;
+use enshrined\svgSanitize\Sanitizer;
 
 /**
  * Class enabling SVG uploads and imports.
@@ -17,7 +17,7 @@ use AnalogWP\CustomLibrary\Dependencies\enshrined\svgSanitize\Sanitizer;
  * @access private
  * @ignore
  */
-final class Allow {
+final class Allow_SVG {
 	/**
 	 * The sanitizer
 	 *
@@ -454,4 +454,4 @@ final class Allow {
 }
 
 
-new Allow();
+new Allow_SVG();

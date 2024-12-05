@@ -27,8 +27,9 @@
         }
 	},
 	"require": {
-	  "enshrined/svg-sanitize": "^0.15.4"
-	},
+        "enshrined/svg-sanitize": "^0.15.4",
+        "freemius/wordpress-sdk": "^2.10"
+    },
     "require-dev": {
         "civicrm/composer-downloads-plugin": "*",
         "ergebnis/composer-normalize": "*",
@@ -44,17 +45,5 @@
 		}
 	  }
 	},
-  "scripts": {
-	"post-install-cmd": [
-	  "@prefix-dependencies"
-	],
-	"post-update-cmd": [
-	  "@prefix-dependencies"
-	],
-	"prefix-dependencies": [
-	  "php-scoper add-prefix --output-dir=./third-party --force --quiet",
-	  "echo '{ \"autoload\": { \"classmap\": [\"\"] } }' > ./third-party/composer.json",
-	  "@composer dump-autoload --working-dir ./third-party --no-dev --classmap-authoritative"
-	]
-  }
+  "scripts": {}
 }

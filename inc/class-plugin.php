@@ -214,18 +214,17 @@ final class Plugin {
 	private function includes() {
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Storage/class-transients.php';
 
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/settings/class-register-settings.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/settings/settings-helpers.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/class-register-settings.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/settings-helpers.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-base.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-import-image.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-options.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/SVGs/class-allow.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/SVGs/class-allow-svg.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-consumer.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/admin/class-notice.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/admin/class-notices.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Admin/class-notice.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Admin/class-notices.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-utils.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/api/class-remote.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/api/class-local.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/API/class-local.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-analogwp-custom-library-importer.php';
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Data/class-base-db.php';
@@ -235,17 +234,13 @@ final class Plugin {
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-elementor.php';
 
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/elementor/trait-document.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/elementor/class-tools.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Elementor/trait-document.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Elementor/class-tools.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-database-upgrader.php';
 
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/admin/class-admin.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Admin/class-admin.php';
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-beta-testers.php';
-
-		if ( defined( 'WP_CLI' ) && \WP_CLI ) {
-			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/cli/commands.php';
-		}
 	}
 
 	/**
