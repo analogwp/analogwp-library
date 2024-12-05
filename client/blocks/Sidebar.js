@@ -37,14 +37,14 @@ const SidebarWrapper = styled.div`
 	}
 
 	.components-base-control.components-toggle-control {
-		border-bottom: 1px solid var(--analog-custom-library-border);
+		border-bottom: 1px solid var(--analog-custom-library-btn-border);
 	}
 
 	.block-categories-tabs .components-button {
 		border-radius: 0;
 		padding: 10px 0;
 		font-size: 16px;
-		color: #060606;
+		color: var(--analog-custom-library-categories-text);
 		justify-content: space-between;
 	}
 
@@ -57,7 +57,7 @@ const SidebarWrapper = styled.div`
 	.block-categories-tabs .components-button.active-tab {
 		box-shadow: none;
 		font-weight: bold;
-		color: var(--analog-custom-library-primary) !important;
+		color: var(--analog-custom-library-categories-active-text) !important;
 	}
 
 	.block-categories-tabs

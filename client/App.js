@@ -15,21 +15,6 @@ const Analog = styled.div`
 	font-size: 13px;
 	position: relative;
 
-	--analog-custom-library-accent: #4D45BD;
-
-	--analog-custom-library-top-header-bg: '';
-	--analog-custom-library-top-header-text: '';
-	--analog-custom-library-categories-bg: '';
-	--analog-custom-library-categories-text: '';
-	--analog-custom-library-library-bg: '';
-	--analog-custom-library-library-text: '';
-	--analog-custom-library-thumbnail-border: '';
-	--analog-custom-library-btn-bg: '';
-	--analog-custom-library-btn-text: '';
-	--analog-custom-library-btn-radius: 5px;
-
-	--analog-custom-library-thumbnail-border: #E0E0E0;
-
 	.analog-custom-library-notices {
 		position: fixed;
 		right: 0;
