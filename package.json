@@ -11,7 +11,7 @@
     "makePot": "npx @wp-blocks/make-pot . ./languages/",
     "convertPot2json": "npx po2json ./languages/custom-library-for-elementor.pot ./languages/custom-library-for-elementor-analog-custom-library-app.json -f jed1.x",
     "build": "gulp build",
-    "gh:release": "gulp github-build",
+    "gh:build": "gulp github-build",
     "translate": "gulp translate"
   },
   "repository": {
@@ -56,7 +56,7 @@
     "assets",
     "inc",
     "languages",
-    "third-party",
+    "vendor",
     "custom-library-for-elementor.php",
     "uninstall.php",
     "readme.txt"

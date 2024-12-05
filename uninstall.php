@@ -1,8 +1,8 @@
 <?php
 /**
- * Uninstall AnalogWP.
+ * Uninstall Custom Library for Elementor.
  *
- * @package AnalogWP
+ * @package AnalogWP/CustomLibrary
  */
 
 // Exit if accessed directly.

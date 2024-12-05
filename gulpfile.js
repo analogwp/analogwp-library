@@ -38,7 +38,6 @@ const buildFiles = [
 	'!composer.lock',
 	'!codeception.dist.yml',
 	'!tests/**',
-	'!vendor/**',
 ];
 
 const buildDestination = `./build/${ project }/`;
@@ -48,6 +47,7 @@ const cleanFiles = [ `./build/${ project }/`, `./build/${ project }.zip` ];
 gulp.task( 'scriptBuildApp', run( 'npm run build-app' ) );
 gulp.task( 'scriptMakePot', run( 'npm run makePot' ) );
 gulp.task( 'scriptConvertPot2json', run('npm run convertPot2json' ) );
+gulp.task( 'composerNoDev', run( 'composer install --no-dev' ) );
 
 gulp.task( 'clean', function( done ) {
 	return del( cleanFiles );
@@ -65,20 +65,6 @@ gulp.task( 'zip', function( done ) {
 		.pipe( zip( project + '.zip' ) )
 		.pipe( gulp.dest( buildZipDestination ) );
 	done(); // eslint-disable-line
-} );
-
-gulp.task( 'scripts', function( done ) {
-	gulp.src( [ './inc/elementor/js/*.js', '!./inc/elementor/js/*.min.js' ] )
-		.pipe( babel( {
-			presets: [ '@babel/preset-env' ],
-		} ) )
-		.pipe( uglify() )
-		.pipe( rename( {
-			suffix: '.min',
-		} ) )
-		.pipe( gulp.dest( './inc/elementor/js/' ) );
-
-	done();
 } );
 
 gulp.task( 'checktextdomain', ( done ) => {
@@ -108,7 +94,7 @@ gulp.task( 'checktextdomain', ( done ) => {
 } );
 
 gulp.task( 'build', gulp.series(
-	// 'scripts',
+	'composerNoDev',
 	'checktextdomain',
 	'scriptBuildApp',
 	'scriptMakePot',
@@ -122,9 +108,10 @@ gulp.task( 'build', gulp.series(
 );
 
 gulp.task( 'github-build', gulp.series(
-	// 'scripts',
 	'checktextdomain',
 	'scriptBuildApp',
+	'scriptMakePot',
+	'scriptConvertPot2json',
 	'clean',
 	'copy',
 	'zip',

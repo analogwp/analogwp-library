@@ -246,7 +246,7 @@ add_action(
 			// Include files temporarily, required for rollbacks to work.
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-base.php';
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Storage/class-transients.php';
-			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/elementor/class-tools.php';
+			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Elementor/class-tools.php';
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-utils.php';
 
 			add_action( 'admin_notices', 'analog_custom_library_require_minimum_elementor' );
