@@ -143,7 +143,7 @@ class Admin_Settings {
 		// Get tabs for the settings page.
 		$tabs = apply_filters( 'analog_custom_library_settings_tabs_array', array() );
 
-		include AGWP_LIBRARY_PLUGIN_DIR . 'inc/settings/Views/html-admin-settings.php';
+		include AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/Views/html-admin-settings.php';
 	}
 
 	/**
