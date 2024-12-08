@@ -59,7 +59,7 @@ final class Plugin {
 		add_action( 'init', array( self::$instance, 'load_textdomain' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( AGWP_LIBRARY_PLUGIN_FILE ), array( self::$instance, 'plugin_action_links' ) );
 		add_action( 'admin_enqueue_scripts', array( self::$instance, 'scripts' ) );
-		add_filter( 'analog/app/strings', array( self::$instance, 'send_strings_to_app' ) );
+		add_filter( 'analog/library/app/strings', array( self::$instance, 'send_strings_to_app' ) );
 
 		( new Consumer() )->register();
 		( new Notices() )->register();
@@ -80,8 +80,8 @@ final class Plugin {
 		}
 
 		wp_enqueue_style( 'wp-components' );
-		wp_enqueue_style( 'analog-google-fonts', 'https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap', array(), '20221016' );
-		wp_enqueue_style( 'analogwp-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/library-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/library-components.css' ) );
+		wp_enqueue_style( 'analog-custom-library-google-fonts', 'https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap', array(), '20221016' );
+		wp_enqueue_style( 'analog-custom-library-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/library-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/library-components.css' ) );
 
 		wp_enqueue_script(
 			'analog-custom-library-app',
@@ -103,7 +103,7 @@ final class Plugin {
 		wp_set_script_translations( 'analog-custom-library-app', 'custom-library-for-elementor', AGWP_LIBRARY_PLUGIN_DIR . 'languages' );
 
 		$i10n = apply_filters( // phpcs:ignore
-			'analog/app/strings',
+			'analog/library/app/strings',
 			array(
 				'is_settings_page'  => 'toplevel_page_analog_custom_library' === $hook,
 				'rollback_url'      => wp_nonce_url( admin_url( 'admin-post.php?action=analog_custom_library_rollback&version=VERSION' ), 'analog_custom_library_rollback' ),

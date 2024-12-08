@@ -204,7 +204,7 @@ class Utils extends Base {
 		 *
 		 * @param array $post_types Elementor supported public post types.
 		 */
-		return apply_filters( 'analog/utils/get_public_post_types', $post_types );
+		return apply_filters( 'analog/library/utils/get_public_post_types', $post_types );
 	}
 
 	/**
@@ -284,65 +284,6 @@ class Utils extends Base {
 		);
 
 		return $data;
-	}
-
-	/**
-	 * This function strips off the allowed keys that are part of a Style Kit.
-	 *
-	 * @param array $settings Post Meta settings.
-	 *
-	 * @return array Modified settings array.
-	 */
-	public static function remove_stored_kit_keys( $settings ) {
-		/**
-		 * List of settings key prefixes that needs to be removed prior to updating an SK.
-		 */
-		$allowed = apply_filters(
-			'analog/stylekit/allowed/setting/prefixes',
-			array( 'analog_custom_library_', 'hide', 'background_background', 'background_color', 'background_grad', 'custom_css' )
-		);
-
-		return array_filter(
-			$settings,
-			function ( $key ) use ( $allowed ) {
-				foreach ( $allowed as $allow ) {
-					if ( strpos( $key, $allow ) === 0 ) {
-						return false;
-					}
-				}
-
-				return true;
-			},
-			ARRAY_FILTER_USE_KEY
-		);
-	}
-
-	/**
-	 * Update Style Kit for a specific post.
-	 *
-	 * @param int   $post_id Post ID for which Style Kit will be updated.
-	 * @param array $tokens Style Kit data.
-	 *
-	 * @return void
-	 */
-	public static function update_style_kit_for_post( $post_id, array $tokens ) {
-		$page_settings = \get_post_meta( $post_id, '_elementor_page_settings', true );
-
-		$allowed_types = array( 'post', 'wp-post', 'page', 'wp-page', 'global-widget', 'popup', 'section', 'header', 'footer', 'single', 'archive' );
-
-		$document_type = \get_post_meta( $post_id, '_elementor_template_type', true );
-
-		if ( ! $document_type || ! in_array( $document_type, $allowed_types, true ) ) {
-			return;
-		}
-
-		$preserved_settings = array();
-		if ( is_array( $page_settings ) ) {
-			$preserved_settings = self::remove_stored_kit_keys( $page_settings );
-		}
-		$modified_settings = array_merge( $preserved_settings, $tokens );
-
-		\update_post_meta( $post_id, '_elementor_page_settings', wp_slash( $modified_settings ) );
 	}
 
 	/**
@@ -691,7 +632,7 @@ class Utils extends Base {
 		}
 
 		wp_add_inline_style(
-			'analogwp-components-css',
+			'analog-custom-library-components-css',
 			$css
 		);
 	}
