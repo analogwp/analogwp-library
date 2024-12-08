@@ -53,7 +53,7 @@ class Library_Init {
 	public function register_meta_boxes() {
 		add_meta_box(
 			'custom-library-for-elementor-id',
-			esc_html__( 'Library Handover', 'custom-library-for-elementor' ),
+			esc_html__( 'Custom Library', 'custom-library-for-elementor' ),
 			array( $this, 'render_library_metabox' ),
 			Source_Local::CPT,
 			'side'
