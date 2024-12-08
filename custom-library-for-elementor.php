@@ -207,7 +207,7 @@ if ( ! function_exists( 'analog_custom_library_for_elementor_fs' ) ) {
 						'account'    => false,
 						'support'    => false,
 						'parent'     => array(
-							'slug' => 'elementor',
+							'slug' => 'edit.php?post_type=elementor_library',
 						),
 					),
 				)
