@@ -143,6 +143,13 @@ final class Plugin {
 		$plugins = get_option( 'active_plugins' );
 		$plugins = array_map( array( $this, 'filter_plugins' ), $plugins );
 
+		$library_placeholder_img_id  = $options->get( 'default-placeholder-thumb' );
+		$library_placeholder_img_url = '';
+
+		if ( $library_placeholder_img_id && wp_attachment_is_image( $library_placeholder_img_id ) ) {
+			$library_placeholder_img_url = wp_get_attachment_image_url( $library_placeholder_img_id, 'full' );
+		}
+
 		$new_domains = array(
 			'ajaxurl'                            => admin_url( 'admin-ajax.php' ),
 			'favorites'                          => $favorites,
@@ -163,6 +170,7 @@ final class Plugin {
 			'wp_version'                         => get_bloginfo( 'version' ),
 
 			// Settings UI toggles.
+			'libraryPlaceholderImgURL'           => $library_placeholder_img_url,
 			'libraryTemplateCols'                => $options->get( 'library_template_columns' ),
 			'libraryCategoriesLocation'          => $options->get( 'library_categories_location' ),
 			'showLibraryCategoriesTemplateCount' => $options->get( 'show_library_categories_template_count' ),

@@ -261,7 +261,8 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 	}
 
 	const getScreenshot = ( block ) => {
-		return block.thumbnail || AGWP_LIBRARY.pluginURL + 'assets/img/placeholder.svg';
+		const defaultPlaceHolderThumb = AGWP_LIBRARY.libraryPlaceholderImgURL || AGWP_LIBRARY.pluginURL + 'assets/img/placeholder.svg';
+		return block.thumbnail || defaultPlaceHolderThumb;
 	};
 
 	const loadingThumbs = () => {
