@@ -165,7 +165,7 @@ class App extends React.Component {
 			itemFilteredWithSearchTerm: function( foundItems, searchInput ) {
 				let searchTags = [];
 				return foundItems.filter( single => {
-					if ( single.tags ) {
+					if ( single.tags && single.tags[0] ) {
 						searchTags = single.tags.filter( tag => {
 							return tag.toLowerCase().includes( searchInput );
 						} );
@@ -306,9 +306,9 @@ class App extends React.Component {
 
 		if ( value ) {
 			filtered = searchData.filter( single => {
-				if ( 'patterns' === library && single.keywords ) {
+				if ( 'patterns' === library && single.keywords && single.keywords[0] ) {
 					searchTags = single.keywords.filter( keyword => keyword.toLowerCase().includes( value.toLowerCase() ) );
-				} else if ( single.tags ) {
+				} else if ( single.tags && single.tags[0] ) {
 					searchTags = single.tags.filter( tag => tag.toLowerCase().includes( value.toLowerCase() ) );
 				}
 
