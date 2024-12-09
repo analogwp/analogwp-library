@@ -61,7 +61,7 @@ export default class Blocks extends Component {
 						activeBlock: false,
 					} );
 
-					window.analogModal.hide();
+					window.analogCustomLibraryModal.hide();
 				} else {
 					this.setState( {
 						blockImported: true,

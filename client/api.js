@@ -1,4 +1,4 @@
-/* global elementorCommon, analog */
+/* global elementorCommon, analogCustomLibrary */
 const { apiFetch } = wp;
 const { __ } = wp.i18n;
 import 'regenerator-runtime/runtime';
@@ -111,7 +111,7 @@ export async function requestElementorImport( template, kit ) {
 
 		doElementorInsert( parsedTemplate.content );
 
-		window.analogModal.hide();
+		window.analogCustomLibraryModal.hide();
 		setTimeout(function() {
 			if ( elementsLength !== 0 ) {
 				elementor.reloadPreview();
@@ -136,7 +136,7 @@ export function doElementorInsert( content, context = 'template' ) {
 		contextText = __( 'Block', 'custom-library-for-elementor' );
 	}
 
-	let insertIndex = analog.insertIndex || -1;
+	let insertIndex = analogCustomLibrary.insertIndex || -1;
 
 	if ( typeof $e !== 'undefined' ) {
 		const historyId = $e.internal( 'document/history/start-log', {
