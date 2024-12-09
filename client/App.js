@@ -229,6 +229,7 @@ class App extends React.Component {
 			count: library.templates.length,
 			hasPro: hasProTemplates( library.templates ),
 			blocks: library.blocks,
+			blocksTab: 'all',
 			syncing: false,
 		} );
 
@@ -350,6 +351,7 @@ class App extends React.Component {
 				blocks: library.blocks,
 				syncing: false,
 				blocksSearchInput: '',
+				blocksTab: 'all'
 			} );
 		} ).catch( () => {
 			this.setState( {

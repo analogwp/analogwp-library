@@ -208,9 +208,10 @@ const Sidebar = ( { state } ) => {
 				className="block-categories-tabs"
 				orientation={ sidebarOrientation }
 				activeClass="active-tab"
-				initialTabName={ getInitialTab( context.state.blocksTab ) }
+				initialTabName={getInitialTab( context.state.blocksTab ) }
 				onSelect={onSelect}
-				tabs={ tabGenerator( categoriesData() ) }
+				tabs={tabGenerator( categoriesData() )}
+				key={context.state.blocksTab}
 				>
 				{
 					( tab ) => tabContent()
