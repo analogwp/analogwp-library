@@ -83,7 +83,6 @@ class Library_Init {
 
 		$keys = array(
 			'analog_custom_library_sync_to_library',
-			'analog_custom_library_is_template_live',
 		);
 
 		foreach ( $keys as $key ) {
@@ -103,7 +102,6 @@ class Library_Init {
 	 */
 	public function render_library_metabox( $post ) {
 		$sync_to_library  = get_post_meta( $post->ID, 'analog_custom_library_sync_to_library', true );
-		$is_template_live = get_post_meta( $post->ID, 'analog_custom_library_is_template_live', true );
 
 		ob_start();
 		wp_nonce_field( 'custom-library-for-elementor-meta', 'analog_custom_library_meta_nonce' );
@@ -111,11 +109,6 @@ class Library_Init {
 		<div>
 			<label for="analog_custom_library_sync_to_library"><input type="checkbox" name="analog_custom_library_sync_to_library" id="analog_custom_library_sync_to_library" value="1" <?php checked( $sync_to_library, 1 ); ?>>
 				&nbsp;Add to library</label>
-		</div>
-
-		<div>
-			<label for="analog_custom_library_is_template_live"><input type="checkbox" name="analog_custom_library_is_template_live" id="analog_custom_library_is_template_live" value="1" <?php checked( $is_template_live, 1 ); ?>>
-				&nbsp;Is Live</label>
 		</div>
 		<?php
 		// HTML is included. Ignoring!
@@ -143,7 +136,6 @@ class Library_Init {
 			'modified'         => get_the_modified_date( 'U', $post_id ),
 			'tags'             => ( ! is_wp_error( $tags ) && $tags ) ? wp_list_pluck( $tags, 'name' ) : false,
 			'keywords'         => ( ! is_wp_error( $keywords ) && $keywords ) ? wp_list_pluck( $keywords, 'name' ) : false,
-			'is_live'          => (bool) get_post_meta( $post_id, 'analog_custom_library_is_template_live', true ),
 			'is_pro'           => (bool) get_post_meta( $post_id, 'is_pro', true ),
 			'version'          => get_post_meta( $post_id, 'required_version', true ),
 			'uses_container'   => (bool) get_post_meta( $post_id, 'uses_container', true ),
@@ -178,7 +170,6 @@ class Library_Init {
 					'modified'         => $data['modified'],
 					'tags'             => $data['tags'],
 					'keywords'         => $data['keywords'],
-					'is_live'          => $data['is_live'],
 					'is_pro'           => $data['is_pro'],
 					'version'          => $data['version'],
 					'uses_container'   => true,

@@ -26,15 +26,6 @@ final class Library_Data {
 			foreach ( $templates_data as $template ) {
 				$meta = json_decode( $template->meta );
 
-				if ( isset( $meta->is_live ) ) {
-					$is_live = (bool) $meta->is_live;
-					if ( ! $is_live ) {
-						continue;
-					}
-				} else {
-					continue;
-				}
-
 				$thumbnail = false;
 				if ( '0' !== $meta->thumbnail ) {
 					$thumbnail = $meta->thumbnail;
