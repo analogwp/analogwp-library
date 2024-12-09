@@ -170,14 +170,6 @@ const Sidebar = ( { state } ) => {
 		return null;
 	}
 
-	const toggleProBlocks = () => {
-		context.dispatch( {
-			showFree: ! context.state.showFree,
-		} );
-
-		window.localStorage.setItem( 'analog-custom-library::show-free', ! context.state.showFree );
-	}
-
 	const getInitialTab = (defaultTab) => {
 		let initialTab = defaultTab ? defaultTab : context.state.blocksTab;
 		if ( typeof elementor !== 'undefined' && elementor && elementor.config ) {
