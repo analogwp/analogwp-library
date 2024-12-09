@@ -343,7 +343,6 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 				{ context.state.syncing && context.state.blocks.length < 1 && (
 					<Empty text={ __( 'Loading Templates...', 'custom-library-for-elementor' ) } />
 				) }
-				{ console.log(  ) }
 				<Masonry
 					breakpointCols={ breakpointColumnsObj ? breakpointColumnsObj : 3 }
 					className="grid"
