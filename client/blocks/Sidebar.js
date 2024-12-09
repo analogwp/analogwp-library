@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import AnalogContext from '../AnalogContext';
 const { __ } = wp.i18n;
-const { TabPanel } = wp.components;
+const { TabPanel, TextControl } = wp.components;
 
 const blockIdentifier = 'all';
 
@@ -211,14 +211,6 @@ const Sidebar = ( { state } ) => {
 
 	return (
 		<SidebarWrapper className={`sidebar ${!context.state.blockArchive.length ? 'no-templates' : ''}`}>
-			{/*<TextControl*/}
-			{/*	placeholder={ AGWP_LIBRARY.isContainer ? __( 'Search Templates', 'custom-library-for-elementor' ) : __( 'Search Blocks', 'custom-library-for-elementor' ) }*/}
-			{/*	value={ context.state.blocksSearchInput }*/}
-			{/*	onChange={ ( value ) => {*/}
-			{/*		context.handleSearch( value, 'patterns' );*/}
-			{/*		context.dispatch( { blocksSearchInput: value } );*/}
-			{/*	} }*/}
-			{/*/>*/}
 			{ tabGenerator( categoriesData() ).length >= 1 &&
 			<TabPanel
 				className="block-categories-tabs"
@@ -232,6 +224,15 @@ const Sidebar = ( { state } ) => {
 					( tab ) => tabContent()
 				}
 			</TabPanel> }
+
+			{ context.state.blockArchive.length >= 10 && <TextControl
+				placeholder={ __( 'Search Templates', 'custom-library-for-elementor' ) }
+				value={ context.state.blocksSearchInput }
+				onChange={ ( value ) => {
+					context.handleSearch( value, 'patterns' );
+					context.dispatch( { blocksSearchInput: value } );
+				} }
+			/> }
 		</SidebarWrapper>
 	);
 }
