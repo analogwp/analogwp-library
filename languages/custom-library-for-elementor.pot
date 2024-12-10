@@ -3,13 +3,13 @@
 #: assets/js/app/index.js:1
 msgid ""
 msgstr ""
-"Project-Id-Version: custom-library-for-elementor 0.1.0\n"
+"Project-Id-Version: custom-library-for-elementor 0.5.0\n"
 "Report-Msgid-Bugs-To: AnalogWP <EMAIL>\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2024-12-05T12:15:14.237Z\n"
+"POT-Creation-Date: 2024-12-10T11:46:58.686Z\n"
 "PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -97,12 +97,7 @@ msgstr ""
 msgid "Install Elementor Now"
 msgstr ""
 
-#: inc/class-utils.php:126
-#: inc/class-utils.php:438
-msgid "Global: %s"
-msgstr ""
-
-#: inc/class-plugin.php:201
+#: inc/class-plugin.php:207
 #: inc/Elementor/class-finder-shortcuts.php:52
 msgid "Settings"
 msgstr ""
@@ -112,17 +107,17 @@ msgstr ""
 msgid "Something went wrong."
 msgstr ""
 
-#: client/api.js:151
+#: client/api.js:133
 #: assets/js/app/index.js:276
 msgid "Template"
 msgstr ""
 
-#: client/api.js:154
+#: client/api.js:136
 #: assets/js/app/index.js:276
 msgid "Block"
 msgstr ""
 
-#: client/api.js:162
+#: client/api.js:144
 #: assets/js/app/index.js:276
 msgid "Add Custom Library for Elementor"
 msgstr ""
@@ -168,12 +163,13 @@ msgstr ""
 msgid "Import Template"
 msgstr ""
 
-#: inc/Settings/class-register-settings.php:54
+#: inc/Settings/class-register-settings.php:59
 msgid "Custom Library Settings"
 msgstr ""
 
-#: inc/Settings/class-register-settings.php:55
-msgid "AnalogWP Custom Library"
+#: inc/Settings/class-register-settings.php:60
+#: inc/Core/class-library-init.php:55
+msgid "Custom Library"
 msgstr ""
 
 #: inc/Settings/class-admin-settings.php:74
@@ -184,41 +180,25 @@ msgstr ""
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:138
+#: inc/Settings/class-admin-settings.php:136
 msgid "Select Image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:139
+#: inc/Settings/class-admin-settings.php:137
 msgid "Use this image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:614
-#: inc/Settings/class-admin-settings.php:681
+#: inc/Settings/class-admin-settings.php:612
+#: inc/Settings/class-admin-settings.php:679
 msgid "Toggle"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:745
+#: inc/Settings/class-admin-settings.php:743
 msgid "Change Image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:746
+#: inc/Settings/class-admin-settings.php:744
 msgid "Revert to Default"
-msgstr ""
-
-#: inc/Elementor/class-tools.php:96
-msgid ""
-"Sorry, you are not allowed to rollback Custom Library for Elementor plugin "
-"for this site."
-msgstr ""
-
-#: inc/Elementor/class-tools.php:104
-msgid ""
-"Error occurred, the version selected is invalid. Try selecting different "
-"version."
-msgstr ""
-
-#: inc/Elementor/class-tools.php:148
-msgid "Rollback to Previous Version"
 msgstr ""
 
 #: inc/Elementor/class-finder-shortcuts.php:33
@@ -231,22 +211,6 @@ msgstr ""
 
 #: inc/Elementor/class-finder-shortcuts.php:58
 msgid "Theme Custom Library for Elementor"
-msgstr ""
-
-#: inc/Core/class-library-init.php:56
-msgid "Library Handover"
-msgstr ""
-
-#: inc/API/class-local.php:307
-msgid "Invalid Template ID."
-msgstr ""
-
-#: inc/API/class-local.php:382
-msgid "No options key provided."
-msgstr ""
-
-#: inc/API/class-local.php:388
-msgid "Setting updated."
 msgstr ""
 
 #: inc/Admin/class-notice.php:169
@@ -272,6 +236,18 @@ msgstr ""
 msgid "Get Support"
 msgstr ""
 
+#: inc/API/class-local.php:307
+msgid "Invalid Template ID."
+msgstr ""
+
+#: inc/API/class-local.php:382
+msgid "No options key provided."
+msgstr ""
+
+#: inc/API/class-local.php:388
+msgid "Setting updated."
+msgstr ""
+
 #: client/modal/Preview.js:86
 msgid "Back to Library"
 msgstr ""
@@ -280,23 +256,27 @@ msgstr ""
 msgid "Loading icon"
 msgstr ""
 
-#: client/blocks/BlockList.js:302
+#: client/blocks/Sidebar.js:222
+msgid "Search Templates"
+msgstr ""
+
+#: client/blocks/BlockList.js:303
 msgid "The %s has been imported and is now available in the"
 msgstr ""
 
-#: client/blocks/BlockList.js:313
+#: client/blocks/BlockList.js:314
 msgid "Elementor %s library"
 msgstr ""
 
-#: client/blocks/BlockList.js:327
+#: client/blocks/BlockList.js:328
 msgid "Ok, thanks"
 msgstr ""
 
-#: client/blocks/BlockList.js:339
+#: client/blocks/BlockList.js:340
 msgid "No Templates found"
 msgstr ""
 
-#: client/blocks/BlockList.js:343
+#: client/blocks/BlockList.js:344
 msgid "Loading Templates..."
 msgstr ""
 
@@ -307,22 +287,6 @@ msgstr ""
 
 #: client/blocks/BlockList.js:397
 msgid "Insert"
-msgstr ""
-
-#: assets/js/admin-settings.js:13
-msgid "Subscribing"
-msgstr ""
-
-#: assets/js/admin-settings.js:26
-msgid "Failed"
-msgstr ""
-
-#: assets/js/admin-settings.js:29
-msgid "Subscribe up to newsletter"
-msgstr ""
-
-#: assets/js/admin-settings.js:33
-msgid "Subscribed"
 msgstr ""
 
 #: inc/Settings/Views/html-admin-settings.php:25

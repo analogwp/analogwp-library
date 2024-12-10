@@ -9,13 +9,16 @@
  * @wordpress-plugin
  * Plugin Name: Custom Library for Elementor
  * Plugin URI:  https://analogwp.com/custom-library-for-elementor
- * Description: Custom Library for Elementor extends the Elementor library with a custom library of your own templates. Boost your design workflow in Elementor with this plugin.
- * Version:     0.1.0
+ * Description: Custom Library for Elementor creates the foundation for a design framework that will help you create better, more consistent websites with Elementor.
+ * Version:     1.0.0
  * Author:      AnalogWP
  * Author URI:  https://analogwp.com/
  * License:     GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: custom-library-for-elementor
+ * Requires at least: 6.0
+ * Requires PHP: 7.4
+ *
  * Elementor tested up to: 3.25.10
  * Elementor Pro tested up to: 3.23.4
  */
@@ -25,7 +28,7 @@ defined( 'ABSPATH' ) || exit;
 define( 'AGWP_LIBRARY_ELEMENTOR_MINIMUM', '3.20.0' );
 define( 'AGWP_LIBRARY_PHP_MINIMUM', '7.4' );
 define( 'AGWP_LIBRARY_WP_MINIMUM', '6.0' );
-define( 'AGWP_LIBRARY_VERSION', '0.1.0' );
+define( 'AGWP_LIBRARY_VERSION', '1.0.0' );
 define( 'AGWP_LIBRARY_PLUGIN_FILE', __FILE__ );
 define( 'AGWP_LIBRARY_PLUGIN_URL', plugin_dir_url( AGWP_LIBRARY_PLUGIN_FILE ) );
 define( 'AGWP_LIBRARY_PLUGIN_DIR', plugin_dir_path( AGWP_LIBRARY_PLUGIN_FILE ) );
@@ -207,7 +210,7 @@ if ( ! function_exists( 'analog_custom_library_for_elementor_fs' ) ) {
 						'account'    => false,
 						'support'    => false,
 						'parent'     => array(
-							'slug' => 'elementor',
+							'slug' => 'edit.php?post_type=elementor_library',
 						),
 					),
 				)
@@ -263,3 +266,4 @@ add_action(
 		\AnalogWP\CustomLibrary\Plugin::load( AGWP_LIBRARY_PLUGIN_FILE );
 	}
 );
+

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import AnalogContext from '../AnalogContext';
 const { __ } = wp.i18n;
-const { TabPanel } = wp.components;
+const { TabPanel, TextControl } = wp.components;
 
 const blockIdentifier = 'all';
 
@@ -170,14 +170,6 @@ const Sidebar = ( { state } ) => {
 		return null;
 	}
 
-	const toggleProBlocks = () => {
-		context.dispatch( {
-			showFree: ! context.state.showFree,
-		} );
-
-		window.localStorage.setItem( 'analog-custom-library::show-free', ! context.state.showFree );
-	}
-
 	const getInitialTab = (defaultTab) => {
 		let initialTab = defaultTab ? defaultTab : context.state.blocksTab;
 		if ( typeof elementor !== 'undefined' && elementor && elementor.config ) {
@@ -211,27 +203,29 @@ const Sidebar = ( { state } ) => {
 
 	return (
 		<SidebarWrapper className={`sidebar ${!context.state.blockArchive.length ? 'no-templates' : ''}`}>
-			{/*<TextControl*/}
-			{/*	placeholder={ AGWP_LIBRARY.isContainer ? __( 'Search Templates', 'custom-library-for-elementor' ) : __( 'Search Blocks', 'custom-library-for-elementor' ) }*/}
-			{/*	value={ context.state.blocksSearchInput }*/}
-			{/*	onChange={ ( value ) => {*/}
-			{/*		context.handleSearch( value, 'patterns' );*/}
-			{/*		context.dispatch( { blocksSearchInput: value } );*/}
-			{/*	} }*/}
-			{/*/>*/}
 			{ tabGenerator( categoriesData() ).length >= 1 &&
 			<TabPanel
 				className="block-categories-tabs"
 				orientation={ sidebarOrientation }
 				activeClass="active-tab"
-				initialTabName={ getInitialTab( context.state.blocksTab ) }
+				initialTabName={getInitialTab( context.state.blocksTab ) }
 				onSelect={onSelect}
-				tabs={ tabGenerator( categoriesData() ) }
+				tabs={tabGenerator( categoriesData() )}
+				key={context.state.blocksTab}
 				>
 				{
 					( tab ) => tabContent()
 				}
 			</TabPanel> }
+
+			{ context.state.blockArchive.length >= 10 && <TextControl
+				placeholder={ __( 'Search Templates', 'custom-library-for-elementor' ) }
+				value={ context.state.blocksSearchInput }
+				onChange={ ( value ) => {
+					context.handleSearch( value, 'patterns' );
+					context.dispatch( { blocksSearchInput: value } );
+				} }
+			/> }
 		</SidebarWrapper>
 	);
 }

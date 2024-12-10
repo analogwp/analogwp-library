@@ -36,7 +36,6 @@ class AnalogWP_Custom_Library_Importer extends Source_Remote {
 	 * @param string      $context Optional. The context. Default is `display`.
 	 * @param object|bool $data Template/block import data.
 	 *
-	 *
 	 * @return array Remote Template data.
 	 */
 	public function get_local_data( array $args, $context = 'display', $data = false ) {

@@ -1,7 +1,7 @@
 /* global elementor, elementorCommon */
 /* eslint-disable */
 
-const analog = window.analog = window.analog || {};
+const analogCustomLibrary = window.analogCustomLibrary = window.analogCustomLibrary || {};
 
 "undefined" != typeof jQuery &&
 	!(function($) {
@@ -9,11 +9,11 @@ const analog = window.analog = window.analog || {};
 			function modal() {
 				const insertIndex = 0 < jQuery(this).parents(".elementor-section-wrap").length ? jQuery(this).parents(".elementor-add-section").index() : -1;
 
-				analog.insertIndex = insertIndex;
+				analogCustomLibrary.insertIndex = insertIndex;
 
 				elementorCommon &&
-					(window.analogModal ||
-						((window.analogModal = elementorCommon.dialogsManager.createWidget(
+					(window.analogCustomLibraryModal ||
+						((window.analogCustomLibraryModal = elementorCommon.dialogsManager.createWidget(
 							"lightbox",
 							{
 								id: "analog-custom-library-modal",
@@ -31,7 +31,7 @@ const analog = window.analog = window.analog || {};
 									at: "center"
 								},
 								onShow: function() {
-									const content = window.analogModal.getElements("content");
+									const content = window.analogCustomLibraryModal.getElements("content");
 									content.append('<div id="analog-custom-library" class="wrap"></div>');
 									var event = new Event("modal-close");
 									$("#analog-custom-library").on(
@@ -39,21 +39,21 @@ const analog = window.analog = window.analog || {};
 										".close-modal",
 										function() {
 											document.dispatchEvent(event);
-											return window.analogModal.hide(), !1;
+											return window.analogCustomLibraryModal.hide(), !1;
 										}
 									);
 								},
 								onHide: function() {}
 							}
 						)),
-						window.analogModal.getElements("header").remove(),
-						window.analogModal
+						window.analogCustomLibraryModal.getElements("header").remove(),
+						window.analogCustomLibraryModal
 							.getElements("message")
-							.append(window.analogModal.addElement("content"))),
-					window.analogModal.show());
+							.append(window.analogCustomLibraryModal.addElement("content"))),
+					window.analogCustomLibraryModal.show());
 			}
 
-			window.analogModal = null;
+			window.analogCustomLibraryModal = null;
 
 			const template = $("#tmpl-elementor-add-section");
 

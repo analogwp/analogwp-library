@@ -4,56 +4,6 @@
 		const { __ } = wp.i18n;
 		const { addQueryArgs } = wp.url;
 
-		// Process Newsletter.
-		function processNewsletter( e ) {
-			if ( e.preventDefault ) {
-				e.preventDefault();
-			}
-			const elSubmitBtn = $( '#analog-custom-library-newsletter-submit' );
-			let status = __( 'Subscribing', 'custom-library-for-elementor' );
-			const angEmail = $( '#analog-custom-library-newsletter-email' ).val();
-			elSubmitBtn.text( status );
-
-			$.ajax( {
-				url: 'https://analogwp.com/?ang-api=analog-custom-library&request=earlybird-optin',
-				cache: ! 1,
-				type: 'POST',
-				dataType: 'JSON',
-				data: {
-					email: angEmail,
-				},
-				error: function() {
-					status = __( 'Failed', 'custom-library-for-elementor' );
-					elSubmitBtn.text( status );
-					setTimeout( function() {
-						elSubmitBtn.text( __( 'Subscribe up to newsletter', 'custom-library-for-elementor' ) );
-					}, 2000 );
-				},
-				success: function() {
-					status = __( 'Subscribed', 'custom-library-for-elementor' );
-					elSubmitBtn.text( status );
-					elSubmitBtn.attr( 'disabled', 'disabled' );
-				},
-			} );
-
-			return false;
-		}
-		$( '#analog-custom-library-newsletter' ).submit( processNewsletter );
-
-		// Process Plugin Rollback.
-		function processPluginRollback( e ) {
-			if ( e.preventDefault ) {
-				e.preventDefault();
-			}
-
-			const version = $( '#ang_rollback_version_select_option' ).val();
-			const rollbackUrl = addQueryArgs( data.rollback_url, { version: version } );
-
-			window.location.href = rollbackUrl;
-			return false;
-		}
-		$( '#ang_rollback_version_button' ).on( 'click', processPluginRollback );
-
 		// Edit prompt
 		$( function() {
 			let changed = false;

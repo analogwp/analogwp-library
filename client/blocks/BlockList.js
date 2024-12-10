@@ -261,7 +261,8 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 	}
 
 	const getScreenshot = ( block ) => {
-		return block.thumbnail || AGWP_LIBRARY.pluginURL + 'assets/img/placeholder.svg';
+		const defaultPlaceHolderThumb = AGWP_LIBRARY.libraryPlaceholderImgURL || AGWP_LIBRARY.pluginURL + 'assets/img/placeholder.svg';
+		return block.thumbnail || defaultPlaceHolderThumb;
 	};
 
 	const loadingThumbs = () => {
@@ -342,7 +343,6 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 				{ context.state.syncing && context.state.blocks.length < 1 && (
 					<Empty text={ __( 'Loading Templates...', 'custom-library-for-elementor' ) } />
 				) }
-				{ console.log(  ) }
 				<Masonry
 					breakpointCols={ breakpointColumnsObj ? breakpointColumnsObj : 3 }
 					className="grid"

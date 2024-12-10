@@ -55,7 +55,7 @@ class Register_Settings {
 		}
 
 		add_submenu_page(
-			'elementor',
+			'edit.php?post_type=elementor_library',
 			__( 'Custom Library Settings', 'custom-library-for-elementor' ),
 			__( 'Custom Library', 'custom-library-for-elementor' ),
 			'manage_options',

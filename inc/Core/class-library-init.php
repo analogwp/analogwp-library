@@ -9,6 +9,7 @@ namespace AnalogWP\CustomLibrary\Core;
 
 use AnalogWP\CustomLibrary\Core\Data\Templates_DB;
 use Elementor\TemplateLibrary\Source_Local;
+use WP_Post;
 
 /**
  * Class Library_Init.
@@ -36,13 +37,11 @@ class Library_Init {
 	 * @return void
 	 */
 	public function hooks() {
-		add_action( 'save_post_elementor_library', array( $this, 'handle_template_sync' ), 30, 3 );
-
 		// Register Meta box.
 		add_action( 'add_meta_boxes', array( $this, 'register_meta_boxes' ) );
 
 		// Save meta value with save post hook.
-		add_action( 'save_post_elementor_library', array( $this, 'handle_save_meta_boxes' ), 20 );
+		add_action( 'save_post_elementor_library', array( $this, 'handle_save_meta_boxes' ), 20, 2 );
 	}
 
 	/**
@@ -53,7 +52,7 @@ class Library_Init {
 	public function register_meta_boxes() {
 		add_meta_box(
 			'custom-library-for-elementor-id',
-			esc_html__( 'Library Handover', 'custom-library-for-elementor' ),
+			esc_html__( 'Custom Library', 'custom-library-for-elementor' ),
 			array( $this, 'render_library_metabox' ),
 			Source_Local::CPT,
 			'side'
@@ -63,47 +62,52 @@ class Library_Init {
 	/**
 	 * Handles meta box data saving.
 	 *
-	 * @param int $post_ID Post ID.
+	 * @param int     $post_ID Template ID.
+	 * @param WP_Post $post Post object.
+	 *
 	 * @return void
 	 */
-	public function handle_save_meta_boxes( int $post_ID ) {
+	public function handle_save_meta_boxes( int $post_ID, WP_Post $post ) {
 		if ( ! isset( $_POST['analog_custom_library_meta_nonce'] ) ) {
 			return;
 		}
 
 		check_admin_referer( 'custom-library-for-elementor-meta', 'analog_custom_library_meta_nonce' );
 
+		$template_id = $post_ID;
+
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
 		}
 
-		if ( ! current_user_can( 'edit_post', $post_ID ) ) {
+		if ( ! current_user_can( 'edit_post', $template_id ) ) {
 			return;
 		}
 
 		$keys = array(
 			'analog_custom_library_sync_to_library',
-			'analog_custom_library_is_template_live',
 		);
 
 		foreach ( $keys as $key ) {
 			if ( isset( $_POST[ $key ] ) ) {
-				update_post_meta( $post_ID, $key, absint( $_POST[ $key ] ) );
+				update_post_meta( $template_id, $key, absint( $_POST[ $key ] ) );
 			} else {
-				update_post_meta( $post_ID, $key, 0 );
+				update_post_meta( $template_id, $key, 0 );
 			}
 		}
+
+		// Sync the template.
+		$this->handle_template_sync( $template_id, $post );
 	}
 
 	/**
 	 * Renders library metabox.
 	 *
-	 * @param int $post Post ID.
+	 * @param WP_Post $post Post object.
 	 * @return void
 	 */
 	public function render_library_metabox( $post ) {
-		$sync_to_library  = get_post_meta( $post->ID, 'analog_custom_library_sync_to_library', true );
-		$is_template_live = get_post_meta( $post->ID, 'analog_custom_library_is_template_live', true );
+		$sync_to_library = get_post_meta( $post->ID, 'analog_custom_library_sync_to_library', true );
 
 		ob_start();
 		wp_nonce_field( 'custom-library-for-elementor-meta', 'analog_custom_library_meta_nonce' );
@@ -111,11 +115,6 @@ class Library_Init {
 		<div>
 			<label for="analog_custom_library_sync_to_library"><input type="checkbox" name="analog_custom_library_sync_to_library" id="analog_custom_library_sync_to_library" value="1" <?php checked( $sync_to_library, 1 ); ?>>
 				&nbsp;Add to library</label>
-		</div>
-
-		<div>
-			<label for="analog_custom_library_is_template_live"><input type="checkbox" name="analog_custom_library_is_template_live" id="analog_custom_library_is_template_live" value="1" <?php checked( $is_template_live, 1 ); ?>>
-				&nbsp;Is Live</label>
 		</div>
 		<?php
 		// HTML is included. Ignoring!
@@ -143,7 +142,6 @@ class Library_Init {
 			'modified'         => get_the_modified_date( 'U', $post_id ),
 			'tags'             => ( ! is_wp_error( $tags ) && $tags ) ? wp_list_pluck( $tags, 'name' ) : false,
 			'keywords'         => ( ! is_wp_error( $keywords ) && $keywords ) ? wp_list_pluck( $keywords, 'name' ) : false,
-			'is_live'          => (bool) get_post_meta( $post_id, 'analog_custom_library_is_template_live', true ),
 			'is_pro'           => (bool) get_post_meta( $post_id, 'is_pro', true ),
 			'version'          => get_post_meta( $post_id, 'required_version', true ),
 			'uses_container'   => (bool) get_post_meta( $post_id, 'uses_container', true ),
@@ -178,7 +176,6 @@ class Library_Init {
 					'modified'         => $data['modified'],
 					'tags'             => $data['tags'],
 					'keywords'         => $data['keywords'],
-					'is_live'          => $data['is_live'],
 					'is_pro'           => $data['is_pro'],
 					'version'          => $data['version'],
 					'uses_container'   => true,
@@ -205,7 +202,7 @@ class Library_Init {
 	public function remove_template_from_library( $template_id ) {
 		$exists = $this->templates_db->template_exists( $template_id );
 		if ( $exists ) {
-			return $this->templates_db->delete( $exists->id );
+			return $this->templates_db->delete( $exists->id, $template_id );
 		}
 		return false;
 	}
@@ -213,28 +210,30 @@ class Library_Init {
 	/**
 	 * Handles syncing templates.
 	 *
-	 * @param int      $post_ID
-	 * @param \WP_Post $post
-	 * @param bool     $update
+	 * @param int     $post_ID Template ID.
+	 * @param WP_Post $post Post object.
 	 * @return void
 	 */
-	public function handle_template_sync( int $post_ID, \WP_Post $post, bool $update ) {
+	public function handle_template_sync( int $post_ID, WP_Post $post ) {
 		if ( 'publish' !== $post->post_status ) {
 			return;
 		}
 
-		$sync = (bool) isset( $_POST['analog_custom_library_sync_to_library'] ) ? 1 : 0;
+		// Nonce verification is already done in the parent method $this->handle_save_meta_boxes.
+		$sync = isset( $_POST['analog_custom_library_sync_to_library'] ) ? 1 : 0; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+
+		$template_id = $post_ID;
 
 		if ( ! $sync ) {
 			// Delete if template exists in library.
-			$this->remove_template_from_library( $post_ID );
+			$this->remove_template_from_library( $template_id );
 			return;
 		}
 
-		$transient_key = 'analog_custom_library_push_template_' . $post->ID;
+		$transient_key = 'analog_custom_library_push_template_' . $template_id;
 		if ( ! get_transient( $transient_key ) ) {
 			// First we prepare.
-			$data = $this->prepare_template_for_save( $post_ID );
+			$data = $this->prepare_template_for_save( $template_id );
 
 			// Save in our Database table.
 			$this->sync_template( $data );

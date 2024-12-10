@@ -59,7 +59,7 @@ final class Plugin {
 		add_action( 'init', array( self::$instance, 'load_textdomain' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( AGWP_LIBRARY_PLUGIN_FILE ), array( self::$instance, 'plugin_action_links' ) );
 		add_action( 'admin_enqueue_scripts', array( self::$instance, 'scripts' ) );
-		add_filter( 'analog/app/strings', array( self::$instance, 'send_strings_to_app' ) );
+		add_filter( 'analog/library/app/strings', array( self::$instance, 'send_strings_to_app' ) );
 
 		( new Consumer() )->register();
 		( new Notices() )->register();
@@ -80,8 +80,8 @@ final class Plugin {
 		}
 
 		wp_enqueue_style( 'wp-components' );
-		wp_enqueue_style( 'analog-google-fonts', 'https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap', array(), '20221016' );
-		wp_enqueue_style( 'analogwp-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/library-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/sk-components.css' ) );
+		wp_enqueue_style( 'analog-custom-library-google-fonts', 'https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap', array(), '20221016' );
+		wp_enqueue_style( 'analog-custom-library-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/library-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/library-components.css' ) );
 
 		wp_enqueue_script(
 			'analog-custom-library-app',
@@ -103,11 +103,9 @@ final class Plugin {
 		wp_set_script_translations( 'analog-custom-library-app', 'custom-library-for-elementor', AGWP_LIBRARY_PLUGIN_DIR . 'languages' );
 
 		$i10n = apply_filters( // phpcs:ignore
-			'analog/app/strings',
+			'analog/library/app/strings',
 			array(
 				'is_settings_page'  => 'toplevel_page_analog_custom_library' === $hook,
-				'rollback_url'      => wp_nonce_url( admin_url( 'admin-post.php?action=analog_custom_library_rollback&version=VERSION' ), 'analog_custom_library_rollback' ),
-				'rollback_versions' => Utils::get_rollback_versions(),
 			)
 		);
 
@@ -143,6 +141,13 @@ final class Plugin {
 		$plugins = get_option( 'active_plugins' );
 		$plugins = array_map( array( $this, 'filter_plugins' ), $plugins );
 
+		$library_placeholder_img_id  = $options->get( 'default-placeholder-thumb' );
+		$library_placeholder_img_url = '';
+
+		if ( $library_placeholder_img_id && wp_attachment_is_image( $library_placeholder_img_id ) ) {
+			$library_placeholder_img_url = wp_get_attachment_image_url( $library_placeholder_img_id, 'full' );
+		}
+
 		$new_domains = array(
 			'ajaxurl'                            => admin_url( 'admin-ajax.php' ),
 			'favorites'                          => $favorites,
@@ -163,6 +168,7 @@ final class Plugin {
 			'wp_version'                         => get_bloginfo( 'version' ),
 
 			// Settings UI toggles.
+			'libraryPlaceholderImgURL'           => $library_placeholder_img_url,
 			'libraryTemplateCols'                => $options->get( 'library_template_columns' ),
 			'libraryCategoriesLocation'          => $options->get( 'library_categories_location' ),
 			'showLibraryCategoriesTemplateCount' => $options->get( 'show_library_categories_template_count' ),
@@ -239,8 +245,6 @@ final class Plugin {
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-database-upgrader.php';
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Admin/class-admin.php';
-
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-beta-testers.php';
 	}
 
 	/**

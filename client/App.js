@@ -165,7 +165,7 @@ class App extends React.Component {
 			itemFilteredWithSearchTerm: function( foundItems, searchInput ) {
 				let searchTags = [];
 				return foundItems.filter( single => {
-					if ( single.tags ) {
+					if ( single.tags && single.tags[0] ) {
 						searchTags = single.tags.filter( tag => {
 							return tag.toLowerCase().includes( searchInput );
 						} );
@@ -229,6 +229,7 @@ class App extends React.Component {
 			count: library.templates.length,
 			hasPro: hasProTemplates( library.templates ),
 			blocks: library.blocks,
+			blocksTab: 'all',
 			syncing: false,
 		} );
 
@@ -305,9 +306,9 @@ class App extends React.Component {
 
 		if ( value ) {
 			filtered = searchData.filter( single => {
-				if ( 'patterns' === library && single.keywords ) {
+				if ( 'patterns' === library && single.keywords && single.keywords[0] ) {
 					searchTags = single.keywords.filter( keyword => keyword.toLowerCase().includes( value.toLowerCase() ) );
-				} else if ( single.tags ) {
+				} else if ( single.tags && single.tags[0] ) {
 					searchTags = single.tags.filter( tag => tag.toLowerCase().includes( value.toLowerCase() ) );
 				}
 
@@ -350,6 +351,7 @@ class App extends React.Component {
 				blocks: library.blocks,
 				syncing: false,
 				blocksSearchInput: '',
+				blocksTab: 'all'
 			} );
 		} ).catch( () => {
 			this.setState( {

@@ -1,4 +1,4 @@
-/* global elementorCommon, analog */
+/* global elementorCommon, analogCustomLibrary */
 const { apiFetch } = wp;
 const { __ } = wp.i18n;
 import 'regenerator-runtime/runtime';
@@ -69,24 +69,6 @@ export async function requestSettingUpdate( key, value ) {
 	} ).then( response => response );
 }
 
-export async function requestLicenseInfo( action = 'check' ) {
-	return await apiFetch( {
-		path: '/agwp-library/v1/license',
-		method: 'post',
-		data: {
-			action,
-		},
-	} ).then( response => {
-		return response;
-	} );
-}
-
-export async function getLicenseStatus() {
-	return await apiFetch( { path: '/agwp-library/v1/license/status' } ).then(
-		response => response
-	);
-}
-
 export async function requestElementorImport( template, kit ) {
 	let elementsLength = elementor.elements.length;
 
@@ -129,7 +111,7 @@ export async function requestElementorImport( template, kit ) {
 
 		doElementorInsert( parsedTemplate.content );
 
-		window.analogModal.hide();
+		window.analogCustomLibraryModal.hide();
 		setTimeout(function() {
 			if ( elementsLength !== 0 ) {
 				elementor.reloadPreview();
@@ -154,7 +136,7 @@ export function doElementorInsert( content, context = 'template' ) {
 		contextText = __( 'Block', 'custom-library-for-elementor' );
 	}
 
-	let insertIndex = analog.insertIndex || -1;
+	let insertIndex = analogCustomLibrary.insertIndex || -1;
 
 	if ( typeof $e !== 'undefined' ) {
 		const historyId = $e.internal( 'document/history/start-log', {

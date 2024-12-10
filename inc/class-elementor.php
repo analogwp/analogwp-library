@@ -42,7 +42,7 @@ class Elementor {
 	public function enqueue_editor_scripts() {
 
 		// Independent components.
-		wp_enqueue_style( 'analog-custom-library-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/library-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/sk-components.css' ) );
+		wp_enqueue_style( 'analog-custom-library-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/library-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/library-components.css' ) );
 
 		do_action( 'analog_custom_library_loaded_templates' );
 
@@ -69,10 +69,10 @@ class Elementor {
 
 		wp_enqueue_style( 'wp-components' );
 
-		wp_enqueue_style( 'analog-google-fonts', 'https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap', array(), '20221016' );
+		wp_enqueue_style( 'analog-custom-library-google-fonts', 'https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap', array(), '20221016' );
 
 		$l10n = apply_filters( // phpcs:ignore
-			'analog/app/strings',
+			'analog/library/app/strings',
 			array(
 				'is_settings_page' => false,
 			)

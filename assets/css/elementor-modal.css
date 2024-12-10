@@ -153,13 +153,6 @@ button[data-action="save_token"] {
 	display: block;
 }
 
-#analog-custom-library,
-#analog-custom-library-modal .dialog-message,
-#analog-custom-library-modal .dialog-content {
-	height: 100%;
-}
-
-
 #elementor-panel-page-settings-controls > .elementor-control[class*="ang_"],
 #elementor-kit-panel-content-controls > .elementor-control[class*="ang_"] {
 	position: relative;
