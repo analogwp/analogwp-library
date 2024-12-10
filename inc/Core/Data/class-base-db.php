@@ -11,10 +11,33 @@ namespace AnalogWP\CustomLibrary\Core\Data;
  * Class Base_DB.
  */
 abstract class Base_DB {
+
+	/**
+	 * Table name.
+	 *
+	 * @var string
+	 */
 	public $table_name;
+
+	/**
+	 * DB Version.
+	 *
+	 * @var string
+	 */
 	public $version;
+
+	/**
+	 * Primary key.
+	 *
+	 * @var string
+	 */
 	public $primary_key;
 
+	/**
+	 * Class constructor.
+	 *
+	 * @return void
+	 */
 	public function __construct() {}
 
 	/**
@@ -38,49 +61,25 @@ abstract class Base_DB {
 	/**
 	 * Retrieve a row by the primary key
 	 *
+	 * @param int $row_id Primary key.
+	 *
 	 * @return  object
 	 */
 	public function get( $row_id ) {
 		global $wpdb;
-		return $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $this->table_name WHERE $this->primary_key = %s LIMIT 1;", $row_id ) );
-	}
 
-	/**
-	 * Retrieve a row by a specific column / value
-	 *
-	 * @return  object
-	 */
-	public function get_by( $column, $row_id ) {
-		global $wpdb;
-		$column = esc_sql( $column );
-		return $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $this->table_name WHERE $column = %s LIMIT 1;", $row_id ) );
-	}
+		// Sanitize the table name.
+		$table_name = esc_sql( $this->table_name );
+		$row_id     = esc_sql( $row_id );
 
-	/**
-	 * Retrieve a specific column's value by the primary key
-	 *
-	 * @return  string
-	 */
-	public function get_column( $column, $row_id ) {
-		global $wpdb;
-		$column = esc_sql( $column );
-		return $wpdb->get_var( $wpdb->prepare( "SELECT $column FROM $this->table_name WHERE $this->primary_key = %s LIMIT 1;", $row_id ) );
-	}
-
-	/**
-	 * Retrieve a specific column's value by the the specified column / value
-	 *
-	 * @return  string
-	 */
-	public function get_column_by( $column, $column_where, $column_value ) {
-		global $wpdb;
-		$column_where = esc_sql( $column_where );
-		$column       = esc_sql( $column );
-		return $wpdb->get_var( $wpdb->prepare( "SELECT $column FROM $this->table_name WHERE $column_where = %s LIMIT 1;", $column_value ) );
+		return $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$table_name} WHERE $this->primary_key = %s LIMIT 1;", $row_id ) ); // phpcs:ignore.
 	}
 
 	/**
 	 * Insert a new row
+	 *
+	 * @param array  $data Template data.
+	 * @param string $type Action type.
 	 *
 	 * @return  int
 	 */
@@ -105,16 +104,26 @@ abstract class Base_DB {
 		$data_keys      = array_keys( $data );
 		$column_formats = array_merge( array_flip( $data_keys ), $column_formats );
 
-		$wpdb->insert( $this->table_name, $data, $column_formats );
+		$wpdb->insert( $this->table_name, $data, $column_formats ); // phpcs:ignore.
+
 		$wpdb_insert_id = $wpdb->insert_id;
 
 		do_action( 'analog_custom_library_post_insert_' . $type, $wpdb_insert_id, $data );
+
+		if ( $wpdb_insert_id ) {
+			$template_id = intval( $data['template_id'] );
+			$this->clear_template_cache( $template_id );
+		}
 
 		return $wpdb_insert_id;
 	}
 
 	/**
 	 * Update a row
+	 *
+	 * @param int    $row_id Row id.
+	 * @param array  $data Template data.
+	 * @param string $where Primary key.
 	 *
 	 * @return  bool
 	 */
@@ -146,9 +155,16 @@ abstract class Base_DB {
 		$data_keys      = array_keys( $data );
 		$column_formats = array_merge( array_flip( $data_keys ), $column_formats );
 
-		if ( false === $wpdb->update( $this->table_name, $data, array( $where => $row_id ), $column_formats ) ) {
+		$query_result = $wpdb->update( $this->table_name, $data, array( $where => $row_id ), $column_formats ); // phpcs:ignore.
+
+		if ( false === $query_result ) {
 			return false;
 		}
+
+		$template_id = intval( $data['template_id'] );
+
+		// Clear cache after updating.
+		$this->clear_template_cache( $template_id );
 
 		return true;
 	}
@@ -156,10 +172,12 @@ abstract class Base_DB {
 	/**
 	 * Delete a row identified by the primary key
 	 *
+	 * @param int $row_id Row id.
+	 * @param int $post_id Template id.
+	 *
 	 * @return  bool
 	 */
-	public function delete( $row_id = 0 ) {
-
+	public function delete( $row_id = 0, $post_id ) {
 		global $wpdb;
 
 		// Row ID must be positive integer.
@@ -169,9 +187,16 @@ abstract class Base_DB {
 			return false;
 		}
 
-		if ( false === $wpdb->query( $wpdb->prepare( "DELETE FROM $this->table_name WHERE $this->primary_key = %d", $row_id ) ) ) {
+		$query_result = $wpdb->query( $wpdb->prepare( "DELETE FROM $this->table_name WHERE $this->primary_key = %d", $row_id ) ); // phpcs:ignore
+
+		if ( false === $query_result ) {
 			return false;
 		}
+
+		$template_id = intval( $post_id );
+
+		// Clear cache after updating.
+		$this->clear_template_cache( $template_id );
 
 		return true;
 	}
@@ -179,14 +204,15 @@ abstract class Base_DB {
 	/**
 	 * Check if the given table exists
 	 *
-	 * @param  string $table The table name
+	 * @param  string $table_name The table name.
 	 * @return bool          If the table name exists
 	 */
-	public function table_exists( $table ) {
+	public function table_exists( $table_name ) {
 		global $wpdb;
-		$table = sanitize_text_field( $table );
 
-		return $wpdb->get_var( $wpdb->prepare( "SHOW TABLES LIKE '%s'", $table ) ) === $table;
+		$table_name = esc_sql( $table_name );
+
+		return $table_name === $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table_name ) ); // phpcs:ignore.
 	}
 
 	/**
@@ -198,99 +224,21 @@ abstract class Base_DB {
 		return $this->table_exists( $this->table_name );
 	}
 
-	public function is_local_url( $url = '' ) {
-		$is_local_url = false;
-
-		// Trim it up.
-		$url = strtolower( trim( $url ) );
-
-		// Need to get the host...so let's add the scheme so we can use parse_url.
-		if ( false === strpos( $url, 'http://' ) && false === strpos( $url, 'https://' ) ) {
-			$url = 'http://' . $url;
-		}
-
-		$url_parts = wp_parse_url( $url );
-		$host      = ! empty( $url_parts['host'] ) ? $url_parts['host'] : false;
-
-		if ( ! empty( $url ) && ! empty( $host ) ) {
-			if ( false !== ip2long( $host ) ) {
-				if ( ! filter_var( $host, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE ) ) {
-					$is_local_url = true;
-				}
-			} elseif ( 'localhost' === $host ) {
-				$is_local_url = true;
-			}
-
-			$check_tlds = apply_filters( 'analog_custom_library_validate_tlds', true );
-			if ( $check_tlds ) {
-				$tlds_to_check = apply_filters(
-					'edd_sl_url_tlds',
-					array(
-						'.local',
-						'.test',
-					)
-				);
-
-				foreach ( $tlds_to_check as $tld ) {
-					if ( false !== strpos( $host, $tld ) ) {
-						$is_local_url = true;
-						continue;
-					}
-				}
-			}
-
-			if ( substr_count( $host, '.' ) > 1 ) {
-				$subdomains_to_check = apply_filters(
-					'analog_custom_library_url_subdomains',
-					array(
-						'dev.',
-						'*.staging.',
-					)
-				);
-
-				foreach ( $subdomains_to_check as $subdomain ) {
-
-					$subdomain = str_replace( '.', '(.)', $subdomain );
-					$subdomain = str_replace( array( '*', '(.)' ), '(.*)', $subdomain );
-
-					if ( preg_match( '/^(' . $subdomain . ')/', $host ) ) {
-						$is_local_url = true;
-						continue;
-					}
-				}
-			}
-		}
-
-		return apply_filters( 'analog_custom_library_is_local_url', $is_local_url, $url );
-	}
-
 	/**
-	 * Lowercases site URL's, strips HTTP protocols and strips www subdomains.
+	 * Clear the cache for a specific template.
 	 *
-	 * @param string $url Site URL to cleanup.
-	 * @return string
+	 * @param int $template_id Template ID.
 	 */
-	public function clean_site_url( $url ) {
-		$url = strtolower( $url );
+	public function clear_template_cache( $template_id ) {
+		$cache_keys = array(
+			"analog_custom_library_template_exists_{$template_id}", // Template exists check.
+			"analog_custom_library_template_content_{$template_id}", // Per template content.
+			'analog_custom_library_all_templates', // All templates cache.
+		);
 
-		if ( apply_filters( 'analog_custom_library_strip_www', true ) ) {
-			// strip www subdomain.
-			$url = str_replace( array( '://www.', ':/www.' ), '://', $url );
+		// Loop over the cache keys, deleting them one by one.
+		foreach ( $cache_keys as $cache_key ) {
+			wp_cache_delete( $cache_key, 'plugin_cache' );
 		}
-
-		if ( apply_filters( 'analog_custom_library_strip_protocol', true ) ) {
-			// strip protocol.
-			$url = str_replace( array( 'http://', 'https://', 'http:/', 'https:/' ), '', $url );
-		}
-
-		if ( apply_filters( 'analog_custom_library_strip_port_number', true ) ) {
-			$port = wp_parse_url( $url, PHP_URL_PORT );
-			if ( $port ) {
-				// strip port number.
-				$url = str_replace( ':' . $port, '', $url );
-			}
-		}
-
-		return sanitize_text_field( $url );
 	}
 }

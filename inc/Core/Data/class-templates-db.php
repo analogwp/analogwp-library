@@ -21,7 +21,9 @@ class Templates_DB extends Base_DB {
 	/**
 	 * Templates_DB constructor.
 	 */
-	function __construct() {
+	public function __construct() {
+		parent::__construct();
+
 		global $wpdb;
 
 		$this->table_name  = $wpdb->prefix . 'analog_custom_templates';
@@ -80,7 +82,10 @@ class Templates_DB extends Base_DB {
 
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
-		$sql = "CREATE TABLE {$this->table_name} (
+		// Validate table name to prevent SQL injection.
+		$table_name = esc_sql( $this->table_name );
+
+		$sql = "CREATE TABLE {$table_name} (
 		id bigint(20) NOT NULL AUTO_INCREMENT,
 		template_id bigint(20) NOT NULL,
 		site_id bigint(20) NOT NULL,
@@ -99,57 +104,42 @@ class Templates_DB extends Base_DB {
 	}
 
 	/**
-	 * Insert data in table.
-	 *
-	 * @param $data
-	 * @param $type
-	 * @return int
-	 */
-	public function insert( $data, $type = '' ) {
-		$result = parent::insert( $data, $type );
-
-		if ( $result ) {
-			$this->set_last_changed();
-		}
-
-		return $result;
-	}
-
-	/**
-	 * Sets the last_changed cache key for API requests.
-	 */
-	public function set_last_changed() {
-		wp_cache_set( 'last_changed', microtime(), $this->cache_group );
-	}
-
-	/**
-	 * Retrieves the value of the last_changed cache key for API requests..
-	 */
-	public function get_last_changed() {
-		if ( function_exists( 'wp_cache_get_last_changed' ) ) {
-			return wp_cache_get_last_changed( $this->cache_group );
-		}
-
-		$last_changed = wp_cache_get( 'last_changed', $this->cache_group );
-		if ( ! $last_changed ) {
-			$last_changed = microtime();
-			wp_cache_set( 'last_changed', $last_changed, $this->cache_group );
-		}
-
-		return $last_changed;
-	}
-
-	/**
 	 * Check if template exists.
 	 *
-	 * @param int $post_id
-	 * @param int $site_id
+	 * @param int $template_id Template ID.
+	 * @param int $site_id Site ID.
 	 * @return array|object|\stdClass|null
 	 */
-	public function template_exists( $post_id, $site_id = 0 ) {
+	public function template_exists( $template_id, $site_id = 0 ) {
 		global $wpdb;
 
-		return $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $this->table_name WHERE template_id = %d AND site_id = %d LIMIT 1;", $post_id, $site_id ) );
+		// Validate table name to prevent SQL injection.
+		$table_name = esc_sql( $this->table_name );
+
+		// Cache key for storing the query result.
+		$cache_key = "analog_custom_library_template_exists_{$template_id}";
+
+		// Attempt to get cached result.
+		$cached_result = wp_cache_get( $cache_key, 'plugin_cache' );
+
+		if ( false !== $cached_result ) {
+			return $cached_result;
+		}
+
+		// Prepare the query without directly interpolating the table name.
+		$sql = $wpdb->prepare(
+			"SELECT * FROM {$table_name} WHERE template_id = %d AND site_id = %d LIMIT 1", // phpcs:ignore
+			$template_id,
+			$site_id
+		);
+
+		// Execute the query.
+		$result = $wpdb->get_row( $sql ); // phpcs:ignore
+
+		// Store the result in the cache.
+		wp_cache_set( $cache_key, $result, 'plugin_cache', 3600 );
+
+		return $result;
 	}
 
 	/**
@@ -160,7 +150,26 @@ class Templates_DB extends Base_DB {
 	public function get_templates() {
 		global $wpdb;
 
-		$results = $wpdb->get_results( "SELECT template_id, site_id, installs, title, meta FROM $this->table_name ORDER BY created_at DESC" );
+		// Define a unique cache key.
+		$cache_key = 'analog_custom_library_all_templates';
+
+		// Attempt to get cached results.
+		$cached_results = wp_cache_get( $cache_key, 'plugin_cache' );
+		if ( false !== $cached_results ) {
+			return $cached_results;
+		}
+
+		// Sanitize the table name.
+		$table_name = esc_sql( $this->table_name );
+
+		// Build the query.
+		$query = "SELECT template_id, site_id, installs, title, meta FROM {$table_name} ORDER BY created_at DESC"; // phpcs:ignore
+
+		// Execute the query.
+		$results = $wpdb->get_results( $query ); // phpcs:ignore
+
+		// Store the results in the cache for 1 hour.
+		wp_cache_set( $cache_key, $results, 'plugin_cache', 3600 );
 
 		return $results;
 	}
@@ -168,14 +177,37 @@ class Templates_DB extends Base_DB {
 	/**
 	 * Get template content by id.
 	 *
-	 * @param int $template_id
-	 * @param int $site_id
+	 * @param int $template_id Template ID.
+	 * @param int $site_id Site ID.
 	 * @return array|object|\stdClass|null
 	 */
 	public function get_template_content( $template_id, $site_id = 0 ) {
 		global $wpdb;
 
-		$result = $wpdb->get_row( $wpdb->prepare( "SELECT meta, content FROM $this->table_name WHERE template_id = %d AND site_id = %d", $template_id, $site_id ) );
+		// Define a unique cache key.
+		$cache_key = "analog_custom_library_template_content_{$template_id}";
+
+		// Attempt to get cached results.
+		$cached_result = wp_cache_get( $cache_key, 'plugin_cache' );
+		if ( false !== $cached_result ) {
+			return $cached_result;
+		}
+
+		// Sanitize the table name.
+		$table_name = esc_sql( $this->table_name );
+
+		// Build and execute the query.
+		$query = $wpdb->prepare(
+			"SELECT meta, content FROM {$table_name} WHERE template_id = %d AND site_id = %d", // phpcs:ignore
+			$template_id,
+			$site_id
+		);
+
+		// Execute query.
+		$result = $wpdb->get_row( $query ); // phpcs:ignore
+
+		// Store the result in the cache for 1 hour.
+		wp_cache_set( $cache_key, $result, 'plugin_cache', 3600 );
 
 		return $result;
 	}
