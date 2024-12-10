@@ -11,7 +11,6 @@ use AnalogWP\CustomLibrary\Base;
 
 /**
  * Image Importer class.
- *
  */
 class Import_Image extends Base {
 	/**
@@ -77,7 +76,7 @@ class Import_Image extends Base {
 			return $this->already_imported_ids[ $attachment['id'] ];
 		}
 
-		$post_id = $wpdb->get_var(
+		$post_id = $wpdb->get_var( // phpcs:ignore
 			$wpdb->prepare(
 				"
 					SELECT post_id FROM {$wpdb->postmeta}
@@ -91,7 +90,7 @@ class Import_Image extends Base {
 		if ( empty( $post_id ) ) {
 			$filename = basename( $attachment['url'] );
 
-			$post_id = $wpdb->get_var(
+			$post_id = $wpdb->get_var( // phpcs:ignore
 				$wpdb->prepare(
 					"
 					SELECT post_id FROM {$wpdb->postmeta}
