@@ -1,7 +1,7 @@
 {
   "name": "custom-library-for-elementor",
-  "version": "0.1.0",
-  "description": "Handfully crafted Elementor templates packs.",
+  "version": "0.5.0",
+  "description": "Your own custom library of templates for Elementor.",
   "main": "/client/index.js",
   "private": true,
   "scripts": {
