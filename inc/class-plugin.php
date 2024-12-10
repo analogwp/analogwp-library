@@ -247,8 +247,6 @@ final class Plugin {
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-database-upgrader.php';
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Admin/class-admin.php';
-
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-beta-testers.php';
 	}
 
 	/**
