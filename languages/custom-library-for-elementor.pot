@@ -3,13 +3,13 @@
 #: assets/js/app/index.js:1
 msgid ""
 msgstr ""
-"Project-Id-Version: custom-library-for-elementor 0.5.0\n"
+"Project-Id-Version: custom-library-for-elementor 1.0.0\n"
 "Report-Msgid-Bugs-To: AnalogWP <EMAIL>\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2024-12-10T11:46:58.686Z\n"
+"POT-Creation-Date: 2024-12-10T12:10:31.577Z\n"
 "PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -31,9 +31,8 @@ msgstr ""
 #: custom-library-for-elementor.php
 #. Description of the plugin
 msgid ""
-"Custom Library for Elementor extends the Elementor library with a custom "
-"library of your own templates. Boost your design workflow in Elementor with "
-"this plugin."
+"Custom Library for Elementor creates the foundation for a design framework "
+"that will help you create better, more consistent websites with Elementor."
 msgstr ""
 
 #: custom-library-for-elementor.php
@@ -46,54 +45,54 @@ msgstr ""
 msgid "https://analogwp.com/"
 msgstr ""
 
-#: custom-library-for-elementor.php:46
-#: custom-library-for-elementor.php:235
+#: custom-library-for-elementor.php:49
+#: custom-library-for-elementor.php:238
 msgid "Custom Library for Elementor requires PHP version %s"
 msgstr ""
 
-#: custom-library-for-elementor.php:47
-#: custom-library-for-elementor.php:236
+#: custom-library-for-elementor.php:50
+#: custom-library-for-elementor.php:239
 msgid "Error Activating"
 msgstr ""
 
-#: custom-library-for-elementor.php:79
+#: custom-library-for-elementor.php:82
 msgid ""
 "Custom Library for Elementor requires WordPress version %s+. Because you "
 "are using an earlier version, the plugin is currently NOT RUNNING."
 msgstr ""
 
-#: custom-library-for-elementor.php:104
+#: custom-library-for-elementor.php:107
 msgid ""
 "Custom Library for Elementor requires Elementor v%s or newer in order to "
 "work. Please update Elementor to the latest version."
 msgstr ""
 
-#: custom-library-for-elementor.php:110
+#: custom-library-for-elementor.php:113
 msgid "Update Elementor Now"
 msgstr ""
 
 # %s: Version number.
-#: custom-library-for-elementor.php:116
+#: custom-library-for-elementor.php:119
 msgid "Rollback to v%s"
 msgstr ""
 
-#: custom-library-for-elementor.php:163
+#: custom-library-for-elementor.php:166
 msgid ""
 "Custom Library for Elementor is not working because you need to activate "
 "the Elementor plugin."
 msgstr ""
 
-#: custom-library-for-elementor.php:164
+#: custom-library-for-elementor.php:167
 msgid "Activate Elementor Now"
 msgstr ""
 
-#: custom-library-for-elementor.php:171
+#: custom-library-for-elementor.php:174
 msgid ""
 "Custom Library for Elementor is not working because you need to install the "
 "Elementor plugin."
 msgstr ""
 
-#: custom-library-for-elementor.php:172
+#: custom-library-for-elementor.php:175
 msgid "Install Elementor Now"
 msgstr ""
 
