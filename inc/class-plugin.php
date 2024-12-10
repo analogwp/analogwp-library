@@ -106,8 +106,6 @@ final class Plugin {
 			'analog/library/app/strings',
 			array(
 				'is_settings_page'  => 'toplevel_page_analog_custom_library' === $hook,
-				'rollback_url'      => wp_nonce_url( admin_url( 'admin-post.php?action=analog_custom_library_rollback&version=VERSION' ), 'analog_custom_library_rollback' ),
-				'rollback_versions' => Utils::get_rollback_versions(),
 			)
 		);
 
