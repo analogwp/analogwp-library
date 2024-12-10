@@ -65,8 +65,8 @@ class Templates_DB extends Base_DB {
 			'title'       => null,
 			'meta'        => null,
 			'content'     => null,
-			'created_at'  => date( 'Y-m-d H:i:s' ),
-			'updated_at'  => date( 'Y-m-d H:i:s' ),
+			'created_at'  => gmdate( 'Y-m-d H:i:s' ),
+			'updated_at'  => gmdate( 'Y-m-d H:i:s' ),
 		);
 	}
 
