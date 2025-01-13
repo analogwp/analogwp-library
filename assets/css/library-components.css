@@ -17,6 +17,7 @@
 
 	/* Fallback */
 	--analog-custom-library-primary: #4D45BD;
+	--analog-custom-library-favorites-icon: #F3C119;
 
 	font-family: Inter, 'sans-serif';
 	background-color: var(--analog-custom-library-bg);

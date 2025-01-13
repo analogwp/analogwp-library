@@ -149,7 +149,8 @@ const Container = styled.div`
 			height: 17px;
 		}
 		&.is-active svg {
-			fill: var(--analog-custom-library-accent) !important;
+			fill: var(--analog-custom-library-favorites-icon) !important;
+			stroke: var(--analog-custom-library-favorites-icon) !important;
 		}
 	}
 
