@@ -13,7 +13,6 @@
 	--analog-custom-library-notice-bg: #CCEEFF;
 	--analog-custom-library-notice-text: #0073AA;
 	--analog-custom-library-notice-border: #0073AA;
-
 	--analog-custom-library-btn-radius: 5px;
 
 	/* Fallback */
@@ -1274,10 +1273,11 @@
 
 #analog-custom-library .vertical > .sidebar {
 	max-width: 220px;
-	height: 100vh;
+	height: 90vh;
 	position: sticky;
 	position: -webkit-sticky;
-	top: 35px;
+	top: 0;
+	overflow-y: scroll;
 }
 
 #analog-custom-library .vertical > .sidebar .components-tab-panel__tabs {
