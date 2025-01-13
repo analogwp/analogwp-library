@@ -3,7 +3,7 @@
 }
 
 .elementor-add-analog-custom-library-button {
-	background-color: var(--analog-custom-library-accent);
+	background-color: var(--analog-custom-library-accent) !important;
 	margin-left: 5px;
 }
 
