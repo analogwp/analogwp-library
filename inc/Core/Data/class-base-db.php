@@ -177,7 +177,7 @@ abstract class Base_DB {
 	 *
 	 * @return  bool
 	 */
-	public function delete( $row_id = 0, $post_id ) {
+	public function delete( $row_id, $post_id ) {
 		global $wpdb;
 
 		// Row ID must be positive integer.
