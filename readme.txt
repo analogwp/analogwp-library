@@ -18,7 +18,7 @@ Custom Library for Elementor creates the foundation for a design framework that 
 
 This section describes how to install the plugin and get it working. e.g.
 
-1. Upload the plugin files to the `/wp-content/plugins/custom-library-for-elementor` directory, or install the plugin through the WordPress plugins screen directly..
+1. Upload the plugin files to the `/wp-content/plugins/analogwp-library` directory, or install the plugin through the WordPress plugins screen directly..
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Head to 'Custom Library for Elementor' page from WordPress sidebar menu.
 

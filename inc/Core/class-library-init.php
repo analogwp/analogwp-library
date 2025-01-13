@@ -51,8 +51,8 @@ class Library_Init {
 	 */
 	public function register_meta_boxes() {
 		add_meta_box(
-			'custom-library-for-elementor-id',
-			esc_html__( 'Custom Library', 'custom-library-for-elementor' ),
+			'analogwp-library-id',
+			esc_html__( 'Custom Library', 'analogwp-library' ),
 			array( $this, 'render_library_metabox' ),
 			Source_Local::CPT,
 			'side'
@@ -72,7 +72,7 @@ class Library_Init {
 			return;
 		}
 
-		check_admin_referer( 'custom-library-for-elementor-meta', 'analog_custom_library_meta_nonce' );
+		check_admin_referer( 'analogwp-library-meta', 'analog_custom_library_meta_nonce' );
 
 		$template_id = $post_ID;
 
@@ -110,7 +110,7 @@ class Library_Init {
 		$sync_to_library = get_post_meta( $post->ID, 'analog_custom_library_sync_to_library', true );
 
 		ob_start();
-		wp_nonce_field( 'custom-library-for-elementor-meta', 'analog_custom_library_meta_nonce' );
+		wp_nonce_field( 'analogwp-library-meta', 'analog_custom_library_meta_nonce' );
 		?>
 		<div>
 			<label for="analog_custom_library_sync_to_library"><input type="checkbox" name="analog_custom_library_sync_to_library" id="analog_custom_library_sync_to_library" value="1" <?php checked( $sync_to_library, 1 ); ?>>

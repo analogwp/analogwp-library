@@ -71,7 +71,7 @@ class Admin_Settings {
 		do_action( 'analog_custom_library_update_options_' . $current_tab );
 		do_action( 'analog_custom_library_update_options' );
 
-		self::add_message( __( 'Your settings have been saved.', 'custom-library-for-elementor' ) );
+		self::add_message( __( 'Your settings have been saved.', 'analogwp-library' ) );
 
 		// Clear any unwanted data and flush rules.
 		update_option( 'analog_custom_library_queue_flush_rewrite_rules', 'yes' );
@@ -132,9 +132,9 @@ class Admin_Settings {
 			'analog_custom_library_settings',
 			'analog_custom_library_settings_data',
 			array(
-				'i18n_nav_warning'  => __( 'The changes you made will be lost if you navigate away from this page.', 'custom-library-for-elementor' ),
-				'uploader_title'    => __( 'Select Image', 'custom-library-for-elementor' ),
-				'uploader_btn_text' => __( 'Use this image', 'custom-library-for-elementor' ),
+				'i18n_nav_warning'  => __( 'The changes you made will be lost if you navigate away from this page.', 'analogwp-library' ),
+				'uploader_title'    => __( 'Select Image', 'analogwp-library' ),
+				'uploader_btn_text' => __( 'Use this image', 'analogwp-library' ),
 			)
 		);
 
@@ -407,7 +407,7 @@ class Admin_Settings {
 					<tr valign="top">
 						<?php if ( isset( $value['title'] ) && ! empty( $value['title'] ) ) : ?>
 							<th scope="row" class="titledesc">
-								<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // phpcs:ignore ?></label>
+								<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
 							</th>
 						<?php endif; ?>
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
@@ -416,7 +416,7 @@ class Admin_Settings {
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								class="<?php echo esc_attr( $value['class'] ); ?>"
 								<?php echo implode( ' ', $custom_attributes ); // phpcs:ignore ?>
-								><?php echo esc_html( $option_value ); ?></a><?php echo esc_html( $value['suffix'] ); ?> <?php echo $description; // phpcs:ignore ?>
+								><?php echo esc_html( $option_value ); ?></a><?php echo esc_html( $value['suffix'] ); ?> <?php echo wp_kses_post( $description ); ?>
 						</td>
 					</tr>
 					<?php
@@ -558,7 +558,7 @@ class Admin_Settings {
 					<tr valign="top">
 						<?php if ( ! empty( $value['title'] ) ) : ?>
 							<th scope="row" class="titledesc">
-								<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // phpcs:ignore. ?></label>
+								<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
 							</th>
 						<?php endif; ?>
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
@@ -609,7 +609,7 @@ class Admin_Settings {
 												<?php checked( isset( $option_value[ $key ] ) ? $option_value[ $key ] : 0, true ); ?>
 											/>
 											<span>
-												<span><?php esc_html_e( 'Toggle', 'custom-library-for-elementor' ); ?></span>
+												<span><?php esc_html_e( 'Toggle', 'analogwp-library' ); ?></span>
 											</span>
 											<p><?php echo esc_html( $val ); ?></p>
 										</label>
@@ -676,7 +676,7 @@ class Admin_Settings {
 								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 							/> <?php echo wp_kses_post( $description ); ?>
 							<?php if ( $value['switch'] ) { ?>
-								<span><?php esc_html_e( 'Toggle', 'custom-library-for-elementor' ); ?></span>
+								<span><?php esc_html_e( 'Toggle', 'analogwp-library' ); ?></span>
 							<?php } ?>
 						</label> <?php echo wp_kses_post( $tooltip_html ); ?>
 					<?php
@@ -700,13 +700,13 @@ class Admin_Settings {
 						<?php if ( ! empty( $value['title'] ) ) { ?>
 						<th scope="row" class="titledesc">
 							<?php if ( false !== strpos( $value['id'], '_experiment' ) ) : ?>
-							<span class="experiment-indicator <?php echo ( $value['value'] === 'active' ) ? 'active' : 'inactive'; ?>"></span>
+							<span class="experiment-indicator <?php echo ( 'active' === $value['value'] ) ? 'active' : 'inactive'; ?>"></span>
 							<?php endif; ?>
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // phpcs:ignore ?></label>
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
 						</th>
 						<?php } ?>
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
-							<?php echo $description; // phpcs:ignore ?>
+							<?php echo wp_kses_post( $description ); ?>
 						</td>
 					</tr>
 					<?php
@@ -740,8 +740,8 @@ class Admin_Settings {
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
 							<img class="<?php echo esc_attr( $value['type'] ); ?>" id="<?php echo esc_attr( $value['type'] ) . '-' . esc_attr( $value['id'] ); ?>" src="<?php echo esc_url( $image_url ); ?>" />
 							<div>
-								<a href="#" class="analog-custom-library-upload-image-btn" data-element-id="<?php echo esc_attr( $value['type'] ) . '-' . esc_attr( $value['id'] ); ?>"><?php esc_html_e( 'Change Image', 'custom-library-for-elementor' ); ?></a>
-								<a href="#" class="analog-custom-library-remove-image-btn" data-default-image="<?php echo esc_url( $default_image ); ?>" style="display:<?php echo esc_attr( $display ); ?>;"><?php esc_html_e( 'Revert to Default', 'custom-library-for-elementor' ); ?></a>
+								<a href="#" class="analog-custom-library-upload-image-btn" data-element-id="<?php echo esc_attr( $value['type'] ) . '-' . esc_attr( $value['id'] ); ?>"><?php esc_html_e( 'Change Image', 'analogwp-library' ); ?></a>
+								<a href="#" class="analog-custom-library-remove-image-btn" data-default-image="<?php echo esc_url( $default_image ); ?>" style="display:<?php echo esc_attr( $display ); ?>;"><?php esc_html_e( 'Revert to Default', 'analogwp-library' ); ?></a>
 								<input
 									name="<?php echo esc_attr( $value['id'] ); ?>"
 									id="<?php echo esc_attr( $value['id'] ); ?>"

@@ -22,7 +22,7 @@ if ( ! $tab_exists ) {
 }
 ?>
 <div class="wrap ang-custom-library <?php echo esc_attr( $current_tab ); ?>">
-	<h1 class="menu-title"><?php esc_html_e( 'Library Settings', 'custom-library-for-elementor' ); ?></h1>
+	<h1 class="menu-title"><?php esc_html_e( 'Library Settings', 'analogwp-library' ); ?></h1>
 	<div class="analog-custom-library-wrapper">
 		<form method="<?php echo esc_attr( apply_filters( 'analog_custom_library_settings_form_method_tab_' . $current_tab, 'post' ) ); ?>" id="mainform" action="" enctype="multipart/form-data">
 			<nav class="nav-tab-wrapper analog-custom-library-nav-tab-wrapper">
@@ -47,7 +47,7 @@ if ( ! $tab_exists ) {
 				?>
 				<p class="submit">
 					<?php if ( empty( $GLOBALS['hide_save_button'] ) ) : ?>
-						<button name="save" class="button-primary analog-custom-library-save-button" type="submit" value="<?php esc_attr_e( 'Save changes', 'custom-library-for-elementor' ); ?>"><?php esc_html_e( 'Save changes', 'custom-library-for-elementor' ); ?></button>
+						<button name="save" class="button-primary analog-custom-library-save-button" type="submit" value="<?php esc_attr_e( 'Save changes', 'analogwp-library' ); ?>"><?php esc_html_e( 'Save changes', 'analogwp-library' ); ?></button>
 					<?php endif; ?>
 					<?php wp_nonce_field( 'analog-custom-library-settings' ); ?>
 				</p>
@@ -66,14 +66,11 @@ if ( ! $tab_exists ) {
 						</svg>
 						<h4>Custom Library for Elementor</h4>
 					</div>
-					<p class="version">
-						v1.0
-					</p>
+					<p class="version"><?php echo esc_html( AGWP_LIBRARY_VERSION ); ?></p>
 				</div>
 				<ul class="feature-list">
-					<li>Submit a support ticket</li>
-					<li>View documentation</li>
-					<li>Explore all features</li>
+					<li><a href="https://analogwp.com/support" target="_blank">Submit a support ticket</a></li>
+					<li><a href="https://analogwp.com/custom-library-for-elementor/" target="_blank">Explore all features</a></li>
 				</ul>
 			</div>
 

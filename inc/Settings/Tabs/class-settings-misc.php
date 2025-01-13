@@ -22,7 +22,7 @@ class Misc extends Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'misc';
-		$this->label = __( 'Misc', 'custom-library-for-elementor' );
+		$this->label = __( 'Misc', 'analogwp-library' );
 
 		parent::__construct();
 	}
@@ -41,8 +41,8 @@ class Misc extends Settings_Page {
 					'id'   => 'analog_custom_library_misc',
 				),
 				array(
-					'title'         => __( 'Remove Data on Uninstall', 'custom-library-for-elementor' ),
-					'desc'          => __( 'Check this box to remove all data stored by Custom Library for Elementor plugin, including license info, user settings, import history etc.', 'custom-library-for-elementor' ),
+					'title'         => __( 'Remove Data on Uninstall', 'analogwp-library' ),
+					'desc'          => __( 'Check this box to remove all data stored by Custom Library for Elementor plugin, including license info, user settings, import history etc.', 'analogwp-library' ),
 					'id'            => 'remove_on_uninstall',
 					'default'       => false,
 					'type'          => 'checkbox',

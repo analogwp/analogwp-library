@@ -21,8 +21,8 @@ const Synchronization = () => {
 								onClick={ e => {
 									e.preventDefault();
 									context.forceRefresh()
-										.then( () => add( __( 'Library is now synced', 'custom-library-for-elementor' ) ) )
-										.catch( () => add( __( 'Something is not right, please try again.', 'custom-library-for-elementor' ), 'error' ) );
+										.then( () => add( __( 'Library is now synced', 'analogwp-library' ) ) )
+										.catch( () => add( __( 'Something is not right, please try again.', 'analogwp-library' ), 'error' ) );
 								} }
 							>
 								{ context.state.syncing ?

@@ -65,7 +65,7 @@ class Elementor {
 			filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/app/index.js' ),
 			true
 		);
-		wp_set_script_translations( 'analog-custom-library-app', 'custom-library-for-elementor', AGWP_LIBRARY_PLUGIN_DIR . 'languages' );
+		wp_set_script_translations( 'analog-custom-library-app', 'analogwp-library', AGWP_LIBRARY_PLUGIN_DIR . 'languages' );
 
 		wp_enqueue_style( 'wp-components' );
 

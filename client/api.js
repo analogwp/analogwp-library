@@ -130,10 +130,10 @@ export async function requestElementorImport( template, kit ) {
  * @returns void
  */
 export function doElementorInsert( content, context = 'template' ) {
-	let contextText = __( 'Template', 'custom-library-for-elementor' );
+	let contextText = __( 'Template', 'analogwp-library' );
 
 	if ( context === 'block' ) {
-		contextText = __( 'Block', 'custom-library-for-elementor' );
+		contextText = __( 'Block', 'analogwp-library' );
 	}
 
 	let insertIndex = analogCustomLibrary.insertIndex || -1;
@@ -141,7 +141,7 @@ export function doElementorInsert( content, context = 'template' ) {
 	if ( typeof $e !== 'undefined' ) {
 		const historyId = $e.internal( 'document/history/start-log', {
 			type: 'add',
-			title: `${ __( 'Add Custom Library for Elementor', 'custom-library-for-elementor' ) } ${ contextText }`,
+			title: `${ __( 'Add Custom Library for Elementor', 'analogwp-library' ) } ${ contextText }`,
 		} );
 
 		for ( let i = 0; i < content.length; i++ ) {

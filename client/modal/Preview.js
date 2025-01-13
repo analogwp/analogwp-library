@@ -83,25 +83,25 @@ const Preview = ( props ) => {
 		<Container loading={ loading } { ...rest }>
 			<div className="frame-header">
 				<Button isSecondary onClick={ onRequestClose }>
-					{ __( 'Back to Library', 'custom-library-for-elementor' ) }
+					{ __( 'Back to Library', 'analogwp-library' ) }
 				</Button>
 
 				<a href={ previewURL } rel="noopener noreferrer" target="_blank">
 					<Button isSecondary>
-						{ __( 'Open in new tab', 'custom-library-for-elementor' ) }
+						{ __( 'Open in new tab', 'analogwp-library' ) }
 					</Button>
 				</a>
 
 				{ ! ( props.template.is_pro && AGWP_LIBRARY.license.status !== 'valid' ) && (
 					<Button isPrimary onClick={ onRequestImport }>
-						{ props.insertText || __( 'Import Template', 'custom-library-for-elementor' ) }
+						{ props.insertText || __( 'Import Template', 'analogwp-library' ) }
 					</Button>
 				) }
 			</div>
 
 			{ loading && <Img
 				src={ `${ AGWP_LIBRARY.pluginURL }assets/img/placeholder.svg` }
-				alt={ __( 'Loading icon', 'custom-library-for-elementor' ) }
+				alt={ __( 'Loading icon', 'analogwp-library' ) }
 			/> }
 
 			<FocusableIframe src={ previewURL } onLoad={ () => setLoading( false ) } />

@@ -10,7 +10,7 @@ const checktextdomain = require( 'gulp-checktextdomain' );
 const rsync = require( 'gulp-rsync' );
 const fs = require( 'fs' );
 
-const project = 'custom-library-for-elementor';
+const project = 'analogwp-library';
 const buildFiles = [
 	'./**',
 	'!build',
@@ -71,7 +71,7 @@ gulp.task( 'checktextdomain', ( done ) => {
 	gulp
 		.src( [ '**/*.php', '!build/**', '!languages/**', '!./inc/class-licensemanager.php' ] )
 		.pipe( checktextdomain( {
-			text_domain: 'custom-library-for-elementor',
+			text_domain: 'analogwp-library',
 			keywords: [
 				'__:1,2d',
 				'_e:1,2d',

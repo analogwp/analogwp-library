@@ -56,8 +56,8 @@ class Register_Settings {
 
 		add_submenu_page(
 			'edit.php?post_type=elementor_library',
-			__( 'Custom Library Settings', 'custom-library-for-elementor' ),
-			__( 'Custom Library', 'custom-library-for-elementor' ),
+			__( 'Custom Library Settings', 'analogwp-library' ),
+			__( 'Custom Library', 'analogwp-library' ),
 			'manage_options',
 			'analog-custom-library-settings',
 			array( $this, 'settings_page' ),

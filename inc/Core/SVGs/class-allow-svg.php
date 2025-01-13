@@ -86,7 +86,7 @@ final class Allow_SVG {
 
 		if ( 'image/svg+xml' === $type ) {
 			if ( ! $this->sanitize( $file['tmp_name'] ) ) {
-				$file['error'] = __( "Unable to sanitize this file hence it wasn't uploaded!", 'custom-library-for-elementor' );
+				$file['error'] = __( "Unable to sanitize this file hence it wasn't uploaded!", 'analogwp-library' );
 			}
 		}
 
@@ -168,10 +168,10 @@ final class Allow_SVG {
 			$possible_sizes = apply_filters(
 				'image_size_names_choose',
 				array(
-					'full'      => __( 'Full Size', 'custom-library-for-elementor' ),
-					'thumbnail' => __( 'Thumbnail', 'custom-library-for-elementor' ),
-					'medium'    => __( 'Medium', 'custom-library-for-elementor' ),
-					'large'     => __( 'Large', 'custom-library-for-elementor' ),
+					'full'      => __( 'Full Size', 'analogwp-library' ),
+					'thumbnail' => __( 'Thumbnail', 'analogwp-library' ),
+					'medium'    => __( 'Medium', 'analogwp-library' ),
+					'large'     => __( 'Large', 'analogwp-library' ),
 				)
 			);
 

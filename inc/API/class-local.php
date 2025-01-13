@@ -304,7 +304,7 @@ class Local extends Base {
 		$method = $request->get_param( 'method' );
 
 		if ( ! $block ) {
-			return new WP_Error( 'template_import_error', __( 'Invalid Template ID.', 'custom-library-for-elementor' ) );
+			return new WP_Error( 'template_import_error', __( 'Invalid Template ID.', 'analogwp-library' ) );
 		}
 
 		$data = $this->process_block_import( $block, $method );
@@ -379,13 +379,13 @@ class Local extends Base {
 		$value = $request->get_param( 'value' );
 
 		if ( ! $key ) {
-			return new WP_Error( 'settings_error', __( 'No options key provided.', 'custom-library-for-elementor' ) );
+			return new WP_Error( 'settings_error', __( 'No options key provided.', 'analogwp-library' ) );
 		}
 
 		Options::get_instance()->set( $key, $value );
 
 		return new WP_REST_Response(
-			array( 'message' => __( 'Setting updated.', 'custom-library-for-elementor' ) ),
+			array( 'message' => __( 'Setting updated.', 'analogwp-library' ) ),
 			200
 		);
 	}

@@ -100,7 +100,7 @@ final class Plugin {
 			filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/app/index.js' ),
 			true
 		);
-		wp_set_script_translations( 'analog-custom-library-app', 'custom-library-for-elementor', AGWP_LIBRARY_PLUGIN_DIR . 'languages' );
+		wp_set_script_translations( 'analog-custom-library-app', 'analogwp-library', AGWP_LIBRARY_PLUGIN_DIR . 'languages' );
 
 		$i10n = apply_filters( // phpcs:ignore
 			'analog/library/app/strings',
@@ -204,7 +204,7 @@ final class Plugin {
 	 * @return array An array of plugin action links.
 	 */
 	public function plugin_action_links( $links ) {
-		$settings_link = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=analog-custom-library-settings' ), __( 'Settings', 'custom-library-for-elementor' ) );
+		$settings_link = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=analog-custom-library-settings' ), __( 'Settings', 'analogwp-library' ) );
 
 		array_unshift( $links, $settings_link );
 
@@ -263,7 +263,7 @@ final class Plugin {
 	 * @return void
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'custom-library-for-elementor', false, dirname( AGWP_LIBRARY_PLUGIN_BASE ) . '/languages/' );
+		load_plugin_textdomain( 'analogwp-library', false, dirname( AGWP_LIBRARY_PLUGIN_BASE ) . '/languages/' );
 	}
 
 	/**

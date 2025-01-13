@@ -36,7 +36,7 @@ class Base {
 	 */
 	public function __clone() {
 		// Cloning instances of the class is forbidden.
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'custom-library-for-elementor' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'analogwp-library' ), '1.0.0' );
 	}
 
 	/**
@@ -46,7 +46,7 @@ class Base {
 	 */
 	public function __wakeup() {
 		// Unserializing instances of the class is forbidden.
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'custom-library-for-elementor' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'analogwp-library' ), '1.0.0' );
 	}
 
 	/**
@@ -64,34 +64,6 @@ class Base {
 		}
 
 		return self::$instances[ $module ];
-	}
-
-	/**
-	 * Checks current memory limit and sets a new one if required.
-	 *
-	 * Used during importing to ensure we don't run out of memory on large imports.
-	 *
-	 * @access public
-	 */
-	public function check_memory_limit() {
-		$memory_limit = ini_get( 'memory_limit' );
-		if ( $memory_limit !== - 1 ) { // @codingStandardsIgnoreLine
-			$last = $memory_limit[ strlen( $memory_limit ) - 1 ];
-			$val  = rtrim( $memory_limit, $last );
-			switch ( strtolower( $last ) ) {
-				case 'g':
-					$val *= 1024;
-					// no break.
-				case 'm':
-					$val *= 1024;
-					// no break.
-				case 'k':
-					$val *= 1024;
-			}
-			if ( $val < ( 1024 * 1024 * 1024 ) ) {
-				@ini_set( 'memory_limit', '512M' ); // @codingStandardsIgnoreLine
-			}
-		}
 	}
 
 	/**

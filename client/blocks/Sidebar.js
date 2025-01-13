@@ -219,7 +219,7 @@ const Sidebar = ( { state } ) => {
 			</TabPanel> }
 
 			{ context.state.blockArchive.length >= 10 && <TextControl
-				placeholder={ __( 'Search Templates', 'custom-library-for-elementor' ) }
+				placeholder={ __( 'Search Templates', 'analogwp-library' ) }
 				value={ context.state.blocksSearchInput }
 				onChange={ ( value ) => {
 					context.handleSearch( value, 'patterns' );

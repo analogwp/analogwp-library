@@ -22,7 +22,7 @@ class General extends Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'general';
-		$this->label = __( 'General', 'custom-library-for-elementor' );
+		$this->label = __( 'General', 'analogwp-library' );
 
 		parent::__construct();
 	}
@@ -43,19 +43,19 @@ class General extends Settings_Page {
 
 			$settings = array(
 				array(
-					'title' => esc_html__( 'General Settings', 'custom-library-for-elementor' ),
+					'title' => esc_html__( 'General Settings', 'analogwp-library' ),
 					'type'  => 'title',
 					'id'    => 'analog_custom_library_general_settings',
 				),
 				array(
 					'id'      => 'hide_elementor_template_library',
-					'desc'    => __( 'Hide default Elementor Template library icon from editor.', 'custom-library-for-elementor' ),
+					'desc'    => __( 'Hide default Elementor Template library icon from editor.', 'analogwp-library' ),
 					'type'    => 'checkbox',
 					'default' => false,
 				),
 				array(
 					'id'      => 'allow_svg_uploads',
-					'desc'    => esc_html_x( 'Enable SVG Uploads', 'settings title', 'custom-library-for-elementor' ),
+					'desc'    => esc_html_x( 'Enable SVG Uploads', 'settings title', 'analogwp-library' ),
 					'type'    => 'checkbox',
 					'default' => true,
 				),
@@ -65,11 +65,11 @@ class General extends Settings_Page {
 				),
 				array(
 					'type'  => 'title',
-					'title' => esc_html__( 'Placeholder image', 'custom-library-for-elementor' ),
+					'title' => esc_html__( 'Placeholder image', 'analogwp-library' ),
 					'id'    => 'analog_custom_library_change_default_placeholder_thumb',
 				),
 				array(
-					'desc'    => __( 'Replace the default placeholder image.', 'custom-library-for-elementor' ),
+					'desc'    => __( 'Replace the default placeholder image.', 'analogwp-library' ),
 					'id'      => 'default-placeholder-thumb',
 					'default' => AGWP_LIBRARY_PLUGIN_URL . 'assets/img/placeholder.svg',
 					'type'    => 'media-image',

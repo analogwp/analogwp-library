@@ -19,15 +19,6 @@ use AnalogWP\CustomLibrary\Utils;
  */
 class AnalogWP_Custom_Library_Importer extends Source_Remote {
 	/**
-	 * AnalogWP_Custom_Library_Importer constructor.
-	 */
-	public function __construct() {
-		if ( ! function_exists( 'wp_crop_image' ) ) {
-			include ABSPATH . 'wp-admin/includes/image.php';
-		}
-	}
-
-	/**
 	 * Get local template data.
 	 *
 	 * @inheritDoc

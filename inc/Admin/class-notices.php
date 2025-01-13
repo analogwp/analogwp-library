@@ -94,9 +94,9 @@ final class Notices {
 	public function enqueue_scripts() {
 		wp_register_script(
 			'analog-admin',
-			AGWP_LIBRARY_PLUGIN_URL . '/assets/js/admin.js',
+			AGWP_LIBRARY_PLUGIN_URL . 'assets/js/admin.js',
 			array( 'jquery' ),
-			AGWP_LIBRARY_VERSION,
+			filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/admin.js' ),
 			true
 		);
 
@@ -109,6 +109,15 @@ final class Notices {
 		);
 
 		wp_enqueue_script( 'analog-admin' );
+
+		wp_register_style(
+			'analog-admin',
+			AGWP_LIBRARY_PLUGIN_URL . 'assets/css/admin.css',
+			array(),
+			filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/admin.css' ),
+		);
+
+		wp_enqueue_style( 'analog-admin' );
 	}
 
 }

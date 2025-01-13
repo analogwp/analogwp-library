@@ -4,18 +4,18 @@
  *
  * @package     AnalogWP/CustomLibrary
  * @copyright   2024 SmallTownDev
- * @link        https://analogwp.com/custom-library-for-elementor
+ * @link        https://analogwp.com/analogwp-library
  *
  * @wordpress-plugin
  * Plugin Name: Custom Library for Elementor
- * Plugin URI:  https://analogwp.com/custom-library-for-elementor
+ * Plugin URI:  https://analogwp.com/analogwp-library
  * Description: Custom Library for Elementor creates the foundation for a design framework that will help you create better, more consistent websites with Elementor.
  * Version:     1.0.0
  * Author:      AnalogWP
  * Author URI:  https://analogwp.com/
  * License:     GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: custom-library-for-elementor
+ * Text Domain: analogwp-library
  * Requires at least: 6.0
  * Requires PHP: 7.4
  *
@@ -46,8 +46,8 @@ function analog_custom_library_activate_plugin() {
 	if ( version_compare( PHP_VERSION, AGWP_LIBRARY_PHP_MINIMUM, '<' ) ) {
 		wp_die(
 			/* translators: %s: version number */
-			esc_html( sprintf( __( 'Custom Library for Elementor requires PHP version %s', 'custom-library-for-elementor' ), AGWP_LIBRARY_PHP_MINIMUM ) ),
-			esc_html__( 'Error Activating', 'custom-library-for-elementor' )
+			esc_html( sprintf( __( 'Custom Library for Elementor requires PHP version %s', 'analogwp-library' ), AGWP_LIBRARY_PHP_MINIMUM ) ),
+			esc_html__( 'Error Activating', 'analogwp-library' )
 		);
 	}
 
@@ -79,7 +79,7 @@ register_deactivation_hook( __FILE__, 'analog_custom_library_deactivate_plugin' 
  */
 function analog_custom_library_fail_wp_version() {
 	/* translators: %s: WordPress version */
-	$message      = sprintf( esc_html__( 'Custom Library for Elementor requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.', 'custom-library-for-elementor' ), AGWP_LIBRARY_WP_MINIMUM );
+	$message      = sprintf( esc_html__( 'Custom Library for Elementor requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.', 'analogwp-library' ), AGWP_LIBRARY_WP_MINIMUM );
 	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
 
 	echo wp_kses_post( $html_message );
@@ -104,20 +104,11 @@ function analog_custom_library_require_minimum_elementor() {
 	$update_url = wp_nonce_url( $link, 'upgrade-plugin_' . $file_path );
 
 	/* translators: %s: Minimum required Elementor version. */
-	$message = '<p>' . sprintf( __( 'Custom Library for Elementor requires Elementor v%s or newer in order to work. Please update Elementor to the latest version.', 'custom-library-for-elementor' ), AGWP_LIBRARY_ELEMENTOR_MINIMUM ) . '</p>';
-
-	$versions = get_transient( 'ang_rollback_versions_' . AGWP_LIBRARY_VERSION );
+	$message = '<p>' . sprintf( esc_html__( 'Custom Library for Elementor requires Elementor v%s or newer in order to work. Please update Elementor to the latest version.', 'analogwp-library' ), AGWP_LIBRARY_ELEMENTOR_MINIMUM ) . '</p>';
 
 	$message .= '<p>';
 	/* translators: %s: Link to update Elementor. */
-	$message .= sprintf( '<a href="%s" class="button-primary">%s</a>', $update_url, __( 'Update Elementor Now', 'custom-library-for-elementor' ) );
-	/* translators: %s: Link to rollback plugin to previous version. */
-	$message .= sprintf(
-		'<a href="%s" class="button-secondary" style="margin-left:10px">%s</a>',
-		wp_nonce_url( admin_url( 'admin-post.php?action=ang_rollback&version=' . $versions[0] ), 'ang_rollback' ),
-		/* translators: %s: Version number. */
-		sprintf( __( 'Rollback to v%s', 'custom-library-for-elementor' ), $versions[0] )
-	);
+	$message .= sprintf( '<a href="%s" class="button-primary">%s</a>', esc_url( $update_url ), esc_html__( 'Update Elementor Now', 'analogwp-library' ) );
 	$message .= '</p>';
 
 	echo '<div class="error"><p>' . $message . '</p></div>'; // @codingStandardsIgnoreLine
@@ -129,10 +120,6 @@ function analog_custom_library_require_minimum_elementor() {
  * @return mixed|bool
  */
 function analog_custom_library_fail_load() {
-	if ( ! function_exists( 'get_current_screen' ) ) {
-		require_once ABSPATH . 'wp-admin/includes/screen.php';
-	}
-
 	$screen = get_current_screen();
 
 	if ( isset( $screen->parent_file ) && 'plugins.php' === $screen->parent_file && 'update' === $screen->id ) {
@@ -144,10 +131,6 @@ function analog_custom_library_fail_load() {
 	$is_not_activated = false;
 	$is_not_installed = false;
 
-	if ( ! function_exists( 'get_plugins' ) ) {
-		require_once ABSPATH . 'wp-admin/includes/plugin.php';
-	}
-
 	$installed_plugins = get_plugins();
 	$elementor         = isset( $installed_plugins[ $file_path ] );
 
@@ -157,22 +140,24 @@ function analog_custom_library_fail_load() {
 		$is_not_installed = true;
 	}
 
+	$message = '';
+
 	if ( $is_not_activated ) {
 		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
 		}
 
 		$activation_url = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $file_path . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $file_path );
-		$message        = '<p>' . __( 'Custom Library for Elementor is not working because you need to activate the Elementor plugin.', 'custom-library-for-elementor' ) . '</p>';
-		$message       .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $activation_url, __( 'Activate Elementor Now', 'custom-library-for-elementor' ) ) . '</p>';
+		$message        = '<p>' . esc_html__( 'Custom Library for Elementor is not working because you need to activate the Elementor plugin.', 'analogwp-library' ) . '</p>';
+		$message       .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', esc_url( $activation_url ), esc_html__( 'Activate Elementor Now', 'analogwp-library' ) ) . '</p>';
 	} elseif ( $is_not_installed ) {
 		if ( ! current_user_can( 'install_plugins' ) ) {
 			return;
 		}
 
 		$install_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ), 'install-plugin_elementor' );
-		$message     = '<p>' . __( 'Custom Library for Elementor is not working because you need to install the Elementor plugin.', 'custom-library-for-elementor' ) . '</p>';
-		$message    .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $install_url, __( 'Install Elementor Now', 'custom-library-for-elementor' ) ) . '</p>';
+		$message     = '<p>' . esc_html__( 'Custom Library for Elementor is not working because you need to install the Elementor plugin.', 'analogwp-library' ) . '</p>';
+		$message    .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', esc_url( $install_url ), esc_html__( 'Install Elementor Now', 'analogwp-library' ) ) . '</p>';
 	}
 
 	echo '<div class="error"><p>' . $message . '</p></div>'; // @codingStandardsIgnoreLine
@@ -198,7 +183,7 @@ if ( ! function_exists( 'analog_custom_library_for_elementor_fs' ) ) {
 			$custom_library_for_elementor_fs = fs_dynamic_init(
 				array(
 					'id'             => '17229',
-					'slug'           => 'custom-library-for-elementor',
+					'slug'           => 'analogwp-library',
 					'type'           => 'plugin',
 					'public_key'     => 'pk_933cd86a01a4af4c84ed15dae1d5f',
 					'is_premium'     => false,
@@ -235,8 +220,8 @@ add_action(
 		if ( version_compare( PHP_VERSION, AGWP_LIBRARY_PHP_MINIMUM, '<' ) ) {
 			wp_die(
 			/* translators: %s: version number */
-				esc_html( sprintf( __( 'Custom Library for Elementor requires PHP version %s', 'custom-library-for-elementor' ), AGWP_LIBRARY_PHP_MINIMUM ) ),
-				esc_html__( 'Error Activating', 'custom-library-for-elementor' )
+				esc_html( sprintf( __( 'Custom Library for Elementor requires PHP version %s', 'analogwp-library' ), AGWP_LIBRARY_PHP_MINIMUM ) ),
+				esc_html__( 'Error Activating', 'analogwp-library' )
 			);
 		}
 

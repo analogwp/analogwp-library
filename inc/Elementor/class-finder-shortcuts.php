@@ -30,7 +30,7 @@ class Finder_Shortcuts extends Base_Category {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Custom Library for Elementor Shortcuts', 'custom-library-for-elementor' );
+		return __( 'Custom Library for Elementor Shortcuts', 'analogwp-library' );
 	}
 
 	/**
@@ -43,19 +43,19 @@ class Finder_Shortcuts extends Base_Category {
 	public function get_category_items( array $options = array() ) {
 		return array(
 			'library'    => array(
-				'title'    => __( 'Templates Library', 'custom-library-for-elementor' ),
+				'title'    => __( 'Templates Library', 'analogwp-library' ),
 				'url'      => admin_url( 'admin.php?page=analog_custom_library' ),
 				'icon'     => 'library-download',
 				'keywords' => array( 'analog', 'library', 'settings' ),
 			),
 			'settings'   => array(
-				'title'    => __( 'Settings', 'custom-library-for-elementor' ),
+				'title'    => __( 'Settings', 'analogwp-library' ),
 				'url'      => admin_url( 'admin.php?page=analog-custom-library-settings' ),
 				'icon'     => 'settings',
 				'keywords' => array( 'analog', 'settings' ),
 			),
 			'style-kits' => array(
-				'title'    => __( 'Theme Custom Library for Elementor', 'custom-library-for-elementor' ),
+				'title'    => __( 'Theme Custom Library for Elementor', 'analogwp-library' ),
 				'url'      => admin_url( 'admin.php?page=style-kits' ),
 				'icon'     => 'settings',
 				'keywords' => array( 'analog', 'style', 'kits' ),
