@@ -21,6 +21,8 @@
  *
  * Elementor tested up to: 3.26.4
  * Elementor Pro tested up to: 3.26.3
+ *
+ * GitHub Plugin URI: analogwp/analogwp-library
  */
 
 defined( 'ABSPATH' ) || exit;
