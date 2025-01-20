@@ -1,6 +1,6 @@
 {
   "name": "analogwp-library",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Your own custom library of templates for Elementor.",
   "main": "/client/index.js",
   "private": true,
@@ -55,10 +55,16 @@
   "files": [
     "assets",
     "inc",
+    "client",
     "languages",
     "vendor",
     "analogwp-library.php",
+    "composer.json",
+    "composer.lock",
+    "package.json",
+    "package-lock.json",
     "uninstall.php",
-    "readme.txt"
+    "readme.txt",
+    "README.md"
   ]
 }

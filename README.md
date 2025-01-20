@@ -7,11 +7,12 @@
 Custom Library for Elementor
 ===
 
-Your layouts deserve more. Use inspiring, extendable design resources for consistent websites and sharp workflow.
+Your very own custom library in Elementor, extendable design resources for consistent websites and sharp workflow.
 
 More information can be found at [analogwp.com](https://analogwp.com/).
 
 ### Build Commands
+- `npm run install-scripts` for installing Composer and NPM packages.
 - `npm run dev` for development.
 - `npm run build` for production.
 

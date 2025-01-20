@@ -3,7 +3,7 @@ Contributors: analogwp, lushkant, johnfraskos
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.7.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Tags: elementor, templates, library, elementor addons, design system
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -35,6 +35,9 @@ We offer high-level support for all Custom Library for Elementor users. Reach ou
 1. The Custom Library for Elementor pattern library
 
 == Changelog ==
+
+= 1.0.2 =
+* Fix requested changes by wp.org
 
 = 1.0.1 =
 * Fix requested changes by wp.org
