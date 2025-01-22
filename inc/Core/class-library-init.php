@@ -42,6 +42,9 @@ class Library_Init {
 
 		// Save meta value with save post hook.
 		add_action( 'save_post_elementor_library', array( $this, 'handle_save_meta_boxes' ), 20, 2 );
+
+		// Sync on template deletion.
+		add_action( 'delete_post', array( $this, 'handle_syncing_on_delete' ), 10, 2 );
 	}
 
 	/**
@@ -240,5 +243,20 @@ class Library_Init {
 
 			set_transient( $transient_key, true, 5 );
 		}
+	}
+
+	/**
+	 * Sync on template deletion.
+	 *
+	 * @param int    $post_id  Post ID of the template.
+	 * @param object $post Post object.
+	 * @return void
+	 */
+	public function handle_syncing_on_delete( $post_id, $post ) {
+		if ( Source_Local::CPT !== $post->post_type ) {
+			return;
+		}
+
+		$this->remove_template_from_library( $post_id );
 	}
 }
