@@ -1,18 +1,48 @@
-=== Custom Library for Elementor ===
+=== Custom Library for Elementor: Take Control of Your Templates ===
 Contributors: analogwp, lushkant, johnfraskos
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.7.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Tags: elementor, templates, library, elementor addons, design system
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Power-up your Elementor workflow with your own templates library in Elementor.
+No need to rely solely on Elementor’s default template library anymore. With Custom Library for Elementor, you can curate and access your own collection of design assets right inside the editor. Build faster, stay organized, and empower your clients with a seamless design workflow by providing them with essential patterns to build new layouts with consistency.
 
 == Description ==
 
-Custom Library for Elementor creates the foundation for a design framework that will help you create better, more consistent websites with Elementor.
+### Custom Library for Elementor: Take Control of Your Templates
+
+No need to rely solely on Elementor’s default template library anymore. With Custom Library for Elementor, you can curate and access your own collection of design assets right inside the editor. Build faster, stay organized, and empower your clients with a seamless design workflow by providing them with essential patterns to build new layouts with consistency.
+
+### Your Designs, Your Library
+
+Custom Library for Elementor is your new home for all your template assets. Save and organize your most-used templates into categories and access them instantly from within the editor.
+
+Enjoy an intuitive flow that keeps you focused on designing, without unnecessary distractions.
+
+### Perfect for Client Handover
+
+Empower your clients with a reusable template collection tailored to their needs.
+
+Clients often struggle to maintain consistent designs when extending layouts. Custom Library solves this by providing a pre-selected set of foundational sections they can confidently reuse. Help them stay on track and preserve the design quality effortlessly.
+
+### Key Features
+
+- **Add Templates Easily:** Save your templates and patterns to the library with just a few clicks.
+- **Customizable Layout:** Tailor the library’s design to match your style and workflow.
+- **Organized Categories:** Group templates into categories for quick access.
+- **Image Previews:** Add visual cues to your templates with image thumbnails.
+
+### Upcoming Features
+
+- Role-based access controls
+- Automatic template screenshots
+- White-label options
+- Branding customization
+
+Custom Library for Elementor is brought to you by **AnalogWP**, the creators of [Style Kits for Elementor](https://analogwp.com/style-kits/).
 
 == Installation ==
 
@@ -24,17 +54,48 @@ This section describes how to install the plugin and get it working. e.g.
 
 == Frequently Asked Questions ==
 
-= Do I need Elementor PRO in order to use Custom Library for Elementor? =
-No, Custom Library for Elementor will still work with the FREE version of Elementor. However, any patterns that include Elementor PRO widgets (Contact form, Call to action etc) will not be imported into your pages. The rest of the Custom Library for Elementor functionality will work with the free version of Elementor.
+= Is there documentation available? =
 
-= Do I get support if I need help? =
-We offer high-level support for all Custom Library for Elementor users. Reach out to https://analogwp.com/support/ and submit a support request. We’ll get back to you asap.
+Yes, you can find all the documentation [here](https://analogwp.com/cl-docs).
+
+= Does this plugin require Elementor Pro? =
+
+No, the Custom Library works perfectly with the free version of Elementor.
+
+= How is this different from the default Elementor Template Library? =
+
+Unlike the default library, Custom Library allows you to:
+
+- Add screenshots for easy template identification.
+- Curate and categorize only the templates that truly matter, to streamline your workflow.
+- Avoid distractions caused by built-in templates and blocks.
+
+It’s an ideal solution for handing over pre-designed assets to clients, ensuring they build upon your layouts with consistency.
+
+= Are any templates included? =
+
+No, you can populate the library with your own templates and patterns.
+
+= Have more questions? =
+
+Feel free to reach out via the [contact page](https://analogwp.com/contact/).
 
 == Screenshots ==
 
-1. The Custom Library for Elementor pattern library
+1. Custom Library "Add to Library" toggles at Elementor templates.
+2. Custom Library plugin settings.
+3. Custom Library popup icon in the Elementor Editor.
+4. Custom Library popup modal in the Elementor Editor.
 
 == Changelog ==
+
+= 1.0.3 =
+* Fix: No sidebar on empty search results causing unexpected issues
+* Improvement: Sync library should check for permanently deleted templates and remove them from CL
+* Improvement: Add template syncing on permanent deletion
+* Improvement: Improve search field alignment and layout
+* Improvement: Other minor improvements.
+* Improvement: Compatibility with Elementor 3.27.0 and Elementor Pro 3.27.0
 
 = 1.0.2 =
 * Fix requested changes by wp.org
