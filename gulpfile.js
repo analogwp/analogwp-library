@@ -38,6 +38,8 @@ const buildFiles = [
 	'!phpcs.xml.dist',
 	'!codeception.dist.yml',
 	'!tests/**',
+	'!codeception.dist.yml',
+	'!.travis.yml'
 ];
 
 const buildDestination = `./build/${ project }/`;

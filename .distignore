@@ -16,11 +16,6 @@
 .wp-env.json
 phpcs.xml.dist
 
-# Exclude vendor folder, except required dependencies.
-/vendor
-!/vendor/composer
-!/vendor/autoload.php
-
 # Files
 .babelrc
 .distignore
@@ -29,6 +24,7 @@ phpcs.xml.dist
 .gitignore
 .editorconfig
 .travisyml
+.travis.yml
 .codeception.dist.yml
 DOCKER_ENV
 docker_tag

@@ -3,7 +3,7 @@ Contributors: analogwp, lushkant, johnfraskos
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.7.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 Tags: elementor, templates, library, elementor addons, design system
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -88,6 +88,9 @@ Feel free to reach out via the [contact page](https://analogwp.com/contact/).
 4. Custom Library popup modal in the Elementor Editor.
 
 == Changelog ==
+
+= 1.0.4 =
+* Improvement: Patch release.
 
 = 1.0.3 =
 * Fix: No sidebar on empty search results causing unexpected issues
