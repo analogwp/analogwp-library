@@ -17,6 +17,7 @@ jobs:
               with:
                   version: 2
                   php_version: '8.0'
+                  dev: no
 
             - name: Setup Node
               uses: actions/setup-node@v1
