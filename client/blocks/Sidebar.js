@@ -212,7 +212,8 @@ const Sidebar = ( { state } ) => {
 				} }
 			/> }
 
-			<TabPanel
+			{ tabGenerator( categoriesData() ).length >= 1 ?
+				<TabPanel
 				className="block-categories-tabs"
 				orientation={ sidebarOrientation }
 				activeClass="active-tab"
@@ -224,7 +225,7 @@ const Sidebar = ( { state } ) => {
 				{
 					( tab ) => tabContent()
 				}
-			</TabPanel>
+			</TabPanel> : <div className="block-categories-tabs"></div> }
 		</SidebarWrapper>
 	);
 }
