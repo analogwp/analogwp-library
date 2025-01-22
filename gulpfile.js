@@ -16,6 +16,7 @@ const buildFiles = [
 	'!build',
 	'!build/**',
 	'!node_modules/**',
+	'!client/**',
 	'!*.map',
 	'!*.xml',
 	'!gulpfile.js',

@@ -11,7 +11,7 @@
     "makePot": "npx @wp-blocks/make-pot . ./languages/",
     "convertPot2json": "npx po2json ./languages/analogwp-library.pot ./languages/analogwp-library-analog-custom-library-app.json -f jed1.x",
     "build": "gulp build",
-    "gh:build": "gulp github-build",
+    "gh:release-build": "gulp github-build",
     "translate": "gulp translate"
   },
   "repository": {
@@ -55,16 +55,11 @@
   "files": [
     "assets",
     "inc",
-    "client",
     "languages",
     "vendor",
     "analogwp-library.php",
     "composer.json",
-    "composer.lock",
-    "package.json",
-    "package-lock.json",
     "uninstall.php",
-    "readme.txt",
-    "README.md"
+    "readme.txt"
   ]
 }
