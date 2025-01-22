@@ -203,21 +203,6 @@ const Sidebar = ( { state } ) => {
 
 	return (
 		<SidebarWrapper className={`sidebar ${!context.state.blockArchive.length ? 'no-templates' : ''}`}>
-			{ tabGenerator( categoriesData() ).length >= 1 &&
-			<TabPanel
-				className="block-categories-tabs"
-				orientation={ sidebarOrientation }
-				activeClass="active-tab"
-				initialTabName={getInitialTab( context.state.blocksTab ) }
-				onSelect={onSelect}
-				tabs={tabGenerator( categoriesData() )}
-				key={context.state.blocksTab}
-				>
-				{
-					( tab ) => tabContent()
-				}
-			</TabPanel> }
-
 			{ context.state.blockArchive.length >= 10 && <TextControl
 				placeholder={ __( 'Search Templates', 'analogwp-library' ) }
 				value={ context.state.blocksSearchInput }
@@ -226,6 +211,20 @@ const Sidebar = ( { state } ) => {
 					context.dispatch( { blocksSearchInput: value } );
 				} }
 			/> }
+
+			<TabPanel
+				className="block-categories-tabs"
+				orientation={ sidebarOrientation }
+				activeClass="active-tab"
+				initialTabName={getInitialTab( context.state.blocksTab ) }
+				onSelect={onSelect}
+				tabs={tabGenerator( categoriesData() )}
+				key={context.state.blocksTab}
+			>
+				{
+					( tab ) => tabContent()
+				}
+			</TabPanel>
 		</SidebarWrapper>
 	);
 }

@@ -1255,6 +1255,8 @@
 }
 
 #analog-custom-library .horizontal > .sidebar {
+	flex-direction: row-reverse;
+	align-items: center;
 	padding: 16px 24px;
 }
 
@@ -1272,6 +1274,10 @@
 	height: auto;
 }
 
+#analog-custom-library .horizontal > .sidebar .components-base-control__field {
+	margin-bottom: 0;
+}
+
 #analog-custom-library .vertical > .sidebar {
 	max-width: 220px;
 	height: 90vh;
@@ -1281,6 +1287,7 @@
 	overflow-y: scroll;
 }
 
+#analog-custom-library .vertical > .sidebar,
 #analog-custom-library .vertical > .sidebar .components-tab-panel__tabs {
 	flex-direction: column;
 }
