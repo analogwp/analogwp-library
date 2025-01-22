@@ -108,6 +108,7 @@ gulp.task( 'build', gulp.series(
 );
 
 gulp.task( 'github-build', gulp.series(
+	'composerNoDev',
 	'checktextdomain',
 	'scriptBuildApp',
 	'scriptMakePot',
