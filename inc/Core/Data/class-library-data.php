@@ -26,6 +26,18 @@ final class Library_Data {
 			foreach ( $templates_data as $template ) {
 				$meta = json_decode( $template->meta );
 
+				$template_id = (int) $template->template_id;
+
+				// If the original template doesn't exist,
+				// delete from Custom Library and then continue from next template.
+				if ( ! self::original_template_exists( $template_id ) ) {
+					$exists = $templates_db->template_exists( $template_id );
+					if ( $exists ) {
+						$templates_db->delete( $exists->id, $template_id );
+					}
+					continue;
+				}
+
 				$thumbnail = false;
 				if ( '0' !== $meta->thumbnail ) {
 					$thumbnail = $meta->thumbnail;
@@ -74,5 +86,17 @@ final class Library_Data {
 		}
 
 		return array( 'content' => json_decode( $template->content, true ) );
+	}
+
+	/**
+	 * Determines if the template in Elementor library exists, identified by the specified ID, exist
+	 * within the WordPress database.
+	 *
+	 * @param    int $id    The ID of the post to check
+	 * @return   bool          True if the template exists; otherwise, false.
+	 * @since    1.0.3
+	 */
+	public static function original_template_exists( $id ) {
+		return is_string( get_post_status( $id ) );
 	}
 }
