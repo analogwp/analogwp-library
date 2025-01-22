@@ -1,5 +1,5 @@
 === Custom Library for Elementor: Take Control of Your Templates ===
-Contributors: analogwp, lushkant, johnfraskos
+Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.7.1
@@ -8,7 +8,7 @@ Tags: elementor, templates, library, elementor addons, design system
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-No need to rely solely on Elementor’s default template library anymore. With Custom Library for Elementor, you can curate and access your own collection of design assets right inside the editor. Build faster, stay organized, and empower your clients with a seamless design workflow by providing them with essential patterns to build new layouts with consistency.
+Custom Library for Elementor is your new home for all your template assets. Save and organize your most-used templates into categories and access them instantly from within the editor.
 
 == Description ==
 
