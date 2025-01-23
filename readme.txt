@@ -14,8 +14,6 @@ Custom Library for Elementor is your new home for all your template assets. Save
 
 https://www.youtube.com/watch?v=9RTBS6rhYgg
 
-### Custom Library for Elementor: Take Control of Your Templates
-
 No need to rely solely on Elementor’s default template library anymore. With Custom Library for Elementor, you can curate and access your own collection of design assets right inside the editor. Build faster, stay organized, and empower your clients with a seamless design workflow by providing them with essential patterns to build new layouts with consistency.
 
 ### Your Designs, Your Library
