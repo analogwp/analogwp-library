@@ -42,19 +42,19 @@ define( 'AGWP_LIBRARY_PLUGIN_BASE', plugin_basename( AGWP_LIBRARY_PLUGIN_FILE ) 
  * @access private
  * @return void
  */
-function analog_custom_library_activate_plugin() {
+function agwp_custom_library_activate_plugin() {
 	if ( version_compare( PHP_VERSION, AGWP_LIBRARY_PHP_MINIMUM, '<' ) ) {
 		wp_die(
-			/* translators: %s: version number */
+		/* translators: %s: version number */
 			esc_html( sprintf( __( 'Custom Library for Elementor requires PHP version %s', 'analogwp-library' ), AGWP_LIBRARY_PHP_MINIMUM ) ),
 			esc_html__( 'Error Activating', 'analogwp-library' )
 		);
 	}
 
-	do_action( 'analog_custom_library_activation' );
+	do_action( 'agwp_custom_library_activation' );
 }
 
-register_activation_hook( __FILE__, 'analog_custom_library_activate_plugin' );
+register_activation_hook( __FILE__, 'agwp_custom_library_activate_plugin' );
 
 /**
  * Handles plugin deactivation.
@@ -62,22 +62,22 @@ register_activation_hook( __FILE__, 'analog_custom_library_activate_plugin' );
  * @access private
  * @return void
  */
-function analog_custom_library_deactivate_plugin() {
+function agwp_custom_library_deactivate_plugin() {
 	if ( version_compare( PHP_VERSION, AGWP_LIBRARY_PHP_MINIMUM, '<' ) ) {
 		return;
 	}
 
-	do_action( 'analog_custom_library_deactivation' );
+	do_action( 'agwp_custom_library_deactivation' );
 }
 
-register_deactivation_hook( __FILE__, 'analog_custom_library_deactivate_plugin' );
+register_deactivation_hook( __FILE__, 'agwp_custom_library_deactivate_plugin' );
 
 /**
  * Fail loading, if WordPress version requirements not met.
  *
  * @return void
  */
-function analog_custom_library_fail_wp_version() {
+function agwp_custom_library_fail_wp_version() {
 	/* translators: %s: WordPress version */
 	$message      = sprintf( esc_html__( 'Custom Library for Elementor requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.', 'analogwp-library' ), AGWP_LIBRARY_WP_MINIMUM );
 	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
@@ -90,7 +90,7 @@ function analog_custom_library_fail_wp_version() {
  *
  * @return mixed
  */
-function analog_custom_library_require_minimum_elementor() {
+function agwp_custom_library_require_minimum_elementor() {
 	$file_path = 'elementor/elementor.php';
 
 	$link = add_query_arg(
@@ -119,7 +119,7 @@ function analog_custom_library_require_minimum_elementor() {
  *
  * @return mixed|bool
  */
-function analog_custom_library_fail_load() {
+function agwp_custom_library_fail_load() {
 	$screen = get_current_screen();
 
 	if ( isset( $screen->parent_file ) && 'plugins.php' === $screen->parent_file && 'update' === $screen->id ) {
@@ -239,7 +239,7 @@ add_action(
 		}
 
 		if ( ! did_action( 'elementor/loaded' ) ) {
-			add_action( 'admin_notices', 'analog_custom_library_fail_load' );
+			add_action( 'admin_notices', 'agwp_custom_library_fail_load' );
 			return;
 		}
 
@@ -250,12 +250,12 @@ add_action(
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Elementor/class-tools.php';
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-utils.php';
 
-			add_action( 'admin_notices', 'analog_custom_library_require_minimum_elementor' );
+			add_action( 'admin_notices', 'agwp_custom_library_require_minimum_elementor' );
 			return;
 		}
 
 		if ( ! version_compare( get_bloginfo( 'version' ), AGWP_LIBRARY_WP_MINIMUM, '>=' ) ) {
-			add_action( 'admin_notices', 'analog_custom_library_fail_wp_version' );
+			add_action( 'admin_notices', 'agwp_custom_library_fail_wp_version' );
 			return;
 		}
 
@@ -264,4 +264,3 @@ add_action(
 		\AnalogWP\CustomLibrary\Plugin::load( AGWP_LIBRARY_PLUGIN_FILE );
 	}
 );
-
