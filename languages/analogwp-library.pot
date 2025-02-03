@@ -3,13 +3,13 @@
 #: assets/js/app/index.js:1
 msgid ""
 msgstr ""
-"Project-Id-Version: analogwp-library 1.0.4\n"
+"Project-Id-Version: analogwp-library 1.0.5\n"
 "Report-Msgid-Bugs-To: AnalogWP <EMAIL>\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2025-01-22T14:01:13.157Z\n"
+"POT-Creation-Date: 2025-02-03T17:08:29.085Z\n"
 "PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -46,12 +46,12 @@ msgid "https://analogwp.com/"
 msgstr ""
 
 #: analogwp-library.php:49
-#: analogwp-library.php:223
+#: analogwp-library.php:236
 msgid "Custom Library for Elementor requires PHP version %s"
 msgstr ""
 
 #: analogwp-library.php:50
-#: analogwp-library.php:224
+#: analogwp-library.php:237
 msgid "Error Activating"
 msgstr ""
 
@@ -157,18 +157,6 @@ msgstr ""
 msgid "Import Template"
 msgstr ""
 
-#: inc/Elementor/class-finder-shortcuts.php:33
-msgid "Custom Library for Elementor Shortcuts"
-msgstr ""
-
-#: inc/Elementor/class-finder-shortcuts.php:46
-msgid "Templates Library"
-msgstr ""
-
-#: inc/Elementor/class-finder-shortcuts.php:58
-msgid "Theme Custom Library for Elementor"
-msgstr ""
-
 #: inc/Settings/class-register-settings.php:59
 msgid "Custom Library Settings"
 msgstr ""
@@ -205,6 +193,18 @@ msgstr ""
 
 #: inc/Settings/class-admin-settings.php:744
 msgid "Revert to Default"
+msgstr ""
+
+#: inc/Elementor/class-finder-shortcuts.php:33
+msgid "Custom Library for Elementor Shortcuts"
+msgstr ""
+
+#: inc/Elementor/class-finder-shortcuts.php:46
+msgid "Templates Library"
+msgstr ""
+
+#: inc/Elementor/class-finder-shortcuts.php:58
+msgid "Theme Custom Library for Elementor"
 msgstr ""
 
 #: inc/Admin/class-notice.php:151

@@ -3,14 +3,14 @@
  * Plugin main file.
  *
  * @package     AnalogWP/CustomLibrary
- * @copyright   2024 SmallTownDev
+ * @copyright   2025 SmallTownDev
  * @link        https://analogwp.com/analogwp-library
  *
  * @wordpress-plugin
  * Plugin Name: Custom Library for Elementor
  * Plugin URI:  https://github.com/analogwp/analogwp-library
  * Description: Custom Library for Elementor creates the foundation for a design framework that will help you create better, more consistent websites with Elementor.
- * Version:     1.0.4
+ * Version:     1.0.5
  * Author:      AnalogWP
  * Author URI:  https://analogwp.com/
  * License:     GPL2
@@ -19,8 +19,8 @@
  * Requires at least: 6.0
  * Requires PHP: 7.4
  *
- * Elementor tested up to: 3.27.0
- * Elementor Pro tested up to: 3.27.0
+ * Elementor tested up to: 3.27.3
+ * Elementor Pro tested up to: 3.27.2
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) || exit;
 define( 'AGWP_LIBRARY_ELEMENTOR_MINIMUM', '3.20.0' );
 define( 'AGWP_LIBRARY_PHP_MINIMUM', '7.4' );
 define( 'AGWP_LIBRARY_WP_MINIMUM', '6.0' );
-define( 'AGWP_LIBRARY_VERSION', '1.0.4' );
+define( 'AGWP_LIBRARY_VERSION', '1.0.5' );
 define( 'AGWP_LIBRARY_PLUGIN_FILE', __FILE__ );
 define( 'AGWP_LIBRARY_PLUGIN_URL', plugin_dir_url( AGWP_LIBRARY_PLUGIN_FILE ) );
 define( 'AGWP_LIBRARY_PLUGIN_DIR', plugin_dir_path( AGWP_LIBRARY_PLUGIN_FILE ) );
@@ -42,19 +42,19 @@ define( 'AGWP_LIBRARY_PLUGIN_BASE', plugin_basename( AGWP_LIBRARY_PLUGIN_FILE ) 
  * @access private
  * @return void
  */
-function analog_custom_library_activate_plugin() {
+function agwp_custom_library_activate_plugin() {
 	if ( version_compare( PHP_VERSION, AGWP_LIBRARY_PHP_MINIMUM, '<' ) ) {
 		wp_die(
-			/* translators: %s: version number */
+		/* translators: %s: version number */
 			esc_html( sprintf( __( 'Custom Library for Elementor requires PHP version %s', 'analogwp-library' ), AGWP_LIBRARY_PHP_MINIMUM ) ),
 			esc_html__( 'Error Activating', 'analogwp-library' )
 		);
 	}
 
-	do_action( 'analog_custom_library_activation' );
+	do_action( 'agwp_custom_library_activation' );
 }
 
-register_activation_hook( __FILE__, 'analog_custom_library_activate_plugin' );
+register_activation_hook( __FILE__, 'agwp_custom_library_activate_plugin' );
 
 /**
  * Handles plugin deactivation.
@@ -62,22 +62,22 @@ register_activation_hook( __FILE__, 'analog_custom_library_activate_plugin' );
  * @access private
  * @return void
  */
-function analog_custom_library_deactivate_plugin() {
+function agwp_custom_library_deactivate_plugin() {
 	if ( version_compare( PHP_VERSION, AGWP_LIBRARY_PHP_MINIMUM, '<' ) ) {
 		return;
 	}
 
-	do_action( 'analog_custom_library_deactivation' );
+	do_action( 'agwp_custom_library_deactivation' );
 }
 
-register_deactivation_hook( __FILE__, 'analog_custom_library_deactivate_plugin' );
+register_deactivation_hook( __FILE__, 'agwp_custom_library_deactivate_plugin' );
 
 /**
  * Fail loading, if WordPress version requirements not met.
  *
  * @return void
  */
-function analog_custom_library_fail_wp_version() {
+function agwp_custom_library_fail_wp_version() {
 	/* translators: %s: WordPress version */
 	$message      = sprintf( esc_html__( 'Custom Library for Elementor requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.', 'analogwp-library' ), AGWP_LIBRARY_WP_MINIMUM );
 	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
@@ -90,7 +90,7 @@ function analog_custom_library_fail_wp_version() {
  *
  * @return mixed
  */
-function analog_custom_library_require_minimum_elementor() {
+function agwp_custom_library_require_minimum_elementor() {
 	$file_path = 'elementor/elementor.php';
 
 	$link = add_query_arg(
@@ -119,7 +119,7 @@ function analog_custom_library_require_minimum_elementor() {
  *
  * @return mixed|bool
  */
-function analog_custom_library_fail_load() {
+function agwp_custom_library_fail_load() {
 	$screen = get_current_screen();
 
 	if ( isset( $screen->parent_file ) && 'plugins.php' === $screen->parent_file && 'update' === $screen->id ) {
@@ -170,31 +170,35 @@ if ( is_readable( $vendor_file ) ) {
 	require_once $vendor_file;
 }
 
-if ( ! function_exists( 'analog_custom_library_for_elementor_fs' ) ) {
+if ( ! function_exists( 'agwp_custom_library_for_elementor_fs' ) ) {
 	/**
-	 * A helper function for easy Freemius SDK access.
+	 * Create a helper function for easy SDK access.
+	 *
+	 * @return object
 	 */
-	function analog_custom_library_for_elementor_fs() {
-		global $custom_library_for_elementor_fs;
+	function agwp_custom_library_for_elementor_fs() {
+		global $agwp_custom_library_for_elementor_fs;
 
-		if ( ! isset( $custom_library_for_elementor_fs ) ) {
+		if ( ! isset( $agwp_custom_library_for_elementor_fs ) ) {
 			// Manually include the Freemius SDK (not needed if using Composer).
 
-			$custom_library_for_elementor_fs = fs_dynamic_init(
+			$agwp_custom_library_for_elementor_fs = fs_dynamic_init(
 				array(
 					'id'             => '17229',
 					'slug'           => 'analogwp-library',
+					'premium_slug'   => 'custom-library-for-elementor-premium',
 					'type'           => 'plugin',
 					'public_key'     => 'pk_933cd86a01a4af4c84ed15dae1d5f',
 					'is_premium'     => false,
-					'has_addons'     => false,
+					'has_addons'     => true,
 					'has_paid_plans' => false,
 					'menu'           => array(
-						'slug'       => 'analog-custom-library-settings',
-						'first-path' => 'admin.php?page=analog-custom-library-settings',
-						'account'    => false,
-						'support'    => false,
-						'parent'     => array(
+						'slug'           => 'analog-custom-library-settings',
+						'override_exact' => true,
+						'first-path'     => 'admin.php?page=analog-custom-library-settings',
+						'account'        => false,
+						'support'        => false,
+						'parent'         => array(
 							'slug' => 'edit.php?post_type=elementor_library',
 						),
 					),
@@ -202,13 +206,22 @@ if ( ! function_exists( 'analog_custom_library_for_elementor_fs' ) ) {
 			);
 		}
 
-		return $custom_library_for_elementor_fs;
+		return $agwp_custom_library_for_elementor_fs;
 	}
 
 	// Init Freemius.
-	analog_custom_library_for_elementor_fs();
+	agwp_custom_library_for_elementor_fs();
 	// Signal that SDK was initiated.
-	do_action( 'analog_custom_library_for_elementor_fs_loaded' );
+	do_action( 'agwp_custom_library_for_elementor_fs_loaded' );
+
+	function agwp_custom_library_for_elementor_fs_settings_url() {
+		return admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings' );
+	}
+
+	agwp_custom_library_for_elementor_fs()->add_filter( 'connect_url', 'agwp_custom_library_for_elementor_fs_settings_url' );
+	agwp_custom_library_for_elementor_fs()->add_filter( 'after_skip_url', 'agwp_custom_library_for_elementor_fs_settings_url' );
+	agwp_custom_library_for_elementor_fs()->add_filter( 'after_connect_url', 'agwp_custom_library_for_elementor_fs_settings_url' );
+	agwp_custom_library_for_elementor_fs()->add_filter( 'after_pending_connect_url', 'agwp_custom_library_for_elementor_fs_settings_url' );
 }
 
 /**
@@ -226,7 +239,7 @@ add_action(
 		}
 
 		if ( ! did_action( 'elementor/loaded' ) ) {
-			add_action( 'admin_notices', 'analog_custom_library_fail_load' );
+			add_action( 'admin_notices', 'agwp_custom_library_fail_load' );
 			return;
 		}
 
@@ -237,12 +250,12 @@ add_action(
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Elementor/class-tools.php';
 			require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-utils.php';
 
-			add_action( 'admin_notices', 'analog_custom_library_require_minimum_elementor' );
+			add_action( 'admin_notices', 'agwp_custom_library_require_minimum_elementor' );
 			return;
 		}
 
 		if ( ! version_compare( get_bloginfo( 'version' ), AGWP_LIBRARY_WP_MINIMUM, '>=' ) ) {
-			add_action( 'admin_notices', 'analog_custom_library_fail_wp_version' );
+			add_action( 'admin_notices', 'agwp_custom_library_fail_wp_version' );
 			return;
 		}
 
@@ -251,4 +264,3 @@ add_action(
 		\AnalogWP\CustomLibrary\Plugin::load( AGWP_LIBRARY_PLUGIN_FILE );
 	}
 );
-
