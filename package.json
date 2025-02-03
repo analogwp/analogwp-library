@@ -1,6 +1,6 @@
 {
   "name": "analogwp-library",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Your own custom library of templates for Elementor.",
   "main": "/client/index.js",
   "private": true,
