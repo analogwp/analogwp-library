@@ -1258,6 +1258,8 @@
 	flex-direction: row-reverse;
 	align-items: center;
 	padding: 16px 24px;
+	position: sticky;
+	z-index: 999;
 }
 
 #analog-custom-library .horizontal > .sidebar .components-tab-panel__tabs {
