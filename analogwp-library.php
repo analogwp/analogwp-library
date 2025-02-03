@@ -170,31 +170,35 @@ if ( is_readable( $vendor_file ) ) {
 	require_once $vendor_file;
 }
 
-if ( ! function_exists( 'analog_custom_library_for_elementor_fs' ) ) {
+if ( ! function_exists( 'agwp_custom_library_for_elementor_fs' ) ) {
 	/**
-	 * A helper function for easy Freemius SDK access.
+	 * Create a helper function for easy SDK access.
+	 *
+	 * @return object
 	 */
-	function analog_custom_library_for_elementor_fs() {
-		global $custom_library_for_elementor_fs;
+	function agwp_custom_library_for_elementor_fs() {
+		global $agwp_custom_library_for_elementor_fs;
 
-		if ( ! isset( $custom_library_for_elementor_fs ) ) {
+		if ( ! isset( $agwp_custom_library_for_elementor_fs ) ) {
 			// Manually include the Freemius SDK (not needed if using Composer).
 
-			$custom_library_for_elementor_fs = fs_dynamic_init(
+			$agwp_custom_library_for_elementor_fs = fs_dynamic_init(
 				array(
 					'id'             => '17229',
 					'slug'           => 'analogwp-library',
+					'premium_slug'   => 'custom-library-for-elementor-premium',
 					'type'           => 'plugin',
 					'public_key'     => 'pk_933cd86a01a4af4c84ed15dae1d5f',
 					'is_premium'     => false,
-					'has_addons'     => false,
+					'has_addons'     => true,
 					'has_paid_plans' => false,
 					'menu'           => array(
-						'slug'       => 'analog-custom-library-settings',
-						'first-path' => 'admin.php?page=analog-custom-library-settings',
-						'account'    => false,
-						'support'    => false,
-						'parent'     => array(
+						'slug'           => 'analog-custom-library-settings',
+						'override_exact' => true,
+						'first-path'     => 'admin.php?page=analog-custom-library-settings',
+						'account'        => false,
+						'support'        => false,
+						'parent'         => array(
 							'slug' => 'edit.php?post_type=elementor_library',
 						),
 					),
@@ -202,13 +206,22 @@ if ( ! function_exists( 'analog_custom_library_for_elementor_fs' ) ) {
 			);
 		}
 
-		return $custom_library_for_elementor_fs;
+		return $agwp_custom_library_for_elementor_fs;
 	}
 
 	// Init Freemius.
-	analog_custom_library_for_elementor_fs();
+	agwp_custom_library_for_elementor_fs();
 	// Signal that SDK was initiated.
-	do_action( 'analog_custom_library_for_elementor_fs_loaded' );
+	do_action( 'agwp_custom_library_for_elementor_fs_loaded' );
+
+	function agwp_custom_library_for_elementor_fs_settings_url() {
+		return admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings' );
+	}
+
+	agwp_custom_library_for_elementor_fs()->add_filter( 'connect_url', 'agwp_custom_library_for_elementor_fs_settings_url' );
+	agwp_custom_library_for_elementor_fs()->add_filter( 'after_skip_url', 'agwp_custom_library_for_elementor_fs_settings_url' );
+	agwp_custom_library_for_elementor_fs()->add_filter( 'after_connect_url', 'agwp_custom_library_for_elementor_fs_settings_url' );
+	agwp_custom_library_for_elementor_fs()->add_filter( 'after_pending_connect_url', 'agwp_custom_library_for_elementor_fs_settings_url' );
 }
 
 /**
