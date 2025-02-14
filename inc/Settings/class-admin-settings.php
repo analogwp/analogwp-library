@@ -121,12 +121,12 @@ class Admin_Settings {
 		global $current_section, $current_tab;
 
 		do_action( 'analog_custom_library_settings_start' );
-		wp_enqueue_style( 'analog_custom_library_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/admin-settings.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/admin-settings.css' ) );
+		wp_enqueue_style( 'analog_custom_library_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/admin-settings.css', array( 'wp-color-picker' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/admin-settings.css' ) );
 
 		// Enqueue all necessary WP Media APIs.
 		wp_enqueue_media();
 
-		wp_enqueue_script( 'analog_custom_library_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/admin-settings.js', array( 'jquery', 'wp-util', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'wp-i18n', 'wp-api-fetch' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/admin-settings.js' ), true );
+		wp_enqueue_script( 'analog_custom_library_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/admin-settings.js', array( 'jquery', 'wp-util', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'wp-i18n', 'wp-api-fetch', 'wp-color-picker' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/admin-settings.js' ), true );
 
 		wp_localize_script(
 			'analog_custom_library_settings',
@@ -601,16 +601,15 @@ class Admin_Settings {
 									<?php foreach ( $value['options'] as $key => $val ) : ?>
 									<li>
 										<label>
-											<input
-												type="checkbox"
-												name="<?php echo esc_attr( $value['id'] ); ?>[<?php echo esc_attr( $key ); ?>]"
-												id="<?php echo esc_attr( $value['id'] ); ?>[<?php echo esc_attr( $key ); ?>]"
-												value="1"
-												<?php checked( isset( $option_value[ $key ] ) ? $option_value[ $key ] : 0, true ); ?>
-											/>
-											<span>
-												<span><?php esc_html_e( 'Toggle', 'analogwp-library' ); ?></span>
-											</span>
+											<div>
+												<input
+													type="checkbox"
+													name="<?php echo esc_attr( $value['id'] ); ?>[<?php echo esc_attr( $key ); ?>]"
+													id="<?php echo esc_attr( $value['id'] ); ?>[<?php echo esc_attr( $key ); ?>]"
+													value="1"
+													<?php checked( isset( $option_value[ $key ] ) ? $option_value[ $key ] : 0, true ); ?>
+												/>
+											</div>
 											<p><?php echo esc_html( $val ); ?></p>
 										</label>
 									</li>
@@ -754,6 +753,37 @@ class Admin_Settings {
 									/><?php echo esc_html( $value['suffix'] ); ?>
 									<?php echo $description; // phpcs:ignore. ?>
 							</div>
+						</td>
+					</tr>
+					<?php
+					break;
+
+				case 'color':
+					$option_value  = $value['value'];
+					$default_color = $value['default'];
+					$has_color_set = false;
+
+					if ( ! empty( $option_value ) && $option_value !== $default_color ) {
+						$has_color_set = true;
+					}
+					?>
+
+					<tr valign="top">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
+							<input
+								name="<?php echo esc_attr( $value['id'] ); ?>"
+								id="<?php echo esc_attr( $value['id'] ); ?>"
+								style="<?php echo esc_attr( $value['css'] ); ?>"
+								type="text"
+								data-default-color="<?php echo esc_attr( $default_color ); ?>"
+								value="<?php echo $has_color_set ? esc_attr( $option_value ) : ''; ?>"
+								class="color-field <?php echo esc_attr( $value['class'] ); ?>"
+								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+								/>
+
+								<?php if ( ! empty( $value['title'] ) ) : ?>
+									<div><p><?php echo esc_html( $value['title'] ); ?></p> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></div>
+								<?php endif; ?>
 						</td>
 					</tr>
 					<?php
