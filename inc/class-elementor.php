@@ -44,8 +44,6 @@ class Elementor {
 		// Independent components.
 		wp_enqueue_style( 'analog-custom-library-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/library-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/library-components.css' ) );
 
-		do_action( 'analog_custom_library_loaded_templates' );
-
 		wp_enqueue_script( 'analog-custom-library-elementor-modal', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/elementor-modal.js', array( 'jquery' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/elementor-modal.js' ), false );
 		wp_enqueue_style( 'analog-custom-library-elementor-modal', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/elementor-modal.css', array( 'dashicons' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/elementor-modal.css' ) );
 
@@ -81,6 +79,8 @@ class Elementor {
 		wp_localize_script( 'analog-custom-library-app', 'AGWP_LIBRARY', $l10n );
 
 		Utils::enqueue_settings_toggle_css();
+
+		do_action( 'analog_custom_library_loaded_scripts_styles' );
 	}
 }
 
