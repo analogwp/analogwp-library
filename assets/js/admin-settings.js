@@ -115,5 +115,8 @@
 				return false;
 			}
 		);
+
+		// Initialize WP Color Picker.
+		$( '.color-field' ).wpColorPicker();
 	} );
 }( jQuery, analog_custom_library_settings_data, wp ) );
