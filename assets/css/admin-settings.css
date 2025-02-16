@@ -192,6 +192,7 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 .ang-custom-library .forminp-color .wp-picker-container.wp-picker-active .wp-picker-holder {
 	position: absolute;
 	top: 40px;
+	z-index: 999;
 }
 
 .ang-custom-library .forminp-color p {
