@@ -48,7 +48,7 @@ const Container = styled.div.attrs({
 	}
 
 	.button-plain {
-		color: #fff !important;
+		color: var(--analog-custom-library-btn-text) !important;
 		font-weight: bold;
 		text-decoration: none;
 		display: inline-flex;
