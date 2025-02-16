@@ -118,5 +118,8 @@
 
 		// Initialize WP Color Picker.
 		$( '.color-field' ).wpColorPicker();
+
+		// Initialize Select2.
+		$( '.ang-custom-library .forminp-multiselect select' ).select2();
 	} );
 }( jQuery, analog_custom_library_settings_data, wp ) );
