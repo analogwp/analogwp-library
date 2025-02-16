@@ -12,7 +12,9 @@ const rotate = keyframes`
   }
 `;
 
-const Container = styled.div`
+const Container = styled.div.attrs({
+	className: 'analogwp-header',
+})`
 	padding: 8px 24px;
 	background: var(--analog-custom-library-top-header-bg);
 	border-bottom: 1px solid #DFDFDF;
