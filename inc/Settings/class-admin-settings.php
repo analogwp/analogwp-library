@@ -120,11 +120,20 @@ class Admin_Settings {
 	public static function output() {
 		global $current_section, $current_tab;
 
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
 		do_action( 'analog_custom_library_settings_start' );
+
+		// Select2 styles.
+		wp_enqueue_style( 'analog_custom_library_select2', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/select2' . $suffix . '.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/select2' . $suffix . '.css' ) );
+
 		wp_enqueue_style( 'analog_custom_library_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/admin-settings.css', array( 'wp-color-picker' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/admin-settings.css' ) );
 
 		// Enqueue all necessary WP Media APIs.
 		wp_enqueue_media();
+
+		// Select2 script.
+		wp_enqueue_script( 'analog_custom_library_select2', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/select2' . $suffix . '.js', array( 'jquery' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/select2' . $suffix . '.js' ), true );
 
 		wp_enqueue_script( 'analog_custom_library_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/admin-settings.js', array( 'jquery', 'wp-util', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'wp-i18n', 'wp-api-fetch', 'wp-color-picker' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/admin-settings.js' ), true );
 
@@ -381,11 +390,7 @@ class Admin_Settings {
 				case 'url':
 				case 'tel':
 					$option_value = $value['value'];
-
 					?><tr valign="top">
-						<th scope="row" class="titledesc">
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
-						</th>
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<input
 								name="<?php echo esc_attr( $value['id'] ); ?>"
@@ -397,6 +402,10 @@ class Admin_Settings {
 								placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
 								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 								/><?php echo esc_html( $value['suffix'] ); ?> <?php echo wp_kses_post( $description ); ?>
+
+								<?php if ( ! empty( $value['title'] ) ) : ?>
+									<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
+								<?php endif; ?>
 						</td>
 					</tr>
 					<?php
@@ -510,15 +519,10 @@ class Admin_Settings {
 
 					?>
 					<tr valign="top">
-						<?php if ( ! empty( $value['title'] ) ) { ?>
-						<th scope="row" class="titledesc">
-							<?php if ( false !== strpos( $value['id'], '_experiment' ) ) : ?>
-							<span class="experiment-indicator <?php echo ( false === $value['value'] || 'default' === $value['value'] || 'active' === $value['value'] ) ? 'active' : 'inactive'; ?>"></span>
-							<?php endif; ?>
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
-						</th>
-						<?php } ?>
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
+						<?php if ( ! empty( $value['title'] ) ) : ?>
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
+						<?php endif; ?>
 							<select
 								name="<?php echo esc_attr( $value['id'] ); ?><?php echo ( 'multiselect' === $value['type'] ) ? '[]' : ''; ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
@@ -561,7 +565,7 @@ class Admin_Settings {
 								<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
 							</th>
 						<?php endif; ?>
-						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ) . ' ' . esc_attr( $value['id'] ); ?>">
 							<fieldset>
 								<?php echo wp_kses_post( $description ); ?>
 								<ul>
@@ -594,9 +598,9 @@ class Admin_Settings {
 					<tr valign="top">
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<fieldset>
-								<?php
-								echo wp_kses_post( $description );
-								?>
+								<?php if ( ! empty( $value['title'] ) ) : ?>
+									<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
+								<?php endif; ?>
 								<ul>
 									<?php foreach ( $value['options'] as $key => $val ) : ?>
 									<li>
