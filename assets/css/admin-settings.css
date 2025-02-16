@@ -100,8 +100,8 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 
 .ang-custom-library .collapsible {
 	border: none;
-	border-top: 1px solid#e2e4e7;
-	border-bottom: 1px solid#e2e4e7;
+	border-top: 1px solid #e2e4e7;
+	border-bottom: 1px solid #e2e4e7;
 	background-color: #fff;
 	padding: 15px;
 	outline: none;
@@ -199,6 +199,13 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	margin: 0;
 }
 
+.ang-custom-library input[type="number"] {
+	max-width: 60px;
+	margin-right: 8px;
+	width: 100%;
+	padding-right: 0;
+}
+
 /**
  * Sidebar
  */
@@ -279,6 +286,16 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	line-height: 1;
 }
 
+.ang-custom-library .forminp-multiselect > * {
+	display: block;
+	margin-bottom: 8px;
+}
+
+.ang-custom-library .forminp-multiselect select {
+	width: 100%;
+	max-width: 400px;
+}
+
 /**
  * Notices
  */
@@ -327,3 +344,4 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 .ang-custom-library .forminp-media-image .analog-custom-library-remove-image-btn {
 	margin-left: 10px;
 }
+
