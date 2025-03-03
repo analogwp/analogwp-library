@@ -54,11 +54,16 @@ class Register_Settings {
 			return;
 		}
 
+		$permission = 'manage_options';
+		if ( has_filter( 'analog_library_visibility_enabled', '__return_true' ) ) {
+			$permission = 'read';
+		}
+
 		add_submenu_page(
 			'edit.php?post_type=elementor_library',
 			__( 'Custom Library Settings', 'analogwp-library' ),
 			__( 'Custom Library', 'analogwp-library' ),
-			'manage_options',
+			$permission,
 			'analog-custom-library-settings',
 			array( $this, 'settings_page' ),
 			1
