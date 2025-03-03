@@ -54,10 +54,20 @@ const SidebarWrapper = styled.div`
 		font-weight: normal;
 	}
 
-	.block-categories-tabs .components-button.active-tab {
-		box-shadow: none;
-		font-weight: bold;
-		color: var(--analog-custom-library-categories-active-text) !important;
+	.block-categories-tabs {
+		.components-button.active-tab {
+			box-shadow: none;
+			font-weight: bold;
+			color: var(--analog-custom-library-categories-active-text) !important;
+		}
+		.components-button {
+			&:hover,
+			&:focus,
+			&:active {
+				color: var(--analog-custom-library-categories-active-text) !important;
+			}
+		}
+
 	}
 
 	.block-categories-tabs
