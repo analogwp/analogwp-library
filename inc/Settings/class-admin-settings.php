@@ -122,8 +122,6 @@ class Admin_Settings {
 
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-		do_action( 'analog_custom_library_settings_start' );
-
 		// Select2 styles.
 		wp_enqueue_style( 'analog_custom_library_select2', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/select2' . $suffix . '.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/select2' . $suffix . '.css' ) );
 
@@ -146,6 +144,8 @@ class Admin_Settings {
 				'uploader_btn_text' => __( 'Use this image', 'analogwp-library' ),
 			)
 		);
+
+		do_action( 'analog_custom_library_settings_output' );
 
 		// Get tabs for the settings page.
 		$tabs = apply_filters( 'analog_custom_library_settings_tabs_array', array() );
@@ -518,7 +518,7 @@ class Admin_Settings {
 					$option_value = $value['value'];
 
 					?>
-					<tr valign="top">
+					<tr valign="top" class="<?php echo esc_attr( $value['class'] ?? '' ); ?>">
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 						<?php if ( ! empty( $value['title'] ) ) : ?>
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
