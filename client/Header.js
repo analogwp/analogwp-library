@@ -17,7 +17,7 @@ const Container = styled.div.attrs({
 })`
 	padding: 8px 24px;
 	background: var(--analog-custom-library-top-header-bg);
-	border-bottom: 1px solid #DFDFDF;
+	border-bottom: 1px solid var(--analog-custom-library-top-header-border);
 	color: var(--analog-custom-library-top-header-text);
 
 	.analog-custom-library-container {
@@ -36,7 +36,7 @@ const Container = styled.div.attrs({
 		line-height: 24px;
 		font-weight: 700;
 		text-transform: uppercase;
-		color: #fff;
+		color: var(--analog-custom-library-top-header-text);
 	}
 
 	a {
@@ -88,7 +88,7 @@ const Header = () => {
 		<Container theme={ theme }>
 			<div className="analog-custom-library-container">
 				<div className="logo">
-					<h2>Library</h2>
+					<h2>{ AGWP_LIBRARY?.library_title_text }</h2>
 				</div>
 				<Synchronization />
 			</div>
