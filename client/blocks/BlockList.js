@@ -380,13 +380,13 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 
 											<div className="actions">
 												<a href={AGWP_LIBRARY.siteURL + `?post_type=elementor_library&p=${block.id}&preview=true`}
-												   target="_blank">
+												   target="_blank" className="template-preview-button">
 													<Button isPrimary>
 														<Eye />
 													</Button>
 												</a>
 												<a href={AGWP_LIBRARY.adminURL + `post.php?post=${block.id}&action=elementor`}
-												   target="_blank">
+												   target="_blank" className="template-edit-button">
 													<Button isPrimary>
 														<Pencil/>
 													</Button>
