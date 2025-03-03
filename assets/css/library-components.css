@@ -1,6 +1,7 @@
 #analog-custom-library {
 	--analog-custom-library-top-header-bg: #4D45BD;
 	--analog-custom-library-top-header-text: #FFFFFF;
+	--analog-custom-library-top-header-border: #DFDFDF;
 	--analog-custom-library-categories-bg: #FFFFFF;
 	--analog-custom-library-categories-text: #252525;
 	--analog-custom-library-categories-active-text: #4D45BD;
