@@ -138,10 +138,15 @@ class Admin_Settings {
 		wp_localize_script(
 			'analog_custom_library_settings',
 			'analog_custom_library_settings_data',
-			array(
-				'i18n_nav_warning'  => __( 'The changes you made will be lost if you navigate away from this page.', 'analogwp-library' ),
-				'uploader_title'    => __( 'Select Image', 'analogwp-library' ),
-				'uploader_btn_text' => __( 'Use this image', 'analogwp-library' ),
+			apply_filters(
+				'analog_custom_library_settings_data',
+				array(
+					'i18n_nav_warning'  => __( 'The changes you made will be lost if you navigate away from this page.', 'analogwp-library' ),
+					'uploader_title'    => __( 'Select Image', 'analogwp-library' ),
+					'uploader_btn_text' => __( 'Use this image', 'analogwp-library' ),
+					'bulk_export_url'   => admin_url( 'edit.php' ),
+					'bulk_export_nonce' => wp_create_nonce( 'bulk-posts' ),
+				)
 			)
 		);
 
@@ -788,6 +793,23 @@ class Admin_Settings {
 								<?php if ( ! empty( $value['title'] ) ) : ?>
 									<div><p><?php echo esc_html( $value['title'] ); ?></p> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></div>
 								<?php endif; ?>
+						</td>
+					</tr>
+					<?php
+					break;
+				case 'export-templates':
+					?>
+					<tr valign="top">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
+							<?php if ( ! empty( $value['title'] ) ) : ?>
+								<div><p><?php echo esc_html( $value['title'] ); ?></p> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></div>
+							<?php endif; ?>
+							<?php if ( ! empty( $description ) ) : ?>
+								<div class="description"><p><?php echo wp_kses( $description, $allowed_html_tags ); ?></p></div>
+							<?php endif; ?>
+							<div class="action-button">
+								<button type="button" id="<?php echo esc_attr( $value['id'] ); ?>" class="button button-secondary"><?php echo esc_html__( 'Export All', 'analogwp-library' ); ?></button>
+							</div>
 						</td>
 					</tr>
 					<?php
