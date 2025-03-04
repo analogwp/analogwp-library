@@ -45,6 +45,9 @@ class Library_Init {
 
 		// Sync on template deletion.
 		add_action( 'delete_post', array( $this, 'handle_syncing_on_delete' ), 10, 2 );
+
+		// Add to library on post save.
+		add_action( 'elementor/template-library/after_save_template', array( $this, 'handle_library_template_save' ), 10, 2 );
 	}
 
 	/**
@@ -258,5 +261,34 @@ class Library_Init {
 		}
 
 		$this->remove_template_from_library( $post_id );
+	}
+
+	/**
+	 * Sync library on library template save.
+	 *
+	 * @param int   $template_id Template ID.
+	 * @param array $data Template arguments.
+	 *
+	 * @return void
+	 */
+	public function handle_library_template_save( $template_id, $data ) {
+		if ( ! isset( $data['analog_custom_library_elementor_sync_on_save'] ) || 'on' !== $data['analog_custom_library_elementor_sync_on_save'] ) {
+			return;
+		}
+
+		// Update template meta.
+		update_post_meta( $template_id, 'analog_custom_library_sync_to_library', 1 );
+
+		$transient_key = 'analog_custom_library_push_template_' . $template_id;
+
+		if ( ! get_transient( $transient_key ) ) {
+			// First we prepare.
+			$data = $this->prepare_template_for_save( $template_id );
+
+			// Save in our Database table.
+			$this->sync_template( $data );
+
+			set_transient( $transient_key, true, 5 );
+		}
 	}
 }
