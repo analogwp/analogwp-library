@@ -182,3 +182,17 @@ button[data-action="save_token"] {
 .sub-arrow + .sub-arrow {
 	display: none;
 }
+
+
+#elementor-template-library-save-template #elementor-template-library-save-template-form {
+	position: relative;
+}
+
+#elementor-template-library-save-template .analog-custom-library-template-syncer {
+	position: absolute;
+	bottom: -50px;
+	height: auto;
+}
+
+#elementor-template-library-save-template .analog-custom-library-template-syncer input[type=checkbox] {
+}
