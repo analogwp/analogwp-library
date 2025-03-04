@@ -296,6 +296,10 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	max-width: 400px;
 }
 
+.ang-custom-library .forminp-multiselect .select2-container {
+	width: auto !important;
+}
+
 /**
  * Notices
  */
@@ -345,3 +349,10 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	margin-left: 10px;
 }
 
+.ang-custom-library.import-export .tab-content .submit {
+	display: none;
+}
+
+.ang-custom-library.import-export .forminp-export-templates .description {
+	margin-bottom: 10px;
+}
