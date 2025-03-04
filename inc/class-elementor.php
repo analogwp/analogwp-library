@@ -41,6 +41,11 @@ class Elementor {
 	 * @return void
 	 */
 	public function enqueue_editor_scripts() {
+		if ( has_filter( 'analog_library_visibility_hidden', '__return_true' ) ) {
+			return;
+		}
+
+		$options = Options::get_instance();
 
 		// Independent components.
 		wp_enqueue_style( 'analog-custom-library-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/library-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/library-components.css' ) );
