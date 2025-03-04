@@ -32,6 +32,7 @@ class Elementor {
 			}
 		);
 
+		add_filter( 'elementor/editor/templates', array( $this, 'register_template_overrides' ) );
 	}
 
 	/**
@@ -81,6 +82,17 @@ class Elementor {
 		Utils::enqueue_settings_toggle_css();
 
 		do_action( 'analog_custom_library_loaded_scripts_styles' );
+	}
+
+	/**
+	 * Editor template overrides.
+	 *
+	 * @param array $templates List of templates.
+	 * @return mixed
+	 */
+	public function register_template_overrides( $templates ) {
+		Plugin::elementor()->common->add_template( AGWP_LIBRARY_PLUGIN_DIR . 'inc/Elementor/editor-templates/templates.php' );
+		return $templates;
 	}
 }
 
