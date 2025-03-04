@@ -78,7 +78,8 @@ class Elementor {
 		$l10n = apply_filters( // phpcs:ignore
 			'analog/library/app/strings',
 			array(
-				'is_settings_page' => false,
+				'is_settings_page'   => false,
+				'library_title_text' => $options->has( 'library_title_text' ) ? $options->get( 'library_title_text' ) : __( 'Library', 'analogwp-library-pro' ),
 			)
 		);
 
