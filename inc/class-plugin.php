@@ -211,6 +211,15 @@ final class Plugin {
 	}
 
 	/**
+	 * Checks if pro addon is active.
+	 *
+	 * @return bool
+	 */
+	public function has_pro_active() {
+		return defined( 'AGWP_CL_PRO_VERSION' );
+	}
+
+	/**
 	 * Load plugin language files.
 	 *
 	 * @access public
