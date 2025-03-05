@@ -2,8 +2,8 @@
 Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
-Tested up to: 6.7.1
-Stable tag: 1.0.5
+Tested up to: 6.7.2
+Stable tag: 1.1.0
 Tags: elementor, templates, library, elementor addons, design system
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
