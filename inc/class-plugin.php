@@ -190,7 +190,7 @@ final class Plugin {
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Data/class-base-db.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Data/class-templates-db.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Data/class-library-data.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/class-library-init.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/class-library-manager.php';
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-elementor.php';
 

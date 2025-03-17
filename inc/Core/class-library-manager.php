@@ -1,6 +1,6 @@
 <?php
 /**
- * Library initialization.
+ * Library Manager.
  *
  * @package AnalogWP\CustomLibrary
  */
@@ -13,9 +13,9 @@ use Elementor\TemplateLibrary\Source_Local;
 use WP_Post;
 
 /**
- * Class Library_Init.
+ * Class Library_Manager.
  */
-class Library_Init extends Base {
+class Library_Manager extends Base {
 	/**
 	 * Holds Template DB instance.
 	 *
