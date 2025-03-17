@@ -356,6 +356,8 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	display: none;
 }
 
+
+.ang-custom-library.import-export .forminp-import-templates .description,
 .ang-custom-library.import-export .forminp-export-templates .description {
 	margin-top: 0;
 	margin-bottom: 10px;
@@ -401,6 +403,10 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	padding: 8px 8px;
 }
 
+.ang-custom-library td[class*=" forminp-promo-"] input[type="submit"]:disabled {
+	padding: 5px 16px;
+}
+
 .ang-custom-library td[class*=" forminp-promo-"] input + a {
 	margin-left: 8px;
 }
@@ -442,3 +448,4 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	margin-top: 0;
 	margin-bottom: 10px;
 }
+
