@@ -7,6 +7,7 @@
 
 namespace AnalogWP\CustomLibrary\Core;
 
+use AnalogWP\CustomLibrary\Base;
 use AnalogWP\CustomLibrary\Core\Data\Templates_DB;
 use Elementor\TemplateLibrary\Source_Local;
 use WP_Post;
@@ -14,7 +15,7 @@ use WP_Post;
 /**
  * Class Library_Init.
  */
-class Library_Init {
+class Library_Init extends Base {
 	/**
 	 * Holds Template DB instance.
 	 *
@@ -120,7 +121,7 @@ class Library_Init {
 		?>
 		<div>
 			<label for="analog_custom_library_sync_to_library"><input type="checkbox" name="analog_custom_library_sync_to_library" id="analog_custom_library_sync_to_library" value="1" <?php checked( $sync_to_library, 1 ); ?>>
-				&nbsp;Add to library</label>
+				&nbsp;<?php esc_html_e( 'Add to library', 'analogwp-library' ); ?></label>
 		</div>
 		<?php
 		// HTML is included. Ignoring!
@@ -276,6 +277,17 @@ class Library_Init {
 			return;
 		}
 
+		$this->add_template_to_library( $template_id );
+	}
+
+	/**
+	 * Add template to library.
+	 *
+	 * @param int $template_id Template ID.
+	 *
+	 * @return void
+	 */
+	public function add_template_to_library( $template_id ) {
 		// Update template meta.
 		update_post_meta( $template_id, 'analog_custom_library_sync_to_library', 1 );
 
