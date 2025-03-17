@@ -105,6 +105,8 @@ class Register_Settings {
 		} elseif ( '' === $current_section && apply_filters( "ang_save_settings_{$current_tab}", ! empty( $_POST['save'] ) ) ) { // phpcs:ignore
 			Admin_Settings::save();
 		}
+
+		do_action( 'analog_custom_library_settings_pages', $current_tab, $current_section );
 	}
 
 	/**
