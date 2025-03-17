@@ -145,8 +145,6 @@ class Admin_Settings {
 					'i18n_nav_warning'  => __( 'The changes you made will be lost if you navigate away from this page.', 'analogwp-library' ),
 					'uploader_title'    => __( 'Select Image', 'analogwp-library' ),
 					'uploader_btn_text' => __( 'Use this image', 'analogwp-library' ),
-					'bulk_export_url'   => admin_url( 'edit.php' ),
-					'bulk_export_nonce' => wp_create_nonce( 'bulk-posts' ),
 				)
 			)
 		);
@@ -986,6 +984,54 @@ class Admin_Settings {
 								<?php if ( ! empty( $value['title'] ) ) : ?>
 									<div><p><?php echo esc_html( $value['title'] ); ?></p> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></div>
 								<?php endif; ?>
+						</td>
+					</tr>
+					<?php
+					break;
+				case 'import-templates':
+					$import_templates_nonce = wp_create_nonce( 'analog_custom_library_templates_import' );
+					?>
+					<tr valign="top">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
+							<?php if ( ! empty( $value['title'] ) ) : ?>
+								<div><p><?php echo esc_html( $value['title'] ); ?></p> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></div>
+							<?php endif; ?>
+							<?php if ( ! empty( $description ) ) : ?>
+								<div class="description"><p><?php echo wp_kses( $description, $allowed_html_tags ); ?></p></div>
+							<?php endif; ?>
+							<div class="action-button">
+								<div id="<?php echo esc_attr( $value['id'] ); ?>">
+									<input type="hidden" name="action" value="analog_custom_library_templates_import">
+									<input type="hidden" name="_nonce" value="<?php echo esc_attr( $import_templates_nonce ); ?>">
+									<fieldset>
+										<input type="file" name="file" accept=".json,application/json,.zip,application/octet-stream,application/zip,application/x-zip,application/x-zip-compressed" required>
+										<input id="analog-cl-import-template-action" type="submit" class="button" value="<?php echo esc_attr__( 'Import', 'analogwp-library' ); ?>">
+									</fieldset>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<?php
+					break;
+
+				case 'promo-import-templates':
+					?>
+					<tr valign="top">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
+							<?php if ( ! empty( $value['title'] ) ) : ?>
+								<div><p><?php echo esc_html( $value['title'] ); ?></p> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></div>
+							<?php endif; ?>
+							<?php if ( ! empty( $description ) ) : ?>
+								<div class="description"><p><?php echo wp_kses( $description, $allowed_html_tags ); ?></p></div>
+							<?php endif; ?>
+							<div class="action-button">
+								<div id="<?php echo esc_attr( $value['id'] ); ?>">
+									<fieldset>
+										<input type="file" name="file" accept=".json,application/json,.zip,application/octet-stream,application/zip,application/x-zip,application/x-zip-compressed" required disabled>
+										<input id="analog-cl-import-template-action" type="submit" class="button" value="<?php echo esc_attr__( 'Import', 'analogwp-library' ); ?>" disabled>
+									</fieldset>
+								</div>
+							</div>
 						</td>
 					</tr>
 					<?php
