@@ -7,7 +7,7 @@
 
 namespace AnalogWP\CustomLibrary;
 
-use AnalogWP\CustomLibrary\Core\Library_Init;
+use AnalogWP\CustomLibrary\Core\Library_Manager;
 use Elementor\Core\Common\Modules\Finder\Categories_Manager;
 
 /**
@@ -19,7 +19,7 @@ class Elementor {
 	 */
 	public function __construct() {
 		// Initiate Library.
-		new Library_Init();
+		Library_Manager::get_instance();
 
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'enqueue_editor_scripts' ) );
 		add_action( 'elementor/preview/enqueue_styles', array( $this, 'enqueue_editor_scripts' ) );
