@@ -23,7 +23,7 @@ class Import_Export extends Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'import-export';
-		$this->label = __( 'Export Library', 'analogwp-library' );
+		$this->label = __( 'Importer / Exporter', 'analogwp-library' );
 
 		parent::__construct();
 	}
@@ -36,27 +36,43 @@ class Import_Export extends Settings_Page {
 	public function get_settings() {
 		$settings = apply_filters(
 			'analog_custom_library_import_export_settings',
-			array(
-			)
+			array()
 		);
 
 		if ( ! Plugin::instance()->has_pro_active() ) {
-			$settings = array_merge( $settings, array(
+			$settings = array_merge(
+				$settings,
 				array(
-					'type'  => 'promo-title',
-					'title' => esc_html__( 'Export Templates', 'analogwp-library' ),
-					'id'    => 'analog_custom_library_pro_export_templates_title',
-				),
-				array(
-					'type' => 'promo-export-templates',
-					'desc' => esc_html__( 'Exports all the templates published and available in the Custom Library. You can import the exported zip via the importer at Elementor Templates Library.', 'analogwp-library' ),
-					'id'   => 'analog_custom_library_pro_export_templates',
-				),
-				array(
-					'type' => 'sectionend',
-					'id'   => 'analog_custom_library_pro_export_templates_title',
-				),
-			));
+					array(
+						'type'  => 'promo-title',
+						'title' => esc_html__( 'Templates Importer', 'analogwp-library-pro' ),
+						'id'    => 'analog_custom_library_pro_import_templates_title',
+					),
+					array(
+						'type' => 'promo-import-templates',
+						'desc' => esc_html__( 'Imports .json or .zip files exported only via the Custom Library Pro templates exporter.', 'analogwp-library' ),
+						'id'   => 'analog_custom_library_pro_import_templates',
+					),
+					array(
+						'type' => 'sectionend',
+						'id'   => 'analog_custom_library_pro_import_templates_title',
+					),
+					array(
+						'type'  => 'promo-title',
+						'title' => esc_html__( 'Templates Exporter', 'analogwp-library' ),
+						'id'    => 'analog_custom_library_pro_export_templates_title',
+					),
+					array(
+						'type' => 'promo-export-templates',
+						'desc' => esc_html__( 'Exports all the templates published and available in the Custom Library.', 'analogwp-library' ),
+						'id'   => 'analog_custom_library_pro_export_templates',
+					),
+					array(
+						'type' => 'sectionend',
+						'id'   => 'analog_custom_library_pro_export_templates_title',
+					),
+				)
+			);
 		}
 
 		return apply_filters( 'analog_custom_library_get_settings_' . $this->id, $settings );
