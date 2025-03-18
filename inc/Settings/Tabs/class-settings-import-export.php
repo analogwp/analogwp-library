@@ -45,7 +45,7 @@ class Import_Export extends Settings_Page {
 				array(
 					array(
 						'type'  => 'promo-title',
-						'title' => esc_html__( 'Templates Importer', 'analogwp-library-pro' ),
+						'title' => esc_html__( 'Templates Importer', 'analogwp-library' ),
 						'id'    => 'analog_custom_library_pro_import_templates_title',
 					),
 					array(
