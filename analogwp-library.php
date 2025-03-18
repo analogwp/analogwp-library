@@ -19,8 +19,8 @@
  * Requires at least: 6.0
  * Requires PHP: 7.4
  *
- * Elementor tested up to: 3.27.7
- * Elementor Pro tested up to: 3.27.7
+ * Elementor tested up to: 3.28.0
+ * Elementor Pro tested up to: 3.28.0
  */
 
 defined( 'ABSPATH' ) || exit;

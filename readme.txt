@@ -11,6 +11,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Custom Library for Elementor is your new home for all your template assets. Save and organize your most-used templates into categories and access them instantly from within the editor.
 
 == Description ==
+[🚀[Pro] Grab the premium version at a Lifetime Deal](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
 
 https://www.youtube.com/watch?v=9RTBS6rhYgg
 
@@ -88,6 +89,12 @@ Feel free to reach out via the [contact page](https://analogwp.com/contact/).
 4. Custom Library popup modal in the Elementor Editor.
 
 == Changelog ==
+
+= 1.1.0 =
+* New: Added changes for Custom Library Pro
+* New: Promo settings for Custom Library Pro addon
+* Improvement: Other major improvements
+* Improvement: Compatibility with Elementor 3.28.0 and Elementor Pro 3.28.0
 
 = 1.0.5 =
 * Improvement: Horizontal category bar should remain sticky on top
