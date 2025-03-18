@@ -7,7 +7,7 @@
 
 namespace AnalogWP\CustomLibrary;
 
-use AnalogWP\CustomLibrary\Core\Library_Init;
+use AnalogWP\CustomLibrary\Core\Library_Manager;
 use Elementor\Core\Common\Modules\Finder\Categories_Manager;
 
 /**
@@ -19,7 +19,7 @@ class Elementor {
 	 */
 	public function __construct() {
 		// Initiate Library.
-		new Library_Init();
+		Library_Manager::get_instance();
 
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'enqueue_editor_scripts' ) );
 		add_action( 'elementor/preview/enqueue_styles', array( $this, 'enqueue_editor_scripts' ) );
@@ -32,6 +32,7 @@ class Elementor {
 			}
 		);
 
+		add_filter( 'elementor/editor/templates', array( $this, 'register_template_overrides' ) );
 	}
 
 	/**
@@ -40,11 +41,14 @@ class Elementor {
 	 * @return void
 	 */
 	public function enqueue_editor_scripts() {
+		if ( has_filter( 'analog_library_visibility_hidden', '__return_true' ) ) {
+			return;
+		}
+
+		$options = Options::get_instance();
 
 		// Independent components.
 		wp_enqueue_style( 'analog-custom-library-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/library-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/library-components.css' ) );
-
-		do_action( 'analog_custom_library_loaded_templates' );
 
 		wp_enqueue_script( 'analog-custom-library-elementor-modal', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/elementor-modal.js', array( 'jquery' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/elementor-modal.js' ), false );
 		wp_enqueue_style( 'analog-custom-library-elementor-modal', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/elementor-modal.css', array( 'dashicons' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/elementor-modal.css' ) );
@@ -74,13 +78,27 @@ class Elementor {
 		$l10n = apply_filters( // phpcs:ignore
 			'analog/library/app/strings',
 			array(
-				'is_settings_page' => false,
+				'is_settings_page'   => false,
+				'library_title_text' => Plugin::instance()->has_pro_active() && $options->has( 'library_title_text' ) ? $options->get( 'library_title_text' ) : __( 'Library', 'analogwp-library' ),
 			)
 		);
 
 		wp_localize_script( 'analog-custom-library-app', 'AGWP_LIBRARY', $l10n );
 
 		Utils::enqueue_settings_toggle_css();
+
+		do_action( 'analog_custom_library_loaded_scripts_styles' );
+	}
+
+	/**
+	 * Editor template overrides.
+	 *
+	 * @param array $templates List of templates.
+	 * @return mixed
+	 */
+	public function register_template_overrides( $templates ) {
+		Plugin::elementor()->common->add_template( AGWP_LIBRARY_PLUGIN_DIR . 'inc/Elementor/editor-templates/templates.php' );
+		return $templates;
 	}
 }
 

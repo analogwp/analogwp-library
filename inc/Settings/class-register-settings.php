@@ -54,11 +54,16 @@ class Register_Settings {
 			return;
 		}
 
+		$permission = 'manage_options';
+		if ( has_filter( 'analog_library_visibility_enabled', '__return_true' ) ) {
+			$permission = 'read';
+		}
+
 		add_submenu_page(
 			'edit.php?post_type=elementor_library',
 			__( 'Custom Library Settings', 'analogwp-library' ),
 			__( 'Custom Library', 'analogwp-library' ),
-			'manage_options',
+			$permission,
 			'analog-custom-library-settings',
 			array( $this, 'settings_page' ),
 			1
@@ -100,6 +105,8 @@ class Register_Settings {
 		} elseif ( '' === $current_section && apply_filters( "ang_save_settings_{$current_tab}", ! empty( $_POST['save'] ) ) ) { // phpcs:ignore
 			Admin_Settings::save();
 		}
+
+		do_action( 'analog_custom_library_settings_pages', $current_tab, $current_section );
 	}
 
 	/**

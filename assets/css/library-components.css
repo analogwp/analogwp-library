@@ -1,6 +1,7 @@
 #analog-custom-library {
 	--analog-custom-library-top-header-bg: #4D45BD;
 	--analog-custom-library-top-header-text: #FFFFFF;
+	--analog-custom-library-top-header-border: #DFDFDF;
 	--analog-custom-library-categories-bg: #FFFFFF;
 	--analog-custom-library-categories-text: #252525;
 	--analog-custom-library-categories-active-text: #4D45BD;
@@ -9,11 +10,12 @@
 	--analog-custom-library-thumbnail-border: #E0E0E0;
 	--analog-custom-library-btn-bg: #4D45BD;
 	--analog-custom-library-btn-text: #FFFFFF;
-	--analog-custom-library-btn-border: #E0E0E0;
+	--analog-custom-library-btn-border: #4D45BD;
 	--analog-custom-library-notice-bg: #CCEEFF;
 	--analog-custom-library-notice-text: #0073AA;
 	--analog-custom-library-notice-border: #0073AA;
 	--analog-custom-library-btn-radius: 5px;
+	--analog-custom-library-btn-border-width: 1px;
 
 	/* Fallback */
 	--analog-custom-library-primary: #4D45BD;
@@ -30,31 +32,12 @@
 
 /*Top navigation tab CSS*/
 /*START*/
-#sk-library-heading {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	margin-bottom: 10px;
-}
-
-#sk-library-heading .is-secondary {
-	margin-left: 10px;
-}
-
-#sk-library-heading button{
-	width: 100px;
-	height: 30px;
-	display: inline-block;
-	text-align: center;
-}
-
 #analog-custom-library .close-modal {
 	margin-left: 8px;
 }
 
 #analog-custom-library .logo + .actions svg {
-	color: #fff;
+	color: currentColor;
 	fill: none;
 }
 
@@ -72,28 +55,10 @@
 	border-radius: var(--analog-custom-library-btn-radius, 5px) !important;
 }
 
-#sk-library-tab .components-button {
-	padding: 32px 20px;
-	margin: 0 10px;
-	border-radius: 0;
-	font-weight: bold;
-	color: #828282;
-	text-transform: uppercase;
+#analog-custom-library .analogwp-header button.components-button {
+	color: var(--analog-custom-library-top-header-text);
 }
 
-#sk-library-tab .components-button:not(:last-of-type) {
-	border-right: 1px solid #DFDFDF;
-}
-
-#sk-library-tab .components-button:hover {
-	box-shadow: none;
-}
-
-#sk-library-tab .components-button.is-active{
-	box-shadow: none;
-	color: #474747;
-	position: relative;
-}
 /*END*/
 
 #analog-custom-library .analogwp-content {
@@ -852,16 +817,7 @@
 	box-shadow: 0 0 0 transparent;
 	background: #fff;
 	color: var(--analog-custom-library-main-text);
-}
 
-#analog-custom-library .components-button.is-primary {
-	background: var(--analog-custom-library-btn-bg);
-	color: var(--analog-custom-library-btn-text);
-}
-
-#analog-custom-library .components-button.is-secondary {
-	background: transparent;
-	color: var(--analog-custom-library-primary);
 }
 
 #analog-custom-library .components-button.is-primary,
@@ -873,12 +829,19 @@
 	font-size: 14px;
 	font-weight: 600;
 	padding: 20px !important;
-	border: 1px solid var(--analog-custom-library-primary);
+	border: var(--analog-custom-library-btn-border-width) solid var(--analog-custom-library-btn-border);
+	border-radius: var(--analog-custom-library-btn-radius);
+}
+
+#analog-custom-library .components-button.is-primary {
+	background: var(--analog-custom-library-btn-bg);
+	color: var(--analog-custom-library-btn-text);
 }
 
 #analog-custom-library .components-button.is-secondary {
-	box-shadow: inset 0 0 0 1px var(--analog-custom-library-primary);
+	background: transparent;
 	color: var(--analog-custom-library-primary);
+	box-shadow: inset 0 0 0 1px var(--analog-custom-library-primary);
 }
 
 #analog-custom-library .components-button.is-secondary.black-transparent {
@@ -1174,28 +1137,28 @@
 #analog-custom-library .animation-loader div:nth-child(1),
 #analogwp-blocks .animation-loader div:nth-child(1) {
 	left: 8px;
-	animation: sk-loader-animation1 0.6s infinite;
+	animation: custom-library-loader-animation1 0.6s infinite;
 }
 
 #analog-custom-library .animation-loader div:nth-child(2),
 #analogwp-blocks .animation-loader div:nth-child(2) {
 	left: 8px;
-	animation: sk-loader-animation2 0.6s infinite;
+	animation: custom-library-loader-animation2 0.6s infinite;
 }
 
 #analog-custom-library .animation-loader div:nth-child(3),
 #analogwp-blocks .animation-loader div:nth-child(3) {
 	left: 32px;
-	animation: sk-loader-animation2 0.6s infinite;
+	animation: custom-library-loader-animation2 0.6s infinite;
 }
 
 #analog-custom-library .animation-loader div:nth-child(4),
 #analogwp-blocks .animation-loader div:nth-child(4) {
 	left: 56px;
-	animation: sk-loader-animation3 0.6s infinite;
+	animation: custom-library-loader-animation3 0.6s infinite;
 }
 
-@keyframes sk-loader-animation1 {
+@keyframes custom-library-loader-animation1 {
 	0% {
 		transform: scale(0);
 	}
@@ -1204,7 +1167,7 @@
 	}
 }
 
-@keyframes sk-loader-animation2 {
+@keyframes custom-library-loader-animation2 {
 	0% {
 		transform: translate(0, 0);
 	}
@@ -1213,7 +1176,7 @@
 	}
 }
 
-@keyframes sk-loader-animation3 {
+@keyframes custom-library-loader-animation3 {
 	0% {
 		transform: scale(1);
 	}

@@ -8,9 +8,9 @@
  *
  * @wordpress-plugin
  * Plugin Name: Custom Library for Elementor
- * Plugin URI:  https://github.com/analogwp/analogwp-library
+ * Plugin URI:  https://analogwp.com/custom-library-for-elementor
  * Description: Custom Library for Elementor creates the foundation for a design framework that will help you create better, more consistent websites with Elementor.
- * Version:     1.0.5
+ * Version:     1.1.0
  * Author:      AnalogWP
  * Author URI:  https://analogwp.com/
  * License:     GPL2
@@ -19,8 +19,8 @@
  * Requires at least: 6.0
  * Requires PHP: 7.4
  *
- * Elementor tested up to: 3.27.3
- * Elementor Pro tested up to: 3.27.2
+ * Elementor tested up to: 3.28.0
+ * Elementor Pro tested up to: 3.28.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -28,11 +28,12 @@ defined( 'ABSPATH' ) || exit;
 define( 'AGWP_LIBRARY_ELEMENTOR_MINIMUM', '3.20.0' );
 define( 'AGWP_LIBRARY_PHP_MINIMUM', '7.4' );
 define( 'AGWP_LIBRARY_WP_MINIMUM', '6.0' );
-define( 'AGWP_LIBRARY_VERSION', '1.0.5' );
+define( 'AGWP_LIBRARY_VERSION', '1.1.0' );
 define( 'AGWP_LIBRARY_PLUGIN_FILE', __FILE__ );
 define( 'AGWP_LIBRARY_PLUGIN_URL', plugin_dir_url( AGWP_LIBRARY_PLUGIN_FILE ) );
 define( 'AGWP_LIBRARY_PLUGIN_DIR', plugin_dir_path( AGWP_LIBRARY_PLUGIN_FILE ) );
 define( 'AGWP_LIBRARY_PLUGIN_BASE', plugin_basename( AGWP_LIBRARY_PLUGIN_FILE ) );
+define( 'AGWP_LIBRARY_PLUGIN_PRO_URL', 'https://analogwp.com/custom-library-for-elementor' );
 
 /**
  * Handles plugin activation.

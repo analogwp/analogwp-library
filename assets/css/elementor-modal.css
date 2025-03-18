@@ -3,7 +3,7 @@
 }
 
 .elementor-add-analog-custom-library-button {
-	background-color: var(--analog-custom-library-accent) !important;
+	background-color: transparent !important;
 	margin-left: 5px;
 }
 
@@ -47,8 +47,9 @@
 .elementor-add-analog-custom-library-button {
 	background-image: url('../img/icon.svg');
 	background-repeat: no-repeat;
-	background-size: 14px;
+	background-size: 40px;
 	background-position: center;
+	border-radius: 0 !important;
 }
 
 button[data-action="save_token"] {
@@ -180,4 +181,18 @@ button[data-action="save_token"] {
 
 .sub-arrow + .sub-arrow {
 	display: none;
+}
+
+
+#elementor-template-library-save-template #elementor-template-library-save-template-form {
+	position: relative;
+}
+
+#elementor-template-library-save-template .analog-custom-library-template-syncer {
+	position: absolute;
+	bottom: -50px;
+	height: auto;
+	display: flex;
+	align-items: center;
+	gap: 8px;
 }

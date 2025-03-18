@@ -58,7 +58,6 @@ final class Plugin {
 	public function register() {
 		add_action( 'init', array( self::$instance, 'load_textdomain' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( AGWP_LIBRARY_PLUGIN_FILE ), array( self::$instance, 'plugin_action_links' ) );
-		add_action( 'admin_enqueue_scripts', array( self::$instance, 'scripts' ) );
 		add_filter( 'analog/library/app/strings', array( self::$instance, 'send_strings_to_app' ) );
 
 		( new Consumer() )->register();
@@ -67,51 +66,6 @@ final class Plugin {
 		// Migrations.
 		$this->database_upgrader = new Database_Upgrader();
 		add_action( 'admin_init', array( $this->database_upgrader, 'init' ) );
-	}
-
-	/**
-	 * Enqueue plugin assets.
-	 *
-	 * @param string $hook Current page hook.
-	 */
-	public function scripts( $hook ) {
-		if ( 'toplevel_page_analog_custom_library' !== $hook ) {
-			return;
-		}
-
-		wp_enqueue_style( 'wp-components' );
-		wp_enqueue_style( 'analog-custom-library-google-fonts', 'https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap', array(), '20221016' );
-		wp_enqueue_style( 'analog-custom-library-components-css', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/library-components.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/library-components.css' ) );
-
-		wp_enqueue_script(
-			'analog-custom-library-app',
-			AGWP_LIBRARY_PLUGIN_URL . 'assets/js/app/index.js',
-			array(
-				'react',
-				'react-dom',
-				'jquery',
-				'wp-components',
-				'wp-hooks',
-				'wp-i18n',
-				'wp-element',
-				'wp-api-fetch',
-				'wp-html-entities',
-			),
-			filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/app/index.js' ),
-			true
-		);
-		wp_set_script_translations( 'analog-custom-library-app', 'analogwp-library', AGWP_LIBRARY_PLUGIN_DIR . 'languages' );
-
-		$i10n = apply_filters( // phpcs:ignore
-			'analog/library/app/strings',
-			array(
-				'is_settings_page'  => 'toplevel_page_analog_custom_library' === $hook,
-			)
-		);
-
-		wp_localize_script( 'analog-custom-library-app', 'AGWP_LIBRARY', $i10n );
-
-		Utils::enqueue_settings_toggle_css();
 	}
 
 	/**
@@ -236,7 +190,7 @@ final class Plugin {
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Data/class-base-db.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Data/class-templates-db.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Data/class-library-data.php';
-		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/class-library-init.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/class-library-manager.php';
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-elementor.php';
 
@@ -254,6 +208,15 @@ final class Plugin {
 	 */
 	public static function elementor() {
 		return \Elementor\Plugin::$instance;
+	}
+
+	/**
+	 * Checks if pro addon is active.
+	 *
+	 * @return bool
+	 */
+	public function has_pro_active() {
+		return defined( 'AGWP_CL_PRO_VERSION' );
 	}
 
 	/**

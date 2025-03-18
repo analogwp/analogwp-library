@@ -7,6 +7,7 @@
 
 namespace AnalogWP\CustomLibrary\Settings\Tabs;
 
+use AnalogWP\CustomLibrary\Plugin;
 use AnalogWP\CustomLibrary\Settings\Admin_Settings;
 use AnalogWP\CustomLibrary\Settings\Settings_Page;
 
@@ -79,6 +80,68 @@ class General extends Settings_Page {
 					'id'   => 'analog_custom_library_change_default_placeholder_thumb',
 				),
 			);
+
+			if ( ! Plugin::instance()->has_pro_active() ) {
+				$settings = array_merge(
+					$settings,
+					array(
+						array(
+							'type'  => 'promo-title',
+							'title' => esc_html__( 'Trigger icon', 'analogwp-library' ),
+							'id'    => 'analog_custom_library_pro_trigger_icon',
+						),
+						array(
+							'desc'    => __( 'Replace the trigger icon.', 'analogwp-library' ),
+							'id'      => 'trigger_icon',
+							'default' => AGWP_LIBRARY_PLUGIN_URL . 'assets/img/icon.svg',
+							'type'    => 'promo-media-image',
+						),
+						array(
+							'type' => 'sectionend',
+							'id'   => 'analog_custom_library_pro_trigger_icon',
+						),
+						array(
+							'type'  => 'promo-title',
+							'title' => esc_html__( 'Library Access', 'analogwp-library' ),
+							'id'    => 'analog_custom_library_pro_library_access',
+						),
+						array(
+							'id'      => 'library_visibility',
+							'type'    => 'promo-radio',
+							'default' => 'show_to_all',
+							'options' => array(
+								'show_to_all'   => esc_html__( 'Show to All', 'analogwp-library' ),
+								'show_to_roles' => esc_html__( 'Show only to specific roles', 'analogwp-library' ),
+								'show_to_users' => esc_html__( 'Show only to specific users', 'analogwp-library' ),
+							),
+						),
+						array(
+							'type' => 'sectionend',
+							'id'   => 'analog_custom_library_pro_library_access',
+						),
+						array(
+							'type'  => 'promo-title',
+							'title' => esc_html__( 'Settings Access', 'analogwp-library' ),
+							'desc'  => __( 'Please note, by default all administrators have settings access even if it is not explicitly set here to avoid accidental lockouts.', 'analogwp-library' ),
+							'id'    => 'analog_custom_library_pro_settings_access',
+						),
+						array(
+							'id'      => 'settings_visibility',
+							'type'    => 'promo-radio',
+							'default' => 'show_to_all',
+							'options' => array(
+								'show_to_all'   => esc_html__( 'Show to All', 'analogwp-library' ),
+								'show_to_roles' => esc_html__( 'Show only to specific roles', 'analogwp-library' ),
+								'show_to_users' => esc_html__( 'Show only to specific users', 'analogwp-library' ),
+							),
+						),
+						array(
+							'type' => 'sectionend',
+							'id'   => 'analog_custom_library_pro_settings_access',
+						),
+					)
+				);
+			}
 			$settings = apply_filters( 'analog_custom_library_' . $this->id . '_settings', $settings );
 		}
 

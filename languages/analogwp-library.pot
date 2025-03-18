@@ -3,13 +3,13 @@
 #: assets/js/app/index.js:1
 msgid ""
 msgstr ""
-"Project-Id-Version: analogwp-library 1.0.5\n"
+"Project-Id-Version: analogwp-library 1.1.0\n"
 "Report-Msgid-Bugs-To: AnalogWP <EMAIL>\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2025-02-03T17:08:29.085Z\n"
+"POT-Creation-Date: 2025-03-17T07:11:33.719Z\n"
 "PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: analogwp-library.php
 #. Url of the plugin
-msgid "https://github.com/analogwp/analogwp-library"
+msgid "https://analogwp.com/custom-library-for-elementor"
 msgstr ""
 
 #: analogwp-library.php
@@ -45,55 +45,60 @@ msgstr ""
 msgid "https://analogwp.com/"
 msgstr ""
 
-#: analogwp-library.php:49
-#: analogwp-library.php:236
+#: analogwp-library.php:50
+#: analogwp-library.php:237
 msgid "Custom Library for Elementor requires PHP version %s"
 msgstr ""
 
-#: analogwp-library.php:50
-#: analogwp-library.php:237
+#: analogwp-library.php:51
+#: analogwp-library.php:238
 msgid "Error Activating"
 msgstr ""
 
-#: analogwp-library.php:82
+#: analogwp-library.php:83
 msgid ""
 "Custom Library for Elementor requires WordPress version %s+. Because you "
 "are using an earlier version, the plugin is currently NOT RUNNING."
 msgstr ""
 
-#: analogwp-library.php:107
+#: analogwp-library.php:108
 msgid ""
 "Custom Library for Elementor requires Elementor v%s or newer in order to "
 "work. Please update Elementor to the latest version."
 msgstr ""
 
-#: analogwp-library.php:111
+#: analogwp-library.php:112
 msgid "Update Elementor Now"
 msgstr ""
 
-#: analogwp-library.php:151
+#: analogwp-library.php:152
 msgid ""
 "Custom Library for Elementor is not working because you need to activate "
 "the Elementor plugin."
 msgstr ""
 
-#: analogwp-library.php:152
+#: analogwp-library.php:153
 msgid "Activate Elementor Now"
 msgstr ""
 
-#: analogwp-library.php:159
+#: analogwp-library.php:160
 msgid ""
 "Custom Library for Elementor is not working because you need to install the "
 "Elementor plugin."
 msgstr ""
 
-#: analogwp-library.php:160
+#: analogwp-library.php:161
 msgid "Install Elementor Now"
 msgstr ""
 
-#: inc/class-plugin.php:207
+#: inc/class-plugin.php:161
 #: inc/Elementor/class-finder-shortcuts.php:52
 msgid "Settings"
+msgstr ""
+
+#: inc/class-elementor.php:82
+#: inc/Settings/Tabs/class-settings-design.php:117
+msgid "Library"
 msgstr ""
 
 #: inc/class-base.php:39
@@ -102,17 +107,17 @@ msgid "Something went wrong."
 msgstr ""
 
 #: client/api.js:133
-#: assets/js/app/index.js:277
+#: assets/js/app/index.js:287
 msgid "Template"
 msgstr ""
 
 #: client/api.js:136
-#: assets/js/app/index.js:277
+#: assets/js/app/index.js:287
 msgid "Block"
 msgstr ""
 
 #: client/api.js:144
-#: assets/js/app/index.js:277
+#: assets/js/app/index.js:287
 msgid "Add Custom Library for Elementor"
 msgstr ""
 
@@ -157,42 +162,63 @@ msgstr ""
 msgid "Import Template"
 msgstr ""
 
-#: inc/Settings/class-register-settings.php:59
+#: inc/Settings/class-register-settings.php:64
 msgid "Custom Library Settings"
 msgstr ""
 
-#: inc/Settings/class-register-settings.php:60
-#: inc/Core/class-library-init.php:58
+#: inc/Settings/class-register-settings.php:65
+#: inc/Core/class-library-manager.php:62
 msgid "Custom Library"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:74
+#: inc/Settings/class-admin-settings.php:75
 msgid "Your settings have been saved."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:135
+#: inc/Settings/class-admin-settings.php:145
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:136
+#: inc/Settings/class-admin-settings.php:146
 msgid "Select Image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:137
+#: inc/Settings/class-admin-settings.php:147
 msgid "Use this image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:612
-#: inc/Settings/class-admin-settings.php:679
+#: inc/Settings/class-admin-settings.php:324
+#: client/blocks/BlockList.js:369
+#: client/blocks/BlockList.js:417
+msgid "Pro"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:325
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:809
 msgid "Toggle"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:743
+#: inc/Settings/class-admin-settings.php:873
+#: inc/Settings/class-admin-settings.php:912
 msgid "Change Image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:744
+#: inc/Settings/class-admin-settings.php:874
+#: inc/Settings/class-admin-settings.php:913
 msgid "Revert to Default"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:1008
+#: inc/Settings/class-admin-settings.php:1031
+msgid "Import"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:1050
+#: inc/Settings/class-admin-settings.php:1068
+msgid "Export All"
 msgstr ""
 
 #: inc/Elementor/class-finder-shortcuts.php:33
@@ -205,6 +231,10 @@ msgstr ""
 
 #: inc/Elementor/class-finder-shortcuts.php:58
 msgid "Theme Custom Library for Elementor"
+msgstr ""
+
+#: inc/Core/class-library-manager.php:124
+msgid "Add to library"
 msgstr ""
 
 #: inc/Admin/class-notice.php:151
@@ -250,7 +280,7 @@ msgstr ""
 msgid "Loading icon"
 msgstr ""
 
-#: client/blocks/Sidebar.js:207
+#: client/blocks/Sidebar.js:217
 msgid "Search Templates"
 msgstr ""
 
@@ -272,11 +302,6 @@ msgstr ""
 
 #: client/blocks/BlockList.js:345
 msgid "Loading Templates..."
-msgstr ""
-
-#: client/blocks/BlockList.js:369
-#: client/blocks/BlockList.js:417
-msgid "Pro"
 msgstr ""
 
 #: client/blocks/BlockList.js:398
@@ -305,76 +330,228 @@ msgid ""
 "plugin, including license info, user settings, import history etc."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:25
+#: inc/Settings/Tabs/class-settings-import-export.php:26
+msgid "Importer / Exporter"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-import-export.php:48
+msgid "Templates Importer"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-import-export.php:53
+msgid ""
+"Imports .json or .zip files exported only via the Custom Library Pro "
+"templates exporter."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-import-export.php:62
+msgid "Templates Exporter"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-import-export.php:67
+msgid "Exports all the templates published and available in the Custom Library."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:26
 msgid "General"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:46
+#: inc/Settings/Tabs/class-settings-general.php:47
 msgid "General Settings"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:52
+#: inc/Settings/Tabs/class-settings-general.php:53
 msgid "Hide default Elementor Template library icon from editor."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:68
+#: inc/Settings/Tabs/class-settings-general.php:69
 msgid "Placeholder image"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:72
+#: inc/Settings/Tabs/class-settings-general.php:73
 msgid "Replace the default placeholder image."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:25
+#: inc/Settings/Tabs/class-settings-general.php:90
+msgid "Trigger icon"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:94
+msgid "Replace the trigger icon."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:105
+msgid "Library Access"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:113
+#: inc/Settings/Tabs/class-settings-general.php:133
+msgid "Show to All"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:114
+#: inc/Settings/Tabs/class-settings-general.php:134
+msgid "Show only to specific roles"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:115
+#: inc/Settings/Tabs/class-settings-general.php:135
+msgid "Show only to specific users"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:124
+msgid "Settings Access"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:125
+msgid ""
+"Please note, by default all administrators have settings access even if it "
+"is not explicitly set here to avoid accidental lockouts."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:26
 msgid "Design"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:40
+#: inc/Settings/Tabs/class-settings-design.php:41
 msgid "Library popup style"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:48
+#: inc/Settings/Tabs/class-settings-design.php:49
 msgid "Compact (popup)"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:49
+#: inc/Settings/Tabs/class-settings-design.php:50
 msgid "Fullscreen"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:58
+#: inc/Settings/Tabs/class-settings-design.php:59
 msgid "Template columns"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:66
+#: inc/Settings/Tabs/class-settings-design.php:67
 msgid "2 Columns"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:67
+#: inc/Settings/Tabs/class-settings-design.php:68
 msgid "3 Columns"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:68
+#: inc/Settings/Tabs/class-settings-design.php:69
 msgid "Auto"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:77
+#: inc/Settings/Tabs/class-settings-design.php:78
 msgid "Categories location"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:85
+#: inc/Settings/Tabs/class-settings-design.php:86
 msgid "Sidebar"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:86
+#: inc/Settings/Tabs/class-settings-design.php:87
 msgid "Horizontal"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:87
+#: inc/Settings/Tabs/class-settings-design.php:88
 msgid "None"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:93
+#: inc/Settings/Tabs/class-settings-design.php:94
 msgid "Show categories template count"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:110
+msgid "Library title"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:125
+msgid "Show Buttons on hover"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:138
+msgid "Show Preview Button"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:139
+msgid "Show Edit Button"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:147
+msgid "Header colors"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:152
+msgid "Header Background"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:158
+msgid "Header Text"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:164
+msgid "Header Border Bottom"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:174
+msgid "Categories colors"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:179
+msgid "Categories Background"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:185
+msgid "Categories Text"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:191
+msgid "Active Category Text"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:201
+msgid "Button styles"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:206
+msgid "Button Background Color"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:212
+msgid "Button Text Color"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:218
+msgid "Button Border Color"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:224
+msgid "Button Border Radius"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:230
+msgid "Button Border Width"
+msgstr ""
+
+#: inc/Elementor/editor-templates/templates.php:11
+#: inc/Elementor/editor-templates/templates.php:22
+msgid "Save"
+msgstr ""
+
+#: inc/Elementor/editor-templates/templates.php:17
+msgid "Enter Template Name"
+msgstr ""
+
+#: inc/Elementor/editor-templates/templates.php:26
+msgid "Add to Custom Library"
+msgstr ""
+
+#: inc/Elementor/editor-templates/templates.php:31
+msgid "Want to learn more about the Elementor library?"
+msgstr ""
+
+#: inc/Elementor/editor-templates/templates.php:32
+msgid "Click here"
 msgstr ""
 
 #: inc/Core/SVGs/class-allow-svg.php:89
@@ -397,7 +574,7 @@ msgstr ""
 msgid "Large"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:58
+#: inc/Settings/Tabs/class-settings-general.php:59
 msgctxt "settings title"
 msgid "Enable SVG Uploads"
 msgstr ""

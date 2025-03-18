@@ -99,4 +99,24 @@ final class Library_Data {
 	public static function original_template_exists( $id ) {
 		return is_string( get_post_status( $id ) );
 	}
+
+	/**
+	 * Get all template ids.
+	 *
+	 * @return array
+	 */
+	public static function get_template_ids() {
+		$templates_db   = new Templates_DB();
+		$templates_data = $templates_db->get_templates();
+
+		$templates = array();
+
+		if ( count( $templates_data ) ) {
+			foreach ( $templates_data as $template ) {
+				$templates[] = (int) $template->template_id;
+			}
+		}
+
+		return $templates;
+	}
 }

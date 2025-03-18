@@ -51,6 +51,7 @@ class Admin_Settings {
 			$settings[] = include 'Tabs/class-settings-general.php';
 			$settings[] = include 'Tabs/class-settings-design.php';
 			$settings[] = include 'Tabs/class-settings-misc.php';
+			$settings[] = include 'Tabs/class-settings-import-export.php';
 
 			self::$settings = apply_filters( 'analog_custom_library_get_settings_pages', $settings );
 		}
@@ -120,23 +121,35 @@ class Admin_Settings {
 	public static function output() {
 		global $current_section, $current_tab;
 
-		do_action( 'analog_custom_library_settings_start' );
-		wp_enqueue_style( 'analog_custom_library_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/admin-settings.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/admin-settings.css' ) );
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+		// Select2 styles.
+		wp_enqueue_style( 'analog_custom_library_select2', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/select2' . $suffix . '.css', array(), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/select2' . $suffix . '.css' ) );
+
+		wp_enqueue_style( 'analog_custom_library_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/css/admin-settings.css', array( 'wp-color-picker' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/css/admin-settings.css' ) );
 
 		// Enqueue all necessary WP Media APIs.
 		wp_enqueue_media();
 
-		wp_enqueue_script( 'analog_custom_library_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/admin-settings.js', array( 'jquery', 'wp-util', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'wp-i18n', 'wp-api-fetch' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/admin-settings.js' ), true );
+		// Select2 script.
+		wp_enqueue_script( 'analog_custom_library_select2', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/select2' . $suffix . '.js', array( 'jquery' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/select2' . $suffix . '.js' ), true );
+
+		wp_enqueue_script( 'analog_custom_library_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/admin-settings.js', array( 'jquery', 'wp-util', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'wp-i18n', 'wp-api-fetch', 'wp-color-picker' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/admin-settings.js' ), true );
 
 		wp_localize_script(
 			'analog_custom_library_settings',
 			'analog_custom_library_settings_data',
-			array(
-				'i18n_nav_warning'  => __( 'The changes you made will be lost if you navigate away from this page.', 'analogwp-library' ),
-				'uploader_title'    => __( 'Select Image', 'analogwp-library' ),
-				'uploader_btn_text' => __( 'Use this image', 'analogwp-library' ),
+			apply_filters(
+				'analog_custom_library_settings_data',
+				array(
+					'i18n_nav_warning'  => __( 'The changes you made will be lost if you navigate away from this page.', 'analogwp-library' ),
+					'uploader_title'    => __( 'Select Image', 'analogwp-library' ),
+					'uploader_btn_text' => __( 'Use this image', 'analogwp-library' ),
+				)
 			)
 		);
+
+		do_action( 'analog_custom_library_settings_output' );
 
 		// Get tabs for the settings page.
 		$tabs = apply_filters( 'analog_custom_library_settings_tabs_array', array() );
@@ -308,6 +321,8 @@ class Admin_Settings {
 			$tooltip_html      = $field_description['tooltip_html'];
 
 			$allowed_html_tags = self::get_settings_allowed_html();
+			$pro_tag_html      = '<span class="pro-tag">' . esc_html__( 'Pro', 'analogwp-library' ) . '</span>';
+			$pro_link_html     = '<a href="' . esc_url( AGWP_LIBRARY_PLUGIN_PRO_URL . '/?utm_source=plugin&utm_medium=referral&utm_campaign=settings' ) . '" target="_blank">' . esc_html__( 'Upgrade to Pro', 'analogwp-library' ) . '</a>';
 
 			// Switch based on type.
 			switch ( $value['type'] ) {
@@ -316,6 +331,23 @@ class Admin_Settings {
 				case 'title':
 					if ( ! empty( $value['title'] ) ) {
 						echo '<h2 class="title ' . esc_attr( $value['class'] ) . '">' . esc_html( $value['title'] ) . '</h2>';
+					}
+					if ( ! empty( $value['desc'] ) ) {
+						echo '<div id="' . esc_attr( sanitize_title( $value['id'] ) ) . '-description">';
+						echo wp_kses_post( wpautop( wptexturize( $value['desc'] ) ) );
+						echo '</div>';
+					}
+					echo '<table class="form-table">' . "\n\n";
+					if ( ! empty( $value['id'] ) ) {
+						do_action( 'analog_custom_library_settings_' . sanitize_title( $value['id'] ) );
+					}
+					break;
+				case 'promo-title':
+					if ( ! empty( $value['title'] ) ) {
+						?>
+						<h2 class="title forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ) . ' ' . esc_attr( $value['class'] ); ?>"><a href="<?php echo esc_url( AGWP_LIBRARY_PLUGIN_PRO_URL . '/?utm_source=plugin&utm_medium=referral&utm_campaign=settings' ); ?>" target="_blank"><?php echo wp_kses( $pro_tag_html, $allowed_html_tags ) . esc_html( $value['title'] ); ?></a></h2>
+						<?php echo wp_kses( $pro_link_html, $allowed_html_tags ); ?>
+						<?php
 					}
 					if ( ! empty( $value['desc'] ) ) {
 						echo '<div id="' . esc_attr( sanitize_title( $value['id'] ) ) . '-description">';
@@ -381,11 +413,8 @@ class Admin_Settings {
 				case 'url':
 				case 'tel':
 					$option_value = $value['value'];
-
-					?><tr valign="top">
-						<th scope="row" class="titledesc">
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
-						</th>
+					?>
+					<tr valign="top">
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<input
 								name="<?php echo esc_attr( $value['id'] ); ?>"
@@ -397,10 +426,46 @@ class Admin_Settings {
 								placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
 								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 								/><?php echo esc_html( $value['suffix'] ); ?> <?php echo wp_kses_post( $description ); ?>
+
+								<?php if ( ! empty( $value['title'] ) ) : ?>
+									<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
+								<?php endif; ?>
 						</td>
 					</tr>
 					<?php
 					break;
+
+				case 'promo-text':
+				case 'promo-password':
+				case 'promo-datetime':
+				case 'promo-number':
+				case 'promo-email':
+				case 'promo-url':
+				case 'promo-tel':
+					$option_value = $value['value'];
+					?>
+					<tr valign="top">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
+							<input
+								name="<?php echo esc_attr( $value['id'] ); ?>"
+								id="<?php echo esc_attr( $value['id'] ); ?>"
+								type="<?php echo esc_attr( $value['type'] ); ?>"
+								style="<?php echo esc_attr( $value['css'] ); ?>"
+								value="<?php echo esc_attr( $option_value ); ?>"
+								class="<?php echo esc_attr( $value['class'] ); ?>"
+								placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
+								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+								disabled
+								/><?php echo esc_html( $value['suffix'] ); ?> <?php echo wp_kses_post( $description ); ?>
+
+								<?php if ( ! empty( $value['title'] ) ) : ?>
+									<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
+								<?php endif; ?>
+						</td>
+					</tr>
+					<?php
+					break;
+
 				case 'button':
 					$option_value = $value['value'];
 					?>
@@ -509,16 +574,11 @@ class Admin_Settings {
 					$option_value = $value['value'];
 
 					?>
-					<tr valign="top">
-						<?php if ( ! empty( $value['title'] ) ) { ?>
-						<th scope="row" class="titledesc">
-							<?php if ( false !== strpos( $value['id'], '_experiment' ) ) : ?>
-							<span class="experiment-indicator <?php echo ( false === $value['value'] || 'default' === $value['value'] || 'active' === $value['value'] ) ? 'active' : 'inactive'; ?>"></span>
-							<?php endif; ?>
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
-						</th>
-						<?php } ?>
+					<tr valign="top" class="<?php echo esc_attr( $value['class'] ?? '' ); ?>">
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
+						<?php if ( ! empty( $value['title'] ) ) : ?>
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
+						<?php endif; ?>
 							<select
 								name="<?php echo esc_attr( $value['id'] ); ?><?php echo ( 'multiselect' === $value['type'] ) ? '[]' : ''; ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
@@ -561,7 +621,7 @@ class Admin_Settings {
 								<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
 							</th>
 						<?php endif; ?>
-						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ) . ' ' . esc_attr( $value['id'] ); ?>">
 							<fieldset>
 								<?php echo wp_kses_post( $description ); ?>
 								<ul>
@@ -588,29 +648,99 @@ class Admin_Settings {
 					</tr>
 					<?php
 					break;
+
+				case 'promo-radio':
+					$option_value = $value['value'];
+					?>
+					<tr valign="top">
+						<?php if ( ! empty( $value['title'] ) ) : ?>
+							<th scope="row" class="titledesc">
+								<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
+							</th>
+						<?php endif; ?>
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ) . ' ' . esc_attr( $value['id'] ); ?>">
+							<fieldset>
+								<?php echo wp_kses_post( $description ); ?>
+								<ul>
+								<?php
+								foreach ( $value['options'] as $key => $val ) {
+									?>
+									<li>
+										<label><input
+											name="<?php echo esc_attr( $value['id'] ); ?>"
+											value="<?php echo esc_attr( $key ); ?>"
+											type="radio"
+											style="<?php echo esc_attr( $value['css'] ); ?>"
+											class="<?php echo esc_attr( $value['class'] ); ?>"
+											<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+											<?php checked( $key, $option_value ); ?>
+											/> <?php echo esc_html( $val ); ?></label>
+									</li>
+									<?php
+								}
+								?>
+								</ul>
+							</fieldset>
+						</td>
+					</tr>
+					<?php
+					break;
+
 				case 'multi-checkbox':
 					$option_value = $value['value'];
 					?>
 					<tr valign="top">
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<fieldset>
-								<?php
-								echo wp_kses_post( $description );
-								?>
+								<?php if ( ! empty( $value['title'] ) ) : ?>
+									<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
+								<?php endif; ?>
 								<ul>
 									<?php foreach ( $value['options'] as $key => $val ) : ?>
 									<li>
 										<label>
-											<input
-												type="checkbox"
-												name="<?php echo esc_attr( $value['id'] ); ?>[<?php echo esc_attr( $key ); ?>]"
-												id="<?php echo esc_attr( $value['id'] ); ?>[<?php echo esc_attr( $key ); ?>]"
-												value="1"
-												<?php checked( isset( $option_value[ $key ] ) ? $option_value[ $key ] : 0, true ); ?>
-											/>
-											<span>
-												<span><?php esc_html_e( 'Toggle', 'analogwp-library' ); ?></span>
-											</span>
+											<div>
+												<input
+													type="checkbox"
+													name="<?php echo esc_attr( $value['id'] ); ?>[<?php echo esc_attr( $key ); ?>]"
+													id="<?php echo esc_attr( $value['id'] ); ?>[<?php echo esc_attr( $key ); ?>]"
+													value="1"
+													<?php checked( isset( $option_value[ $key ] ) ? $option_value[ $key ] : 0, true ); ?>
+												/>
+											</div>
+											<p><?php echo esc_html( $val ); ?></p>
+										</label>
+									</li>
+									<?php endforeach; ?>
+								</ul>
+							</fieldset>
+						</td>
+					</tr>
+					<?php
+					break;
+
+				case 'promo-multi-checkbox':
+					$option_value = $value['value'];
+					?>
+					<tr valign="top">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
+							<fieldset>
+								<?php if ( ! empty( $value['title'] ) ) : ?>
+									<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html ); ?></label>
+								<?php endif; ?>
+								<ul>
+									<?php foreach ( $value['options'] as $key => $val ) : ?>
+									<li>
+										<label>
+											<div>
+												<input
+													type="checkbox"
+													name="<?php echo esc_attr( $value['id'] ); ?>[<?php echo esc_attr( $key ); ?>]"
+													id="<?php echo esc_attr( $value['id'] ); ?>[<?php echo esc_attr( $key ); ?>]"
+													value="1"
+													<?php checked( isset( $option_value[ $key ] ) ? $option_value[ $key ] : 0, true ); ?>
+												/>
+											</div>
 											<p><?php echo esc_html( $val ); ?></p>
 										</label>
 									</li>
@@ -753,6 +883,189 @@ class Admin_Settings {
 									<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 									/><?php echo esc_html( $value['suffix'] ); ?>
 									<?php echo $description; // phpcs:ignore. ?>
+							</div>
+						</td>
+					</tr>
+					<?php
+					break;
+
+				case 'promo-media-image':
+					$option_value  = $value['value'];
+					$default_image = $value['default'];
+					$has_image_set = false;
+
+					if ( ! empty( $option_value ) && $option_value !== $default_image ) {
+						$has_image_set = true;
+					}
+
+					$image_url = $default_image;
+					?>
+					<tr valign="top">
+						<?php if ( ! empty( $value['title'] ) ) : ?>
+						<th scope="row" class="titledesc">
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><a href="<?php echo esc_url( AGWP_LIBRARY_PLUGIN_PRO_URL . '/?utm_source=plugin&utm_medium=referral&utm_campaign=settings' ); ?>" target="_blank"><?php echo wp_kses( $pro_tag_html, $allowed_html_tags ) . esc_html( $value['title'] ); ?> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></label>
+						</th>
+						<?php endif; ?>
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
+							<img class="<?php echo esc_attr( $value['type'] ); ?>" id="<?php echo esc_attr( $value['type'] ) . '-' . esc_attr( $value['id'] ); ?>" src="<?php echo esc_url( $image_url ); ?>" />
+							<div>
+								<a href="#" class="promo-btn" data-element-id="<?php echo esc_attr( $value['type'] ) . '-' . esc_attr( $value['id'] ); ?>"><?php esc_html_e( 'Change Image', 'analogwp-library' ); ?></a>
+								<a href="#" class="promo-btn" data-default-image="<?php echo esc_url( $default_image ); ?>"><?php esc_html_e( 'Revert to Default', 'analogwp-library' ); ?></a>
+								<input
+									name="<?php echo esc_attr( $value['id'] ); ?>"
+									id="<?php echo esc_attr( $value['id'] ); ?>"
+									type="hidden"
+									style="<?php echo esc_attr( $value['css'] ); ?>"
+									value="<?php echo $has_image_set ? esc_attr( $option_value ) : ''; ?>"
+									class="<?php echo esc_attr( $value['class'] ); ?>"
+									placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
+									<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+									/><?php echo esc_html( $value['suffix'] ); ?>
+									<?php echo $description; // phpcs:ignore. ?>
+							</div>
+						</td>
+					</tr>
+					<?php
+					break;
+
+				case 'color':
+					$option_value  = $value['value'];
+					$default_color = $value['default'];
+					$has_color_set = false;
+
+					if ( ! empty( $option_value ) && $option_value !== $default_color ) {
+						$has_color_set = true;
+					}
+					?>
+
+					<tr valign="top">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
+							<input
+								name="<?php echo esc_attr( $value['id'] ); ?>"
+								id="<?php echo esc_attr( $value['id'] ); ?>"
+								style="<?php echo esc_attr( $value['css'] ); ?>"
+								type="text"
+								data-default-color="<?php echo esc_attr( $default_color ); ?>"
+								value="<?php echo $has_color_set ? esc_attr( $option_value ) : ''; ?>"
+								class="color-field <?php echo esc_attr( $value['class'] ); ?>"
+								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+								/>
+
+								<?php if ( ! empty( $value['title'] ) ) : ?>
+									<div><p><?php echo esc_html( $value['title'] ); ?></p> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></div>
+								<?php endif; ?>
+						</td>
+					</tr>
+					<?php
+					break;
+				case 'promo-color':
+					$option_value  = $value['value'];
+					$default_color = $value['default'];
+					$has_color_set = false;
+
+					if ( ! empty( $option_value ) && $option_value !== $default_color ) {
+						$has_color_set = true;
+					}
+					?>
+
+					<tr valign="top">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
+							<input
+								name="<?php echo esc_attr( $value['id'] ); ?>"
+								id="<?php echo esc_attr( $value['id'] ); ?>"
+								style="<?php echo esc_attr( $value['css'] ); ?>"
+								type="text"
+								data-default-color="<?php echo esc_attr( $default_color ); ?>"
+								value="<?php echo $has_color_set ? esc_attr( $option_value ) : ''; ?>"
+								class="color-field <?php echo esc_attr( $value['class'] ); ?>"
+								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+								/>
+
+								<?php if ( ! empty( $value['title'] ) ) : ?>
+									<div><p><?php echo esc_html( $value['title'] ); ?></p> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></div>
+								<?php endif; ?>
+						</td>
+					</tr>
+					<?php
+					break;
+				case 'import-templates':
+					$import_templates_nonce = wp_create_nonce( 'analog_custom_library_templates_import' );
+					?>
+					<tr valign="top">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
+							<?php if ( ! empty( $value['title'] ) ) : ?>
+								<div><p><?php echo esc_html( $value['title'] ); ?></p> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></div>
+							<?php endif; ?>
+							<?php if ( ! empty( $description ) ) : ?>
+								<div class="description"><p><?php echo wp_kses( $description, $allowed_html_tags ); ?></p></div>
+							<?php endif; ?>
+							<div class="action-button">
+								<div id="<?php echo esc_attr( $value['id'] ); ?>">
+									<input type="hidden" name="action" value="analog_custom_library_templates_import">
+									<input type="hidden" name="_nonce" value="<?php echo esc_attr( $import_templates_nonce ); ?>">
+									<fieldset>
+										<input type="file" name="file" accept=".json,application/json,.zip,application/octet-stream,application/zip,application/x-zip,application/x-zip-compressed" required>
+										<input id="analog-cl-import-template-action" type="submit" class="button" value="<?php echo esc_attr__( 'Import', 'analogwp-library' ); ?>">
+									</fieldset>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<?php
+					break;
+
+				case 'promo-import-templates':
+					?>
+					<tr valign="top">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
+							<?php if ( ! empty( $value['title'] ) ) : ?>
+								<div><p><?php echo esc_html( $value['title'] ); ?></p> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></div>
+							<?php endif; ?>
+							<?php if ( ! empty( $description ) ) : ?>
+								<div class="description"><p><?php echo wp_kses( $description, $allowed_html_tags ); ?></p></div>
+							<?php endif; ?>
+							<div class="action-button">
+								<div id="<?php echo esc_attr( $value['id'] ); ?>">
+									<fieldset>
+										<input type="file" name="file" accept=".json,application/json,.zip,application/octet-stream,application/zip,application/x-zip,application/x-zip-compressed" required disabled>
+										<input id="analog-cl-import-template-action" type="submit" class="button" value="<?php echo esc_attr__( 'Import', 'analogwp-library' ); ?>" disabled>
+									</fieldset>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<?php
+					break;
+				case 'export-templates':
+					?>
+					<tr valign="top">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
+							<?php if ( ! empty( $value['title'] ) ) : ?>
+								<div><p><?php echo esc_html( $value['title'] ); ?></p> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></div>
+							<?php endif; ?>
+							<?php if ( ! empty( $description ) ) : ?>
+								<div class="description"><p><?php echo wp_kses( $description, $allowed_html_tags ); ?></p></div>
+							<?php endif; ?>
+							<div class="action-button">
+								<button type="button" id="<?php echo esc_attr( $value['id'] ); ?>" class="button button-secondary"><?php echo esc_html__( 'Export All', 'analogwp-library' ); ?></button>
+							</div>
+						</td>
+					</tr>
+					<?php
+					break;
+
+				case 'promo-export-templates':
+					?>
+					<tr valign="top">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
+							<?php if ( ! empty( $value['title'] ) ) : ?>
+								<div><p><?php echo esc_html( $value['title'] ); ?></p> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></div>
+							<?php endif; ?>
+							<?php if ( ! empty( $description ) ) : ?>
+								<div class="description"><p><?php echo wp_kses( $description, $allowed_html_tags ); ?></p></div>
+							<?php endif; ?>
+							<div class="action-button">
+								<button type="button" id="<?php echo esc_attr( $value['id'] ); ?>" class="button button-secondary"><?php echo esc_html__( 'Export All', 'analogwp-library' ); ?></button>
 							</div>
 						</td>
 					</tr>

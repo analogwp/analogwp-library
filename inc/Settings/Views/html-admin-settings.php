@@ -64,9 +64,12 @@ if ( ! $tab_exists ) {
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M31.1282 14.0869H14.0869V31.1282H16.1219V16.1217H31.1282V14.0869Z" fill="white"/>
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M34.4349 17.3933H17.3936V34.4346H34.4349V17.3933Z" fill="white"/>
 						</svg>
-						<h4>Custom Library for Elementor</h4>
+						<div>
+							<h4>Custom Library for Elementor</h4>
+							<p class="version"><?php echo esc_html( AGWP_LIBRARY_VERSION ); ?></p>
+							<?php do_action( 'analog_custom_library_sidebar_plugin_info_section' ); ?>
+						</div>
 					</div>
-					<p class="version"><?php echo esc_html( AGWP_LIBRARY_VERSION ); ?></p>
 				</div>
 				<ul class="feature-list">
 					<li><a href="https://analogwp.com/support" target="_blank">Submit a support ticket</a></li>

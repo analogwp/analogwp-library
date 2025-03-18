@@ -86,7 +86,7 @@ const Analog = styled.div`
 		outline: 0;
 		background: transparent;
 		font-weight: bold;
-		color: #4D45BD;
+		color: var(--analog-custom-library-btn-text);
 		font-size: 14.22px;
 	}
 
