@@ -13,9 +13,11 @@ Custom Library for Elementor is your new home for all your template assets. Save
 == Description ==
 [🚀[Pro] Grab the premium version at a Lifetime Deal](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
 
+No need to rely solely on Elementor’s default template library anymore. With Custom Library for Elementor, you can curate and access your own collection of design assets right inside the editor.
+
 https://www.youtube.com/watch?v=9RTBS6rhYgg
 
-No need to rely solely on Elementor’s default template library anymore. With Custom Library for Elementor, you can curate and access your own collection of design assets right inside the editor. Build faster, stay organized, and empower your clients with a seamless design workflow by providing them with essential patterns to build new layouts with consistency.
+Build faster, stay organized, and empower your clients with a seamless design workflow by providing them with essential patterns to build new layouts with consistency, all with Custom Library for Elementor.
 
 ### Your Designs, Your Library
 
@@ -36,12 +38,13 @@ Clients often struggle to maintain consistent designs when extending layouts. Cu
 - **Organized Categories:** Group templates into categories for quick access.
 - **Image Previews:** Add visual cues to your templates with image thumbnails.
 
-### Upcoming Features
+### [Pro Features](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
 
 - Role-based access controls
 - Automatic template screenshots
 - White-label options
 - Branding customization
+- Export/Import templates
 
 Custom Library for Elementor is brought to you by **AnalogWP**, the creators of [Style Kits for Elementor](https://analogwp.com/style-kits/).
 
