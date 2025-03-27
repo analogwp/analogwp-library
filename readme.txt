@@ -41,8 +41,6 @@ Clients often struggle to maintain consistent designs when extending layouts. Cu
 ### [Pro Features](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
 
 - Role-based access controls
-- Automatic template screenshots
-- White-label options
 - Branding customization
 - Export/Import templates
 
