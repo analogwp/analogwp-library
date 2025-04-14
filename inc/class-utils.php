@@ -167,7 +167,7 @@ class Utils extends Base {
 		$library_popup_style = $options->get( 'library_popup_style' );
 
 		$css .= ".elementor-add-template-button {
-					display: {$hide_elementor_library};
+					display: {$hide_elementor_library} !important;
 				}";
 
 		if ( isset( $library_popup_style ) && 'full-screen' === $library_popup_style ) {
