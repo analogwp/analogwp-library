@@ -2,8 +2,8 @@
 Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
-Tested up to: 6.7.2
-Stable tag: 1.1.0
+Tested up to: 6.8
+Stable tag: 1.2.0
 Tags: elementor, templates, library, elementor addons, design system
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -90,6 +90,11 @@ Feel free to reach out via the [contact page](https://analogwp.com/contact/).
 4. Custom Library popup modal in the Elementor Editor.
 
 == Changelog ==
+
+= 1.2.0 =
+* Fix: Template library icon toggle not working as expected
+* Improvement: Compatibility with Elementor 3.28.3 and Elementor Pro 3.28.2
+* Improvement: Other minor improvements
 
 = 1.1.0 =
 * New: Added changes for Custom Library Pro
