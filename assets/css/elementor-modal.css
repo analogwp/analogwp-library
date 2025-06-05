@@ -183,16 +183,38 @@ button[data-action="save_token"] {
 	display: none;
 }
 
+/* Save as template modal */
 
 #elementor-template-library-save-template #elementor-template-library-save-template-form {
 	position: relative;
 }
 
-#elementor-template-library-save-template .analog-custom-library-template-syncer {
+#elementor-template-library-save-template .analog-custom-library-template-syncer:not(.with-sources) {
 	position: absolute;
 	bottom: -50px;
 	height: auto;
 	display: flex;
 	align-items: center;
 	gap: 8px;
+}
+
+#elementor-template-library-save-template .analog-custom-library-template-syncer.with-sources .analog-custom-library-template-checkbox {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+#elementor-template-library-save-template .analog-custom-library-template-description {
+	text-align: left;
+    margin-top: 4px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+#elementor-template-library-modal .dialog-message {
+    overflow-y: scroll !important;
+}
+
+#elementor-template-library-save-template .elementor-template-library-custom-library {
+	margin-bottom: 40px;
 }
