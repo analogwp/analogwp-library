@@ -158,10 +158,10 @@ class Library_Manager extends Base {
 			'tags'             => ( ! is_wp_error( $tags ) && $tags ) ? wp_list_pluck( $tags, 'name' ) : false,
 			'keywords'         => ( ! is_wp_error( $keywords ) && $keywords ) ? wp_list_pluck( $keywords, 'name' ) : false,
 			'is_pro'           => (bool) get_post_meta( $post_id, 'is_pro', true ),
-			'version'          => get_post_meta( $post_id, 'required_version', true ),
+			'version'          => AGWP_LIBRARY_VERSION,
 			'uses_container'   => (bool) get_post_meta( $post_id, 'uses_container', true ),
 			'data'             => array(
-				'content' => json_decode( get_post_meta( $post_id, '_elementor_data', true ) ),
+				'content' => $content,
 			),
 			'required_plugins' => $required_plugins,
 		);
