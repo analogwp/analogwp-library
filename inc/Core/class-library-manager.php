@@ -140,6 +140,14 @@ class Library_Manager extends Base {
 		$keywords         = get_the_terms( $post_id, 'analog_custom_library_keyword' );
 		$required_plugins = get_post_meta( $post_id, 'required_plugins', true );
 
+		// Get Elementor Document.
+		$document = Plugin::elementor()->documents->get( $post_id );
+		$content = array();
+
+		if ( $document ) {
+			$content = $document->get_elements_raw_data( null, true );
+		}
+
 		$template_data = array(
 			'id'               => (int) $post_id,
 			'site_id'          => 0,
