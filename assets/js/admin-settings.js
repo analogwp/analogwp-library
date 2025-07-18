@@ -103,7 +103,7 @@
 			}
 		);
 
-		// Removing video.
+		// Removing image.
 		$( 'body' ).on(
 			'click',
 			'.analog-custom-library-remove-image-btn',
@@ -118,6 +118,44 @@
 
 		// Initialize WP Color Picker.
 		$( '.color-field' ).wpColorPicker();
+
+		// Update outdated templates.
+		$( '.forminp-action-button #update_outdated_templates' ).on('click', function(e) {
+			e.preventDefault();
+			const button = $( this );
+			button.addClass( 'loading' );
+
+			$.post(
+				data.update_outdated_templates_url,
+				{
+					action: data.update_outdated_templates_action,
+					action2: data.update_outdated_templates_action,
+					_wpnonce: data.update_outdated_templates_nonce,
+					_wp_http_referer: window.location.href,
+				}
+			).done( function( res ) {
+				button.removeClass( 'loading' );
+				button.addClass( 'success' );
+				button.html(data.update_outdated_templates_success_txt);
+
+				// Reset button.
+				setTimeout(() => {
+					button.removeClass( 'success' );
+					button.html(button.data('reset-label'));
+				}, 3000);
+			} ).fail( function(res) {
+				console.log(res);
+				button.removeClass( 'loading' );
+				button.addClass( 'error' );
+				button.html(data.update_outdated_templates_error_txt);
+
+				// Reset button.
+				setTimeout(() => {
+					button.removeClass( 'error' );
+					button.html(button.data('reset-label'));
+				}, 3000);
+			} );
+		})
 
 		// Initialize Select2.
 		$( '.ang-custom-library .forminp-multiselect select' ).select2();
