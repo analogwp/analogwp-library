@@ -40,11 +40,16 @@ class AnalogWP_Custom_Library_Importer extends Source_Remote {
 
 		Plugin::elementor()->editor->set_edit_mode( true );
 
+		// Set the Request's state as an Elementor upload request, in order to support unfiltered file uploads.
+		Plugin::elementor()->uploads_manager->set_elementor_upload_state( true );
+
 		$data['content'] = $this->replace_elements_ids( $data['content'] );
+
 		$data['content'] = $this->process_export_import_content( $data['content'], 'on_import' );
 
 		$post_id  = $args['editor_post_id'];
 		$document = Plugin::elementor()->documents->get( $post_id );
+
 		if ( $document ) {
 			$data['content'] = $document->get_elements_raw_data( $data['content'], true );
 		}
@@ -55,6 +60,9 @@ class AnalogWP_Custom_Library_Importer extends Source_Remote {
 		 * into an "Inner Section".
 		 */
 		$data['content'] = Utils::convert_string_to_boolean( $data['content'] );
+
+		// After the upload complete, set the elementor upload state back to false.
+		Plugin::elementor()->uploads_manager->set_elementor_upload_state( false );
 
 		return $data;
 	}
