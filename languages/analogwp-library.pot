@@ -9,7 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2025-06-05T08:32:05.979Z\n"
+"POT-Creation-Date: 2025-07-18T18:25:28.897Z\n"
 "PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -96,7 +96,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: inc/class-elementor.php:82
+#: inc/class-elementor.php:85
 #: inc/Settings/Tabs/class-settings-design.php:117
 msgid "Library"
 msgstr ""
@@ -167,57 +167,62 @@ msgid "Custom Library Settings"
 msgstr ""
 
 #: inc/Settings/class-register-settings.php:65
-#: inc/Core/class-library-manager.php:62
+#: inc/Core/class-library-manager.php:61
 msgid "Custom Library"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:75
+#: inc/Settings/class-admin-settings.php:76
 msgid "Your settings have been saved."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:145
+#: inc/Settings/class-admin-settings.php:146
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:146
+#: inc/Settings/class-admin-settings.php:147
 msgid "Select Image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:147
+#: inc/Settings/class-admin-settings.php:148
 msgid "Use this image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:324
+#: inc/Settings/class-admin-settings.php:325
 #: client/blocks/BlockList.js:369
 #: client/blocks/BlockList.js:417
 msgid "Pro"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:325
+#: inc/Settings/class-admin-settings.php:326
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:809
+#: inc/Settings/class-admin-settings.php:810
 msgid "Toggle"
-msgstr ""
-
-#: inc/Settings/class-admin-settings.php:873
-#: inc/Settings/class-admin-settings.php:912
-msgid "Change Image"
 msgstr ""
 
 #: inc/Settings/class-admin-settings.php:874
 #: inc/Settings/class-admin-settings.php:913
+msgid "Change Image"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:875
+#: inc/Settings/class-admin-settings.php:914
 msgid "Revert to Default"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1008
-#: inc/Settings/class-admin-settings.php:1031
+#: inc/Settings/class-admin-settings.php:1009
+#: inc/Settings/class-admin-settings.php:1032
 msgid "Import"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1050
-#: inc/Settings/class-admin-settings.php:1068
+#: inc/Settings/class-admin-settings.php:1042
+#: inc/Settings/class-admin-settings.php:1043
+msgid "Go"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:1072
+#: inc/Settings/class-admin-settings.php:1090
 msgid "Export All"
 msgstr ""
 
@@ -233,7 +238,7 @@ msgstr ""
 msgid "Theme Custom Library for Elementor"
 msgstr ""
 
-#: inc/Core/class-library-manager.php:124
+#: inc/Core/class-library-manager.php:123
 msgid "Add to library"
 msgstr ""
 
@@ -314,6 +319,53 @@ msgstr ""
 
 #: inc/Settings/Views/html-admin-settings.php:50
 msgid "Save changes"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:31
+msgid "Tools"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:52
+msgid "Updated successfully"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:53
+msgid "Update failed! Please try again"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:67
+#: inc/Settings/Tabs/class-settings-tools.php:91
+msgid "Run Update"
+msgstr ""
+
+# %s: Number of templates to update.
+#: inc/Settings/Tabs/class-settings-tools.php:71
+msgid "%1$s ? %2$s template(s)"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:83
+msgid "Update Library Templates"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:88
+msgid ""
+"This action will update any templates found to be outdated in the Custom "
+"Library from their source template in Elementor template library."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:89
+msgid ""
+"Note: Outdated templates are templates that were created before the current "
+"version of this plugin. You only need to run this when you think there is a "
+"problem in the Custom Library."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:138
+msgid "No outdated templates found."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:158
+msgid "Failed to update outdated templates."
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-misc.php:25
