@@ -51,6 +51,7 @@ class Admin_Settings {
 			$settings[] = include 'Tabs/class-settings-general.php';
 			$settings[] = include 'Tabs/class-settings-design.php';
 			$settings[] = include 'Tabs/class-settings-misc.php';
+			$settings[] = include 'Tabs/class-settings-tools.php';
 			$settings[] = include 'Tabs/class-settings-import-export.php';
 
 			self::$settings = apply_filters( 'analog_custom_library_get_settings_pages', $settings );
@@ -1036,6 +1037,27 @@ class Admin_Settings {
 					</tr>
 					<?php
 					break;
+
+				case 'action-button':
+					$button_label  = $value['button_label'] ?? __( 'Go', 'analogwp-library' );
+					$button_reset_label = $value['button_reset_label'] ?? __( 'Go', 'analogwp-library' );
+					?>
+					<tr valign="top">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
+							<?php if ( ! empty( $value['title'] ) ) : ?>
+								<div><p><?php echo esc_html( $value['title'] ); ?></p> <?php echo wp_kses( $tooltip_html, $allowed_html_tags ); ?></div>
+							<?php endif; ?>
+							<?php if ( ! empty( $description ) ) : ?>
+								<div class="description"><p><?php echo wp_kses( $description, $allowed_html_tags ); ?></p></div>
+							<?php endif; ?>
+							<div class="action-button">
+								<button type="button" id="<?php echo esc_attr( $value['id'] ); ?>" class="button button-secondary" data-original-html="<?php echo esc_html( $button_label ); ?>" data-reset-label="<?php echo esc_attr( $button_reset_label ); ?>"><?php echo esc_html( $button_label ); ?></button>
+							</div>
+						</td>
+					</tr>
+					<?php
+					break;
+
 				case 'export-templates':
 					?>
 					<tr valign="top">
