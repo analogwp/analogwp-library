@@ -11,6 +11,7 @@ use AnalogWP\CustomLibrary\Base;
 use AnalogWP\CustomLibrary\Core\Data\Templates_DB;
 use Elementor\TemplateLibrary\Source_Local;
 use WP_Post;
+use AnalogWP\CustomLibrary\Plugin;
 
 /**
  * Class Library_Manager.
@@ -28,8 +29,6 @@ class Library_Manager extends Base {
 	 */
 	public function __construct() {
 		$this->templates_db = new Templates_DB();
-
-		$this->hooks();
 	}
 
 	/**
@@ -293,7 +292,7 @@ class Library_Manager extends Base {
 	 *
 	 * @param int $template_id Template ID.
 	 *
-	 * @return void
+	 * @return bool
 	 */
 	public function add_template_to_library( $template_id ) {
 		// Update template meta.
@@ -309,6 +308,10 @@ class Library_Manager extends Base {
 			$this->sync_template( $data );
 
 			set_transient( $transient_key, true, 5 );
+
+			return true;
 		}
+
+		return false;
 	}
 }

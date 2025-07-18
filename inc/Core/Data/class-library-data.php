@@ -56,8 +56,9 @@ final class Library_Data {
 					'is_pro'          => (bool) $meta->is_pro,
 					'tags'            => (array) $meta->tags,
 					'keywords'        => isset( $meta->keywords ) ? (array) $meta->keywords : array(),
-					'requiredVersion' => $meta->version ?? false,
+					'requiredVersion' => false,
 					'requiredPlugins' => isset( $meta->required_plugins ) ? (array) $meta->required_plugins : array(),
+					'version'         => $meta->version ?? false,
 				);
 			}
 		}

@@ -19,7 +19,10 @@ class Elementor {
 	 */
 	public function __construct() {
 		// Initiate Library.
-		Library_Manager::get_instance();
+		$library_manager = Library_Manager::get_instance();
+
+		// Register hooks.
+		$library_manager->hooks();
 
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'enqueue_editor_scripts' ) );
 		add_action( 'elementor/preview/enqueue_styles', array( $this, 'enqueue_editor_scripts' ) );
