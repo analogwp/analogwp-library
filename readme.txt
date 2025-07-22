@@ -98,6 +98,7 @@ Feel free to reach out via the [contact page](https://analogwp.com/contact/).
 * Fix: Users reporting issues in importing Media within Custom Library
 * Improvement: Enable unfiltered uploads when importing templates inside editor
 * Improvement: Remove submenu links for Contact and Addons under Custom Library settings menu
+* Improvement: Compatibility with Elementor 3.30.3 and Elementor Pro 3.30.0
 * Improvement: Other minor improvements
 
 = 1.3.0 =
