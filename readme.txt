@@ -2,9 +2,9 @@
 Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
-Tested up to: 6.8
-Stable tag: 1.3.0
-Tags: elementor, templates, library, elementor addons, design system
+Tested up to: 6.8.2
+Stable tag: 1.4.0
+Tags: elementor, templates, custom library, elementor addons, design system
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,11 +91,19 @@ Feel free to reach out via the [contact page](https://analogwp.com/contact/).
 
 == Changelog ==
 
+= 1.4.0 =
+* New: Tools tab inside Custom Library settings page
+* New: Added new option at Tools menu "Update Outdated Templates" to sync outdated templates created in the previous versions of Library
+* New: Added Support Request and Addons menu items to Settings page sidebar
+* Fix: Users reporting issues in importing Media within Custom Library
+* Improvement: Enable unfiltered uploads when importing templates inside editor
+* Improvement: Remove submenu links for Contact and Addons under Custom Library settings menu
+* Improvement: Other minor improvements
+
 = 1.3.0 =
 * Fix: Template library save not working as expected
 * Improvement: Compatibility with Elementor 3.29.2 and Elementor Pro 3.29.2
 * Improvement: Other minor improvements
-
 
 = 1.2.0 =
 * Fix: Template library icon toggle not working as expected
