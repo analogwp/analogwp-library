@@ -56,13 +56,45 @@ final class Library_Data {
 					'is_pro'          => (bool) $meta->is_pro,
 					'tags'            => (array) $meta->tags,
 					'keywords'        => isset( $meta->keywords ) ? (array) $meta->keywords : array(),
-					'requiredVersion' => $meta->version ?? false,
+					'requiredVersion' => false,
 					'requiredPlugins' => isset( $meta->required_plugins ) ? (array) $meta->required_plugins : array(),
+					'version'         => $meta->version ?? false,
 				);
 			}
 		}
 
 		return $templates;
+	}
+
+	/**
+	 * Get outdated templates.
+	 *
+	 * @param bool $force Force refresh.
+	 *
+	 * @return array
+	 */
+	public static function get_outdated_templates( $force = false ) {
+		$transient = get_transient( 'agwp_custom_library_outdated_templates' );
+
+		if ( ! $force && isset( $transient ) ) {
+			return $transient;
+		}
+
+		$all_templates = self::templates();
+
+		$outdated_templates = array();
+
+		$current_version = AGWP_LIBRARY_VERSION;
+
+		foreach ( $all_templates as $template ) {
+			if ( version_compare( $template['version'], $current_version, '<' ) ) {
+				$outdated_templates[] = $template['id'];
+			}
+		}
+
+		set_transient( 'agwp_custom_library_outdated_templates', $outdated_templates, DAY_IN_SECONDS * 7 );
+
+		return $outdated_templates;
 	}
 
 	/**

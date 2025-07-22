@@ -7,6 +7,8 @@
 
 namespace AnalogWP\CustomLibrary\Settings\Views;
 
+use AnalogWP\CustomLibrary\Plugin;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -72,10 +74,27 @@ if ( ! $tab_exists ) {
 					</div>
 				</div>
 				<ul class="feature-list">
-					<li><a href="https://analogwp.com/support" target="_blank">Submit a support ticket</a></li>
-					<li><a href="https://analogwp.com/custom-library-for-elementor/" target="_blank">Explore all features</a></li>
+					<li><a href="https://analogwp.com/custom-library-for-elementor/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">Explore Custom Library Features</a></li>
+					<li><a href="https://analogwp.com/all-access-pass/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">[LTD] All Access Pass</a></li>
+					<?php if ( ! Plugin::instance()->has_pro_active() ) : ?>
+						<li><a href="edit.php?post_type=elementor_library&page=analog-custom-library-settings-addons">Get Custom Library Pro</a></li>
+					<?php endif; ?>
 				</ul>
 			</div>
+
+			<div class="help-box">
+						<div>
+						<h3>🙋 Looking for help or a feature to request?</h3>
+
+					</div>
+
+					<div>
+						<?php if ( Plugin::instance()->has_pro_active() ) : ?>
+							<a class="button button-secondary" href="<?php echo admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings-account' ); ?>">Account</a>
+						<?php endif; ?>
+						<a class="button button-secondary" href="<?php echo admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings-contact' ); ?>">Create a Support Request</a>
+					</div>
+				</div>
 
 			<?php do_action( 'analog_custom_library_sidebar_end' ); ?>
 		</div>

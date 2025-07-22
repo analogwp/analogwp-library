@@ -348,19 +348,45 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	border: 1px solid #E0E0E0;
 }
 
+.ang-custom-library .forminp-action-button .description {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
 .ang-custom-library .forminp-media-image .analog-custom-library-remove-image-btn {
 	margin-left: 10px;
 }
 
-.ang-custom-library.import-export .tab-content .submit {
+.ang-custom-library.import-export .tab-content .submit,
+.ang-custom-library.tools .tab-content .submit {
 	display: none;
 }
-
 
 .ang-custom-library.import-export .forminp-import-templates .description,
 .ang-custom-library.import-export .forminp-export-templates .description {
 	margin-top: 0;
 	margin-bottom: 10px;
+}
+
+.ang-custom-library .forminp-action-button #update_outdated_templates:before {
+	font: normal 20px / 0.5 dashicons;
+	speak: none;
+	display: inline-block;
+	padding: 0;
+	inset-block-start: 8px;
+	inset-inline-start: -4px;
+	position: relative;
+	vertical-align: top;
+	content: "\f463";
+}
+
+.ang-custom-library .forminp-action-button #update_outdated_templates.loading:before {
+	animation: spinner-rotation 1s infinite linear;
+}
+
+.ang-custom-library .forminp-action-button #update_outdated_templates.success:before {
+	content: "\f147";
+  color: #46b450;
 }
 
 .ang-custom-library .pro-tag {
@@ -449,3 +475,14 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	margin-bottom: 10px;
 }
 
+/**
+ * Animation
+ */
+@keyframes spinner-rotation {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

@@ -11,6 +11,7 @@ use AnalogWP\CustomLibrary\Base;
 use AnalogWP\CustomLibrary\Core\Data\Templates_DB;
 use Elementor\TemplateLibrary\Source_Local;
 use WP_Post;
+use AnalogWP\CustomLibrary\Plugin;
 
 /**
  * Class Library_Manager.
@@ -28,8 +29,6 @@ class Library_Manager extends Base {
 	 */
 	public function __construct() {
 		$this->templates_db = new Templates_DB();
-
-		$this->hooks();
 	}
 
 	/**
@@ -140,6 +139,14 @@ class Library_Manager extends Base {
 		$keywords         = get_the_terms( $post_id, 'analog_custom_library_keyword' );
 		$required_plugins = get_post_meta( $post_id, 'required_plugins', true );
 
+		// Get Elementor Document.
+		$document = Plugin::elementor()->documents->get( $post_id );
+		$content = array();
+
+		if ( $document ) {
+			$content = $document->get_elements_raw_data( null, true );
+		}
+
 		$template_data = array(
 			'id'               => (int) $post_id,
 			'site_id'          => 0,
@@ -150,10 +157,10 @@ class Library_Manager extends Base {
 			'tags'             => ( ! is_wp_error( $tags ) && $tags ) ? wp_list_pluck( $tags, 'name' ) : false,
 			'keywords'         => ( ! is_wp_error( $keywords ) && $keywords ) ? wp_list_pluck( $keywords, 'name' ) : false,
 			'is_pro'           => (bool) get_post_meta( $post_id, 'is_pro', true ),
-			'version'          => get_post_meta( $post_id, 'required_version', true ),
+			'version'          => AGWP_LIBRARY_VERSION,
 			'uses_container'   => (bool) get_post_meta( $post_id, 'uses_container', true ),
 			'data'             => array(
-				'content' => json_decode( get_post_meta( $post_id, '_elementor_data', true ) ),
+				'content' => $content,
 			),
 			'required_plugins' => $required_plugins,
 		);
@@ -285,7 +292,7 @@ class Library_Manager extends Base {
 	 *
 	 * @param int $template_id Template ID.
 	 *
-	 * @return void
+	 * @return bool
 	 */
 	public function add_template_to_library( $template_id ) {
 		// Update template meta.
@@ -301,6 +308,10 @@ class Library_Manager extends Base {
 			$this->sync_template( $data );
 
 			set_transient( $transient_key, true, 5 );
+
+			return true;
 		}
+
+		return false;
 	}
 }
