@@ -199,6 +199,8 @@ if ( ! function_exists( 'agwp_custom_library_for_elementor_fs' ) ) {
 						'first-path'     => 'admin.php?page=analog-custom-library-settings',
 						'account'        => false,
 						'support'        => false,
+						'contact'        => false,
+						'addons'         => false,
 						'parent'         => array(
 							'slug' => 'edit.php?post_type=elementor_library',
 						),
