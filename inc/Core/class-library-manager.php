@@ -205,6 +205,16 @@ class Library_Manager extends Base {
 			$template_data['created_at'] = current_time( 'mysql' );
 			$this->templates_db->insert( $template_data );
 		}
+
+		/**
+		 * Fires after a template has been synced to the library.
+		 *
+		 * @since 1.4.1
+		 *
+		 * @param int   $template_id   The template ID.
+		 * @param array $template_data The template data.
+		 */
+		do_action( 'agwp_custom_library_template_synced', $data['id'], $template_data );
 	}
 
 	/**
@@ -216,7 +226,18 @@ class Library_Manager extends Base {
 	public function remove_template_from_library( $template_id ) {
 		$exists = $this->templates_db->template_exists( $template_id );
 		if ( $exists ) {
-			return $this->templates_db->delete( $exists->id, $template_id );
+			$result = $this->templates_db->delete( $exists->id, $template_id );
+
+			/**
+			 * Fires after a template has been deleted from the library.
+			 *
+			 * @since 1.4.1
+			 *
+			 * @param int $template_id The template ID.
+			 */
+			do_action( 'agwp_custom_library_template_deleted', $template_id );
+
+			return $result;
 		}
 		return false;
 	}

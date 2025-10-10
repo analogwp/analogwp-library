@@ -45,7 +45,7 @@ final class Library_Data {
 
 				$modified = isset( $meta->modified ) ? $meta->modified : $meta->published;
 
-				$templates[] = array(
+				$template_array = array(
 					'id'              => (int) $template->template_id,
 					'siteID'          => (int) $template->site_id,
 					'title'           => $template->title,
@@ -60,6 +60,17 @@ final class Library_Data {
 					'requiredPlugins' => isset( $meta->required_plugins ) ? (array) $meta->required_plugins : array(),
 					'version'         => $meta->version ?? false,
 				);
+
+				/**
+				 * Filter template data for display in library.
+				 * Allows cloud storage providers to replace thumbnail URLs with cloud URLs.
+				 *
+				 * @param array $template_array Template data array.
+				 * @param int   $template_id Template ID.
+				 */
+				$template_array = apply_filters( 'agwp_custom_library_template_data', $template_array, $template_id );
+
+				$templates[] = $template_array;
 			}
 		}
 
@@ -117,7 +128,28 @@ final class Library_Data {
 			return new \WP_Error( 'template_content_error', 'No content found for this template. This is most probably due to invalid ID.' );
 		}
 
-		return array( 'content' => json_decode( $template->content, true ) );
+		/**
+		 * Filter template content before decoding.
+		 * Allows cloud storage providers to override with cloud-hosted content.
+		 *
+		 * @param string $content Template content (JSON string).
+		 * @param int $template_id Template ID.
+		 */
+		$content = apply_filters( 'agwp_custom_library_get_template_content', $template->content, $template_id );
+
+		// Validate content after filter.
+		if ( empty( $content ) || '{}' === $content || '[]' === $content ) {
+			return new \WP_Error( 'template_content_error', 'Template content is empty. This template may not have been properly synced or the cloud storage may be unavailable.' );
+		}
+
+		$decoded_content = json_decode( $content, true );
+
+		// Validate decoded content.
+		if ( empty( $decoded_content ) || ! is_array( $decoded_content ) ) {
+			return new \WP_Error( 'template_content_error', 'Failed to decode template content or content is empty.' );
+		}
+
+		return array( 'content' => $decoded_content );
 	}
 
 	/**
