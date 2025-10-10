@@ -139,7 +139,7 @@ final class Library_Data {
 
 		// Validate content after filter.
 		if ( empty( $content ) || '{}' === $content || '[]' === $content ) {
-			return new \WP_Error( 'template_content_error', 'Template content is empty. This template may not have been properly synced or the cloud storage may be unavailable.' );
+			return new \WP_Error( 'template_content_error', 'Template content is empty,please check within the original template.' );
 		}
 
 		$decoded_content = json_decode( $content, true );
