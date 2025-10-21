@@ -5,12 +5,13 @@
 		column-gap: 40px;
 	}
 
-	#ang_plugin_rollback_version-description + .form-table tbody {
+	#analog_custom_library_plugin_rollback_version-description + .form-table tbody {
 		display: grid;
 		grid-template-columns: auto 1fr;
+		column-gap: 10px;
 	}
 
-	#ang_plugin_rollback_version-description + .form-table .forminp-button {
+	#analog_custom_library_plugin_rollback_version-description + .form-table .forminp-button {
 		padding: 15px 0;
 	}
 

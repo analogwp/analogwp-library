@@ -9,6 +9,7 @@
 namespace AnalogWP\CustomLibrary;
 
 use AnalogWP\CustomLibrary\Admin\Notices;
+use AnalogWP\CustomLibrary\Featuresets\Register_Featuresets as Featuresets;
 
 /**
  * Class AnalogWP\CustomLibrary\Plugin.
@@ -60,6 +61,9 @@ final class Plugin {
 		add_filter( 'plugin_action_links_' . plugin_basename( AGWP_LIBRARY_PLUGIN_FILE ), array( self::$instance, 'plugin_action_links' ) );
 		add_filter( 'analog/library/app/strings', array( self::$instance, 'send_strings_to_app' ) );
 
+		// Register Featuresets.
+		Featuresets::get_instance();
+
 		( new Consumer() )->register();
 		( new Notices() )->register();
 
@@ -109,7 +113,7 @@ final class Plugin {
 			'isPro'                              => Utils::is_pro(),
 			'version'                            => AGWP_LIBRARY_VERSION,
 			'elementorURL'                       => admin_url( 'edit.php?post_type=elementor_library' ),
-			'debugMode'                          => ( defined( 'ANALOG_DEV_DEBUG' ) && ANALOG_DEV_DEBUG ),
+			'debugMode'                          => ( defined( 'ANALOGWP_DEBUG' ) && ANALOGWP_DEBUG ),
 			'pluginURL'                          => AGWP_LIBRARY_PLUGIN_URL,
 			'license'                            => Utils::has_pro() ? array(
 				'status'  => $options->get( 'analog_custom_library_license_key_status' ),
@@ -176,6 +180,7 @@ final class Plugin {
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/class-register-settings.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/settings-helpers.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Featuresets/class-register-featuresets.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-base.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-import-image.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-options.php';

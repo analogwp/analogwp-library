@@ -159,5 +159,19 @@
 
 		// Initialize Select2.
 		$( '.ang-custom-library .forminp-multiselect select' ).select2();
+
+		// Process Plugin Rollback.
+		function processPluginRollback( e ) {
+			if ( e.preventDefault ) {
+				e.preventDefault();
+			}
+
+			const version = $( '#analog_custom_library_rollback_version_select_option' ).val();
+			const rollbackUrl = addQueryArgs( data.rollback_url, { version: version } );
+
+			window.location.href = rollbackUrl;
+			return false;
+		}
+		$( '#analog_custom_library_rollback_version_button' ).on( 'click', processPluginRollback );
 	} );
 }( jQuery, analog_custom_library_settings_data, wp ) );
