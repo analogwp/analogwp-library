@@ -113,7 +113,7 @@ final class Plugin {
 			'isPro'                              => Utils::is_pro(),
 			'version'                            => AGWP_LIBRARY_VERSION,
 			'elementorURL'                       => admin_url( 'edit.php?post_type=elementor_library' ),
-			'debugMode'                          => ( defined( 'ANALOG_DEV_DEBUG' ) && ANALOG_DEV_DEBUG ),
+			'debugMode'                          => ( defined( 'ANALOGWP_DEBUG' ) && ANALOGWP_DEBUG ),
 			'pluginURL'                          => AGWP_LIBRARY_PLUGIN_URL,
 			'license'                            => Utils::has_pro() ? array(
 				'status'  => $options->get( 'analog_custom_library_license_key_status' ),
