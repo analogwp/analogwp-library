@@ -9,6 +9,7 @@
 namespace AnalogWP\CustomLibrary;
 
 use AnalogWP\CustomLibrary\Admin\Notices;
+use AnalogWP\CustomLibrary\Featuresets\Register_Featuresets as Featuresets;
 
 /**
  * Class AnalogWP\CustomLibrary\Plugin.
@@ -59,6 +60,9 @@ final class Plugin {
 		add_action( 'init', array( self::$instance, 'load_textdomain' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( AGWP_LIBRARY_PLUGIN_FILE ), array( self::$instance, 'plugin_action_links' ) );
 		add_filter( 'analog/library/app/strings', array( self::$instance, 'send_strings_to_app' ) );
+
+		// Register Featuresets.
+		Featuresets::get_instance();
 
 		( new Consumer() )->register();
 		( new Notices() )->register();
@@ -176,6 +180,7 @@ final class Plugin {
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/class-register-settings.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/settings-helpers.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Featuresets/class-register-featuresets.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-base.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-import-image.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-options.php';
