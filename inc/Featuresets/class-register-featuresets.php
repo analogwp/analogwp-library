@@ -23,7 +23,7 @@ class Register_Featuresets {
 	/**
 	 * Get a class instance.
 	 *
-	 * @return Init
+	 * @return Register_Featuresets
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$instance ) ) {
