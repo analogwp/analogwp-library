@@ -43,6 +43,9 @@ class Register_Featuresets {
 	 * Initialize all Featuresets.
 	 */
 	public function init_featuresets() {
+		// Rollback.
+		require_once __DIR__ . '/rollback/class-rollbacker.php';
+		require_once __DIR__ . '/rollback/class-init.php';
 
 		do_action( 'analog_custom_library_after_featuresets_initialize' );
 	}
