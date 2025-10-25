@@ -63,7 +63,7 @@ class Init {
 	public function post_analog_custom_library_rollback() {
 		check_admin_referer( 'analog_custom_library_rollback' );
 
-		if ( ! defined( 'ANALOGWP_DEBUG' ) && ! current_user_can( 'update_plugins' ) ) {
+		if ( defined( 'ANALOGWP_DEBUG' ) || ! current_user_can( 'update_plugins' ) ) {
 			wp_die( esc_html__( 'Sorry, you are not allowed to rollback Custom Library plugin for this site.', 'analogwp-library' ) );
 		}
 
