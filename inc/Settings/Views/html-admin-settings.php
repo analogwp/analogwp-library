@@ -19,7 +19,7 @@ $current_tab_label = $tabs[ $current_tab ] ?? '';
 global $current_user;
 
 if ( ! $tab_exists ) {
-	wp_safe_redirect( admin_url( 'admin.php?page=analog-custom-library-settings' ) );
+	wp_safe_redirect( admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings' ) );
 	exit;
 }
 ?>
@@ -31,7 +31,7 @@ if ( ! $tab_exists ) {
 				<?php
 
 				foreach ( $tabs as $slug => $label ) {
-					echo '<a href="' . esc_html( admin_url( 'admin.php?page=analog-custom-library-settings&tab=' . esc_attr( $slug ) ) ) . '" class="analog-custom-library-nav-tab ' . ( $current_tab === $slug ? 'analog-custom-library-nav-tab-active' : '' ) . '">' . esc_html( $label ) . '</a>';
+					echo '<a href="' . esc_html( admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings&tab=' . esc_attr( $slug ) ) ) . '" class="analog-custom-library-nav-tab ' . ( $current_tab === $slug ? 'analog-custom-library-nav-tab-active' : '' ) . '">' . esc_html( $label ) . '</a>';
 				}
 
 				do_action( 'analog_custom_library_settings_tabs' );
@@ -83,9 +83,8 @@ if ( ! $tab_exists ) {
 			</div>
 
 			<div class="help-box">
-						<div>
+					<div>
 						<h3>🙋 Looking for help or a feature to request?</h3>
-
 					</div>
 
 					<div>

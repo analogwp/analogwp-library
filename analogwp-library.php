@@ -196,7 +196,7 @@ if ( ! function_exists( 'agwp_custom_library_for_elementor_fs' ) ) {
 					'menu'           => array(
 						'slug'           => 'analog-custom-library-settings',
 						'override_exact' => true,
-						'first-path'     => 'admin.php?page=analog-custom-library-settings',
+						'first-path'     => 'edit.php?post_type=elementor_library&page=analog-custom-library-settings',
 						'account'        => false,
 						'support'        => false,
 						'contact'        => false,
@@ -225,6 +225,9 @@ if ( ! function_exists( 'agwp_custom_library_for_elementor_fs' ) ) {
 	agwp_custom_library_for_elementor_fs()->add_filter( 'after_skip_url', 'agwp_custom_library_for_elementor_fs_settings_url' );
 	agwp_custom_library_for_elementor_fs()->add_filter( 'after_connect_url', 'agwp_custom_library_for_elementor_fs_settings_url' );
 	agwp_custom_library_for_elementor_fs()->add_filter( 'after_pending_connect_url', 'agwp_custom_library_for_elementor_fs_settings_url' );
+
+	// Disable automatic redirect on activation to prevent redirect to settings page before menu is registered.
+	agwp_custom_library_for_elementor_fs()->add_filter( 'redirect_on_activation', '__return_false' );
 }
 
 /**
