@@ -3,13 +3,13 @@
 #: assets/js/app/index.js:1
 msgid ""
 msgstr ""
-"Project-Id-Version: analogwp-library 1.4.0\n"
+"Project-Id-Version: analogwp-library 1.5.0\n"
 "Report-Msgid-Bugs-To: AnalogWP <EMAIL>\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2025-07-22T15:35:42.356Z\n"
+"POT-Creation-Date: 2025-10-25T17:16:05.308Z\n"
 "PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -45,53 +45,53 @@ msgstr ""
 msgid "https://analogwp.com/"
 msgstr ""
 
-#: analogwp-library.php:50
-#: analogwp-library.php:239
+#: analogwp-library.php:49
+#: analogwp-library.php:241
 msgid "Custom Library for Elementor requires PHP version %s"
 msgstr ""
 
-#: analogwp-library.php:51
-#: analogwp-library.php:240
+#: analogwp-library.php:50
+#: analogwp-library.php:242
 msgid "Error Activating"
 msgstr ""
 
-#: analogwp-library.php:83
+#: analogwp-library.php:82
 msgid ""
 "Custom Library for Elementor requires WordPress version %s+. Because you "
 "are using an earlier version, the plugin is currently NOT RUNNING."
 msgstr ""
 
-#: analogwp-library.php:108
+#: analogwp-library.php:107
 msgid ""
 "Custom Library for Elementor requires Elementor v%s or newer in order to "
 "work. Please update Elementor to the latest version."
 msgstr ""
 
-#: analogwp-library.php:112
+#: analogwp-library.php:111
 msgid "Update Elementor Now"
 msgstr ""
 
-#: analogwp-library.php:152
+#: analogwp-library.php:151
 msgid ""
 "Custom Library for Elementor is not working because you need to activate "
 "the Elementor plugin."
 msgstr ""
 
-#: analogwp-library.php:153
+#: analogwp-library.php:152
 msgid "Activate Elementor Now"
 msgstr ""
 
-#: analogwp-library.php:160
+#: analogwp-library.php:159
 msgid ""
 "Custom Library for Elementor is not working because you need to install the "
 "Elementor plugin."
 msgstr ""
 
-#: analogwp-library.php:161
+#: analogwp-library.php:160
 msgid "Install Elementor Now"
 msgstr ""
 
-#: inc/class-plugin.php:161
+#: inc/class-plugin.php:165
 #: inc/Elementor/class-finder-shortcuts.php:52
 msgid "Settings"
 msgstr ""
@@ -171,58 +171,58 @@ msgstr ""
 msgid "Custom Library"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:76
+#: inc/Settings/class-admin-settings.php:77
 msgid "Your settings have been saved."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:146
+#: inc/Settings/class-admin-settings.php:147
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:147
+#: inc/Settings/class-admin-settings.php:148
 msgid "Select Image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:148
+#: inc/Settings/class-admin-settings.php:149
 msgid "Use this image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:325
+#: inc/Settings/class-admin-settings.php:326
 #: client/blocks/BlockList.js:369
 #: client/blocks/BlockList.js:417
 msgid "Pro"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:326
+#: inc/Settings/class-admin-settings.php:327
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:810
+#: inc/Settings/class-admin-settings.php:811
 msgid "Toggle"
-msgstr ""
-
-#: inc/Settings/class-admin-settings.php:874
-#: inc/Settings/class-admin-settings.php:913
-msgid "Change Image"
 msgstr ""
 
 #: inc/Settings/class-admin-settings.php:875
 #: inc/Settings/class-admin-settings.php:914
+msgid "Change Image"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:876
+#: inc/Settings/class-admin-settings.php:915
 msgid "Revert to Default"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1009
-#: inc/Settings/class-admin-settings.php:1032
+#: inc/Settings/class-admin-settings.php:1010
+#: inc/Settings/class-admin-settings.php:1033
 msgid "Import"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1042
 #: inc/Settings/class-admin-settings.php:1043
+#: inc/Settings/class-admin-settings.php:1044
 msgid "Go"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1072
-#: inc/Settings/class-admin-settings.php:1090
+#: inc/Settings/class-admin-settings.php:1073
+#: inc/Settings/class-admin-settings.php:1091
 msgid "Export All"
 msgstr ""
 
@@ -319,6 +319,28 @@ msgstr ""
 
 #: inc/Settings/Views/html-admin-settings.php:52
 msgid "Save changes"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-version-control.php:26
+msgid "Version Control"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-version-control.php:43
+msgid "Rollback Versions"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-version-control.php:44
+msgid ""
+"If you are having issues with current version of Custom Library, you can "
+"rollback to a previous stable version."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-version-control.php:49
+msgid "Rollback Custom Library"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-version-control.php:61
+msgid "Reinstall this version"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-tools.php:31
@@ -583,6 +605,21 @@ msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:230
 msgid "Button Border Width"
+msgstr ""
+
+#: inc/Featuresets/rollback/class-rollbacker.php:175
+#: inc/Featuresets/rollback/class-init.php:94
+msgid "Rollback to Previous Version"
+msgstr ""
+
+#: inc/Featuresets/rollback/class-init.php:67
+msgid "Sorry, you are not allowed to rollback Custom Library plugin for this site."
+msgstr ""
+
+#: inc/Featuresets/rollback/class-init.php:75
+msgid ""
+"Error occurred, the version selected is invalid. Try selecting different "
+"version."
 msgstr ""
 
 #: inc/Elementor/editor-templates/templates.php:14
