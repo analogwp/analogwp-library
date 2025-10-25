@@ -1,86 +1,146 @@
-=== Custom Library for Elementor: Take Control of Your Templates ===
+=== Custom Library for Elementor: Design System & Template Manager ===
 Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.8.3
 Stable tag: 1.5.0
-Tags: elementor, templates, custom library, elementor addons, design system
+Tags: elementor, elementor templates, template library, design system, elementor addons
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Build faster with your own template library. Organize patterns into categories and access them instantly from within the Elementor editor for seamless workflows.
+Create your own design system inside Elementor. Organize reusable templates, save time on every project, and empower clients with consistent, on-brand design patterns.
 
 == Description ==
-[🚀[Pro] Grab the premium version at a Lifetime Deal](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
 
-No need to rely solely on Elementor’s default template library anymore. With Custom Library for Elementor, you can curate and access your own collection of design assets right inside the editor.
+**Transform how you build with Elementor.** Custom Library for Elementor lets you create your own personal design system—organizing reusable templates, sections, and patterns into one streamlined library accessible directly from the editor.
+
+[🚀 Upgrade to Pro with Lifetime Deal](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
 
 https://www.youtube.com/watch?v=9RTBS6rhYgg
 
-Build faster, stay organized, and empower your clients with a seamless design workflow by providing them with essential patterns to build new layouts with consistency, all with Custom Library for Elementor.
+### Why Custom Library for Elementor?
 
-### Your Designs, Your Library
+**No more digging through Elementor's default template library.** With Custom Library, you curate your own collection of design assets—sections, blocks, and full page templates—and access them instantly while editing. Whether you're a freelancer, agency, or in-house designer, this plugin is built to speed up your workflow and maintain design consistency across projects.
 
-Custom Library for Elementor is your new home for all your template assets. Save and organize your most-used templates into categories and access them instantly from within the editor.
+**Works perfectly with free Elementor**—no Elementor Pro required.
 
-Enjoy an intuitive flow that keeps you focused on designing, without unnecessary distractions.
+### Build Your Own Design System
 
-### Perfect for Client Handover
+Think of Custom Library as your personal design system right inside Elementor:
 
-Empower your clients with a reusable template collection tailored to their needs.
+- **Save any template or section** with one click from your Elementor template list
+- **Organize with custom categories** for quick navigation (Headers, CTAs, Pricing Tables, etc.)
+- **Visual previews** with custom thumbnail images for instant recognition
+- **Favorite your go-to templates** for even faster access
+- **Search and filter** to find exactly what you need in seconds
 
-Clients often struggle to maintain consistent designs when extending layouts. Custom Library solves this by providing a pre-selected set of foundational sections they can confidently reuse. Help them stay on track and preserve the design quality effortlessly.
+Stop rebuilding the same sections over and over. Build once, reuse everywhere.
 
-### Key Features
+### Perfect for Client Handover & Agency Workflows
 
-- **Add Templates Easily:** Save your templates and patterns to the library with just a few clicks.
-- **Customizable Layout:** Tailor the library’s design to match your style and workflow.
-- **Organized Categories:** Group templates into categories for quick access.
-- **Image Previews:** Add visual cues to your templates with image thumbnails.
+**Agencies love Custom Library** because it solves one of the biggest client challenges: maintaining design consistency after handover.
 
-### [Pro Features](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
+Clients often struggle when adding new pages or sections—they accidentally break layouts, mix fonts, or stray from brand guidelines. Custom Library gives them a **pre-curated set of on-brand templates** they can confidently reuse without breaking anything.
 
-- Role-based access controls
-- Branding customization
-- Export/Import templates
+**Benefits for agencies:**
+- Deliver a professional, easy-to-use template collection with every project
+- Reduce post-launch support requests and "fix my page" calls
+- Empower clients to expand their site while staying on-brand
+- Show clear value and professionalism in your deliverables
 
-Custom Library for Elementor is brought to you by **AnalogWP**, the creators of [Style Kits for Elementor](https://analogwp.com/style-kits/).
+[Upgrade to Pro](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme) for role-based access controls, custom branding, and import/export features perfect for teams.
+
+### Free Features
+
+✅ **One-Click Template Saving** – Add any Elementor template to your library instantly
+✅ **Custom Categories** – Organize templates by type, project, or client
+✅ **Visual Thumbnails** – Upload custom preview images for instant recognition
+✅ **Favorites System** – Star your most-used templates for quick access
+✅ **Powerful Search** – Find templates fast with built-in search
+✅ **Clean Editor Integration** – Access your library via a sleek modal without leaving Elementor
+✅ **Works with Free Elementor** – No Elementor Pro subscription required
+✅ **SVG Upload Support** – Safely upload SVG files with built-in sanitization
+✅ **Version Rollback** – Revert to previous plugin versions if needed
+
+### [Pro Features](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme) – Lifetime Deal Available!
+
+🚀 **Role-Based Access Controls** – Show/hide the library for specific users or roles
+🚀 **Custom Branding** – Change library colors, button styles, and icon to match your brand
+🚀 **Import/Export Templates** – Bulk migrate templates between sites or share with clients
+🚀 **Custom Trigger Icon** – Replace the default library icon with your own branding
+🚀 **Settings Access Control** – Restrict who can modify plugin settings
+🚀 **White-Label Ready** – Perfect for agencies delivering branded client experiences
+✨ **More Features** - We are constantly taking feedback and adding more features for power users like you
+
+[Get Pro with Lifetime Access →](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
+
+---
+
+**From the team at AnalogWP** – creators of [Style Kits for Elementor](https://analogwp.com/style-kits/), trusted by thousands of designers worldwide.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working. e.g.
+**Automatic Installation (Recommended):**
+1. Go to **Plugins > Add New** in your WordPress admin
+2. Search for "Custom Library for Elementor"
+3. Click **Install Now**, then **Activate**
+4. Access settings from **Custom Library** in your WordPress sidebar
 
-1. Upload the plugin files to the `/wp-content/plugins/analogwp-library` directory, or install the plugin through the WordPress plugins screen directly..
-2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Head to 'Custom Library for Elementor' page from WordPress sidebar menu.
+**Manual Installation:**
+1. Download the plugin ZIP file
+2. Go to **Plugins > Add New > Upload Plugin**
+3. Upload the ZIP file and click **Install Now**
+4. Activate the plugin
+
+**Getting Started:**
+Once activated, go to any Elementor template and toggle "Add to Library" to start building your collection. Access your library from the Elementor editor via the library icon in the top toolbar.
 
 == Frequently Asked Questions ==
 
-= Is there documentation available? =
+= What is Custom Library for Elementor? =
 
-Yes, you can find all the documentation [here](https://analogwp.com/cl-docs).
+Custom Library for Elementor is a template management plugin that lets you create your own personal design system inside Elementor. Instead of searching through Elementor's default template library, you can save, organize, and instantly access your own reusable templates, sections, and blocks.
 
-= Does this plugin require Elementor Pro? =
+= Does this require Elementor Pro? =
 
-No, the Custom Library works perfectly with the free version of Elementor.
+No! Custom Library works perfectly with the free version of Elementor. No Elementor Pro subscription required.
 
-= How is this different from the default Elementor Template Library? =
+= How is this different from Elementor's default template library? =
 
-Unlike the default library, Custom Library allows you to:
+Elementor's default library shows all templates and blocks, which can be overwhelming. Custom Library lets you:
 
-- Add screenshots for easy template identification.
-- Curate and categorize only the templates that truly matter, to streamline your workflow.
-- Avoid distractions caused by built-in templates and blocks.
+✓ Create a curated collection of only your templates
+✓ Add custom thumbnail previews for visual identification
+✓ Organize templates into custom categories
+✓ Mark favorites for instant access
+✓ Search and filter your own designs
+✓ Perfect for client handovers with pre-approved templates
 
-It’s an ideal solution for handing over pre-designed assets to clients, ensuring they build upon your layouts with consistency.
+Think of it as your personal design system inside Elementor.
 
-= Are any templates included? =
+= Can I use this for client projects? =
 
-No, you can populate the library with your own templates and patterns.
+Absolutely! Custom Library is perfect for agencies. Create a curated set of on-brand templates your clients can safely reuse without breaking designs. The Pro version includes role-based access controls and custom branding—ideal for white-label client delivery.
 
-= Have more questions? =
+= Are any pre-made templates included? =
 
-Feel free to reach out via the [contact page](https://analogwp.com/contact/).
+No. Custom Library is designed for you to add your own templates. This ensures your library only contains templates relevant to your projects and brand.
+
+= Does it work with other page builders? =
+
+No, Custom Library is specifically built for Elementor and integrates directly into the Elementor editor workflow.
+
+= Where can I find documentation? =
+
+Full documentation is available at [analogwp.com/cl-docs](https://analogwp.com/cl-docs).
+
+= How do I upgrade to Pro? =
+
+Visit [analogwp.com/custom-library-for-elementor](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme) to upgrade. We are offering a **great deal** at the moment.
+
+= Need support? =
+
+Contact us via the [support page](https://analogwp.com/contact/) or use the support forum on WordPress.org.
 
 == Screenshots ==
 
@@ -96,7 +156,6 @@ Feel free to reach out via the [contact page](https://analogwp.com/contact/).
 * Fix: Invalid redirect on plugin activation before Freemius consent
 * Improvement: Update Debug constant from `ANALOG_DEV_DEBUG` to `ANALOGWP_DEBUG`
 * Improvement: Other minor improvements
-
 
 = 1.4.0 =
 * New: Tools tab inside Custom Library settings page
