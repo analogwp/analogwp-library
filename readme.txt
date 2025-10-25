@@ -155,6 +155,7 @@ Contact us via the [support page](https://analogwp.com/contact/) or use the supp
 * New: Rollback feature at Version Control Settings tab
 * Fix: Invalid redirect on plugin activation before Freemius consent
 * Improvement: Update Debug constant from `ANALOG_DEV_DEBUG` to `ANALOGWP_DEBUG`
+* Improvement: Compatibility with Elementor 3.32.x and Elementor Pro 3.32.x
 * Improvement: Other minor improvements
 
 = 1.4.0 =
