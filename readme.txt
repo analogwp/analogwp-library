@@ -91,6 +91,13 @@ Feel free to reach out via the [contact page](https://analogwp.com/contact/).
 
 == Changelog ==
 
+= 1.5.0 =
+* New: Rollback feature at Version Control Settings tab
+* Fix: Invalid redirect on plugin activation before Freemius consent
+* Improvement: Update Debug constant from `ANALOG_DEV_DEBUG` to `ANALOGWP_DEBUG`
+* Improvement: Other minor improvements
+
+
 = 1.4.0 =
 * New: Tools tab inside Custom Library settings page
 * New: Added new option at Tools menu "Update Outdated Templates" to sync outdated templates created in the previous versions of Library
