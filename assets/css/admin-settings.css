@@ -5,16 +5,6 @@
 		column-gap: 40px;
 	}
 
-	#analog_custom_library_plugin_rollback_version-description + .form-table tbody {
-		display: grid;
-		grid-template-columns: auto 1fr;
-		column-gap: 10px;
-	}
-
-	#analog_custom_library_plugin_rollback_version-description + .form-table .forminp-button {
-		padding: 15px 0;
-	}
-
 	body.custom-library_page_analog-custom-library-settings .wrap {
 		margin: 0;
 		padding: 20px 30px 30px;
@@ -359,7 +349,8 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 }
 
 .ang-custom-library.import-export .tab-content .submit,
-.ang-custom-library.tools .tab-content .submit {
+.ang-custom-library.tools .tab-content .submit,
+.ang-custom-library.version-control .tab-content .submit {
 	display: none;
 }
 
@@ -474,6 +465,23 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 .ang-custom-library .forminp-promo-export-templates .description {
 	margin-top: 0;
 	margin-bottom: 10px;
+}
+
+/**
+ * Rollback styles.
+ */
+.ang-custom-library #analog_custom_library_plugin_rollback_version-description + .form-table tbody {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	column-gap: 10px;
+}
+
+.ang-custom-library #analog_custom_library_plugin_rollback_version-description + .form-table .forminp-button {
+	padding: 15px 0;
+}
+
+.ang-custom-library #analog_custom_library_plugin_rollback_version-description + .form-table .forminp.forminp-select label {
+	margin-right: 20px;
 }
 
 /**
