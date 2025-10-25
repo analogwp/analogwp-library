@@ -8,7 +8,7 @@ Tags: elementor, elementor templates, template library, design system, elementor
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create your own design system inside Elementor. Organize reusable templates, save time on every project, and empower clients with consistent, on-brand design patterns.
+Create your own design system in Elementor. Organize templates, save time, and empower clients with consistent designs.
 
 == Description ==
 
