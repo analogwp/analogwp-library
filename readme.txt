@@ -8,7 +8,7 @@ Tags: elementor, templates, custom library, elementor addons, design system
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Custom Library for Elementor is your new home for all your template assets. Save and organize your most-used templates into categories and access them instantly from within the editor.
+Build faster with your own template library. Organize patterns into categories and access them instantly from within the Elementor editor for seamless workflows.
 
 == Description ==
 [🚀[Pro] Grab the premium version at a Lifetime Deal](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
