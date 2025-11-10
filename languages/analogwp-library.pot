@@ -3,13 +3,13 @@
 #: assets/js/app/index.js:1
 msgid ""
 msgstr ""
-"Project-Id-Version: analogwp-library 1.5.0\n"
+"Project-Id-Version: analogwp-library 1.6.0\n"
 "Report-Msgid-Bugs-To: AnalogWP <EMAIL>\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2025-10-25T17:16:05.308Z\n"
+"POT-Creation-Date: 2025-11-10T19:09:04.634Z\n"
 "PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -438,46 +438,50 @@ msgstr ""
 msgid "Hide default Elementor Template library icon from editor."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:69
+#: inc/Settings/Tabs/class-settings-general.php:59
+msgid "Hide default Elementor Template library popup from editor."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:75
 msgid "Placeholder image"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:73
+#: inc/Settings/Tabs/class-settings-general.php:79
 msgid "Replace the default placeholder image."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:90
+#: inc/Settings/Tabs/class-settings-general.php:96
 msgid "Trigger icon"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:94
+#: inc/Settings/Tabs/class-settings-general.php:100
 msgid "Replace the trigger icon."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:105
+#: inc/Settings/Tabs/class-settings-general.php:111
 msgid "Library Access"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:113
-#: inc/Settings/Tabs/class-settings-general.php:133
+#: inc/Settings/Tabs/class-settings-general.php:119
+#: inc/Settings/Tabs/class-settings-general.php:139
 msgid "Show to All"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:114
-#: inc/Settings/Tabs/class-settings-general.php:134
+#: inc/Settings/Tabs/class-settings-general.php:120
+#: inc/Settings/Tabs/class-settings-general.php:140
 msgid "Show only to specific roles"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:115
-#: inc/Settings/Tabs/class-settings-general.php:135
+#: inc/Settings/Tabs/class-settings-general.php:121
+#: inc/Settings/Tabs/class-settings-general.php:141
 msgid "Show only to specific users"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:124
+#: inc/Settings/Tabs/class-settings-general.php:130
 msgid "Settings Access"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:125
+#: inc/Settings/Tabs/class-settings-general.php:131
 msgid ""
 "Please note, by default all administrators have settings access even if it "
 "is not explicitly set here to avoid accidental lockouts."
@@ -701,7 +705,7 @@ msgstr ""
 msgid "Large"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:59
+#: inc/Settings/Tabs/class-settings-general.php:65
 msgctxt "settings title"
 msgid "Enable SVG Uploads"
 msgstr ""

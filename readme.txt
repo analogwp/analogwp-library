@@ -3,7 +3,7 @@ Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.8.3
-Stable tag: 1.5.0
+Stable tag: 1.6.0
 Tags: elementor, elementor templates, template library, design system, elementor addons
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -150,6 +150,11 @@ Contact us via the [support page](https://analogwp.com/contact/) or use the supp
 4. Custom Library popup modal in the Elementor Editor.
 
 == Changelog ==
+
+= 1.6.0 =
+* New: Hide Elementor Template Library popup Toggle at Settings
+* Improvement: Compatibility with Elementor 3.33.x
+* Improvement: Other minor improvements
 
 = 1.5.0 =
 * New: Rollback feature at Version Control Settings tab
