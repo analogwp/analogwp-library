@@ -164,12 +164,18 @@ class Utils extends Base {
 		$hide_elementor_library_icon = $options->get( 'hide_elementor_template_library' );
 		$hide_elementor_library_icon = $hide_elementor_library_icon ? 'none' : 'inherit';
 
+		$hide_elementor_library_popup = $options->get( 'hide_elementor_library_popup' );
+		$hide_elementor_library_popup       = $hide_elementor_library_popup ? 'none' : 'inherit';
 
 		$library_popup_style = $options->get( 'library_popup_style' );
 
 		$css .= ".elementor-add-template-button {
 					display: {$hide_elementor_library_icon} !important;
 				}";
+
+		$css .= " #elementor-template-library-modal.dialog-widget.elementor-templates-modal {
+				display: {$hide_elementor_library_popup} !important;
+			}";
 
 		if ( isset( $library_popup_style ) && 'full-screen' === $library_popup_style ) {
 			$css .= '#analog-custom-library-modal .dialog-widget-content {

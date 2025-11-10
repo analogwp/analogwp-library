@@ -55,6 +55,12 @@ class General extends Settings_Page {
 					'default' => false,
 				),
 				array(
+					'id'      => 'hide_elementor_library_popup',
+					'desc'    => __( 'Hide default Elementor Template library popup from editor.', 'analogwp-library' ),
+					'type'    => 'checkbox',
+					'default' => false,
+				),
+				array(
 					'id'      => 'allow_svg_uploads',
 					'desc'    => esc_html_x( 'Enable SVG Uploads', 'settings title', 'analogwp-library' ),
 					'type'    => 'checkbox',
