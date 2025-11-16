@@ -242,18 +242,61 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	gap: 15px;
 }
 
-.ang-custom-library .upgrade-box li {
-	list-style: disc;
-	font-size: 1.1em;
-}
 
-.ang-custom-library .upgrade-box h3 {
-	line-height: 1.4em;
-}
+.ang-custom-library .sidebar .upgrade-box {
+	margin-top: 0;
+	background: #fff;
+	border: 1px solid #dcdcdc;
+	margin-bottom: 30px;
 
-.ang-custom-library .upgrade-box .regular-text {
-	width: 100%;
-	margin-bottom: 8px;
+	.ang-discount-response {
+		font-style: italic;
+		font-weight: 500;
+		color: #602BC2;
+	}
+
+	&.special {
+		border-color:#602BC2;
+		background: #E1D5F6;
+		
+		h3 {
+			margin: 0;
+			font-size: 18px;
+			color:#602BC2;
+			line-height: 1.5;
+		}
+
+		h3 + p {
+			font-size: 15px;
+		}
+
+		 input[type="email"]:focus,
+		 input[type="text"]:focus {
+			border-color:#602BC2;
+			box-shadow: 0 0 0 1px #602BC2;
+		 }
+
+		.button,
+		.button-secondary {
+			background-color:#602BC2;
+			border-color:#602BC2;
+			color:#fff;
+
+			&:hover,
+			&:focus {
+				box-shadow: none;
+			}
+		}
+
+		a {
+			color:currentColor;
+		}
+	}
+
+	.regular-text {
+		width: 100%;
+		margin-bottom: 10px;
+	}
 }
 
 .ang-custom-library .upgrade-box + .promo {

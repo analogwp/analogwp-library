@@ -75,12 +75,34 @@ if ( ! $tab_exists ) {
 				</div>
 				<ul class="feature-list">
 					<li><a href="https://analogwp.com/custom-library-for-elementor/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">Explore Custom Library Features</a></li>
-					<li><a href="https://analogwp.com/all-access-pass/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">[LTD] All Access Pass</a></li>
-					<?php if ( ! Plugin::instance()->has_pro_active() ) : ?>
-						<li><a href="edit.php?post_type=elementor_library&page=analog-custom-library-settings-addons">Get Custom Library Pro</a></li>
-					<?php endif; ?>
+					<!-- <li><a href="https://analogwp.com/all-access-pass/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">[LTD] All Access Pass</a></li> -->
 				</ul>
 			</div>
+
+			<?php if ( ! Plugin::instance()->has_pro_active() ) : ?>
+				<div class="upgrade-box special">
+					<h3>Upgrade to Custom Library Pro with<br/>80% discount in a Lifetime Deal</h3>
+
+					<p>Black Friday + Cyber Monday Special!<br/>We have <b>already applied 50% discount sitewide</b>—enter your email to <b>get an extra 30% code on top</b>. Limited-time offer!</p>
+
+					<form id="js-ang-custom-library-request-discount" method="post">
+						<input required type="email" class="regular-text" name="email" value="<?php echo esc_attr( $current_user->user_email ); ?>" placeholder="<?php esc_attr_e( 'Your Email', 'analogwp-library' ); ?>">
+						<input required type="text" class="regular-text" name="first_name" value="<?php echo esc_attr( $current_user->first_name ); ?>" placeholder="<?php esc_attr_e( 'First Name', 'analogwp-library' ); ?>">
+						<input type="submit" class="button" style="width:100%" value="<?php esc_attr_e( 'Send me the coupon', 'analogwp-library' ); ?>" data-default-label="<?php esc_attr_e( 'Send me the coupon', 'analogwp-library' ); ?>">
+						<p class="ang-discount-response"><span></span></p>
+					</form>
+
+					<p>
+						<?php
+						printf(
+								/* translators: %s: Link to AnalogWP privacy policy. */
+							esc_html__( 'By submitting your details, you agree to our %s.', 'analogwp-library' ),
+							'<a target="_blank" href="https://analogwp.com/privacy-policy/">' . esc_html__( 'privacy policy', 'analogwp-library' ) . '</a>'
+						);
+						?>
+					</p>
+				</div>
+			<?php endif; ?>
 
 			<div class="help-box">
 					<div>
