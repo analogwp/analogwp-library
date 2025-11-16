@@ -16,7 +16,7 @@
 
 **Works perfectly with free Elementor**—no Elementor Pro required.
 
-🚀 [Upgrade to Pro with Lifetime Deal](https://analogwp.com/custom-library-for-elementor/?utm_source=github&utm_medium=readme)
+🚀 [Grab the Pro Version in a Limited Time Deal](https://analogwp.com/custom-library-for-elementor/?utm_source=github&utm_medium=readme)
 
 ## Table of Contents
 

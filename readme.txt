@@ -3,7 +3,7 @@ Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.8.3
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 Tags: elementor, elementor templates, template library, design system, elementor addons
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -12,9 +12,9 @@ Create your own design system in Elementor. Organize templates, save time, and e
 
 == Description ==
 
-**Transform how you build with Elementor.** Custom Library for Elementor lets you create your own personal design system—organizing reusable templates, sections, and patterns into one streamlined library accessible directly from the editor.
+[🚀[Pro] Limited time Black Friday + Cyber Monday Sale is on!](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
 
-[🚀 Upgrade to Pro with Lifetime Deal](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
+**Transform how you build with Elementor.** Custom Library for Elementor lets you create your own personal design system—organizing reusable templates, sections, and patterns into one streamlined library accessible directly from the editor.
 
 https://www.youtube.com/watch?v=9RTBS6rhYgg
 
@@ -150,6 +150,10 @@ Contact us via the [support page](https://analogwp.com/contact/) or use the supp
 4. Custom Library popup modal in the Elementor Editor.
 
 == Changelog ==
+
+= 1.6.1 =
+* New: Black Friday + Cyber Monday promo deal at settings page
+* Improvement: Other minor improvements
 
 = 1.6.0 =
 * New: Hide Elementor Template Library popup Toggle at Settings
