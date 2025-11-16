@@ -18,8 +18,8 @@
  * Text Domain: analogwp-library
  * Requires at least: 6.0
  * Requires PHP: 7.4
- * Elementor tested up to: 3.33.0
- * Elementor Pro tested up to: 3.32.3
+ * Elementor tested up to: 3.33.2
+ * Elementor Pro tested up to: 3.33.1
  */
 
 defined( 'ABSPATH' ) || exit;

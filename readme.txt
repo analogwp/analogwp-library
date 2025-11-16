@@ -12,9 +12,9 @@ Create your own design system in Elementor. Organize templates, save time, and e
 
 == Description ==
 
-**Transform how you build with Elementor.** Custom Library for Elementor lets you create your own personal design system—organizing reusable templates, sections, and patterns into one streamlined library accessible directly from the editor.
-
 [🚀[Pro] Limited time Black Friday + Cyber Monday Sale is on!](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
+
+**Transform how you build with Elementor.** Custom Library for Elementor lets you create your own personal design system—organizing reusable templates, sections, and patterns into one streamlined library accessible directly from the editor.
 
 https://www.youtube.com/watch?v=9RTBS6rhYgg
 
