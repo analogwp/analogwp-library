@@ -81,9 +81,9 @@ if ( ! $tab_exists ) {
 
 			<?php if ( ! Plugin::instance()->has_pro_active() ) : ?>
 				<div class="upgrade-box special">
-					<h3>Upgrade to Custom Library Pro with<br/>80% discount in a Lifetime Deal</h3>
+					<h3>🔥 Upgrade to Custom Library PRO with a Special Discount</h3>
 
-					<p>Black Friday + Cyber Monday Special!<br/>We have <b>already applied 50% discount sitewide</b>—enter your email to <b>get an extra 30% code on top</b>. Limited-time offer!</p>
+					<p>Get additional features like <strong>Custom Branding/White-Label, Import/Export Templates, Role-Based Access Controls, Priority support and so much more</strong> while helping us support its development and maintenance.</p>
 
 					<form id="js-ang-custom-library-request-discount" method="post">
 						<input required type="email" class="regular-text" name="email" value="<?php echo esc_attr( $current_user->user_email ); ?>" placeholder="<?php esc_attr_e( 'Your Email', 'analogwp-library' ); ?>">

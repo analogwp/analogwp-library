@@ -189,11 +189,12 @@
 			elSubmitBtn.val( 'Sending...' );
 
 			$.post(
-				'https://analogwp.com/?ang-api=cl_bfcm_discount_code',
+				'https://analogwp.com/?ang-api=pro_discount_code',
 				{
 					email: email,
 					first_name: JSON.stringify( fname ),
 					last_name: JSON.stringify( lname ),
+					slug: 'custom-library',
 				}
 			).done( function( res ) {
 				messageEl.text( res?.message );
