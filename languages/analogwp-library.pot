@@ -3,13 +3,13 @@
 #: assets/js/app/index.js:1
 msgid ""
 msgstr ""
-"Project-Id-Version: analogwp-library 1.6.1\n"
+"Project-Id-Version: analogwp-library 1.7.0\n"
 "Report-Msgid-Bugs-To: AnalogWP <EMAIL>\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2025-11-16T19:10:42.810Z\n"
+"POT-Creation-Date: 2025-12-18T18:22:08.077Z\n"
 "PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -632,16 +632,32 @@ msgstr ""
 msgid "Button Border Width"
 msgstr ""
 
-#: inc/Featuresets/rollback/class-rollbacker.php:175
-#: inc/Featuresets/rollback/class-init.php:94
+#: inc/Featuresets/rollback/class-rollbacker.php:153
+#: inc/Featuresets/rollback/class-init.php:93
 msgid "Rollback to Previous Version"
 msgstr ""
 
-#: inc/Featuresets/rollback/class-init.php:67
+#: inc/Featuresets/rollback/class-rollback-downgrader-skin.php:32
+msgid "Rolling back plugin?"
+msgstr ""
+
+#: inc/Featuresets/rollback/class-rollback-downgrader-skin.php:74
+msgid "Rollback failed during installation."
+msgstr ""
+
+#: inc/Featuresets/rollback/class-rollback-downgrader-skin.php:85
+msgid "Rollback complete. The plugin files have been restored."
+msgstr ""
+
+#: inc/Featuresets/rollback/class-rollback-downgrader-skin.php:90
+msgid "Go to Plugins page"
+msgstr ""
+
+#: inc/Featuresets/rollback/class-init.php:66
 msgid "Sorry, you are not allowed to rollback Custom Library plugin for this site."
 msgstr ""
 
-#: inc/Featuresets/rollback/class-init.php:75
+#: inc/Featuresets/rollback/class-init.php:74
 msgid ""
 "Error occurred, the version selected is invalid. Try selecting different "
 "version."
