@@ -62,7 +62,7 @@ Clients often struggle when adding new pages or sections—they accidentally bre
 ✅ **SVG Upload Support** – Safely upload SVG files with built-in sanitization
 ✅ **Version Rollback** – Revert to previous plugin versions if needed
 
-### [Pro Features](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme) – Lifetime Deal Available!
+### [Pro Features](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme) – Available with a Limited Time Deal!
 
 🚀 **Role-Based Access Controls** – Show/hide the library for specific users or roles
 🚀 **Custom Branding** – Change library colors, button styles, and icon to match your brand
@@ -72,7 +72,7 @@ Clients often struggle when adding new pages or sections—they accidentally bre
 🚀 **White-Label Ready** – Perfect for agencies delivering branded client experiences
 ✨ **More Features** - We are constantly taking feedback and adding more features for power users like you
 
-[Get Pro with Lifetime Access →](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
+[Ready to go beyond? Get PRO →](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
 
 ---
 
