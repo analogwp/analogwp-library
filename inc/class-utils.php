@@ -162,19 +162,19 @@ class Utils extends Base {
 
 		// Hide Elementor Library icon.
 		$hide_elementor_library_icon = $options->get( 'hide_elementor_template_library' );
-		$hide_elementor_library_icon = $hide_elementor_library_icon ? 'none' : 'inherit';
+		$hide_elementor_library_icon = $hide_elementor_library_icon ? 'none !important' : '';
 
 		$hide_elementor_library_popup = $options->get( 'hide_elementor_library_popup' );
-		$hide_elementor_library_popup       = $hide_elementor_library_popup ? 'none' : 'inherit';
+		$hide_elementor_library_popup = $hide_elementor_library_popup ? 'none !important' : '';
 
 		$library_popup_style = $options->get( 'library_popup_style' );
 
 		$css .= ".elementor-add-template-button {
-					display: {$hide_elementor_library_icon} !important;
+					display: {$hide_elementor_library_icon};
 				}";
 
 		$css .= " #elementor-template-library-modal.dialog-widget.elementor-templates-modal {
-				display: {$hide_elementor_library_popup} !important;
+				display: {$hide_elementor_library_popup};
 			}";
 
 		if ( isset( $library_popup_style ) && 'full-screen' === $library_popup_style ) {

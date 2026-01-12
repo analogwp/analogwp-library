@@ -3,7 +3,7 @@ Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 1.7.0
+Stable tag: 1.8.0
 Tags: elementor, elementor templates, template library, design system, elementor addons
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -150,6 +150,10 @@ Contact us via the [support page](https://analogwp.com/contact/) or use the supp
 4. Custom Library popup modal in the Elementor Editor.
 
 == Changelog ==
+
+= 1.8.0 =
+* Fix: Library popup modals keeps appearing even after closing
+* Improvement: Other minor improvements
 
 = 1.7.0 =
 * New: Re-wrote Rollback feature
