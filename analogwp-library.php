@@ -193,16 +193,13 @@ if ( ! function_exists( 'agwp_custom_library_for_elementor_fs' ) ) {
 					'has_addons'     => true,
 					'has_paid_plans' => false,
 					'menu'           => array(
-						'slug'           => 'analog-custom-library-settings',
+						'slug'           => 'agwp-custom-library',
 						'override_exact' => true,
-						'first-path'     => 'edit.php?post_type=elementor_library&page=analog-custom-library-settings',
+						'first-path'     => 'admin.php?page=agwp-custom-library',
 						'account'        => false,
 						'support'        => false,
 						'contact'        => false,
 						'addons'         => false,
-						'parent'         => array(
-							'slug' => 'edit.php?post_type=elementor_library',
-						),
 					),
 				)
 			);
@@ -217,7 +214,7 @@ if ( ! function_exists( 'agwp_custom_library_for_elementor_fs' ) ) {
 	do_action( 'agwp_custom_library_for_elementor_fs_loaded' );
 
 	function agwp_custom_library_for_elementor_fs_settings_url() {
-		return admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings' );
+		return admin_url( 'admin.php?page=agwp-custom-library' );
 	}
 
 	agwp_custom_library_for_elementor_fs()->add_filter( 'connect_url', 'agwp_custom_library_for_elementor_fs_settings_url' );

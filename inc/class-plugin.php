@@ -162,7 +162,7 @@ final class Plugin {
 	 * @return array An array of plugin action links.
 	 */
 	public function plugin_action_links( $links ) {
-		$settings_link = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings' ), __( 'Settings', 'analogwp-library' ) );
+		$settings_link = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=agwp-custom-library' ), __( 'Settings', 'analogwp-library' ) );
 
 		array_unshift( $links, $settings_link );
 

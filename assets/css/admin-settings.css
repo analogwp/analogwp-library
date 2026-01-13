@@ -5,16 +5,19 @@
 		column-gap: 40px;
 	}
 
+	body.toplevel_page_agwp-custom-library .wrap,
 	body.custom-library_page_analog-custom-library-settings .wrap {
 		margin: 0;
 		padding: 20px 30px 30px;
 	}
 }
 
+body.toplevel_page_agwp-custom-library #wpcontent,
 body.custom-library_page_analog-custom-library-settings #wpcontent {
 	padding: 0;
 }
 
+body.toplevel_page_agwp-custom-library .wrap,
 body.custom-library_page_analog-custom-library-settings .wrap {
 	margin: 0;
 	padding: 40px 60px 60px;

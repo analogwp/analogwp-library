@@ -50,7 +50,7 @@ class Finder_Shortcuts extends Base_Category {
 			),
 			'settings'   => array(
 				'title'    => __( 'Settings', 'analogwp-library' ),
-				'url'      => admin_url( 'admin.php?page=analog-custom-library-settings' ),
+				'url'      => admin_url( 'admin.php?page=agwp-custom-library' ),
 				'icon'     => 'settings',
 				'keywords' => array( 'analog', 'settings' ),
 			),

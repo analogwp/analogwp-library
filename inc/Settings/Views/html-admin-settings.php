@@ -19,7 +19,7 @@ $current_tab_label = $tabs[ $current_tab ] ?? '';
 global $current_user;
 
 if ( ! $tab_exists ) {
-	wp_safe_redirect( admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings' ) );
+	wp_safe_redirect( admin_url( 'admin.php?page=agwp-custom-library' ) );
 	exit;
 }
 ?>
@@ -31,7 +31,7 @@ if ( ! $tab_exists ) {
 				<?php
 
 				foreach ( $tabs as $slug => $label ) {
-					echo '<a href="' . esc_html( admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings&tab=' . esc_attr( $slug ) ) ) . '" class="analog-custom-library-nav-tab ' . ( $current_tab === $slug ? 'analog-custom-library-nav-tab-active' : '' ) . '">' . esc_html( $label ) . '</a>';
+					echo '<a href="' . esc_html( admin_url( 'admin.php?page=agwp-custom-library&tab=' . esc_attr( $slug ) ) ) . '" class="analog-custom-library-nav-tab ' . ( $current_tab === $slug ? 'analog-custom-library-nav-tab-active' : '' ) . '">' . esc_html( $label ) . '</a>';
 				}
 
 				do_action( 'analog_custom_library_settings_tabs' );
@@ -113,9 +113,9 @@ if ( ! $tab_exists ) {
 
 					<div>
 						<?php if ( Plugin::instance()->has_pro_active() ) : ?>
-							<a class="button button-secondary" href="<?php echo admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings-account' ); ?>">Account</a>
-						<?php endif; ?>
-						<a class="button button-secondary" href="<?php echo admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings-contact' ); ?>">Create a Support Request</a>
+						<a class="button button-secondary" href="<?php echo admin_url( 'admin.php?page=agwp-custom-library-account' ); ?>">Account</a>
+					<?php endif; ?>
+					<a class="button button-secondary" href="<?php echo admin_url( 'admin.php?page=agwp-custom-library-contact' ); ?>">Create a Support Request</a>
 					</div>
 				</div>
 
