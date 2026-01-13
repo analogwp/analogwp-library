@@ -27,9 +27,6 @@
 	position: relative;
 }
 
-#analog-custom-library-modal {
-}
-
 /*Top navigation tab CSS*/
 /*START*/
 #analog-custom-library .close-modal {
@@ -392,6 +389,23 @@
 	padding: 8px 16px;
 	background-color: var(--analog-custom-library-dark-bg);
 	color: #fff;
+	text-align: center;
+}
+
+#analog-custom-library .templates-list .remote-badge,
+#analog-custom-library .stylekit-list .remote-badge,
+#analog-custom-library .block-list .remote-badge {
+	position: absolute;
+	top: -16px;
+	right: -8px;
+	z-index: 999;
+	border-radius: 4px;
+	letter-spacing: .5px;
+	text-transform: uppercase;
+	font-size: 12px;
+	padding: 6px 12px;
+	background-color: var(--analog-custom-library-btn-bg);
+	color: var(--analog-custom-library-btn-text);
 	text-align: center;
 }
 
@@ -1222,7 +1236,7 @@
 	align-items: center;
 	padding: 16px 24px;
 	position: sticky;
-	z-index: 999;
+	z-index: 9999;
 }
 
 #analog-custom-library .horizontal > .sidebar .components-tab-panel__tabs {
