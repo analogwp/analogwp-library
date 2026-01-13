@@ -68,14 +68,16 @@ if ( ! $tab_exists ) {
 						</svg>
 						<div>
 							<h4>Custom Library for Elementor</h4>
-							<p class="version"><?php echo esc_html( AGWP_LIBRARY_VERSION ); ?></p>
+							<p class="version">v<?php echo esc_html( AGWP_LIBRARY_VERSION ); ?></p>
 							<?php do_action( 'analog_custom_library_sidebar_plugin_info_section' ); ?>
 						</div>
 					</div>
 				</div>
 				<ul class="feature-list">
+					<?php if ( ! Plugin::instance()->has_pro_active() ) : ?>
 					<li><a href="https://analogwp.com/custom-library-for-elementor/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">Explore Custom Library Features</a></li>
-					<!-- <li><a href="https://analogwp.com/all-access-pass/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">[LTD] All Access Pass</a></li> -->
+					<li><a href="https://analogwp.com/all-access-pass/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">Unlimited Access Pass</a></li>
+					<?php endif; ?>
 				</ul>
 			</div>
 
