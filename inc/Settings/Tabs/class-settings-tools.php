@@ -7,6 +7,7 @@
 
 namespace AnalogWP\CustomLibrary\Settings\Tabs;
 
+use AnalogWP\CustomLibrary\Plugin;
 use AnalogWP\CustomLibrary\Settings\Admin_Settings;
 use AnalogWP\CustomLibrary\Settings\Settings_Page;
 use AnalogWP\CustomLibrary\Core\Data\Library_Data;
@@ -46,11 +47,11 @@ class Tools extends Settings_Page {
 	 * @return array
 	 */
 	public function update_settings_globals( $data ) {
-		$data['update_outdated_templates_action']       = self::UPDATE_OUTDATED_TEMPLATES_ACTION;
-		$data['update_outdated_templates_url']          = admin_url( 'admin-ajax.php' );
-		$data['update_outdated_templates_nonce']        = wp_create_nonce( self::UPDATE_OUTDATED_TEMPLATES_ACTION );
-		$data['update_outdated_templates_success_txt']  = __( 'Updated successfully', 'analogwp-library' );
-		$data['update_outdated_templates_error_txt']    = __( 'Update failed! Please try again', 'analogwp-library' );
+		$data['update_outdated_templates_action']      = self::UPDATE_OUTDATED_TEMPLATES_ACTION;
+		$data['update_outdated_templates_url']         = admin_url( 'admin-ajax.php' );
+		$data['update_outdated_templates_nonce']       = wp_create_nonce( self::UPDATE_OUTDATED_TEMPLATES_ACTION );
+		$data['update_outdated_templates_success_txt'] = __( 'Updated successfully', 'analogwp-library' );
+		$data['update_outdated_templates_error_txt']   = __( 'Update failed! Please try again', 'analogwp-library' );
 
 		return $data;
 	}
@@ -78,16 +79,16 @@ class Tools extends Settings_Page {
 			'analog_custom_library_tools_settings',
 			array(
 				array(
-					'id'   => 'analog_custom_library_tools_title',
-					'type' => 'title',
+					'id'    => 'analog_custom_library_tools_title',
+					'type'  => 'title',
 					'title' => __( 'Update Library Templates', 'analogwp-library' ),
 				),
 				array(
-					'id'    => 'update_outdated_templates',
-					'type'  => 'action-button',
-					'title' => __( 'This action will update any templates found to be outdated in the Custom Library from their source template in Elementor template library.', 'analogwp-library' ),
-					'desc'  => __( 'Note: Outdated templates are templates that were created before the current version of this plugin. You only need to run this when you think there is a problem in the Custom Library.', 'analogwp-library' ),
-					'button_label' => $button_label,
+					'id'                 => 'update_outdated_templates',
+					'type'               => 'action-button',
+					'title'              => __( 'This action will update any templates found to be outdated in the Custom Library from their source template in Elementor template library.', 'analogwp-library' ),
+					'desc'               => __( 'Note: Outdated templates are templates that were created before the current version of this plugin. You only need to run this when you think there is a problem in the Custom Library.', 'analogwp-library' ),
+					'button_label'       => $button_label,
 					'button_reset_label' => __( 'Run Update', 'analogwp-library' ),
 				),
 				array(
@@ -96,6 +97,42 @@ class Tools extends Settings_Page {
 				),
 			)
 		);
+
+		if ( ! Plugin::instance()->has_pro_active() ) {
+			$settings = array_merge(
+				$settings,
+				array(
+					array(
+						'type'  => 'promo-title',
+						'title' => esc_html__( 'Templates Importer', 'analogwp-library' ),
+						'id'    => 'analog_custom_library_pro_import_templates_title',
+					),
+					array(
+						'type' => 'promo-import-templates',
+						'desc' => esc_html__( 'Imports .json or .zip files exported only via the Custom Library Pro templates exporter.', 'analogwp-library' ),
+						'id'   => 'analog_custom_library_pro_import_templates',
+					),
+					array(
+						'type' => 'sectionend',
+						'id'   => 'analog_custom_library_pro_import_templates_title',
+					),
+					array(
+						'type'  => 'promo-title',
+						'title' => esc_html__( 'Templates Exporter', 'analogwp-library' ),
+						'id'    => 'analog_custom_library_pro_export_templates_title',
+					),
+					array(
+						'type' => 'promo-export-templates',
+						'desc' => esc_html__( 'Exports all the templates published and available in the Custom Library.', 'analogwp-library' ),
+						'id'   => 'analog_custom_library_pro_export_templates',
+					),
+					array(
+						'type' => 'sectionend',
+						'id'   => 'analog_custom_library_pro_export_templates_title',
+					),
+				)
+			);
+		}
 
 		return apply_filters( 'analog_custom_library_get_settings_' . $this->id, $settings );
 	}
