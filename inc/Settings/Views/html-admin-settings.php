@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $tab_exists        = isset( $tabs[ $current_tab ] ) || has_action( 'analog_custom_library_sections_' . $current_tab ) || has_action( 'analog_custom_library_settings_' . $current_tab ) || has_action( 'analog_custom_library_settings_tabs_' . $current_tab );
 $current_tab_label = $tabs[ $current_tab ] ?? '';
+$plugin_title      = Plugin::get_plugin_public_name();
 
 global $current_user;
 
@@ -24,14 +25,14 @@ if ( ! $tab_exists ) {
 }
 ?>
 <div class="wrap ang-custom-library <?php echo esc_attr( $current_tab ); ?>">
-	<h1 class="menu-title"><?php esc_html_e( 'Library Settings', 'analogwp-library' ); ?></h1>
+	<h1 class="menu-title"><?php echo esc_html( $plugin_title ) . ' ' . esc_html__( 'Settings', 'analogwp-library' ); ?></h1>
 	<div class="analog-custom-library-wrapper">
 		<form method="<?php echo esc_attr( apply_filters( 'analog_custom_library_settings_form_method_tab_' . $current_tab, 'post' ) ); ?>" id="mainform" action="" enctype="multipart/form-data">
 			<nav class="nav-tab-wrapper analog-custom-library-nav-tab-wrapper">
 				<?php
 
 				foreach ( $tabs as $slug => $label ) {
-					echo '<a href="' . esc_html( admin_url( 'admin.php?page=agwp-custom-library&tab=' . esc_attr( $slug ) ) ) . '" class="analog-custom-library-nav-tab ' . ( $current_tab === $slug ? 'analog-custom-library-nav-tab-active' : '' ) . '">' . esc_html( $label ) . '</a>';
+					echo '<a href="' . esc_html( admin_url( 'admin.php?page=agwp-custom-library&tab=' . esc_attr( $slug ) ) ) . '" class="analog-custom-library-nav-tab nav-tab-' . esc_attr( $slug ) . ( $current_tab === $slug ? ' analog-custom-library-nav-tab-active' : '' ) . '">' . esc_html( $label ) . '</a>';
 				}
 
 				do_action( 'analog_custom_library_settings_tabs' );

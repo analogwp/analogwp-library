@@ -7,6 +7,8 @@
 
 namespace AnalogWP\CustomLibrary\Settings;
 
+use AnalogWP\CustomLibrary\Plugin;
+
 /**
  * class Register_Settings.
  */
@@ -81,10 +83,12 @@ class Register_Settings {
 			'<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M90.3619 24H24V90.3619H31.9244V31.9244H90.3619V24Z" fill="#a7aaad"/><path d="M103.24 36.873H36.8777V103.235H103.24V36.873Z" fill="#a7aaad"/></svg>'
 		); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 
+		$custom_library_menu_title = Plugin::get_plugin_public_name();
+
 		// Add top-level menu.
 		add_menu_page(
-			__( 'Custom Library', 'analogwp-library' ),
-			__( 'Custom Library', 'analogwp-library' ),
+			$custom_library_menu_title,
+			$custom_library_menu_title,
 			$permission,
 			self::MENU_SLUG,
 			array( $this, 'settings_page' ),
@@ -123,10 +127,12 @@ class Register_Settings {
 			$permission = 'read';
 		}
 
+		$custom_library_menu_title = Plugin::get_plugin_public_name();
+
 		add_submenu_page(
 			'edit.php?post_type=elementor_library',
-			__( 'Custom Library Settings', 'analogwp-library' ),
-			__( 'Custom Library', 'analogwp-library' ),
+			$custom_library_menu_title . ' ' . __( 'Settings', 'analogwp-library' ),
+			$custom_library_menu_title,
 			$permission,
 			self::LEGACY_MENU_SLUG,
 			array( $this, 'legacy_redirect_page' ),

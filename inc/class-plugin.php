@@ -225,6 +225,15 @@ final class Plugin {
 	}
 
 	/**
+	 * Get the plugin name for users.
+	 *
+	 * @return string
+	 */
+	public static function get_plugin_public_name() {
+		return apply_filters( 'analog_custom_library_public_name', __( 'Custom Library', 'analogwp-library' ) );
+	}
+
+	/**
 	 * Load plugin language files.
 	 *
 	 * @access public
