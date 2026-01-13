@@ -397,12 +397,37 @@ class Local extends Base {
 	 * @return array
 	 */
 	public function library_templates_list( \WP_REST_Request $request ) {
+		$force_update = $request->get_param( 'force_update' );
+
+		// If force_update is requested, clear remote template caches.
+		if ( $force_update && 'true' === $force_update ) {
+			$this->clear_remote_template_caches();
+		}
+
 		return array(
 			'library' => array(
 				'blocks'    => Library_Data::templates(),
 				'templates' => array(),
 			),
 		);
+	}
+
+	/**
+	 * Clear all remote template caches.
+	 *
+	 * This is called when force_update is requested to ensure
+	 * remote templates are fetched fresh from server sites.
+	 * Pro plugin hooks into this action to clear its caches.
+	 *
+	 * @return void
+	 */
+	private function clear_remote_template_caches() {
+		/**
+		 * Action to clear remote template caches.
+		 *
+		 * Pro plugin hooks into this to clear remote template caches.
+		 */
+		do_action( 'analog_library/clear_remote_caches' );
 	}
 }
 

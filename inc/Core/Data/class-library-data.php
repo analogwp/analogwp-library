@@ -63,7 +63,14 @@ final class Library_Data {
 			}
 		}
 
-		return $templates;
+		/**
+		 * Filter the templates list.
+		 *
+		 * Used by Client mode to merge remote templates with local templates.
+		 *
+		 * @param array $templates List of templates.
+		 */
+		return apply_filters( 'analog_library/templates', $templates );
 	}
 
 	/**
@@ -100,13 +107,34 @@ final class Library_Data {
 	/**
 	 * Get template data.
 	 *
-	 * @param int $template_id Template ID.
+	 * @param int|string $template_id Template ID (or remote_{connection_id}_{template_id} for remote templates).
 	 *
 	 * @return array|\WP_Error
 	 */
 	public static function prepare_template_content( $template_id ) {
 		if ( ! $template_id ) {
 			return new \WP_Error( 'template_error', 'Invalid parameter(s).' );
+		}
+
+		// Check if this is a remote template (format: remote_{connection_id}_{remote_template_id}).
+		// Remote templates are handled by Pro plugin via filter.
+		if ( is_string( $template_id ) && 0 === strpos( $template_id, 'remote_' ) ) {
+			/**
+			 * Filter to handle remote template content.
+			 *
+			 * Pro plugin hooks into this to fetch remote template content.
+			 *
+			 * @param array|\WP_Error|null $content Template content or null if not handled.
+			 * @param string $template_id Remote template ID.
+			 */
+			$remote_content = apply_filters( 'analog_library/remote_template_content', null, $template_id );
+
+			if ( null !== $remote_content ) {
+				return $remote_content;
+			}
+
+			// Pro plugin not active or not handling remote templates.
+			return new \WP_Error( 'template_error', 'Remote Library requires the Pro plugin.' );
 		}
 
 		$templates_db = new Templates_DB();
