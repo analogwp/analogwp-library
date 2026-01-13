@@ -53,6 +53,7 @@ class Admin_Settings {
 			$settings[] = include 'Tabs/class-settings-misc.php';
 			$settings[] = include 'Tabs/class-settings-tools.php';
 			$settings[] = include 'Tabs/class-settings-version-control.php';
+			$settings[] = include 'Tabs/class-settings-remote.php';
 
 			self::$settings = apply_filters( 'analog_custom_library_get_settings_pages', $settings );
 		}
@@ -613,7 +614,13 @@ class Admin_Settings {
 
 				// Radio inputs.
 				case 'radio':
-					$option_value = $value['value'];
+					$option_value              = $value['value'];
+					$radio_option_allowed_html = array(
+						'p' => array(
+							'class' => array(),
+						),
+						'b' => array(),
+					);
 
 					?>
 					<tr valign="top">
@@ -638,7 +645,7 @@ class Admin_Settings {
 											class="<?php echo esc_attr( $value['class'] ); ?>"
 											<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 											<?php checked( $key, $option_value ); ?>
-											/> <?php echo esc_html( $val ); ?></label>
+											/> <?php echo wp_kses( $val, $radio_option_allowed_html ); ?></label>
 									</li>
 									<?php
 								}
@@ -651,7 +658,13 @@ class Admin_Settings {
 					break;
 
 				case 'promo-radio':
-					$option_value = $value['value'];
+					$option_value              = $value['value'];
+					$radio_option_allowed_html = array(
+						'p' => array(
+							'class' => array(),
+						),
+						'b' => array(),
+					);
 					?>
 					<tr valign="top">
 						<?php if ( ! empty( $value['title'] ) ) : ?>
@@ -675,7 +688,7 @@ class Admin_Settings {
 											class="<?php echo esc_attr( $value['class'] ); ?>"
 											<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 											<?php checked( $key, $option_value ); ?>
-											/> <?php echo esc_html( $val ); ?></label>
+											/> <?php echo wp_kses( $val, $radio_option_allowed_html ); ?></label>
 									</li>
 									<?php
 								}
