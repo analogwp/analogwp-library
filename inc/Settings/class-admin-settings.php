@@ -1040,7 +1040,7 @@ class Admin_Settings {
 					break;
 
 				case 'action-button':
-					$button_label  = $value['button_label'] ?? __( 'Go', 'analogwp-library' );
+					$button_label       = $value['button_label'] ?? __( 'Go', 'analogwp-library' );
 					$button_reset_label = $value['button_reset_label'] ?? __( 'Go', 'analogwp-library' );
 					?>
 					<tr valign="top">
