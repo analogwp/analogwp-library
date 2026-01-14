@@ -117,6 +117,27 @@ class Local extends Base {
 			)
 		);
 
+		// Get template title for tracking.
+		$template_title = get_the_title( $template_id );
+
+		/**
+		 * Fires after a template is imported in the editor.
+		 *
+		 * @param array $import_data Import details.
+		 */
+		do_action(
+			'analog_custom_library_template_imported',
+			array(
+				'template_id'    => $template_id,
+				'template_title' => $template_title,
+				'import_type'    => 'local',
+				'import_method'  => 'editor',
+				'user_id'        => get_current_user_id(),
+				'status'         => is_wp_error( $data ) ? 'failed' : 'success',
+				'error_message'  => is_wp_error( $data ) ? $data->get_error_message() : null,
+			)
+		);
+
 		return new WP_REST_Response( wp_json_encode( maybe_unserialize( $data ) ), 200 );
 	}
 
@@ -286,6 +307,28 @@ class Local extends Base {
 		// Finally create the page.
 		$page = $this->create_page( $template, $with_page );
 
+		// Determine import status.
+		$import_status = is_wp_error( $page ) ? 'failed' : 'success';
+		$error_message = is_wp_error( $page ) ? $page->get_error_message() : null;
+
+		/**
+		 * Fires after a template is directly imported.
+		 *
+		 * @param array $import_data Import details.
+		 */
+		do_action(
+			'analog_custom_library_template_imported',
+			array(
+				'template_id'    => $template['id'],
+				'template_title' => $template['title'] ?? '',
+				'import_type'    => 'local',
+				'import_method'  => 'direct',
+				'user_id'        => get_current_user_id(),
+				'status'         => $import_status,
+				'error_message'  => $error_message,
+			)
+		);
+
 		$data = array(
 			'page' => $page,
 		);
@@ -308,6 +351,28 @@ class Local extends Base {
 		}
 
 		$data = $this->process_block_import( $block, $method );
+
+		// Determine status for tracking.
+		$import_status = is_wp_error( $data ) ? 'failed' : 'success';
+		$error_message = is_wp_error( $data ) ? $data->get_error_message() : null;
+
+		/**
+		 * Fires after template content is retrieved for insertion.
+		 *
+		 * @param array $import_data Import details.
+		 */
+		do_action(
+			'analog_custom_library_template_imported',
+			array(
+				'template_id'    => $block['id'] ?? 0,
+				'template_title' => $block['title'] ?? '',
+				'import_type'    => 'local',
+				'import_method'  => 'insert',
+				'user_id'        => get_current_user_id(),
+				'status'         => $import_status,
+				'error_message'  => $error_message,
+			)
+		);
 
 		if ( is_wp_error( $data ) ) {
 			return $data;
