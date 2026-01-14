@@ -75,6 +75,7 @@ if ( ! $tab_exists ) {
 					</div>
 				</div>
 				<ul class="feature-list">
+					<li><a href="https://analogwp.com/cl-docs/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">Documentation</a></li>
 					<?php if ( ! Plugin::instance()->has_pro_active() ) : ?>
 					<li><a href="https://analogwp.com/custom-library-for-elementor/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">Explore Custom Library Features</a></li>
 					<li><a href="https://analogwp.com/all-access-pass/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">Unlimited Access Pass</a></li>
