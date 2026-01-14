@@ -54,6 +54,7 @@ class Admin_Settings {
 			$settings[] = include 'Tabs/class-settings-tools.php';
 			$settings[] = include 'Tabs/class-settings-version-control.php';
 			$settings[] = include 'Tabs/class-settings-remote.php';
+			$settings[] = include 'Tabs/class-settings-reports.php';
 
 			self::$settings = apply_filters( 'analog_custom_library_get_settings_pages', $settings );
 		}

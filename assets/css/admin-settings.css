@@ -398,7 +398,8 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 .ang-custom-library.import-export .tab-content .submit,
 .ang-custom-library.tools .tab-content .submit,
 .ang-custom-library.version-control .tab-content .submit,
-.ang-custom-library.remote-promo .tab-content .submit {
+.ang-custom-library.remote-promo .tab-content .submit,
+.ang-custom-library.reports-promo .tab-content .submit {
 	display: none;
 }
 
@@ -535,7 +536,8 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 /**
  * Remote Library Settings
  */
-.ang-custom-library .nav-tab-wrapper .nav-tab-remote-promo::after {
+.ang-custom-library .nav-tab-wrapper .nav-tab-remote-promo::after,
+.ang-custom-library .nav-tab-wrapper .nav-tab-reports-promo::after {
 	content: "PRO";
 	float: left;
 	margin-right: 8px;
