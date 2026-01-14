@@ -37,11 +37,12 @@ class Misc extends Settings_Page {
 			'analog_custom_library_misc_settings',
 			array(
 				array(
-					'type' => 'title',
-					'id'   => 'analog_custom_library_misc',
+					'type'  => 'title',
+					'id'    => 'analog_custom_library_misc',
+					'title' => __( 'Remove Data on Uninstall', 'analogwp-library' ),
 				),
 				array(
-					'title'         => __( 'Remove Data on Uninstall', 'analogwp-library' ),
+					'title'         => '',
 					'desc'          => __( 'Check this box to remove all data stored by Custom Library for Elementor plugin, including license info, user settings, import history etc.', 'analogwp-library' ),
 					'id'            => 'remove_on_uninstall',
 					'default'       => false,
