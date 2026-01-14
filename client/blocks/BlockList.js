@@ -10,6 +10,7 @@ import Download from '../icons/download';
 import Empty from '../helpers/Empty';
 import Eye from "../icons/eye";
 import Pencil from "../icons/pencil";
+import Globe from '../icons/globe';
 
 
 const { decodeEntities } = wp.htmlEntities;
@@ -369,7 +370,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 											<span className="pro">{__('Pro', 'analogwp-library')}</span>
 										)}
 										{block.is_remote && (
-											<span className="remote-badge" title={block.server_name}>{__('Remote', 'analogwp-library')}</span>
+											<span className="remote-badge" title={block.server_name}><Globe /></span>
 										)}
 
 										<figure>
