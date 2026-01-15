@@ -3,7 +3,7 @@ Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 1.8.0
+Stable tag: 2.0.0
 Tags: elementor, elementor templates, template library, design system, elementor addons
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -64,6 +64,8 @@ Clients often struggle when adding new pages or sections—they accidentally bre
 
 ### [Pro Features](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme) – Available with a Limited Time Deal!
 
+🚀 **Remote Library** – Access your template library from any website
+🚀 **Template Reports** – Track template imports and get a rundown of your popular templates and library usage
 🚀 **Role-Based Access Controls** – Show/hide the library for specific users or roles
 🚀 **Custom Branding** – Change library colors, button styles, and icon to match your brand
 🚀 **Import/Export Templates** – Bulk migrate templates between sites or share with clients
@@ -150,6 +152,19 @@ Contact us via the [support page](https://analogwp.com/contact/) or use the supp
 4. Custom Library popup modal in the Elementor Editor.
 
 == Changelog ==
+
+= 2.0.0 =
+* New: New Custom Library Parent Menu at admin Dashboard
+* New: Remote Library PROMO tab at settings
+* New: Template Reports PROMO tab at settings
+* Fix: Missing title in template database selector
+* Improvement: Added a an auto redirect at old menu page
+* Improvement: Implemented a function to clear caches related to remote templates.
+* Improvement: Improved CSS Styling to better calibrate margins, padding and the way remotely related elements appear
+* Improvement: Enhanced the import process to trigger actions post template imports
+* Improvement: Clearer Settings Descriptions
+* Improvement: Compatibility with Elementor 3.34.x
+* Improvement: Other minor improvements
 
 = 1.8.0 =
 * Fix: Library popup modals keeps appearing even after closing
