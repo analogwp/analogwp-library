@@ -1,16 +1,16 @@
-# Copyright (C) 2025 analogwp-library
+# Copyright (C) 2026 analogwp-library
 # This file is distributed under the GPL2 license.
 #: assets/js/app/index.js:1
 msgid ""
 msgstr ""
-"Project-Id-Version: analogwp-library 1.7.0\n"
+"Project-Id-Version: analogwp-library 2.0.0\n"
 "Report-Msgid-Bugs-To: AnalogWP <EMAIL>\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2025-12-18T18:22:08.077Z\n"
-"PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2026-01-15T12:01:55.608Z\n"
+"PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
 "X-Generator: @wp-blocks/make-pot 1.4.0\n"
@@ -46,12 +46,12 @@ msgid "https://analogwp.com/"
 msgstr ""
 
 #: analogwp-library.php:49
-#: analogwp-library.php:241
+#: analogwp-library.php:238
 msgid "Custom Library for Elementor requires PHP version %s"
 msgstr ""
 
 #: analogwp-library.php:50
-#: analogwp-library.php:242
+#: analogwp-library.php:239
 msgid "Error Activating"
 msgstr ""
 
@@ -92,12 +92,22 @@ msgid "Install Elementor Now"
 msgstr ""
 
 #: inc/class-plugin.php:165
+#: inc/Settings/class-register-settings.php:102
+#: inc/Settings/class-register-settings.php:103
+#: inc/Settings/class-register-settings.php:134
 #: inc/Elementor/class-finder-shortcuts.php:52
+#: inc/Settings/Views/html-admin-settings.php:28
 msgid "Settings"
 msgstr ""
 
-#: inc/class-elementor.php:85
+#: inc/class-plugin.php:233
+#: inc/Core/class-library-manager.php:61
 #: inc/Settings/Tabs/class-settings-design.php:117
+msgid "Custom Library"
+msgstr ""
+
+#: inc/class-elementor.php:85
+#: inc/Settings/Tabs/class-settings-design.php:132
 msgid "Library"
 msgstr ""
 
@@ -162,67 +172,70 @@ msgstr ""
 msgid "Import Template"
 msgstr ""
 
-#: inc/Settings/class-register-settings.php:64
-msgid "Custom Library Settings"
+#: inc/Settings/class-register-settings.php:231
+msgid "This page has been moved to a new location"
 msgstr ""
 
-#: inc/Settings/class-register-settings.php:65
-#: inc/Core/class-library-manager.php:61
-msgid "Custom Library"
+#: inc/Settings/class-register-settings.php:234
+msgid "Redirecting you now..."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:77
+#: inc/Settings/class-register-settings.php:237
+msgid "Click here if you are not redirected automatically"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:78
 msgid "Your settings have been saved."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:147
+#: inc/Settings/class-admin-settings.php:148
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:148
+#: inc/Settings/class-admin-settings.php:149
 msgid "Select Image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:149
+#: inc/Settings/class-admin-settings.php:150
 msgid "Use this image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:326
-#: client/blocks/BlockList.js:369
-#: client/blocks/BlockList.js:417
+#: inc/Settings/class-admin-settings.php:327
+#: client/blocks/BlockList.js:370
+#: client/blocks/BlockList.js:420
 msgid "Pro"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:327
+#: inc/Settings/class-admin-settings.php:328
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:811
+#: inc/Settings/class-admin-settings.php:824
 msgid "Toggle"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:875
-#: inc/Settings/class-admin-settings.php:914
+#: inc/Settings/class-admin-settings.php:888
+#: inc/Settings/class-admin-settings.php:927
 msgid "Change Image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:876
-#: inc/Settings/class-admin-settings.php:915
+#: inc/Settings/class-admin-settings.php:889
+#: inc/Settings/class-admin-settings.php:928
 msgid "Revert to Default"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1010
-#: inc/Settings/class-admin-settings.php:1033
+#: inc/Settings/class-admin-settings.php:1023
+#: inc/Settings/class-admin-settings.php:1046
 msgid "Import"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1043
-#: inc/Settings/class-admin-settings.php:1044
+#: inc/Settings/class-admin-settings.php:1056
+#: inc/Settings/class-admin-settings.php:1057
 msgid "Go"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1073
-#: inc/Settings/class-admin-settings.php:1091
+#: inc/Settings/class-admin-settings.php:1086
+#: inc/Settings/class-admin-settings.php:1104
 msgid "Export All"
 msgstr ""
 
@@ -265,15 +278,15 @@ msgstr ""
 msgid "Get Support"
 msgstr ""
 
-#: inc/API/class-local.php:307
+#: inc/API/class-local.php:350
 msgid "Invalid Template ID."
 msgstr ""
 
-#: inc/API/class-local.php:382
+#: inc/API/class-local.php:447
 msgid "No options key provided."
 msgstr ""
 
-#: inc/API/class-local.php:388
+#: inc/API/class-local.php:453
 msgid "Setting updated."
 msgstr ""
 
@@ -289,56 +302,52 @@ msgstr ""
 msgid "Search Templates"
 msgstr ""
 
-#: client/blocks/BlockList.js:304
+#: client/blocks/BlockList.js:305
 msgid "The %s has been imported and is now available in the"
 msgstr ""
 
-#: client/blocks/BlockList.js:315
+#: client/blocks/BlockList.js:316
 msgid "Elementor %s library"
 msgstr ""
 
-#: client/blocks/BlockList.js:329
+#: client/blocks/BlockList.js:330
 msgid "Ok, thanks"
 msgstr ""
 
-#: client/blocks/BlockList.js:341
+#: client/blocks/BlockList.js:342
 msgid "No Templates found"
 msgstr ""
 
-#: client/blocks/BlockList.js:345
+#: client/blocks/BlockList.js:346
 msgid "Loading Templates..."
 msgstr ""
 
-#: client/blocks/BlockList.js:398
+#: client/blocks/BlockList.js:401
 msgid "Insert"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-settings.php:27
-msgid "Library Settings"
-msgstr ""
-
-#: inc/Settings/Views/html-admin-settings.php:52
+#: inc/Settings/Views/html-admin-settings.php:53
 msgid "Save changes"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-settings.php:89
+#: inc/Settings/Views/html-admin-settings.php:93
 msgid "Your Email"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-settings.php:90
+#: inc/Settings/Views/html-admin-settings.php:94
 msgid "First Name"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-settings.php:91
+#: inc/Settings/Views/html-admin-settings.php:95
 msgid "Send me the coupon"
 msgstr ""
 
 # %s: Link to AnalogWP privacy policy.
-#: inc/Settings/Views/html-admin-settings.php:99
+#: inc/Settings/Views/html-admin-settings.php:103
 msgid "By submitting your details, you agree to our %s."
 msgstr ""
 
-#: inc/Settings/Views/html-admin-settings.php:100
+#: inc/Settings/Views/html-admin-settings.php:104
 msgid "privacy policy"
 msgstr ""
 
@@ -364,87 +373,190 @@ msgstr ""
 msgid "Reinstall this version"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:31
+#: inc/Settings/Tabs/class-settings-tools.php:32
 msgid "Tools"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:52
+#: inc/Settings/Tabs/class-settings-tools.php:53
 msgid "Updated successfully"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:53
+#: inc/Settings/Tabs/class-settings-tools.php:54
 msgid "Update failed! Please try again"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:67
-#: inc/Settings/Tabs/class-settings-tools.php:91
+#: inc/Settings/Tabs/class-settings-tools.php:68
+#: inc/Settings/Tabs/class-settings-tools.php:92
 msgid "Run Update"
 msgstr ""
 
 # %s: Number of templates to update.
-#: inc/Settings/Tabs/class-settings-tools.php:71
+#: inc/Settings/Tabs/class-settings-tools.php:72
 msgid "%1$s ? %2$s template(s)"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:83
+#: inc/Settings/Tabs/class-settings-tools.php:84
 msgid "Update Library Templates"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:88
+#: inc/Settings/Tabs/class-settings-tools.php:89
 msgid ""
 "This action will update any templates found to be outdated in the Custom "
 "Library from their source template in Elementor template library."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:89
+#: inc/Settings/Tabs/class-settings-tools.php:90
 msgid ""
 "Note: Outdated templates are templates that were created before the current "
 "version of this plugin. You only need to run this when you think there is a "
 "problem in the Custom Library."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:138
+#: inc/Settings/Tabs/class-settings-tools.php:107
+msgid "Templates Importer"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:112
+msgid ""
+"Imports .json or .zip files exported only via the Custom Library Pro "
+"templates exporter."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:121
+msgid "Templates Exporter"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:126
+msgid "Exports all the templates published and available in the Custom Library."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:175
 msgid "No outdated templates found."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:158
+#: inc/Settings/Tabs/class-settings-tools.php:195
 msgid "Failed to update outdated templates."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-reports.php:28
+msgid "Reports"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-reports.php:43
+msgid "Template Import Reports"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-reports.php:44
+msgid ""
+"Track and analyze template imports across your sites. Monitor usage "
+"patterns and gain insights into your template library."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-reports.php:53
+msgid "Import Tracking"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-reports.php:54
+msgid "This data is safely stored on your site and never leaves your site."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-reports.php:60
+msgid "Enabled"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-reports.php:61
+msgid ""
+"Track all template imports including template name, import time, and client "
+"site details."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-reports.php:65
+msgid "Disabled"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-reports.php:66
+msgid "Do not track template imports."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-reports.php:75
+#: inc/Settings/Tabs/class-settings-remote.php:81
+msgid "More controls"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-reports.php:76
+msgid ""
+"Unlock powerful reporting features with Pro including detailed import logs, "
+"client site tracking, export capabilities, and automatic data cleanup "
+"options."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-remote.php:28
+msgid "Remote Library"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-remote.php:43
+msgid "Remote Library Settings"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-remote.php:46
+msgid ""
+"Configure your library to share templates with other sites (Server mode) or "
+"connect to remote libraries (Client mode)."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-remote.php:48
+msgid "Learn more"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-remote.php:55
+msgid "Operating Mode"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-remote.php:61
+msgid "Standalone"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-remote.php:62
+msgid "Local library only. Templates are stored and used on this site only."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-remote.php:66
+msgid "Server"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-remote.php:67
+msgid ""
+"Share your library with other sites. Generate a connection-code for clients "
+"to connect to this remote library server."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-remote.php:71
+msgid "Client"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-remote.php:72
+msgid "Connect to remote library servers to access templates from another site."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-remote.php:82
+msgid ""
+"A plethora of controls to serve your own template library remotely or "
+"access remote libraries, such as Secure Connection-code, Connected Sites, "
+"Reports and more. "
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-misc.php:25
 msgid "Misc"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-misc.php:44
+#: inc/Settings/Tabs/class-settings-misc.php:42
 msgid "Remove Data on Uninstall"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-misc.php:45
+#: inc/Settings/Tabs/class-settings-misc.php:46
 msgid ""
 "Check this box to remove all data stored by Custom Library for Elementor "
 "plugin, including license info, user settings, import history etc."
-msgstr ""
-
-#: inc/Settings/Tabs/class-settings-import-export.php:26
-msgid "Importer / Exporter"
-msgstr ""
-
-#: inc/Settings/Tabs/class-settings-import-export.php:48
-msgid "Templates Importer"
-msgstr ""
-
-#: inc/Settings/Tabs/class-settings-import-export.php:53
-msgid ""
-"Imports .json or .zip files exported only via the Custom Library Pro "
-"templates exporter."
-msgstr ""
-
-#: inc/Settings/Tabs/class-settings-import-export.php:62
-msgid "Templates Exporter"
-msgstr ""
-
-#: inc/Settings/Tabs/class-settings-import-export.php:67
-msgid "Exports all the templates published and available in the Custom Library."
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-general.php:26
@@ -561,74 +673,78 @@ msgid "Show categories template count"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:110
-msgid "Library title"
+msgid "Plugin/menu label"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:125
+msgid "Library title"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:140
 msgid "Show Buttons on hover"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:138
+#: inc/Settings/Tabs/class-settings-design.php:153
 msgid "Show Preview Button"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:139
+#: inc/Settings/Tabs/class-settings-design.php:154
 msgid "Show Edit Button"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:147
+#: inc/Settings/Tabs/class-settings-design.php:162
 msgid "Header colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:152
+#: inc/Settings/Tabs/class-settings-design.php:167
 msgid "Header Background"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:158
+#: inc/Settings/Tabs/class-settings-design.php:173
 msgid "Header Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:164
+#: inc/Settings/Tabs/class-settings-design.php:179
 msgid "Header Border Bottom"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:174
+#: inc/Settings/Tabs/class-settings-design.php:189
 msgid "Categories colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:179
+#: inc/Settings/Tabs/class-settings-design.php:194
 msgid "Categories Background"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:185
+#: inc/Settings/Tabs/class-settings-design.php:200
 msgid "Categories Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:191
+#: inc/Settings/Tabs/class-settings-design.php:206
 msgid "Active Category Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:201
+#: inc/Settings/Tabs/class-settings-design.php:216
 msgid "Button styles"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:206
+#: inc/Settings/Tabs/class-settings-design.php:221
 msgid "Button Background Color"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:212
+#: inc/Settings/Tabs/class-settings-design.php:227
 msgid "Button Text Color"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:218
+#: inc/Settings/Tabs/class-settings-design.php:233
 msgid "Button Border Color"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:224
+#: inc/Settings/Tabs/class-settings-design.php:239
 msgid "Button Border Radius"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:230
+#: inc/Settings/Tabs/class-settings-design.php:245
 msgid "Button Border Width"
 msgstr ""
 
