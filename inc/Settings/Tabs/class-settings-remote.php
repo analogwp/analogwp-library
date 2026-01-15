@@ -41,7 +41,12 @@ class Remote extends Settings_Page {
 			array(
 				array(
 					'title' => esc_html__( 'Remote Library Settings', 'analogwp-library' ),
-					'desc'  => esc_html__( 'Configure your library to share templates with other sites (Server mode) or connect to remote libraries (Client mode).', 'analogwp-library' ),
+					'desc'  => sprintf(
+						'%s <a href="%s" target="_blank">%s</a>',
+						esc_html__( 'Configure your library to share templates with other sites (Server mode) or connect to remote libraries (Client mode).', 'analogwp-library' ),
+						'https://analogwp.com/cl-docs/remote-library/?utm_source=plugin&utm_medium=link&utm_campaign=cl_remote_settings_learn_more',
+						esc_html__( 'Learn more', 'analogwp-library' )
+					),
 					'type'  => 'promo-title',
 					'id'    => 'analog_custom_library_promo_remote_settings',
 				),

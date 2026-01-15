@@ -551,7 +551,8 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 }
 
 #analog_custom_library_remote_settings-description + .form-table,
-#analog_custom_library_promo_remote_settings-description + .form-table {
+#analog_custom_library_promo_remote_settings-description + .form-table,
+#analog_custom_library_promo_reports_settings-description + .form-table {
 	tbody tr > * {
 		display: block;
 		width: 100%;

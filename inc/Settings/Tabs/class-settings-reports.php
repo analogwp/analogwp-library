@@ -41,13 +41,17 @@ class Reports extends Settings_Page {
 			array(
 				array(
 					'title' => esc_html__( 'Template Import Reports', 'analogwp-library' ),
-					'desc'  => esc_html__( 'Track and analyze template imports across your sites. Monitor usage patterns and gain insights into your template library.', 'analogwp-library' ),
+					'desc'  => esc_html__(
+						'Track and analyze template imports across your sites. Monitor usage patterns and gain insights into your template library.',
+						'analogwp-library'
+					),
 					'type'  => 'promo-title',
 					'id'    => 'analog_custom_library_promo_reports_settings',
 				),
 				array(
 					'id'      => 'reports_tracking',
 					'title'   => esc_html__( 'Import Tracking', 'analogwp-library' ),
+					'desc'    => esc_html__( 'This data is safely stored on your site and never leaves your site.', 'analogwp-library' ),
 					'type'    => 'promo-radio',
 					'default' => 'enabled',
 					'options' => array(

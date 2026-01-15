@@ -87,7 +87,7 @@ if ( ! $tab_exists ) {
 				<div class="upgrade-box special">
 					<h3>🔥 Upgrade to Custom Library PRO with a Special Discount</h3>
 
-					<p>Get additional features like <strong>Custom Branding/White-Label, Import/Export Templates, Role-Based Access Controls, Priority support and so much more</strong> while helping us support its development and maintenance.</p>
+					<p>Get additional features like <strong>Remote Library, Template Reports, Custom Branding/White-Label, Import/Export Templates, Role-Based Access Controls, Priority support and <a href="https://analogwp.com/custom-library-for-elementor/?utm_source=plugin&utm_medium=referral&utm_campaign=promo-settings-sidebar" target="_blank">so much more</a></strong> while helping us support its development and maintenance.</p>
 
 					<form id="js-ang-custom-library-request-discount" method="post">
 						<input required type="email" class="regular-text" name="email" value="<?php echo esc_attr( $current_user->user_email ); ?>" placeholder="<?php esc_attr_e( 'Your Email', 'analogwp-library' ); ?>">
