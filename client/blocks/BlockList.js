@@ -10,6 +10,7 @@ import Download from '../icons/download';
 import Empty from '../helpers/Empty';
 import Eye from "../icons/eye";
 import Pencil from "../icons/pencil";
+import Globe from '../icons/globe';
 
 
 const { decodeEntities } = wp.htmlEntities;
@@ -362,11 +363,14 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 							requiresElementorPro = unresolvedPlugins && unresolvedPlugins.includes( 'elementor-pro' );
 						}
 						return (
-							<div key={block.id}>
+							<div key={block.id} className={classnames({ 'is-remote-template': block.is_remote })}>
 								<Card>
 									<CardBody>
 										{block.is_pro && (
 											<span className="pro">{__('Pro', 'analogwp-library')}</span>
+										)}
+										{block.is_remote && (
+											<span className="remote-badge" title={block.server_name}><Globe /></span>
 										)}
 
 										<figure>
@@ -379,8 +383,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 											/>
 
 											<div className="actions">
-												<a href={AGWP_LIBRARY.siteURL + `?post_type=elementor_library&p=${block.id}&preview=true`}
-												   target="_blank" className="template-preview-button">
+												{! block.is_remote && <><a href={AGWP_LIBRARY.siteURL + `?post_type=elementor_library&p=${block.id}&preview=true`} target="_blank" className="template-preview-button">
 													<Button isPrimary>
 														<Eye />
 													</Button>
@@ -390,7 +393,7 @@ const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 													<Button isPrimary>
 														<Pencil/>
 													</Button>
-												</a>
+												</a></>}
 												<NotificationConsumer>
 													{({add}) => (
 														!requiresElementorPro && isValid(block.is_pro) && (

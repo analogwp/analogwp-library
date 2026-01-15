@@ -15,23 +15,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $tab_exists        = isset( $tabs[ $current_tab ] ) || has_action( 'analog_custom_library_sections_' . $current_tab ) || has_action( 'analog_custom_library_settings_' . $current_tab ) || has_action( 'analog_custom_library_settings_tabs_' . $current_tab );
 $current_tab_label = $tabs[ $current_tab ] ?? '';
+$plugin_title      = Plugin::get_plugin_public_name();
 
 global $current_user;
 
 if ( ! $tab_exists ) {
-	wp_safe_redirect( admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings' ) );
+	wp_safe_redirect( admin_url( 'admin.php?page=agwp-custom-library' ) );
 	exit;
 }
 ?>
 <div class="wrap ang-custom-library <?php echo esc_attr( $current_tab ); ?>">
-	<h1 class="menu-title"><?php esc_html_e( 'Library Settings', 'analogwp-library' ); ?></h1>
+	<h1 class="menu-title"><?php echo esc_html( $plugin_title ) . ' ' . esc_html__( 'Settings', 'analogwp-library' ); ?></h1>
 	<div class="analog-custom-library-wrapper">
 		<form method="<?php echo esc_attr( apply_filters( 'analog_custom_library_settings_form_method_tab_' . $current_tab, 'post' ) ); ?>" id="mainform" action="" enctype="multipart/form-data">
 			<nav class="nav-tab-wrapper analog-custom-library-nav-tab-wrapper">
 				<?php
 
 				foreach ( $tabs as $slug => $label ) {
-					echo '<a href="' . esc_html( admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings&tab=' . esc_attr( $slug ) ) ) . '" class="analog-custom-library-nav-tab ' . ( $current_tab === $slug ? 'analog-custom-library-nav-tab-active' : '' ) . '">' . esc_html( $label ) . '</a>';
+					echo '<a href="' . esc_html( admin_url( 'admin.php?page=agwp-custom-library&tab=' . esc_attr( $slug ) ) ) . '" class="analog-custom-library-nav-tab nav-tab-' . esc_attr( $slug ) . ( $current_tab === $slug ? ' analog-custom-library-nav-tab-active' : '' ) . '">' . esc_html( $label ) . '</a>';
 				}
 
 				do_action( 'analog_custom_library_settings_tabs' );
@@ -68,14 +69,17 @@ if ( ! $tab_exists ) {
 						</svg>
 						<div>
 							<h4>Custom Library for Elementor</h4>
-							<p class="version"><?php echo esc_html( AGWP_LIBRARY_VERSION ); ?></p>
+							<p class="version">v<?php echo esc_html( AGWP_LIBRARY_VERSION ); ?></p>
 							<?php do_action( 'analog_custom_library_sidebar_plugin_info_section' ); ?>
 						</div>
 					</div>
 				</div>
 				<ul class="feature-list">
+					<li><a href="https://analogwp.com/cl-docs/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">Documentation</a></li>
+					<?php if ( ! Plugin::instance()->has_pro_active() ) : ?>
 					<li><a href="https://analogwp.com/custom-library-for-elementor/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">Explore Custom Library Features</a></li>
-					<!-- <li><a href="https://analogwp.com/all-access-pass/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">[LTD] All Access Pass</a></li> -->
+					<li><a href="https://analogwp.com/all-access-pass/?utm_source=plugin&utm_medium=referral&utm_campaign=settings-sidebar" target="_blank">Unlimited Access Pass</a></li>
+					<?php endif; ?>
 				</ul>
 			</div>
 
@@ -83,7 +87,7 @@ if ( ! $tab_exists ) {
 				<div class="upgrade-box special">
 					<h3>🔥 Upgrade to Custom Library PRO with a Special Discount</h3>
 
-					<p>Get additional features like <strong>Custom Branding/White-Label, Import/Export Templates, Role-Based Access Controls, Priority support and so much more</strong> while helping us support its development and maintenance.</p>
+					<p>Get additional features like <strong>Remote Library, Template Reports, Custom Branding/White-Label, Import/Export Templates, Role-Based Access Controls, Priority support and <a href="https://analogwp.com/custom-library-for-elementor/?utm_source=plugin&utm_medium=referral&utm_campaign=promo-settings-sidebar" target="_blank">so much more</a></strong> while helping us support its development and maintenance.</p>
 
 					<form id="js-ang-custom-library-request-discount" method="post">
 						<input required type="email" class="regular-text" name="email" value="<?php echo esc_attr( $current_user->user_email ); ?>" placeholder="<?php esc_attr_e( 'Your Email', 'analogwp-library' ); ?>">
@@ -111,9 +115,9 @@ if ( ! $tab_exists ) {
 
 					<div>
 						<?php if ( Plugin::instance()->has_pro_active() ) : ?>
-							<a class="button button-secondary" href="<?php echo admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings-account' ); ?>">Account</a>
-						<?php endif; ?>
-						<a class="button button-secondary" href="<?php echo admin_url( 'edit.php?post_type=elementor_library&page=analog-custom-library-settings-contact' ); ?>">Create a Support Request</a>
+						<a class="button button-secondary" href="<?php echo admin_url( 'admin.php?page=agwp-custom-library-account' ); ?>">Account</a>
+					<?php endif; ?>
+					<a class="button button-secondary" href="<?php echo admin_url( 'admin.php?page=agwp-custom-library-contact' ); ?>">Create a Support Request</a>
 					</div>
 				</div>
 

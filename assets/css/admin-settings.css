@@ -5,16 +5,19 @@
 		column-gap: 40px;
 	}
 
+	body.toplevel_page_agwp-custom-library .wrap,
 	body.custom-library_page_analog-custom-library-settings .wrap {
 		margin: 0;
 		padding: 20px 30px 30px;
 	}
 }
 
+body.toplevel_page_agwp-custom-library #wpcontent,
 body.custom-library_page_analog-custom-library-settings #wpcontent {
 	padding: 0;
 }
 
+body.toplevel_page_agwp-custom-library .wrap,
 body.custom-library_page_analog-custom-library-settings .wrap {
 	margin: 0;
 	padding: 40px 60px 60px;
@@ -74,7 +77,8 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 
 .ang-custom-library .forminp .description {
 	display: block;
-	margin-top: 10px;
+	margin-top: 0;
+	margin-bottom: 15px;
 }
 
 .ang-custom-library .forminp-button {
@@ -354,7 +358,7 @@ body.custom-library_page_analog-custom-library-settings .wrap {
  * Form
  */
 .ang-custom-library .form-table td {
-	padding: 15px 0 !important;
+	padding: 0 0 20px !important;
 }
 
 .ang-custom-library .form-table th + td {
@@ -384,7 +388,7 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 
 .ang-custom-library .forminp-action-button .description {
 	margin-top: 0;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 }
 
 .ang-custom-library .forminp-media-image .analog-custom-library-remove-image-btn {
@@ -393,7 +397,9 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 
 .ang-custom-library.import-export .tab-content .submit,
 .ang-custom-library.tools .tab-content .submit,
-.ang-custom-library.version-control .tab-content .submit {
+.ang-custom-library.version-control .tab-content .submit,
+.ang-custom-library.remote-promo .tab-content .submit,
+.ang-custom-library.reports-promo .tab-content .submit {
 	display: none;
 }
 
@@ -525,6 +531,43 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 
 .ang-custom-library #analog_custom_library_plugin_rollback_version-description + .form-table .forminp.forminp-select label {
 	margin-right: 20px;
+}
+
+/**
+ * Remote Library Settings
+ */
+.ang-custom-library .nav-tab-wrapper .nav-tab-remote-promo::after,
+.ang-custom-library .nav-tab-wrapper .nav-tab-reports-promo::after {
+	content: "PRO";
+	float: left;
+	margin-right: 8px;
+	background: #4D45BD;
+	text-transform: uppercase;
+	font-size: 10px;
+	border-radius: 5px;
+	padding: 2px 3px;
+	color: #fff;
+	border: 2px solid transparent;
+}
+
+#analog_custom_library_remote_settings-description + .form-table,
+#analog_custom_library_promo_remote_settings-description + .form-table,
+#analog_custom_library_promo_reports_settings-description + .form-table {
+	tbody tr > * {
+		display: block;
+		width: 100%;
+	}
+
+	.forminp-radio ul,
+	.forminp-promo-radio ul {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+
+		.option-label {
+			margin-left: 24px;
+		}
+	}
 }
 
 /**

@@ -107,6 +107,21 @@ class Design extends Settings_Page {
 				$settings,
 				array(
 					array(
+						'title' => __( 'Plugin/menu label', 'analogwp-library' ),
+						'type'  => 'promo-title',
+						'id'    => 'analog_custom_library_plugin_label',
+					),
+					array(
+						'title'   => '',
+						'id'      => 'promo_library_plugin_label',
+						'default' => __( 'Custom Library', 'analogwp-library' ),
+						'type'    => 'promo-text',
+					),
+					array(
+						'type' => 'sectionend',
+						'id'   => 'analog_custom_library_plugin_label_text',
+					),
+					array(
 						'title' => __( 'Library title', 'analogwp-library' ),
 						'type'  => 'promo-title',
 						'id'    => 'analog_custom_library_title_text',

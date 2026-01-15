@@ -198,7 +198,7 @@ class Templates_DB extends Base_DB {
 
 		// Build and execute the query.
 		$query = $wpdb->prepare(
-			"SELECT meta, content FROM {$table_name} WHERE template_id = %d AND site_id = %d", // phpcs:ignore
+			"SELECT title, meta, content FROM {$table_name} WHERE template_id = %d AND site_id = %d", // phpcs:ignore
 			$template_id,
 			$site_id
 		);
