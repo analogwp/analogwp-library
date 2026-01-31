@@ -1,6 +1,7 @@
 import { default as styled, keyframes } from 'styled-components';
 import ThemeContext from './contexts/ThemeContext';
 import Synchronization from './Synchronization';
+import SourceFilter from './SourceFilter';
 
 const rotate = keyframes`
   from {
@@ -79,6 +80,11 @@ const Container = styled.div.attrs({
 		font-size: 12.64px !important;
 		letter-spacing: 1px;
 	}
+
+	.header-actions {
+		display: flex;
+		align-items: center;
+	}
 `;
 
 const Header = () => {
@@ -90,7 +96,10 @@ const Header = () => {
 				<div className="logo">
 					<h2>{ AGWP_LIBRARY?.library_title_text }</h2>
 				</div>
-				<Synchronization />
+				<div className="header-actions">
+					<SourceFilter />
+					<Synchronization />
+				</div>
 			</div>
 		</Container>
 	);

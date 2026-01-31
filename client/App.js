@@ -162,6 +162,7 @@ class App extends React.Component {
 			hasPro: false,
 			settings: {},
 			blocksSearchInput: '',
+			sourceFilter: 'all', // Source filter: 'all', 'local', 'remote'
 			itemFilteredWithSearchTerm: function( foundItems, searchInput ) {
 				let searchTags = [];
 				return foundItems.filter( single => {
@@ -183,6 +184,16 @@ class App extends React.Component {
 		this.handleSort = this.handleSort.bind( this );
 		this.handleFilter = this.handleFilter.bind( this );
 		this.switchTabs = this.switchTabs.bind( this );
+		this.setSourceFilter = this.setSourceFilter.bind( this );
+	}
+
+	/**
+	 * Set the source filter for templates.
+	 *
+	 * @param {string} source - 'all', 'local', or 'remote'
+	 */
+	setSourceFilter( source ) {
+		this.setState( { sourceFilter: source } );
 	}
 
 	switchTabs() {
@@ -397,6 +408,7 @@ class App extends React.Component {
 										handleSearch: this.handleSearch,
 										handleSort: this.handleSort,
 										handleFilter: this.handleFilter,
+										setSourceFilter: this.setSourceFilter,
 										dispatch: action => this.setState( action ),
 									} }
 								>

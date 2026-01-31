@@ -229,7 +229,22 @@ const Container = styled.div`
 const BlockList = ( { state, importBlock, favorites, makeFavorite } ) => {
 	const context = React.useContext( AnalogContext );
 
-	const filteredBlocks = context.state.blocks.filter( block => ! ( AGWP_LIBRARY.license.status !== 'valid' && context.state.showFree && Boolean( block.is_pro ) ) );
+	// Filter by license status.
+	let filteredBlocks = context.state.blocks.filter( block => ! ( AGWP_LIBRARY.license.status !== 'valid' && context.state.showFree && Boolean( block.is_pro ) ) );
+
+	// Apply source filter if enabled.
+	const sourceFilter = context.state.sourceFilter;
+	if ( sourceFilter && sourceFilter !== 'all' ) {
+		filteredBlocks = filteredBlocks.filter( block => {
+			if ( sourceFilter === 'local' ) {
+				return ! block.is_remote;
+			}
+			if ( sourceFilter === 'remote' ) {
+				return block.is_remote === true;
+			}
+			return true;
+		} );
+	}
 
 	const fallbackImg = AGWP_LIBRARY.pluginURL + 'assets/img/placeholder.svg';
 
