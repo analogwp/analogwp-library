@@ -8,9 +8,10 @@
 namespace AnalogWP\CustomLibrary\Settings;
 
 use AnalogWP\CustomLibrary\Plugin;
+use AnalogWP\CustomLibrary\Utils;
 
 /**
- * class Register_Settings.
+ * Class Register_Settings.
  */
 class Register_Settings {
 	/**
@@ -148,19 +149,15 @@ class Register_Settings {
 	private function get_menu_position_after_elementor() {
 		global $menu;
 
-		$elementor_position = 58; // Default Elementor position.
+		$elementor_position = 2; // Default Elementor position.
 
-		if ( ! empty( $menu ) ) {
-			foreach ( $menu as $position => $item ) {
-				if ( isset( $item[2] ) && 'elementor' === $item[2] ) {
-					$elementor_position = $position;
-					break;
-				}
-			}
+		// Support pre 3.34.3 Elementor versions.
+		if ( Utils::is_elementor_pre( '3.34.2' ) ) {
+			$elementor_position = 58;
 		}
 
-		// Place our menu right after Elementor (add small decimal to avoid conflicts).
-		return $elementor_position + 0.1;
+		// Place our menu right after Elementor.
+		return $elementor_position + 1;
 	}
 
 	/**
