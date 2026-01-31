@@ -340,7 +340,7 @@ class App extends React.Component {
 		}
 		this.setState( {
 			blocks: value ? [] : this.state.blockArchive,
-			blocksSearchInput: '',
+			blocksSearchInput: value || '',
 		} );
 	}
 
