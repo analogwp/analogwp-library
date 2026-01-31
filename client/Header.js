@@ -2,6 +2,7 @@ import { default as styled, keyframes } from 'styled-components';
 import ThemeContext from './contexts/ThemeContext';
 import Synchronization from './Synchronization';
 import SourceFilter from './SourceFilter';
+import HeaderSearch from './HeaderSearch';
 
 const rotate = keyframes`
   from {
@@ -97,6 +98,7 @@ const Header = () => {
 					<h2>{ AGWP_LIBRARY?.library_title_text }</h2>
 				</div>
 				<div className="header-actions">
+					<HeaderSearch />
 					<SourceFilter />
 					<Synchronization />
 				</div>
