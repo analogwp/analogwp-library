@@ -158,6 +158,7 @@ Contact us via the [support page](https://analogwp.com/contact/) or use the supp
 * New: Templates Source selector at Library modal
 * New: Search field at Library modal
 * Improvement: Move Custom Library menu close to new unified Elementor menu
+* Improvement: Update language files
 * Improvement: Other minor improvements
 
 = 2.0.0 =
