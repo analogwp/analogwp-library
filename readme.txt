@@ -3,7 +3,7 @@ Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 Tags: elementor, elementor templates, template library, design system, elementor addons
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -152,6 +152,13 @@ Contact us via the [support page](https://analogwp.com/contact/) or use the supp
 4. Custom Library popup modal in the Elementor Editor.
 
 == Changelog ==
+
+= 2.1.0 =
+* New: Template Visibility options at Remote Library Settings
+* New: Templates Source selector at Library modal
+* New: Search field at Library modal
+* Improvement: Move Custom Library menu close to new unified Elementor menu
+* Improvement: Other minor improvements
 
 = 2.0.0 =
 * New: New Custom Library Parent Menu at admin Dashboard
