@@ -97,8 +97,25 @@ const SidebarWrapper = styled.div`
 
 const Sidebar = ( { state } ) => {
 	const context = React.useContext( AnalogContext );
-	const categories = [ ...new Set( context.state.blockArchive.map( block => block.tags[ 0 ] ) ) ];
-	let filteredBlocks = context.state.blockArchive;
+
+	// Get source filter and filter blockArchive accordingly.
+	const sourceFilter = context.state.sourceFilter;
+	let sourceFilteredArchive = context.state.blockArchive;
+
+	if ( sourceFilter && sourceFilter !== 'all' ) {
+		sourceFilteredArchive = context.state.blockArchive.filter( block => {
+			if ( sourceFilter === 'local' ) {
+				return ! block.is_remote;
+			}
+			if ( sourceFilter === 'remote' ) {
+				return block.is_remote === true;
+			}
+			return true;
+		} );
+	}
+
+	const categories = [ ...new Set( sourceFilteredArchive.map( block => block.tags[ 0 ] ) ) ];
+	let filteredBlocks = sourceFilteredArchive;
 	let favoriteBlocks = filteredBlocks.filter( t => t.id in context.state.blockFavorites );
 
 	const onSelect = ( tab ) => {
@@ -110,7 +127,7 @@ const Sidebar = ( { state } ) => {
 			selectFilteredBlocks = favoriteBlocks;
 		}
 		if ( tab !== 'favorites' && tab !== blockIdentifier ) {
-			selectFilteredBlocks = context.state.blockArchive.filter( block => block.tags.indexOf( tab ) > -1 );
+			selectFilteredBlocks = sourceFilteredArchive.filter( block => block.tags.indexOf( tab ) > -1 );
 		}
 
 		const { blocksSearchInput } = context.state;
@@ -123,12 +140,12 @@ const Sidebar = ( { state } ) => {
 	}
 
 	const getItemCount = ( tab ) => {
-		const blocks = context.state.blockArchive;
+		const blocks = sourceFilteredArchive;
 		const { blocksSearchInput } = context.state;
 		let foundItems = [];
 
 		if ( tab === blockIdentifier ) {
-			foundItems = context.state.blockArchive;
+			foundItems = sourceFilteredArchive;
 		}
 		if ( tab === 'favorites' ) {
 			foundItems = favoriteBlocks;
