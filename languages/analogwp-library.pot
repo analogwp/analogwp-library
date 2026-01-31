@@ -3,13 +3,13 @@
 #: assets/js/app/index.js:1
 msgid ""
 msgstr ""
-"Project-Id-Version: analogwp-library 2.0.0\n"
+"Project-Id-Version: analogwp-library 2.1.0\n"
 "Report-Msgid-Bugs-To: AnalogWP <EMAIL>\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-01-15T12:01:55.608Z\n"
+"POT-Creation-Date: 2026-01-31T13:34:56.791Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -92,9 +92,9 @@ msgid "Install Elementor Now"
 msgstr ""
 
 #: inc/class-plugin.php:165
-#: inc/Settings/class-register-settings.php:102
 #: inc/Settings/class-register-settings.php:103
-#: inc/Settings/class-register-settings.php:134
+#: inc/Settings/class-register-settings.php:104
+#: inc/Settings/class-register-settings.php:135
 #: inc/Elementor/class-finder-shortcuts.php:52
 #: inc/Settings/Views/html-admin-settings.php:28
 msgid "Settings"
@@ -139,6 +139,18 @@ msgstr ""
 msgid "Something is not right, please try again."
 msgstr ""
 
+#: client/SourceFilter.js:90
+msgid "All Templates"
+msgstr ""
+
+#: client/SourceFilter.js:94
+msgid "Local Only"
+msgstr ""
+
+#: client/SourceFilter.js:98
+msgid "Remote Only"
+msgstr ""
+
 #: client/ProModal.js:6
 msgid ""
 "Get unlimited access to the Custom Library for Elementor library and "
@@ -172,15 +184,30 @@ msgstr ""
 msgid "Import Template"
 msgstr ""
 
-#: inc/Settings/class-register-settings.php:231
+#: client/HeaderSearch.js:188
+#: client/HeaderSearch.js:189
+#: client/HeaderSearch.js:212
+msgid "Search templates"
+msgstr ""
+
+#: client/HeaderSearch.js:211
+msgid "Search templates..."
+msgstr ""
+
+#: client/HeaderSearch.js:216
+#: client/HeaderSearch.js:217
+msgid "Close search"
+msgstr ""
+
+#: inc/Settings/class-register-settings.php:228
 msgid "This page has been moved to a new location"
 msgstr ""
 
-#: inc/Settings/class-register-settings.php:234
+#: inc/Settings/class-register-settings.php:231
 msgid "Redirecting you now..."
 msgstr ""
 
-#: inc/Settings/class-register-settings.php:237
+#: inc/Settings/class-register-settings.php:234
 msgid "Click here if you are not redirected automatically"
 msgstr ""
 
@@ -201,8 +228,8 @@ msgid "Use this image"
 msgstr ""
 
 #: inc/Settings/class-admin-settings.php:327
-#: client/blocks/BlockList.js:370
-#: client/blocks/BlockList.js:420
+#: client/blocks/BlockList.js:385
+#: client/blocks/BlockList.js:435
 msgid "Pro"
 msgstr ""
 
@@ -298,31 +325,31 @@ msgstr ""
 msgid "Loading icon"
 msgstr ""
 
-#: client/blocks/Sidebar.js:217
+#: client/blocks/Sidebar.js:234
 msgid "Search Templates"
 msgstr ""
 
-#: client/blocks/BlockList.js:305
+#: client/blocks/BlockList.js:320
 msgid "The %s has been imported and is now available in the"
 msgstr ""
 
-#: client/blocks/BlockList.js:316
+#: client/blocks/BlockList.js:331
 msgid "Elementor %s library"
 msgstr ""
 
-#: client/blocks/BlockList.js:330
+#: client/blocks/BlockList.js:345
 msgid "Ok, thanks"
 msgstr ""
 
-#: client/blocks/BlockList.js:342
+#: client/blocks/BlockList.js:357
 msgid "No Templates found"
 msgstr ""
 
-#: client/blocks/BlockList.js:346
+#: client/blocks/BlockList.js:361
 msgid "Loading Templates..."
 msgstr ""
 
-#: client/blocks/BlockList.js:401
+#: client/blocks/BlockList.js:416
 msgid "Insert"
 msgstr ""
 

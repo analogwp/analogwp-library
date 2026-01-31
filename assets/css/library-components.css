@@ -1,4 +1,5 @@
-#analog-custom-library {
+#analog-custom-library,
+.analog-custom-library-themed {
 	--analog-custom-library-top-header-bg: #4D45BD;
 	--analog-custom-library-top-header-text: #FFFFFF;
 	--analog-custom-library-top-header-border: #DFDFDF;
@@ -29,10 +30,6 @@
 
 /*Top navigation tab CSS*/
 /*START*/
-#analog-custom-library .close-modal {
-	margin-left: 8px;
-}
-
 #analog-custom-library .logo + .actions svg {
 	color: currentColor;
 	fill: none;
@@ -1270,4 +1267,15 @@
 #analog-custom-library .vertical > .sidebar,
 #analog-custom-library .vertical > .sidebar .components-tab-panel__tabs {
 	flex-direction: column;
+}
+
+.analog-custom-library-themed {
+	background-color: transparent;
+	top: -10px !important;
+
+	.components-popover__content { 
+		background: var(--analog-custom-library-top-header-bg);
+		box-shadow: none !important;
+		border-radius: 0 !important;
+	}
 }
