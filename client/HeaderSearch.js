@@ -37,13 +37,14 @@ const collapseWidth = keyframes`
 const SearchContainer = styled.div`
 	display: flex;
 	align-items: center;
-	margin-right: 4px;
 	position: relative;
+	margin-right: 8px;
+	padding: 0 12px;
 `;
 
 const SearchIconButton = styled.button`
 	background: transparent;
-	padding: 6px;
+	padding: 6px 0;
 	border: none;
 	cursor: pointer;
 	display: flex;

@@ -30,10 +30,6 @@
 
 /*Top navigation tab CSS*/
 /*START*/
-#analog-custom-library .close-modal {
-	margin-left: 8px;
-}
-
 #analog-custom-library .logo + .actions svg {
 	color: currentColor;
 	fill: none;
