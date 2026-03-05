@@ -184,6 +184,112 @@ class Utils extends Base {
 			}';
 		}
 
+		// Library styles aka Presets.
+		$library_style_mode = $options->get( 'library_style_mode' );
+
+		if ( isset( $library_style_mode ) && 'preset' === $library_style_mode ) {
+				// Default preset colors.
+				$css .= '#analog-custom-library {
+					--analog-custom-library-top-header-bg: #4D45BD !important;
+					--analog-custom-library-top-header-text: #FFFFFF !important;
+					--analog-custom-library-top-header-border: transparent !important;
+
+					--analog-custom-library-categories-bg: #FFFFFF !important;
+					--analog-custom-library-categories-text: #252525 !important;
+					--analog-custom-library-categories-active-text: #4D45BD !important;
+
+					--analog-custom-library-bg: #EEEEEE !important;
+					--analog-custom-library-text: #252525 !important;
+					--analog-custom-library-favorites-icon: #F3C119 !important;
+					--analog-custom-library-hover-overlay: rgba(0, 0, 0, 0.6) !important;
+					--analog-custom-library-thumbnail-border: #E0E0E0 !important;
+
+					--analog-custom-library-btn-bg: #4D45BD !important;
+					--analog-custom-library-btn-text: #FFFFFF !important;
+					--analog-custom-library-btn-border: #4D45BD !important;
+
+					--analog-custom-library-notice-bg: #948DFC !important;
+					--analog-custom-library-notice-text: #FFFFFF !important;
+					--analog-custom-library-notice-border: transparent !important;
+					}';
+
+
+				// Light preset colors.
+				$css .= '#analog-custom-library.light-preset {
+					--analog-custom-library-top-header-bg: #FFFFFF !important;
+					--analog-custom-library-top-header-text: #252525 !important;
+					--analog-custom-library-top-header-border: #DFDFDF !important;
+
+					--analog-custom-library-categories-bg: #FFFFFF !important;
+					--analog-custom-library-categories-text: #252525 !important;
+					--analog-custom-library-categories-active-text: #1E5AF2 !important;
+
+					--analog-custom-library-bg: #F9F9F9 !important;
+					--analog-custom-library-text: #252525 !important;
+					--analog-custom-library-favorites-icon: #F3C119 !important;
+					--analog-custom-library-hover-overlay: rgba(0, 0, 0, 0.6) !important;
+					--analog-custom-library-thumbnail-border: #E0E0E0 !important;
+
+					--analog-custom-library-btn-bg: #1E5AF2 !important;
+					--analog-custom-library-btn-text: #FFFFFF !important;
+					--analog-custom-library-btn-border: #1E5AF2 !important;
+
+					--analog-custom-library-notice-bg: #7090F2 !important;
+					--analog-custom-library-notice-text: #FFFFFF !important;
+					--analog-custom-library-notice-border: transparent !important;
+					}';
+				
+				// Dark preset colors.
+				$css .= '#analog-custom-library.dark-preset {
+					--analog-custom-library-top-header-bg: #1F1F23 !important;
+					--analog-custom-library-top-header-text: #FFFFFF !important;
+					--analog-custom-library-top-header-border: transparent !important;
+
+					--analog-custom-library-categories-bg: #1F1F23 !important;
+					--analog-custom-library-categories-text: #FFFFFF !important;
+					--analog-custom-library-categories-active-text: #968FFF !important;
+
+					--analog-custom-library-bg: #1F1F23 !important;
+					--analog-custom-library-text: #FFFFFF !important;
+					--analog-custom-library-favorites-icon: #F3C119 !important;
+					--analog-custom-library-hover-overlay: rgba(0, 0, 0, 0.6) !important;
+					--analog-custom-library-thumbnail-border: #2B2B31 !important;
+
+					--analog-custom-library-btn-bg: #4D45BD !important;
+					--analog-custom-library-btn-text: #FFFFFF !important;
+					--analog-custom-library-btn-border: #4D45BD !important;
+
+					--analog-custom-library-notice-bg: #968FFF !important;
+					--analog-custom-library-notice-text: #FFFFFF !important;
+					--analog-custom-library-notice-border: transparent !important;
+					}';
+
+				// Color preset colors.
+				$css .= '#analog-custom-library.color-preset {
+					--analog-custom-library-top-header-bg: #496C43 !important;
+					--analog-custom-library-top-header-text: #FFFFFF !important;
+					--analog-custom-library-top-header-border: transparent !important;
+
+					--analog-custom-library-categories-bg: #222121 !important;
+					--analog-custom-library-categories-text: #FFFFFF !important;
+					--analog-custom-library-categories-active-text: #FFCC5E !important;
+
+					--analog-custom-library-bg: #F5F2EE !important;
+					--analog-custom-library-text: #252525 !important;
+					--analog-custom-library-favorites-icon: #F3C119 !important;
+					--analog-custom-library-hover-overlay: rgba(0, 0, 0, 0.6) !important;
+					--analog-custom-library-thumbnail-border: #2B2B31 !important;
+
+					--analog-custom-library-btn-bg: #FFCC5E !important;
+					--analog-custom-library-btn-text: #222121 !important;
+					--analog-custom-library-btn-border: #FFCC5E !important;
+
+					--analog-custom-library-notice-bg: #A8BEA4 !important;
+					--analog-custom-library-notice-text: #222121 !important;
+					--analog-custom-library-notice-border: transparent !important;
+					}';
+		}
+
 		wp_add_inline_style(
 			'analog-custom-library-components-css',
 			$css
