@@ -139,6 +139,9 @@ class Admin_Settings {
 
 		wp_enqueue_script( 'analog_custom_library_settings', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/admin-settings.js', array( 'jquery', 'wp-util', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'wp-i18n', 'wp-api-fetch', 'wp-color-picker' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/admin-settings.js' ), true );
 
+		// Extend wp-color-picker with alpha/rgba support.
+		wp_enqueue_script( 'analog_custom_library_color_picker_alpha', AGWP_LIBRARY_PLUGIN_URL . 'assets/js/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/wp-color-picker-alpha.min.js' ), true );
+
 		wp_localize_script(
 			'analog_custom_library_settings',
 			'analog_custom_library_settings_data',
@@ -955,6 +958,9 @@ class Admin_Settings {
 					// Display value: use stored value if set, otherwise fall back to
 					// the default so the color swatch is always populated on page load.
 					$display_color = ! empty( $option_value ) ? $option_value : $default_color;
+
+					// Detect whether this field needs rgba/alpha support.
+					$needs_alpha = ( strpos( $display_color, 'rgba' ) !== false || strpos( $default_color, 'rgba' ) !== false );
 					?>
 
 					<tr valign="top">
@@ -967,6 +973,7 @@ class Admin_Settings {
 								data-default-color="<?php echo esc_attr( $default_color ); ?>"
 								value="<?php echo esc_attr( $display_color ); ?>"
 								class="color-field <?php echo esc_attr( $value['class'] ); ?>"
+								<?php if ( $needs_alpha ) : ?>data-alpha-enabled="true"<?php endif; ?>
 								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 								/>
 
@@ -989,6 +996,9 @@ class Admin_Settings {
 					// Display value: use stored value if set, otherwise fall back to
 					// the default so the color swatch is always populated on page load.
 					$display_color = ! empty( $option_value ) ? $option_value : $default_color;
+
+					// Detect whether this field needs rgba/alpha support.
+					$needs_alpha = ( strpos( $display_color, 'rgba' ) !== false || strpos( $default_color, 'rgba' ) !== false );
 					?>
 
 					<tr valign="top">
@@ -1001,6 +1011,7 @@ class Admin_Settings {
 								data-default-color="<?php echo esc_attr( $default_color ); ?>"
 								value="<?php echo esc_attr( $display_color ); ?>"
 								class="color-field <?php echo esc_attr( $value['class'] ); ?>"
+								<?php if ( $needs_alpha ) : ?>data-alpha-enabled="true"<?php endif; ?>
 								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 								/>
 

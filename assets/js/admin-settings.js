@@ -116,8 +116,9 @@
 			}
 		);
 
-		// Initialize WP Color Picker.
-		$( '.color-field' ).wpColorPicker();
+		// Initialize WP Color Picker (with alpha support for rgba fields).
+		$( '.color-field[data-alpha-enabled="true"]' ).wpColorPicker( { alpha: true } );
+		$( '.color-field:not([data-alpha-enabled])' ).wpColorPicker();
 
 		// Update outdated templates.
 		$( '.forminp-action-button #update_outdated_templates' ).on('click', function(e) {
