@@ -189,7 +189,7 @@ class Utils extends Base {
 
 		if ( isset( $library_style_mode ) && 'preset' === $library_style_mode ) {
 				// Default preset colors.
-				$css .= '#analog-custom-library {
+				$css .= '#analog-custom-library, .analog-custom-library-themed {
 					--analog-custom-library-top-header-bg: #4D45BD !important;
 					--analog-custom-library-top-header-text: #FFFFFF !important;
 					--analog-custom-library-top-header-border: transparent !important;
@@ -215,7 +215,7 @@ class Utils extends Base {
 
 
 				// Light preset colors.
-				$css .= '#analog-custom-library.light-preset {
+				$css .= 'body.analog-custom-library-light-preset #analog-custom-library, body.analog-custom-library-light-preset .analog-custom-library-themed {
 					--analog-custom-library-top-header-bg: #FFFFFF !important;
 					--analog-custom-library-top-header-text: #252525 !important;
 					--analog-custom-library-top-header-border: #DFDFDF !important;
@@ -240,7 +240,7 @@ class Utils extends Base {
 					}';
 				
 				// Dark preset colors.
-				$css .= '#analog-custom-library.dark-preset {
+				$css .= 'body.analog-custom-library-dark-preset #analog-custom-library, body.analog-custom-library-dark-preset .analog-custom-library-themed {
 					--analog-custom-library-top-header-bg: #1F1F23 !important;
 					--analog-custom-library-top-header-text: #FFFFFF !important;
 					--analog-custom-library-top-header-border: transparent !important;
@@ -265,7 +265,7 @@ class Utils extends Base {
 					}';
 
 				// Color preset colors.
-				$css .= '#analog-custom-library.color-preset {
+				$css .= 'body.analog-custom-library-color-preset #analog-custom-library, body.analog-custom-library-color-preset .analog-custom-library-themed {
 					--analog-custom-library-top-header-bg: #496C43 !important;
 					--analog-custom-library-top-header-text: #FFFFFF !important;
 					--analog-custom-library-top-header-border: transparent !important;

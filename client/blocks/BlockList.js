@@ -81,6 +81,7 @@ const Container = styled.div`
 		margin: 0;
 		min-height: 150px;
 		display: flex;
+		border-radius: 7px;
 
 		&:hover {
 			.actions {

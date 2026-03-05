@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import AnalogContext from './AnalogContext';
 import { NotificationConsumer } from './Notifications';
+import PresetToggle from './PresetToggle';
 import XMark from './icons/x-mark';
 import Refresh from "./icons/refresh";
 
@@ -34,6 +35,9 @@ const Synchronization = () => {
 					</NotificationConsumer>
 				) }
 			</AnalogContext.Consumer>
+			{ ! AGWP_LIBRARY.is_settings_page && (
+				<PresetToggle />
+			) }
 			{ ! AGWP_LIBRARY.is_settings_page && (
 				<Button className="close-modal">
 					<XMark
