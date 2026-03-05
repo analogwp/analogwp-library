@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import AnalogContext from '../AnalogContext';
+import ChevronDown from '../icons/chevron-down';
 const { __ } = wp.i18n;
 const { TabPanel, TextControl } = wp.components;
 
@@ -49,7 +50,6 @@ const SidebarWrapper = styled.div`
 	}
 
 	.block-categories-tabs .components-button > span {
-		color: rgba(0, 0, 0, 0.44);
 		font-size: 14.22px;
 		font-weight: normal;
 	}
@@ -99,7 +99,57 @@ const SidebarWrapper = styled.div`
 		padding-left: 14px;
 		font-size: 14.22px;
 	}
+
+	/* Chevron icon for parent categories with subcategories */
+	.block-categories-tabs .components-button .parent-chevron {
+		display: inline-flex;
+		margin-left: 4px;
+		transition: transform 0.2s ease;
+	}
+	.block-categories-tabs .components-button .parent-chevron.is-collapsed {
+		transform: rotate(-90deg);
+	}
+
+	/* Subcategory popup for horizontal mode */
+	.subcategory-popup-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 99;
+	}
+	.subcategory-popup {
+		z-index: 100;
+		background: var(--analog-custom-library-categories-bg);
+		border: none;
+		border-radius: 0;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+		padding: 20px 12px;
+		min-width: 160px;
+	}
+	.subcategory-popup .subcategory-popup-item {
+		display: block;
+		width: 100%;
+		padding: 14px 10px;
+		background: none;
+		border: none;
+		text-align: left;
+		font-size: 14px;
+		color: var(--analog-custom-library-categories-text, #1e1e1e);
+		cursor: pointer;
+		white-space: nowrap;
+	}
+	.subcategory-popup .subcategory-popup-item:hover {
+		color: var(--analog-custom-library-categories-active-text, #000);
+	}
+	.subcategory-popup .subcategory-popup-item.is-active {
+		font-weight: bold;
+		color: var(--analog-custom-library-categories-active-text, #000);
+	}
 `;
+
+const isHorizontal = sidebarOrientation === 'horizontal';
 
 const Sidebar = ( { state } ) => {
 	const context = React.useContext( AnalogContext );
@@ -174,6 +224,58 @@ const Sidebar = ( { state } ) => {
 		const cat = categoryTree.find( c => c.name === tabName );
 		if ( ! cat || cat.parent > 0 ) return false;
 		return categoryTree.some( c => c.parent === cat.id );
+	};
+
+	// Collapse state: tracks which parent categories are collapsed.
+	// All parents start collapsed by default (sidebar/vertical mode).
+	const [ collapsedParents, setCollapsedParents ] = React.useState( {} );
+
+	// Popup state for horizontal mode: { name, top, left } of the open popup, or null.
+	const [ openPopup, setOpenPopup ] = React.useState( null );
+
+	// categoryTree is loaded async — once it arrives, collapse all parents.
+	React.useEffect( () => {
+		if ( categoryTree.length === 0 ) return;
+		setCollapsedParents( prev => {
+			const next = { ...prev };
+			let changed = false;
+			categoryTree
+				.filter( c => c.parent === 0 && categoryTree.some( ch => ch.parent === c.id ) )
+				.forEach( c => {
+					if ( ! ( c.name in next ) ) {
+						next[ c.name ] = true;
+						changed = true;
+					}
+				} );
+			return changed ? next : prev;
+		} );
+	}, [ categoryTree ] );
+
+	const toggleCollapse = ( parentName, e ) => {
+		if ( e ) {
+			e.stopPropagation();
+			e.preventDefault();
+		}
+		if ( isHorizontal ) {
+			// In horizontal mode, toggle a popup instead of inline expand.
+			// Capture the chevron's screen position so the popup renders below it.
+			if ( openPopup && openPopup.name === parentName ) {
+				setOpenPopup( null );
+			} else {
+				// Left: align to the parent tab button (the title), not the chevron icon.
+				const btnEl = e.currentTarget.closest( '.components-button' );
+				const btnRect = btnEl ? btnEl.getBoundingClientRect() : e.currentTarget.getBoundingClientRect();
+				// Top: position just below the full tab bar so there's no overlap.
+				const tabBarEl = e.currentTarget.closest( '.components-tab-panel__tabs' );
+				const tabBarRect = tabBarEl ? tabBarEl.getBoundingClientRect() : btnRect;
+				setOpenPopup( { name: parentName, top: tabBarRect.bottom + 4, left: btnRect.left } );
+			}
+		} else {
+			setCollapsedParents( prev => ( {
+				...prev,
+				[ parentName ]: ! prev[ parentName ],
+			} ) );
+		}
 	};
 
 	const onSelect = ( tab ) => {
@@ -279,12 +381,15 @@ const Sidebar = ( { state } ) => {
 			}
 			ordered.push( root.name );
 
-			// Flatten all descendants under one level.
-			const childNames = getChildNames( root.name );
-			childNames.sort( ( a, b ) => a.localeCompare( b ) );
-			for ( const cn of childNames ) {
-				if ( categories.indexOf( cn ) > -1 ) {
-					ordered.push( cn );
+			// In horizontal mode, subcategories appear in a popup — skip them here.
+			// In sidebar mode, flatten all descendants under one level (skip if collapsed).
+			if ( ! isHorizontal && ! collapsedParents[ root.name ] ) {
+				const childNames = getChildNames( root.name );
+				childNames.sort( ( a, b ) => a.localeCompare( b ) );
+				for ( const cn of childNames ) {
+					if ( categories.indexOf( cn ) > -1 ) {
+						ordered.push( cn );
+					}
 				}
 			}
 		}
@@ -302,8 +407,32 @@ const Sidebar = ( { state } ) => {
 		let count = getItemCount(title);
 		let countTemplate = count > 0 ? count : 0;
 		let label = title.replace(/-/g, ' ');
+		const hasChildren = isParentCategory( title );
 
-		return [`${label} `, AGWP_LIBRARY.showLibraryCategoriesTemplateCount ? <span key={title}>{countTemplate}</span> : ''];
+		return (
+			<React.Fragment>
+				{`${label} `}
+				{ AGWP_LIBRARY.showLibraryCategoriesTemplateCount ? <span key={title}>{countTemplate}</span> : '' }
+				{ hasChildren && (
+					<span
+						role="button"
+						tabIndex={ 0 }
+									className={ `parent-chevron${ isHorizontal
+							? ( openPopup && openPopup.name === title ? '' : ' is-collapsed' )
+							: ( collapsedParents[ title ] ? ' is-collapsed' : '' ) }` }
+						onClick={ ( e ) => toggleCollapse( title, e ) }
+						onKeyDown={ ( e ) => {
+							if ( 'Enter' === e.key || ' ' === e.key ) toggleCollapse( title, e );
+						} }
+									aria-label={ ( isHorizontal ? ! ( openPopup && openPopup.name === title ) : collapsedParents[ title ] )
+							? __( 'Expand subcategories', 'analogwp-library' )
+							: __( 'Collapse subcategories', 'analogwp-library' ) }
+					>
+						<ChevronDown />
+					</span>
+				) }
+			</React.Fragment>
+		);
 	}
 
 	const tabGenerator = (tabsArray) => {
@@ -354,15 +483,6 @@ const Sidebar = ( { state } ) => {
 
 	return (
 		<SidebarWrapper className={`sidebar ${!context.state.blockArchive.length ? 'no-templates' : ''}`}>
-			{ context.state.blockArchive.length >= 10 && <TextControl
-				placeholder={ __( 'Search Templates', 'analogwp-library' ) }
-				value={ context.state.blocksSearchInput }
-				onChange={ ( value ) => {
-					context.handleSearch( value, 'patterns' );
-					context.dispatch( { blocksSearchInput: value } );
-				} }
-			/> }
-
 			{ tabGenerator( categoriesData() ).length >= 1 ?
 				<TabPanel
 				className="block-categories-tabs"
@@ -377,6 +497,41 @@ const Sidebar = ( { state } ) => {
 					( tab ) => tabContent()
 				}
 			</TabPanel> : <div className="block-categories-tabs"></div> }
+
+			{ /* Subcategory popup for horizontal mode — rendered with position:fixed to avoid layout shift */ }
+			{ isHorizontal && isHierarchical && openPopup && ( () => {
+				const childNames = getChildNames( openPopup.name ).sort();
+				const visibleChildren = childNames.filter( n => categories.indexOf( n ) > -1 );
+				if ( ! visibleChildren.length ) return null;
+				return (
+					<React.Fragment>
+						<div
+							className="subcategory-popup-overlay"
+							onClick={ () => setOpenPopup( null ) }
+						/>
+						<div
+							className="subcategory-popup"
+							style={ { position: 'fixed', top: openPopup.top, left: openPopup.left } }
+						>
+							{ visibleChildren.map( name => (
+								<button
+									key={ name }
+									className={ `subcategory-popup-item${ context.state.blocksTab === name ? ' is-active' : '' }` }
+									onClick={ () => {
+										onSelect( name );
+										setOpenPopup( null );
+									} }
+								>
+									{ name }
+									{ AGWP_LIBRARY.showLibraryCategoriesTemplateCount && (
+										<span style={ { opacity: 0.5, marginLeft: '6px' } }>{ getItemCount( name ) }</span>
+									) }
+								</button>
+							) ) }
+						</div>
+					</React.Fragment>
+				);
+			} )() }
 		</SidebarWrapper>
 	);
 }
