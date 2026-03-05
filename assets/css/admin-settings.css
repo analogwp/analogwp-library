@@ -571,6 +571,71 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 }
 
 /**
+ * Image Radio (Library Style Presets)
+ */
+.image-radio-options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+}
+
+.image-radio-option {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	cursor: pointer;
+	position: relative;
+}
+
+.image-radio-option input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.image-radio-preview {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: auto !important;
+	height: 90px;
+	border: 2px solid #ddd;
+	border-radius: 8px;
+	background: #f9f9f9;
+	overflow: hidden;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.image-radio-option:hover .image-radio-preview {
+	border-color: #999;
+}
+
+.image-radio-option.selected .image-radio-preview {
+	border-color: #4D45BD;
+	box-shadow: 0 0 0 1px #4D45BD;
+}
+
+.image-radio-preview img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.image-radio-label {
+	display: block;
+	margin-top: 6px;
+	font-size: 12px;
+	font-weight: 500;
+	color: #555;
+	text-align: center;
+}
+
+.image-radio-option.selected .image-radio-label {
+	color: #4D45BD;
+	font-weight: 600;
+}
+
+/**
  * Animation
  */
 @keyframes spinner-rotation {

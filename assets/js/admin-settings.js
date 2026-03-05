@@ -120,6 +120,42 @@
 		$( '.color-field[data-alpha-enabled="true"]' ).wpColorPicker( { alpha: true } );
 		$( '.color-field:not([data-alpha-enabled])' ).wpColorPicker();
 
+		// Library Styles toggle: Preset vs Custom.
+		function toggleLibraryStyleMode() {
+			const mode = $( 'input[name="library_style_mode"]:checked' ).val();
+
+			if ( ! mode ) {
+				return;
+			}
+
+			if ( mode === 'preset' ) {
+				$( '.preset-style-field' ).show();
+				$( '.custom-style-field, [data-custom-style-group]' ).hide();
+				// Also hide color picker wrappers (wp-picker-container) inside hidden rows.
+				$( '[data-custom-style-group]' ).each( function() {
+					$( this ).closest( 'tr' ).hide();
+				} );
+			} else {
+				$( '.preset-style-field' ).hide();
+				$( '.custom-style-field, [data-custom-style-group]' ).show();
+				$( '[data-custom-style-group]' ).each( function() {
+					$( this ).closest( 'tr' ).show();
+				} );
+			}
+		}
+
+		// Run on page load.
+		toggleLibraryStyleMode();
+
+		// Run on radio change.
+		$( 'input[name="library_style_mode"]' ).on( 'change', toggleLibraryStyleMode );
+
+		// Image radio: update selected class on change.
+		$( '.image-radio-options' ).on( 'change', 'input[type="radio"]', function() {
+			$( this ).closest( '.image-radio-options' ).find( '.image-radio-option' ).removeClass( 'selected' );
+			$( this ).closest( '.image-radio-option' ).addClass( 'selected' );
+		} );
+
 		// Update outdated templates.
 		$( '.forminp-action-button #update_outdated_templates' ).on('click', function(e) {
 			e.preventDefault();

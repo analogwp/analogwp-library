@@ -330,37 +330,49 @@ class Admin_Settings {
 			$pro_tag_html      = '<span class="pro-tag">' . esc_html__( 'Pro', 'analogwp-library' ) . '</span>';
 			$pro_link_html     = '<a href="' . esc_url( AGWP_LIBRARY_PLUGIN_PRO_URL . '/?utm_source=plugin&utm_medium=referral&utm_campaign=settings' ) . '" target="_blank">' . esc_html__( 'Upgrade to Pro', 'analogwp-library' ) . '</a>';
 
+			// Custom style group: data attribute for conditional visibility toggling.
+			$is_custom_style_group = ! empty( $value['custom_style_group'] );
+			$custom_style_attr     = $is_custom_style_group ? ' data-custom-style-group="1"' : '';
+
 			// Switch based on type.
 			switch ( $value['type'] ) {
 
 				// Section Titles.
 				case 'title':
+					$extra_class = $is_custom_style_group ? ' custom-style-field' : '';
 					if ( ! empty( $value['title'] ) ) {
-						echo '<h2 class="title ' . esc_attr( $value['class'] ) . '">' . esc_html( $value['title'] ) . '</h2>';
+						echo '<h2 class="title ' . esc_attr( $value['class'] ) . $extra_class . '">' . esc_html( $value['title'] ) . '</h2>';
 					}
 					if ( ! empty( $value['desc'] ) ) {
 						echo '<div id="' . esc_attr( sanitize_title( $value['id'] ) ) . '-description">';
 						echo wp_kses_post( wpautop( wptexturize( $value['desc'] ) ) );
 						echo '</div>';
 					}
-					echo '<table class="form-table">' . "\n\n";
+					echo '<table class="form-table' . $extra_class . '">' . "\n\n";
 					if ( ! empty( $value['id'] ) ) {
 						do_action( 'analog_custom_library_settings_' . sanitize_title( $value['id'] ) );
 					}
 					break;
 				case 'promo-title':
+					$extra_class = $is_custom_style_group ? ' custom-style-field' : '';
 					if ( ! empty( $value['title'] ) ) {
+						if ( $is_custom_style_group ) {
+							echo '<div class="custom-style-field">';
+						}
 						?>
 						<h2 class="title forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ) . ' ' . esc_attr( $value['class'] ); ?>"><a href="<?php echo esc_url( AGWP_LIBRARY_PLUGIN_PRO_URL . '/?utm_source=plugin&utm_medium=referral&utm_campaign=settings' ); ?>" target="_blank"><?php echo wp_kses( $pro_tag_html, $allowed_html_tags ) . esc_html( $value['title'] ); ?></a></h2>
 						<?php echo wp_kses( $pro_link_html, $allowed_html_tags ); ?>
 						<?php
+						if ( $is_custom_style_group ) {
+							echo '</div>';
+						}
 					}
 					if ( ! empty( $value['desc'] ) ) {
 						echo '<div id="' . esc_attr( sanitize_title( $value['id'] ) ) . '-description">';
 						echo wp_kses_post( wpautop( wptexturize( $value['desc'] ) ) );
 						echo '</div>';
 					}
-					echo '<table class="form-table">' . "\n\n";
+					echo '<table class="form-table' . $extra_class . '">' . "\n\n";
 					if ( ! empty( $value['id'] ) ) {
 						do_action( 'analog_custom_library_settings_' . sanitize_title( $value['id'] ) );
 					}
@@ -420,7 +432,7 @@ class Admin_Settings {
 				case 'tel':
 					$option_value = $value['value'];
 					?>
-					<tr valign="top">
+					<tr valign="top"<?php echo $custom_style_attr; // phpcs:ignore ?>>
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<input
 								name="<?php echo esc_attr( $value['id'] ); ?>"
@@ -450,7 +462,7 @@ class Admin_Settings {
 				case 'promo-tel':
 					$option_value = $value['value'];
 					?>
-					<tr valign="top">
+					<tr valign="top"<?php echo $custom_style_attr; // phpcs:ignore ?>>
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<input
 								name="<?php echo esc_attr( $value['id'] ); ?>"
@@ -698,6 +710,74 @@ class Admin_Settings {
 								}
 								?>
 								</ul>
+							</fieldset>
+						</td>
+					</tr>
+					<?php
+					break;
+
+				// Image-based radio inputs (visual preset selector).
+				case 'image-radio':
+					$option_value = $value['value'];
+					?>
+					<tr valign="top" class="preset-style-field">
+						<td class="forminp forminp-image-radio" colspan="2">
+							<fieldset>
+								<div class="image-radio-options">
+								<?php foreach ( $value['options'] as $key => $option ) :
+									$label = is_array( $option ) ? $option['label'] : $option;
+									$image = is_array( $option ) && ! empty( $option['image'] ) ? $option['image'] : '';
+								?>
+									<label class="image-radio-option<?php echo checked( $key, $option_value, false ) ? ' selected' : ''; ?>">
+										<input
+											type="radio"
+											name="<?php echo esc_attr( $value['id'] ); ?>"
+											value="<?php echo esc_attr( $key ); ?>"
+											<?php checked( $key, $option_value ); ?>
+										/>
+										<span class="image-radio-preview">
+											<?php if ( $image ) : ?>
+												<img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $label ); ?>" />
+											<?php endif; ?>
+										</span>
+										<span class="image-radio-label"><?php echo esc_html( $label ); ?></span>
+									</label>
+								<?php endforeach; ?>
+								</div>
+							</fieldset>
+						</td>
+					</tr>
+					<?php
+					break;
+
+				case 'promo-image-radio':
+					$option_value = $value['value'];
+					?>
+					<tr valign="top" class="preset-style-field">
+						<td class="forminp forminp-promo-image-radio" colspan="2">
+							<fieldset>
+								<div class="image-radio-options">
+								<?php foreach ( $value['options'] as $key => $option ) :
+									$label = is_array( $option ) ? $option['label'] : $option;
+									$image = is_array( $option ) && ! empty( $option['image'] ) ? $option['image'] : '';
+								?>
+									<label class="image-radio-option<?php echo checked( $key, $option_value, false ) ? ' selected' : ''; ?>">
+										<input
+											type="radio"
+											name="<?php echo esc_attr( $value['id'] ); ?>"
+											value="<?php echo esc_attr( $key ); ?>"
+											<?php checked( $key, $option_value ); ?>
+											disabled
+										/>
+										<span class="image-radio-preview">
+											<?php if ( $image ) : ?>
+												<img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $label ); ?>" />
+											<?php endif; ?>
+										</span>
+										<span class="image-radio-label"><?php echo esc_html( $label ); ?></span>
+									</label>
+								<?php endforeach; ?>
+								</div>
 							</fieldset>
 						</td>
 					</tr>
@@ -963,7 +1043,7 @@ class Admin_Settings {
 					$needs_alpha = ( strpos( $display_color, 'rgba' ) !== false || strpos( $default_color, 'rgba' ) !== false );
 					?>
 
-					<tr valign="top">
+					<tr valign="top"<?php echo $custom_style_attr; // phpcs:ignore ?>>
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
 							<input
 								name="<?php echo esc_attr( $value['id'] ); ?>"
@@ -1001,7 +1081,7 @@ class Admin_Settings {
 					$needs_alpha = ( strpos( $display_color, 'rgba' ) !== false || strpos( $default_color, 'rgba' ) !== false );
 					?>
 
-					<tr valign="top">
+					<tr valign="top"<?php echo $custom_style_attr; // phpcs:ignore ?>>
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>" colspan="2">
 							<input
 								name="<?php echo esc_attr( $value['id'] ); ?>"
