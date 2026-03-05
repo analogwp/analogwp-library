@@ -471,8 +471,14 @@ class Local extends Base {
 
 		return array(
 			'library' => array(
-				'blocks'    => Library_Data::templates(),
-				'templates' => array(),
+				'blocks'       => Library_Data::templates(),
+				'templates'    => array(),
+				// Hierarchical category tree.  The client uses this to build
+				// nested category navigation.  Each item has: id, name, slug,
+				// parent (0 for root categories).  Old clients that don't
+				// recognise this key simply ignore it, so adding it here is
+				// fully backward-compatible.
+				'categoryTree' => Library_Data::get_categories(),
 			),
 		);
 	}

@@ -163,6 +163,10 @@ class App extends React.Component {
 			settings: {},
 			blocksSearchInput: '',
 			sourceFilter: 'all', // Source filter: 'all', 'local', 'remote'
+			// Hierarchical category tree received from the REST API.
+			// Each item: { id, name, slug, parent }.  parent===0 means root.
+			// Empty array = no hierarchy info, Sidebar falls back to flat tabs.
+			categoryTree: [],
 			itemFilteredWithSearchTerm: function( foundItems, searchInput ) {
 				let searchTags = [];
 				return foundItems.filter( single => {
@@ -242,6 +246,7 @@ class App extends React.Component {
 			blocks: library.blocks,
 			blocksTab: 'all',
 			syncing: false,
+			categoryTree: library.categoryTree || [],
 		} );
 
 		this.handleSort( 'latest' );
@@ -362,7 +367,8 @@ class App extends React.Component {
 				blocks: library.blocks,
 				syncing: false,
 				blocksSearchInput: '',
-				blocksTab: 'all'
+				blocksTab: 'all',
+				categoryTree: library.categoryTree || [],
 			} );
 		} ).catch( () => {
 			this.setState( {

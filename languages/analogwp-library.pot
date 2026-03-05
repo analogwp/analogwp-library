@@ -9,7 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-01-31T13:34:56.791Z\n"
+"POT-Creation-Date: 2026-03-04T16:50:33.048Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -117,17 +117,17 @@ msgid "Something went wrong."
 msgstr ""
 
 #: client/api.js:133
-#: assets/js/app/index.js:287
+#: assets/js/app/index.js:373
 msgid "Template"
 msgstr ""
 
 #: client/api.js:136
-#: assets/js/app/index.js:287
+#: assets/js/app/index.js:373
 msgid "Block"
 msgstr ""
 
 #: client/api.js:144
-#: assets/js/app/index.js:287
+#: assets/js/app/index.js:373
 msgid "Add Custom Library for Elementor"
 msgstr ""
 
@@ -325,8 +325,24 @@ msgstr ""
 msgid "Loading icon"
 msgstr ""
 
-#: client/blocks/Sidebar.js:234
+#: client/blocks/Sidebar.js:383
+msgid "Collapse category"
+msgstr ""
+
+#: client/blocks/Sidebar.js:384
+msgid "Expand category"
+msgstr ""
+
+#: client/blocks/Sidebar.js:436
 msgid "Search Templates"
+msgstr ""
+
+#: client/blocks/Sidebar.js:459
+msgid "All"
+msgstr ""
+
+#: client/blocks/Sidebar.js:468
+msgid "Favorites"
 msgstr ""
 
 #: client/blocks/BlockList.js:320

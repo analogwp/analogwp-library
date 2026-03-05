@@ -93,6 +93,12 @@ const SidebarWrapper = styled.div`
 	.block-categories-tabs {
 		padding-right: 10px;
 	}
+
+	/* Subcategory tabs are indented under their parent */
+	.block-categories-tabs .components-button.is-subcategory {
+		padding-left: 14px;
+		font-size: 14.22px;
+	}
 `;
 
 const Sidebar = ( { state } ) => {
@@ -118,6 +124,58 @@ const Sidebar = ( { state } ) => {
 	let filteredBlocks = sourceFilteredArchive;
 	let favoriteBlocks = filteredBlocks.filter( t => t.id in context.state.blockFavorites );
 
+	// ---- Hierarchical category helpers ----
+	const categoryTree = context.state.categoryTree || [];
+	const isHierarchical = categoryTree.some( cat => cat.parent > 0 );
+
+	/**
+	 * Get all descendant category names for a given category name.
+	 * Flattened — only 1 level of nesting is displayed, but deep descendants
+	 * are still collected for filtering purposes.
+	 */
+	const getDescendantNames = ( catName ) => {
+		const cat = categoryTree.find( c => c.name === catName );
+		if ( ! cat ) return [];
+		const children = categoryTree.filter( c => c.parent === cat.id );
+		return children.flatMap( child => [ child.name, ...getDescendantNames( child.name ) ] );
+	};
+
+	/**
+	 * Category name + all descendant names.
+	 * Used when a parent is clicked to show all templates in the family.
+	 */
+	const getMatchingNames = ( catName ) => [ catName, ...getDescendantNames( catName ) ];
+
+	/**
+	 * Get direct children names for a root-level category.
+	 * Deep grandchildren are flattened to appear as direct children (max 1 level nesting).
+	 */
+	const getChildNames = ( catName ) => {
+		const cat = categoryTree.find( c => c.name === catName );
+		if ( ! cat ) return [];
+		// Collect ALL descendants and flatten them under the parent.
+		return getDescendantNames( catName );
+	};
+
+	/**
+	 * Check if a tab name is a subcategory (i.e. it has a parent in the tree).
+	 */
+	const isSubcategory = ( tabName ) => {
+		if ( ! isHierarchical ) return false;
+		const cat = categoryTree.find( c => c.name === tabName );
+		return cat && cat.parent > 0;
+	};
+
+	/**
+	 * Check if a tab name is a root-level parent that has children.
+	 */
+	const isParentCategory = ( tabName ) => {
+		if ( ! isHierarchical ) return false;
+		const cat = categoryTree.find( c => c.name === tabName );
+		if ( ! cat || cat.parent > 0 ) return false;
+		return categoryTree.some( c => c.parent === cat.id );
+	};
+
 	const onSelect = ( tab ) => {
 		context.dispatch( { blocksTab: tab } );
 
@@ -127,7 +185,18 @@ const Sidebar = ( { state } ) => {
 			selectFilteredBlocks = favoriteBlocks;
 		}
 		if ( tab !== 'favorites' && tab !== blockIdentifier ) {
-			selectFilteredBlocks = sourceFilteredArchive.filter( block => block.tags.indexOf( tab ) > -1 );
+			if ( isHierarchical && isParentCategory( tab ) ) {
+				// Parent category: show parent + all descendant templates.
+				const matchNames = getMatchingNames( tab );
+				selectFilteredBlocks = sourceFilteredArchive.filter( block =>
+					block.tags && block.tags.some( t => matchNames.indexOf( t ) > -1 )
+				);
+			} else {
+				// Subcategory or flat category: show only its own templates.
+				selectFilteredBlocks = sourceFilteredArchive.filter( block =>
+					block.tags && block.tags.indexOf( tab ) > -1
+				);
+			}
 		}
 
 		const { blocksSearchInput } = context.state;
@@ -152,7 +221,16 @@ const Sidebar = ( { state } ) => {
 		}
 
 		if ( tab !== blockIdentifier && tab !== 'favorites' ) {
-			foundItems = blocks.filter( block => block.tags.indexOf( tab ) > -1 );
+			if ( isHierarchical && isParentCategory( tab ) ) {
+				const matchNames = getMatchingNames( tab );
+				foundItems = blocks.filter( block =>
+					block.tags && block.tags.some( t => matchNames.indexOf( t ) > -1 )
+				);
+			} else {
+				foundItems = blocks.filter( block =>
+					block.tags && block.tags.indexOf( tab ) > -1
+				);
+			}
 		}
 
 		if ( AGWP_LIBRARY.license.status !== 'valid' && context.state.showFree ) {
@@ -170,8 +248,54 @@ const Sidebar = ( { state } ) => {
 		return false;
 	}
 
+	/**
+	 * Build category list for TabPanel.
+	 * When hierarchical, root categories are listed and their children are
+	 * inserted directly below them (flattened to 1 level of nesting max).
+	 * Non-hierarchical mode remains identical to the original behavior.
+	 */
 	const categoriesData = () => {
-		return defaultTabs.concat( categories.sort() );
+		if ( ! isHierarchical ) {
+			return defaultTabs.concat( categories.sort() );
+		}
+
+		// Build ordered list: for each root category, insert it then its
+		// flattened children.  Categories not in the tree are appended at end.
+		const treeNames = new Set( categoryTree.map( c => c.name ) );
+		const rootCats = categoryTree.filter( c => c.parent === 0 );
+
+		const ordered = [];
+
+		// Sort root categories alphabetically.
+		rootCats.sort( ( a, b ) => a.name.localeCompare( b.name ) );
+
+		for ( const root of rootCats ) {
+			// Only include if templates exist.
+			if ( categories.indexOf( root.name ) === -1 ) {
+				// Check if any child has templates.
+				const childNames = getChildNames( root.name );
+				const hasChildTemplates = childNames.some( n => categories.indexOf( n ) > -1 );
+				if ( ! hasChildTemplates ) continue;
+			}
+			ordered.push( root.name );
+
+			// Flatten all descendants under one level.
+			const childNames = getChildNames( root.name );
+			childNames.sort( ( a, b ) => a.localeCompare( b ) );
+			for ( const cn of childNames ) {
+				if ( categories.indexOf( cn ) > -1 ) {
+					ordered.push( cn );
+				}
+			}
+		}
+
+		// Append standalone categories not in the tree.
+		const standalone = categories
+			.filter( cat => cat && ! treeNames.has( cat ) )
+			.sort();
+		ordered.push( ...standalone );
+
+		return defaultTabs.concat( ordered );
 	}
 
 	const titleGenerator = (title) => {
@@ -188,7 +312,7 @@ const Sidebar = ( { state } ) => {
 		return tabs.map( (item) => ({
 			name: item,
 			title:  titleGenerator(item),
-			className: `tab-${ item }`
+			className: `tab-${ item }${ isSubcategory( item ) ? ' is-subcategory' : '' }`
 		})
 		);
 	}
@@ -201,7 +325,7 @@ const Sidebar = ( { state } ) => {
 		let initialTab = defaultTab ? defaultTab : context.state.blocksTab;
 		if ( typeof elementor !== 'undefined' && elementor && elementor.config ) {
 			const type = elementor.config.document.type;
-            const categories = categoriesData();
+            const cats = categoriesData();
 
 			if ( context.state.showFree && AGWP_LIBRARY.license.status !== 'valid' ) {
 				return initialTab;
@@ -209,15 +333,15 @@ const Sidebar = ( { state } ) => {
 
 			switch ( type ) {
 				case 'header':
-					initialTab = categories.includes( 'Headers' ) ? 'Headers' : defaultTab;
+					initialTab = cats.includes( 'Headers' ) ? 'Headers' : defaultTab;
 					break;
 				case 'footer':
-					initialTab = categories.includes( 'Footers' ) ? 'Footers' : defaultTab;
+					initialTab = cats.includes( 'Footers' ) ? 'Footers' : defaultTab;
 					break;
 				case 'single-page':
 				case 'single-post':
 				case 'page':
-					initialTab = categories.includes( 'Post Templates' ) ? 'Post Templates' : defaultTab;
+					initialTab = cats.includes( 'Post Templates' ) ? 'Post Templates' : defaultTab;
 					break;
 				default:
 					break;
