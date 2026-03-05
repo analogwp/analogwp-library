@@ -125,7 +125,7 @@ const SidebarWrapper = styled.div`
 		border: none;
 		border-radius: 0;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-		padding: 20px 12px;
+		padding: 10px;
 		min-width: 160px;
 	}
 	.subcategory-popup .subcategory-popup-item {
