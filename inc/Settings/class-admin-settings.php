@@ -951,6 +951,10 @@ class Admin_Settings {
 					if ( ! empty( $option_value ) && $option_value !== $default_color ) {
 						$has_color_set = true;
 					}
+
+					// Display value: use stored value if set, otherwise fall back to
+					// the default so the color swatch is always populated on page load.
+					$display_color = ! empty( $option_value ) ? $option_value : $default_color;
 					?>
 
 					<tr valign="top">
@@ -961,7 +965,7 @@ class Admin_Settings {
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								type="text"
 								data-default-color="<?php echo esc_attr( $default_color ); ?>"
-								value="<?php echo $has_color_set ? esc_attr( $option_value ) : ''; ?>"
+								value="<?php echo esc_attr( $display_color ); ?>"
 								class="color-field <?php echo esc_attr( $value['class'] ); ?>"
 								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 								/>
@@ -981,6 +985,10 @@ class Admin_Settings {
 					if ( ! empty( $option_value ) && $option_value !== $default_color ) {
 						$has_color_set = true;
 					}
+
+					// Display value: use stored value if set, otherwise fall back to
+					// the default so the color swatch is always populated on page load.
+					$display_color = ! empty( $option_value ) ? $option_value : $default_color;
 					?>
 
 					<tr valign="top">
@@ -991,7 +999,7 @@ class Admin_Settings {
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								type="text"
 								data-default-color="<?php echo esc_attr( $default_color ); ?>"
-								value="<?php echo $has_color_set ? esc_attr( $option_value ) : ''; ?>"
+								value="<?php echo esc_attr( $display_color ); ?>"
 								class="color-field <?php echo esc_attr( $value['class'] ); ?>"
 								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 								/>
