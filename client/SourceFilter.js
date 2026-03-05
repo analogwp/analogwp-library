@@ -122,7 +122,7 @@ const SourceFilter = () => {
 		<Dropdown
 			className="analog-source-filter-dropdown"
 			contentClassName="analog-custom-library-themed"
-			popoverProps={ { placement: 'bottom-end', offset: 10 } }
+			popoverProps={ { placement: 'bottom-end', offset: 8 } }
 
 			renderToggle={ ( { isOpen, onToggle } ) => (
 				<FilterButton

@@ -1273,7 +1273,6 @@
 
 .analog-custom-library-themed {
 	background-color: transparent;
-	top: -10px !important;
 
 	.components-popover__content { 
 		background: var(--analog-custom-library-top-header-bg);
@@ -1323,14 +1322,17 @@
 }
 
 #analog-custom-library .preset-toggle-option {
-	display: block;
+	display: flex;
+	align-items: center;
+	gap: 8px;
 	width: 100%;
-	padding: 8px 16px;
+	padding: 8px 14px;
 	background: none;
 	border: none;
 	text-align: left;
 	cursor: pointer;
 	font-size: 14px;
+	font-weight: 400;
 	color: var(--analog-custom-library-top-header-text);
 	line-height: 1.4;
 	transition: background 0.1s ease;
@@ -1340,6 +1342,26 @@
 
 #analog-custom-library .preset-toggle-option:hover {
 	background: rgba(0,0,0,0.1);
+}
+
+#analog-custom-library .preset-toggle-option .filter-icon {
+	width: 18px;
+	height: 18px;
+	padding: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--analog-custom-library-top-header-text) !important;
+	border-radius: 100%;
+	margin-right: 8px;
+	flex-shrink: 0;
+}
+
+#analog-custom-library .preset-toggle-option.is-active .filter-icon .circle {
+	width: 8px;
+	height: 8px;
+	border-radius: 100%;
+	background: var(--analog-custom-library-top-header-text);
 }
 
 #analog-custom-library .preset-toggle-option.is-active {

@@ -9,7 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-03-04T16:50:33.048Z\n"
+"POT-Creation-Date: 2026-03-05T17:36:44.655Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -91,23 +91,22 @@ msgstr ""
 msgid "Install Elementor Now"
 msgstr ""
 
-#: inc/class-plugin.php:165
-#: inc/Settings/class-register-settings.php:103
-#: inc/Settings/class-register-settings.php:104
-#: inc/Settings/class-register-settings.php:135
+#: inc/class-plugin.php:167
+#: inc/Settings/class-register-settings.php:100
+#: inc/Settings/class-register-settings.php:101
 #: inc/Elementor/class-finder-shortcuts.php:52
 #: inc/Settings/Views/html-admin-settings.php:28
 msgid "Settings"
 msgstr ""
 
-#: inc/class-plugin.php:233
+#: inc/class-plugin.php:235
 #: inc/Core/class-library-manager.php:61
-#: inc/Settings/Tabs/class-settings-design.php:117
+#: inc/Settings/Tabs/class-settings-design.php:315
 msgid "Custom Library"
 msgstr ""
 
 #: inc/class-elementor.php:85
-#: inc/Settings/Tabs/class-settings-design.php:132
+#: inc/Settings/Tabs/class-settings-design.php:330
 msgid "Library"
 msgstr ""
 
@@ -117,37 +116,37 @@ msgid "Something went wrong."
 msgstr ""
 
 #: client/api.js:133
-#: assets/js/app/index.js:373
+#: assets/js/app/index.js:341
 msgid "Template"
 msgstr ""
 
 #: client/api.js:136
-#: assets/js/app/index.js:373
+#: assets/js/app/index.js:341
 msgid "Block"
 msgstr ""
 
 #: client/api.js:144
-#: assets/js/app/index.js:373
+#: assets/js/app/index.js:341
 msgid "Add Custom Library for Elementor"
 msgstr ""
 
-#: client/Synchronization.js:24
+#: client/Synchronization.js:25
 msgid "Library is now synced"
 msgstr ""
 
-#: client/Synchronization.js:25
+#: client/Synchronization.js:26
 msgid "Something is not right, please try again."
 msgstr ""
 
-#: client/SourceFilter.js:90
+#: client/SourceFilter.js:92
 msgid "All Templates"
 msgstr ""
 
-#: client/SourceFilter.js:94
+#: client/SourceFilter.js:96
 msgid "Local Only"
 msgstr ""
 
-#: client/SourceFilter.js:98
+#: client/SourceFilter.js:100
 msgid "Remote Only"
 msgstr ""
 
@@ -159,6 +158,30 @@ msgstr ""
 
 #: client/ProModal.js:7
 msgid "View Plans"
+msgstr ""
+
+#: client/PresetToggle.js:11
+#: inc/Settings/Tabs/class-settings-design.php:120
+msgid "Default"
+msgstr ""
+
+#: client/PresetToggle.js:12
+#: inc/Settings/Tabs/class-settings-design.php:121
+msgid "Light"
+msgstr ""
+
+#: client/PresetToggle.js:13
+#: inc/Settings/Tabs/class-settings-design.php:122
+msgid "Dark"
+msgstr ""
+
+#: client/PresetToggle.js:14
+#: inc/Settings/Tabs/class-settings-design.php:123
+msgid "Color"
+msgstr ""
+
+#: client/PresetToggle.js:80
+msgid "Switch style preset"
 msgstr ""
 
 #: client/Nav.js:6
@@ -199,70 +222,58 @@ msgstr ""
 msgid "Close search"
 msgstr ""
 
-#: inc/Settings/class-register-settings.php:228
-msgid "This page has been moved to a new location"
-msgstr ""
-
-#: inc/Settings/class-register-settings.php:231
-msgid "Redirecting you now..."
-msgstr ""
-
-#: inc/Settings/class-register-settings.php:234
-msgid "Click here if you are not redirected automatically"
-msgstr ""
-
 #: inc/Settings/class-admin-settings.php:78
 msgid "Your settings have been saved."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:148
+#: inc/Settings/class-admin-settings.php:151
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:149
+#: inc/Settings/class-admin-settings.php:152
 msgid "Select Image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:150
+#: inc/Settings/class-admin-settings.php:153
 msgid "Use this image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:327
-#: client/blocks/BlockList.js:385
-#: client/blocks/BlockList.js:435
+#: inc/Settings/class-admin-settings.php:330
+#: client/blocks/BlockList.js:386
+#: client/blocks/BlockList.js:436
 msgid "Pro"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:328
+#: inc/Settings/class-admin-settings.php:331
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:824
+#: inc/Settings/class-admin-settings.php:907
 msgid "Toggle"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:888
-#: inc/Settings/class-admin-settings.php:927
+#: inc/Settings/class-admin-settings.php:971
+#: inc/Settings/class-admin-settings.php:1010
 msgid "Change Image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:889
-#: inc/Settings/class-admin-settings.php:928
+#: inc/Settings/class-admin-settings.php:972
+#: inc/Settings/class-admin-settings.php:1011
 msgid "Revert to Default"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1023
-#: inc/Settings/class-admin-settings.php:1046
+#: inc/Settings/class-admin-settings.php:1122
+#: inc/Settings/class-admin-settings.php:1145
 msgid "Import"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1056
-#: inc/Settings/class-admin-settings.php:1057
+#: inc/Settings/class-admin-settings.php:1155
+#: inc/Settings/class-admin-settings.php:1156
 msgid "Go"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1086
-#: inc/Settings/class-admin-settings.php:1104
+#: inc/Settings/class-admin-settings.php:1185
+#: inc/Settings/class-admin-settings.php:1203
 msgid "Export All"
 msgstr ""
 
@@ -325,47 +336,35 @@ msgstr ""
 msgid "Loading icon"
 msgstr ""
 
-#: client/blocks/Sidebar.js:383
-msgid "Collapse category"
+#: client/blocks/Sidebar.js:428
+msgid "Expand subcategories"
 msgstr ""
 
-#: client/blocks/Sidebar.js:384
-msgid "Expand category"
+#: client/blocks/Sidebar.js:429
+msgid "Collapse subcategories"
 msgstr ""
 
-#: client/blocks/Sidebar.js:436
-msgid "Search Templates"
-msgstr ""
-
-#: client/blocks/Sidebar.js:459
-msgid "All"
-msgstr ""
-
-#: client/blocks/Sidebar.js:468
-msgid "Favorites"
-msgstr ""
-
-#: client/blocks/BlockList.js:320
+#: client/blocks/BlockList.js:321
 msgid "The %s has been imported and is now available in the"
 msgstr ""
 
-#: client/blocks/BlockList.js:331
+#: client/blocks/BlockList.js:332
 msgid "Elementor %s library"
 msgstr ""
 
-#: client/blocks/BlockList.js:345
+#: client/blocks/BlockList.js:346
 msgid "Ok, thanks"
 msgstr ""
 
-#: client/blocks/BlockList.js:357
+#: client/blocks/BlockList.js:358
 msgid "No Templates found"
 msgstr ""
 
-#: client/blocks/BlockList.js:361
+#: client/blocks/BlockList.js:362
 msgid "Loading Templates..."
 msgstr ""
 
-#: client/blocks/BlockList.js:416
+#: client/blocks/BlockList.js:417
 msgid "Insert"
 msgstr ""
 
@@ -715,79 +714,135 @@ msgstr ""
 msgid "Show categories template count"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:110
-msgid "Plugin/menu label"
+#: inc/Settings/Tabs/class-settings-design.php:103
+msgid "Library styles"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:125
-msgid "Library title"
+#: inc/Settings/Tabs/class-settings-design.php:111
+msgid "Preset"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:140
-msgid "Show Buttons on hover"
+#: inc/Settings/Tabs/class-settings-design.php:112
+msgid "Customize"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:153
-msgid "Show Preview Button"
-msgstr ""
-
-#: inc/Settings/Tabs/class-settings-design.php:154
-msgid "Show Edit Button"
-msgstr ""
-
-#: inc/Settings/Tabs/class-settings-design.php:162
+#: inc/Settings/Tabs/class-settings-design.php:139
 msgid "Header colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:167
+#: inc/Settings/Tabs/class-settings-design.php:145
 msgid "Header Background"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:173
+#: inc/Settings/Tabs/class-settings-design.php:152
 msgid "Header Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:179
+#: inc/Settings/Tabs/class-settings-design.php:159
 msgid "Header Border Bottom"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:189
+#: inc/Settings/Tabs/class-settings-design.php:170
 msgid "Categories colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:194
+#: inc/Settings/Tabs/class-settings-design.php:176
 msgid "Categories Background"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:200
+#: inc/Settings/Tabs/class-settings-design.php:183
 msgid "Categories Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:206
+#: inc/Settings/Tabs/class-settings-design.php:190
 msgid "Active Category Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:216
-msgid "Button styles"
+#: inc/Settings/Tabs/class-settings-design.php:201
+msgid "Button colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:221
+#: inc/Settings/Tabs/class-settings-design.php:207
 msgid "Button Background Color"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:227
+#: inc/Settings/Tabs/class-settings-design.php:214
 msgid "Button Text Color"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:233
+#: inc/Settings/Tabs/class-settings-design.php:221
 msgid "Button Border Color"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:239
-msgid "Button Border Radius"
+#: inc/Settings/Tabs/class-settings-design.php:232
+msgid "Body colors"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:238
+msgid "Library Background"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:245
+msgid "Library Text"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:252
+msgid "Favorite Icon"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:259
+msgid "Hover Overlay"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:266
+msgid "Thumbnail border"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:277
+msgid "Notifications colors"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:283
+msgid "Notice text"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:290
+msgid "Notice background"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:297
+msgid "Notice border"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:308
+msgid "Plugin/menu label"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:323
+msgid "Library title"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:338
+msgid "Show Buttons on hover"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:351
+msgid "Show Preview Button"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:352
+msgid "Show Edit Button"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:360
+msgid "Button Styles"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:365
+msgid "Button Border Radius"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-design.php:371
 msgid "Button Border Width"
 msgstr ""
 

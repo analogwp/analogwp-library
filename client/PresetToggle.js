@@ -89,6 +89,7 @@ const PresetToggle = () => {
 							className={ 'preset-toggle-option' + ( activePreset === preset.value ? ' is-active' : '' ) }
 							onClick={ () => handleSelect( preset.value ) }
 						>
+							<span className="filter-icon"><span className="circle"></span></span>
 							{ preset.label }
 						</button>
 					) ) }
