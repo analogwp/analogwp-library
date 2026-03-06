@@ -139,6 +139,7 @@ class Design extends Settings_Page {
 						'title'              => __( 'Header colors', 'analogwp-library' ),
 						'type'               => 'promo-title',
 						'id'                 => 'analog_custom_library_header_colors',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -146,6 +147,7 @@ class Design extends Settings_Page {
 						'id'                 => 'header_bg_color',
 						'default'            => '#4D45BD',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -153,6 +155,7 @@ class Design extends Settings_Page {
 						'id'                 => 'header_txt_color',
 						'default'            => '#ffffff',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -160,6 +163,7 @@ class Design extends Settings_Page {
 						'id'                 => 'header_border_color',
 						'default'            => '#DFDFDF',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -177,6 +181,7 @@ class Design extends Settings_Page {
 						'id'                 => 'categories_bg_color',
 						'default'            => '#FFFFFF',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -184,6 +189,7 @@ class Design extends Settings_Page {
 						'id'                 => 'categories_txt_color',
 						'default'            => '#252525',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -191,6 +197,7 @@ class Design extends Settings_Page {
 						'id'                 => 'categories_active_txt_color',
 						'default'            => '#4D45BD',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -208,6 +215,7 @@ class Design extends Settings_Page {
 						'id'                 => 'button_bg_color',
 						'default'            => '#4D45BD',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -215,6 +223,7 @@ class Design extends Settings_Page {
 						'id'                 => 'button_txt_color',
 						'default'            => '#ffffff',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -222,6 +231,7 @@ class Design extends Settings_Page {
 						'id'                 => 'button_border_color',
 						'default'            => '#4D45BD',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -239,6 +249,7 @@ class Design extends Settings_Page {
 						'id'                 => 'body_bg_color',
 						'default'            => '#EEEEEE',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -246,6 +257,7 @@ class Design extends Settings_Page {
 						'id'                 => 'body_txt_color',
 						'default'            => '#252525',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -253,6 +265,7 @@ class Design extends Settings_Page {
 						'id'                 => 'favorite_icon_color',
 						'default'            => '#F3C119',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -260,6 +273,7 @@ class Design extends Settings_Page {
 						'id'                 => 'hover_overlay_color',
 						'default'            => 'rgba(255, 255, 255, 0.7)',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -267,6 +281,7 @@ class Design extends Settings_Page {
 						'id'                 => 'thumbnail_border_color',
 						'default'            => '#E0E0E0',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -284,6 +299,7 @@ class Design extends Settings_Page {
 						'id'                 => 'notification_txt_color',
 						'default'            => '#0073AA',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -291,6 +307,7 @@ class Design extends Settings_Page {
 						'id'                 => 'notice_bg_color',
 						'default'            => '#CCEEFF',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(
@@ -298,6 +315,7 @@ class Design extends Settings_Page {
 						'id'                 => 'notice_border_color',
 						'default'            => '#0073AA',
 						'type'               => 'promo-color',
+						'alpha'              => true,
 						'custom_style_group' => true,
 					),
 					array(

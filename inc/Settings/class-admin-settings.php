@@ -1039,7 +1039,8 @@ class Admin_Settings {
 					$display_color = ! empty( $option_value ) ? $option_value : $default_color;
 
 					// Detect whether this field needs rgba/alpha support.
-					$needs_alpha = ( strpos( $display_color, 'rgba' ) !== false || strpos( $default_color, 'rgba' ) !== false );
+					// Explicit 'alpha' => true in settings takes priority, otherwise auto-detect from rgba values.
+					$needs_alpha = ! empty( $value['alpha'] ) || ( strpos( $display_color, 'rgba' ) !== false || strpos( $default_color, 'rgba' ) !== false );
 					?>
 
 					<tr valign="top"<?php echo $custom_style_attr; // phpcs:ignore ?>>
@@ -1077,7 +1078,8 @@ class Admin_Settings {
 					$display_color = ! empty( $option_value ) ? $option_value : $default_color;
 
 					// Detect whether this field needs rgba/alpha support.
-					$needs_alpha = ( strpos( $display_color, 'rgba' ) !== false || strpos( $default_color, 'rgba' ) !== false );
+					// Explicit 'alpha' => true in settings takes priority, otherwise auto-detect from rgba values.
+					$needs_alpha = ! empty( $value['alpha'] ) || ( strpos( $display_color, 'rgba' ) !== false || strpos( $default_color, 'rgba' ) !== false );
 					?>
 
 					<tr valign="top"<?php echo $custom_style_attr; // phpcs:ignore ?>>
