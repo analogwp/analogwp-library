@@ -161,6 +161,52 @@ final class Library_Data {
 	}
 
 	/**
+	 * Get all library categories with hierarchy information.
+	 *
+	 * Returns every term in the `elementor_library_category` taxonomy with its
+	 * parent term ID so the client can reconstruct a nested tree.  Existing
+	 * installations that haven't set up parent/child categories will receive a
+	 * flat list (all `parent` values will be 0), which the front-end treats
+	 * exactly like the previous flat-tab behaviour.
+	 *
+	 * @return array  Array of associative arrays: { id, name, slug, parent }.
+	 */
+	public static function get_categories() {
+		$terms = get_terms(
+			array(
+				'taxonomy'   => 'elementor_library_category',
+				'hide_empty' => false,
+				'orderby'    => 'name',
+				'order'      => 'ASC',
+			)
+		);
+
+		if ( is_wp_error( $terms ) || empty( $terms ) ) {
+			return array();
+		}
+
+		$categories = array();
+		foreach ( $terms as $term ) {
+			$categories[] = array(
+				'id'     => $term->term_id,
+				'name'   => $term->name,
+				'slug'   => $term->slug,
+				'parent' => $term->parent,
+			);
+		}
+
+		/**
+		 * Filter the category tree.
+		 *
+		 * Pro plugin hooks into this to merge remote server category hierarchies
+		 * with the local categories.  Each entry is { id, name, slug, parent }.
+		 *
+		 * @param array $categories Array of category entries.
+		 */
+		return apply_filters( 'analog_library/categories', $categories );
+	}
+
+	/**
 	 * Get all template ids.
 	 *
 	 * @return array

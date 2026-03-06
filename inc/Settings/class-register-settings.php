@@ -41,9 +41,6 @@ class Register_Settings {
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'register_menu' ), 30 );
 
-		// @deprecated 1.9.0 Due for removal in 2.2.0.
-		add_action( 'admin_menu', array( $this, 'register_legacy_menu' ), 30 );
-
 		// Handle saving settings earlier than load-{page} hook to avoid race conditions in conditional menus.
 		add_action( 'wp_loaded', array( $this, 'save_settings' ) );
 
@@ -109,39 +106,6 @@ class Register_Settings {
 	}
 
 	/**
-	 * Register legacy menu under Elementor Templates.
-	 *
-	 * Keeps the old menu location with a redirect message.
-	 *
-	 * @deprecated 1.9.0 Due for removal in 2.2.0.
-	 *
-	 * @return void
-	 */
-	public function register_legacy_menu() {
-		// Return early if Elementor menu isn't registered yet.
-		if ( ! did_action( 'elementor/admin/menu/after_register' ) ) {
-			return;
-		}
-
-		$permission = 'manage_options';
-		if ( has_filter( 'analog_library_visibility_enabled', '__return_true' ) ) {
-			$permission = 'read';
-		}
-
-		$custom_library_menu_title = Plugin::get_plugin_public_name();
-
-		add_submenu_page(
-			'edit.php?post_type=elementor_library',
-			$custom_library_menu_title . ' ' . __( 'Settings', 'analogwp-library' ),
-			$custom_library_menu_title,
-			$permission,
-			self::LEGACY_MENU_SLUG,
-			array( $this, 'legacy_redirect_page' ),
-			1
-		);
-	}
-
-	/**
 	 * Get menu position after Elementor.
 	 *
 	 * @return float
@@ -158,92 +122,6 @@ class Register_Settings {
 
 		// Place our menu right after Elementor.
 		return $elementor_position + 1;
-	}
-
-	/**
-	 * Legacy redirect page content.
-	 *
-	 * Shows a redirect message and auto-redirects to the new location.
-	 *
-	 * @return void
-	 */
-	public function legacy_redirect_page() {
-		$new_url = admin_url( 'admin.php?page=' . self::MENU_SLUG );
-
-		// Get current tab if any to preserve it.
-		if ( isset( $_GET['tab'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$new_url = add_query_arg( 'tab', sanitize_key( $_GET['tab'] ), $new_url ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		}
-		?>
-		<style>
-			.agwp-redirect-container {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				min-height: 300px;
-				text-align: center;
-				background: #fff;
-				margin: 20px 20px 20px 0;
-				padding: 40px;
-				border-radius: 8px;
-				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-			}
-			.agwp-redirect-container h2 {
-				margin-bottom: 10px;
-				color: #1d2327;
-			}
-			.agwp-redirect-container p {
-				font-size: 14px;
-				color: #50575e;
-				margin-bottom: 20px;
-			}
-			.agwp-redirect-container .redirect-link {
-				display: inline-flex;
-				align-items: center;
-				gap: 5px;
-				font-size: 14px;
-				text-decoration: none;
-			}
-			.agwp-redirect-container .redirect-link:hover {
-				text-decoration: underline;
-			}
-			.agwp-redirect-spinner {
-				display: inline-block;
-				width: 20px;
-				height: 20px;
-				border: 2px solid #f3f3f3;
-				border-top: 2px solid #5C32B6;
-				border-radius: 50%;
-				animation: agwp-spin 1s linear infinite;
-				margin-right: 10px;
-			}
-			@keyframes agwp-spin {
-				0% { transform: rotate(0deg); }
-				100% { transform: rotate(360deg); }
-			}
-		</style>
-
-		<div class="agwp-redirect-container">
-			<h2><?php esc_html_e( 'This page has been moved to a new location', 'analogwp-library' ); ?></h2>
-			<p>
-				<span class="agwp-redirect-spinner"></span>
-				<?php esc_html_e( 'Redirecting you now...', 'analogwp-library' ); ?>
-			</p>
-			<a href="<?php echo esc_url( $new_url ); ?>" class="redirect-link">
-				<?php esc_html_e( 'Click here if you are not redirected automatically', 'analogwp-library' ); ?> &rarr;
-			</a>
-		</div>
-
-		<script>
-			(function() {
-				var countdown = 1.5;
-				setTimeout(function() {
-					window.location.href = '<?php echo esc_js( $new_url ); ?>';
-				}, countdown * 1000);
-			})();
-		</script>
-		<?php
 	}
 
 	/**

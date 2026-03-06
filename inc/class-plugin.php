@@ -130,6 +130,8 @@ final class Plugin {
 			'libraryTemplateCols'                => $options->get( 'library_template_columns' ),
 			'libraryCategoriesLocation'          => $options->get( 'library_categories_location' ),
 			'showLibraryCategoriesTemplateCount' => $options->get( 'show_library_categories_template_count' ),
+			'libraryStyleMode'                   => $options->get( 'library_style_mode' ),
+			'libraryStylePreset'                 => $options->get( 'library_style_preset' ),
 		);
 
 		$domains += $new_domains;
@@ -230,7 +232,7 @@ final class Plugin {
 	 * @return string
 	 */
 	public static function get_plugin_public_name() {
-		return apply_filters( 'analog_custom_library_public_name', __( 'Custom Library', 'analogwp-library' ) );
+		return apply_filters( 'analog_custom_library_public_name', 'Custom Library' );
 	}
 
 	/**

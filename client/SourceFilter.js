@@ -43,6 +43,8 @@ const FilterMenu = styled.div`
 
 	.components-menu-group {
 		padding: 8px 0;
+		border: 1px solid var(--analog-custom-library-top-header-border);
+		border-radius: 2px;
 	}
 
 	.components-menu-item__button {
@@ -60,7 +62,7 @@ const FilterMenu = styled.div`
 				width: 8px;
 				height: 8px;
 				border-radius: 100%;
-				background: white;
+				background: var(--analog-custom-library-top-header-text);
 			}
 		}
 
@@ -120,7 +122,8 @@ const SourceFilter = () => {
 		<Dropdown
 			className="analog-source-filter-dropdown"
 			contentClassName="analog-custom-library-themed"
-			popoverProps={ { placement: 'bottom-end' } }
+			popoverProps={ { placement: 'bottom-end', offset: 8 } }
+
 			renderToggle={ ( { isOpen, onToggle } ) => (
 				<FilterButton
 					onClick={ onToggle }

@@ -7,11 +7,11 @@
 
 namespace AnalogWP\CustomLibrary\Settings\Views;
 
-use AnalogWP\CustomLibrary\Plugin;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+use AnalogWP\CustomLibrary\Plugin;
 
 $tab_exists        = isset( $tabs[ $current_tab ] ) || has_action( 'analog_custom_library_sections_' . $current_tab ) || has_action( 'analog_custom_library_settings_' . $current_tab ) || has_action( 'analog_custom_library_settings_tabs_' . $current_tab );
 $current_tab_label = $tabs[ $current_tab ] ?? '';
@@ -48,13 +48,13 @@ if ( ! $tab_exists ) {
 
 					do_action( 'analog_custom_library_settings_' . $current_tab );
 				?>
-				<p class="submit">
+			</div>
+			<p class="submit">
 					<?php if ( empty( $GLOBALS['hide_save_button'] ) ) : ?>
 						<button name="save" class="button-primary analog-custom-library-save-button" type="submit" value="<?php esc_attr_e( 'Save changes', 'analogwp-library' ); ?>"><?php esc_html_e( 'Save changes', 'analogwp-library' ); ?></button>
 					<?php endif; ?>
 					<?php wp_nonce_field( 'analog-custom-library-settings' ); ?>
 				</p>
-			</div>
 		</form>
 		<div class="sidebar">
 			<?php do_action( 'analog_custom_library_sidebar_start' ); ?>
@@ -68,8 +68,7 @@ if ( ! $tab_exists ) {
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M34.4349 17.3933H17.3936V34.4346H34.4349V17.3933Z" fill="white"/>
 						</svg>
 						<div>
-							<h4>Custom Library for Elementor</h4>
-							<p class="version">v<?php echo esc_html( AGWP_LIBRARY_VERSION ); ?></p>
+							<h4><?php echo esc_html( $plugin_title ); ?> for Elementor</h4>
 							<?php do_action( 'analog_custom_library_sidebar_plugin_info_section' ); ?>
 						</div>
 					</div>

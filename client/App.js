@@ -4,6 +4,7 @@ import { getSettings, markFavorite, requestTemplateList } from './api';
 import ThemeContext, { Theme } from './contexts/ThemeContext';
 import Header from './Header';
 import Notifications from './Notifications';
+import { applyPresetClass, getDefaultPreset } from './PresetToggle';
 import { getTime, getPageComponents, hasProTemplates } from './utils';
 const { apiFetch } = wp;
 import 'regenerator-runtime/runtime';
@@ -163,6 +164,10 @@ class App extends React.Component {
 			settings: {},
 			blocksSearchInput: '',
 			sourceFilter: 'all', // Source filter: 'all', 'local', 'remote'
+			// Hierarchical category tree received from the REST API.
+			// Each item: { id, name, slug, parent }.  parent===0 means root.
+			// Empty array = no hierarchy info, Sidebar falls back to flat tabs.
+			categoryTree: [],
 			itemFilteredWithSearchTerm: function( foundItems, searchInput ) {
 				let searchTags = [];
 				return foundItems.filter( single => {
@@ -211,6 +216,12 @@ class App extends React.Component {
 	}
 
 	async componentDidMount() {
+		// Apply the active Library Style (preset) from settings in the background.
+		const styleMode = ( window.AGWP_LIBRARY && window.AGWP_LIBRARY.libraryStyleMode ) || 'preset';
+		if ( styleMode === 'preset' ) {
+			applyPresetClass( getDefaultPreset() );
+		}
+
 		window.addEventListener( 'hashchange', this.switchTabs, false );
 		window.addEventListener( 'DOMContentLoaded', this.switchTabs, false );
 
@@ -242,6 +253,7 @@ class App extends React.Component {
 			blocks: library.blocks,
 			blocksTab: 'all',
 			syncing: false,
+			categoryTree: library.categoryTree || [],
 		} );
 
 		this.handleSort( 'latest' );
@@ -362,7 +374,8 @@ class App extends React.Component {
 				blocks: library.blocks,
 				syncing: false,
 				blocksSearchInput: '',
-				blocksTab: 'all'
+				blocksTab: 'all',
+				categoryTree: library.categoryTree || [],
 			} );
 		} ).catch( () => {
 			this.setState( {
