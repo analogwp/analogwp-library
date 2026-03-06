@@ -18,14 +18,14 @@ const PRESETS = [
  * Get the initial preset value from the library_style_preset setting.
  * Always resets to this on mount (never persists user toggle).
  */
-const getDefaultPreset = () => {
+export const getDefaultPreset = () => {
 	return ( window.AGWP_LIBRARY && window.AGWP_LIBRARY.libraryStylePreset ) || 'default';
 };
 
 /**
  * Apply the preset class on the body element.
  */
-const applyPresetClass = ( preset ) => {
+export const applyPresetClass = ( preset ) => {
 	// Remove all preset classes first.
 	PRESET_CLASSES.forEach( ( cls ) => document.body.classList.remove( cls ) );
 	// Add the new one (default = no class).

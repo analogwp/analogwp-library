@@ -50,7 +50,6 @@ class Admin_Settings {
 
 			$settings[] = include 'Tabs/class-settings-general.php';
 			$settings[] = include 'Tabs/class-settings-design.php';
-			$settings[] = include 'Tabs/class-settings-misc.php';
 			$settings[] = include 'Tabs/class-settings-tools.php';
 			$settings[] = include 'Tabs/class-settings-version-control.php';
 			$settings[] = include 'Tabs/class-settings-remote.php';

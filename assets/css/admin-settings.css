@@ -30,9 +30,10 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	line-height: 1.2;
 }
 
-.analog-custom-library-wrapper > form {
+.analog-custom-library-wrapper > form > div {
 	background: #fff;
-	border-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
 }
 
 .analog-custom-library-wrapper > form .tab-content {
@@ -40,6 +41,9 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 }
 
 .analog-custom-library-wrapper .analog-custom-library-nav-tab-wrapper {
+	background: #fff;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
 	border-bottom: 1px solid #E2E2E4;
 	padding: 0;
 }
@@ -357,6 +361,10 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 /**
  * Form
  */
+.ang-custom-library .form-table:not(:last-child) {
+	margin-bottom: 20px;
+}
+
 .ang-custom-library .form-table td {
 	padding: 0 0 20px !important;
 }
@@ -395,11 +403,15 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	margin-left: 10px;
 }
 
-.ang-custom-library.import-export .tab-content .submit,
-.ang-custom-library.tools .tab-content .submit,
-.ang-custom-library.version-control .tab-content .submit,
-.ang-custom-library.remote-promo .tab-content .submit,
-.ang-custom-library.reports-promo .tab-content .submit {
+.ang-custom-library .tab-content + .submit {
+	padding-top: 0;
+}
+
+.ang-custom-library.import-export .tab-content + .submit,
+.ang-custom-library.tools .tab-content + .submit,
+.ang-custom-library.version-control .tab-content + .submit,
+.ang-custom-library.remote-promo .tab-content + .submit,
+.ang-custom-library.reports-promo .tab-content + .submit {
 	display: none;
 }
 

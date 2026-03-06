@@ -57,7 +57,7 @@
 /*END*/
 
 #analog-custom-library .analogwp-content {
-	background: #F1F1F1;
+	background: var(--analog-custom-library-bg);
 	min-height: calc(100% - 51px);
 	position: relative;
 }

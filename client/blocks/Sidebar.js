@@ -57,7 +57,7 @@ const SidebarWrapper = styled.div`
 	.block-categories-tabs {
 		.components-button.active-tab {
 			box-shadow: none;
-			font-weight: bold;
+			font-weight: normal;
 			color: var(--analog-custom-library-categories-active-text) !important;
 		}
 		.components-button {
@@ -144,7 +144,7 @@ const SidebarWrapper = styled.div`
 		color: var(--analog-custom-library-categories-active-text, #000);
 	}
 	.subcategory-popup .subcategory-popup-item.is-active {
-		font-weight: bold;
+		font-weight: normal;
 		color: var(--analog-custom-library-categories-active-text, #000);
 	}
 `;

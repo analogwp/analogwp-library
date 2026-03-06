@@ -4,6 +4,7 @@ import { getSettings, markFavorite, requestTemplateList } from './api';
 import ThemeContext, { Theme } from './contexts/ThemeContext';
 import Header from './Header';
 import Notifications from './Notifications';
+import { applyPresetClass, getDefaultPreset } from './PresetToggle';
 import { getTime, getPageComponents, hasProTemplates } from './utils';
 const { apiFetch } = wp;
 import 'regenerator-runtime/runtime';
@@ -215,6 +216,12 @@ class App extends React.Component {
 	}
 
 	async componentDidMount() {
+		// Apply the active Library Style (preset) from settings in the background.
+		const styleMode = ( window.AGWP_LIBRARY && window.AGWP_LIBRARY.libraryStyleMode ) || 'preset';
+		if ( styleMode === 'preset' ) {
+			applyPresetClass( getDefaultPreset() );
+		}
+
 		window.addEventListener( 'hashchange', this.switchTabs, false );
 		window.addEventListener( 'DOMContentLoaded', this.switchTabs, false );
 
