@@ -3,13 +3,13 @@
 #: assets/js/app/index.js:1
 msgid ""
 msgstr ""
-"Project-Id-Version: analogwp-library 2.1.0\n"
+"Project-Id-Version: analogwp-library 2.2.0\n"
 "Report-Msgid-Bugs-To: AnalogWP <EMAIL>\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-03-06T13:10:28.827Z\n"
+"POT-Creation-Date: 2026-03-06T18:03:18.949Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -99,14 +99,8 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: inc/class-plugin.php:235
-#: inc/Core/class-library-manager.php:61
-#: inc/Settings/Tabs/class-settings-design.php:315
-msgid "Custom Library"
-msgstr ""
-
 #: inc/class-elementor.php:85
-#: inc/Settings/Tabs/class-settings-design.php:330
+#: inc/Settings/Tabs/class-settings-design.php:348
 msgid "Library"
 msgstr ""
 
@@ -222,58 +216,58 @@ msgstr ""
 msgid "Close search"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:78
+#: inc/Settings/class-admin-settings.php:77
 msgid "Your settings have been saved."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:151
+#: inc/Settings/class-admin-settings.php:150
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:152
+#: inc/Settings/class-admin-settings.php:151
 msgid "Select Image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:153
+#: inc/Settings/class-admin-settings.php:152
 msgid "Use this image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:330
+#: inc/Settings/class-admin-settings.php:329
 #: client/blocks/BlockList.js:386
 #: client/blocks/BlockList.js:436
 msgid "Pro"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:331
+#: inc/Settings/class-admin-settings.php:330
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:907
+#: inc/Settings/class-admin-settings.php:906
 msgid "Toggle"
+msgstr ""
+
+#: inc/Settings/class-admin-settings.php:970
+#: inc/Settings/class-admin-settings.php:1009
+msgid "Change Image"
 msgstr ""
 
 #: inc/Settings/class-admin-settings.php:971
 #: inc/Settings/class-admin-settings.php:1010
-msgid "Change Image"
-msgstr ""
-
-#: inc/Settings/class-admin-settings.php:972
-#: inc/Settings/class-admin-settings.php:1011
 msgid "Revert to Default"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1122
-#: inc/Settings/class-admin-settings.php:1145
+#: inc/Settings/class-admin-settings.php:1123
+#: inc/Settings/class-admin-settings.php:1146
 msgid "Import"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1155
 #: inc/Settings/class-admin-settings.php:1156
+#: inc/Settings/class-admin-settings.php:1157
 msgid "Go"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1185
-#: inc/Settings/class-admin-settings.php:1203
+#: inc/Settings/class-admin-settings.php:1186
+#: inc/Settings/class-admin-settings.php:1204
 msgid "Export All"
 msgstr ""
 
@@ -287,6 +281,11 @@ msgstr ""
 
 #: inc/Elementor/class-finder-shortcuts.php:58
 msgid "Theme Custom Library for Elementor"
+msgstr ""
+
+#: inc/Core/class-library-manager.php:61
+#: inc/Settings/Tabs/class-settings-design.php:333
+msgid "Custom Library"
 msgstr ""
 
 #: inc/Core/class-library-manager.php:123
@@ -368,28 +367,28 @@ msgstr ""
 msgid "Insert"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-settings.php:53
+#: inc/Settings/Views/html-admin-settings.php:54
 msgid "Save changes"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-settings.php:93
+#: inc/Settings/Views/html-admin-settings.php:92
 msgid "Your Email"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-settings.php:94
+#: inc/Settings/Views/html-admin-settings.php:93
 msgid "First Name"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-settings.php:95
+#: inc/Settings/Views/html-admin-settings.php:94
 msgid "Send me the coupon"
 msgstr ""
 
 # %s: Link to AnalogWP privacy policy.
-#: inc/Settings/Views/html-admin-settings.php:103
+#: inc/Settings/Views/html-admin-settings.php:102
 msgid "By submitting your details, you agree to our %s."
 msgstr ""
 
-#: inc/Settings/Views/html-admin-settings.php:104
+#: inc/Settings/Views/html-admin-settings.php:103
 msgid "privacy policy"
 msgstr ""
 
@@ -454,29 +453,39 @@ msgid ""
 "problem in the Custom Library."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:107
+#: inc/Settings/Tabs/class-settings-tools.php:101
+msgid "Remove Data on Uninstall"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:105
+msgid ""
+"Check this box to remove all data stored by Custom Library for Elementor "
+"plugin, including license info, user settings, import history etc."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-tools.php:124
 msgid "Templates Importer"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:112
+#: inc/Settings/Tabs/class-settings-tools.php:129
 msgid ""
 "Imports .json or .zip files exported only via the Custom Library Pro "
 "templates exporter."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:121
+#: inc/Settings/Tabs/class-settings-tools.php:138
 msgid "Templates Exporter"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:126
+#: inc/Settings/Tabs/class-settings-tools.php:143
 msgid "Exports all the templates published and available in the Custom Library."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:175
+#: inc/Settings/Tabs/class-settings-tools.php:192
 msgid "No outdated templates found."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-tools.php:195
+#: inc/Settings/Tabs/class-settings-tools.php:212
 msgid "Failed to update outdated templates."
 msgstr ""
 
@@ -585,20 +594,6 @@ msgid ""
 "A plethora of controls to serve your own template library remotely or "
 "access remote libraries, such as Secure Connection-code, Connected Sites, "
 "Reports and more. "
-msgstr ""
-
-#: inc/Settings/Tabs/class-settings-misc.php:25
-msgid "Misc"
-msgstr ""
-
-#: inc/Settings/Tabs/class-settings-misc.php:42
-msgid "Remove Data on Uninstall"
-msgstr ""
-
-#: inc/Settings/Tabs/class-settings-misc.php:46
-msgid ""
-"Check this box to remove all data stored by Custom Library for Elementor "
-"plugin, including license info, user settings, import history etc."
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-general.php:26
@@ -730,119 +725,119 @@ msgstr ""
 msgid "Header colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:145
+#: inc/Settings/Tabs/class-settings-design.php:146
 msgid "Header Background"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:152
+#: inc/Settings/Tabs/class-settings-design.php:154
 msgid "Header Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:159
+#: inc/Settings/Tabs/class-settings-design.php:162
 msgid "Header Border Bottom"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:170
+#: inc/Settings/Tabs/class-settings-design.php:174
 msgid "Categories colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:176
+#: inc/Settings/Tabs/class-settings-design.php:180
 msgid "Categories Background"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:183
+#: inc/Settings/Tabs/class-settings-design.php:188
 msgid "Categories Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:190
+#: inc/Settings/Tabs/class-settings-design.php:196
 msgid "Active Category Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:201
+#: inc/Settings/Tabs/class-settings-design.php:208
 msgid "Button colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:207
+#: inc/Settings/Tabs/class-settings-design.php:214
 msgid "Button Background Color"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:214
+#: inc/Settings/Tabs/class-settings-design.php:222
 msgid "Button Text Color"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:221
+#: inc/Settings/Tabs/class-settings-design.php:230
 msgid "Button Border Color"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:232
+#: inc/Settings/Tabs/class-settings-design.php:242
 msgid "Body colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:238
+#: inc/Settings/Tabs/class-settings-design.php:248
 msgid "Library Background"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:245
+#: inc/Settings/Tabs/class-settings-design.php:256
 msgid "Library Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:252
+#: inc/Settings/Tabs/class-settings-design.php:264
 msgid "Favorite Icon"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:259
+#: inc/Settings/Tabs/class-settings-design.php:272
 msgid "Hover Overlay"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:266
+#: inc/Settings/Tabs/class-settings-design.php:280
 msgid "Thumbnail border"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:277
+#: inc/Settings/Tabs/class-settings-design.php:292
 msgid "Notifications colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:283
+#: inc/Settings/Tabs/class-settings-design.php:298
 msgid "Notice text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:290
+#: inc/Settings/Tabs/class-settings-design.php:306
 msgid "Notice background"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:297
+#: inc/Settings/Tabs/class-settings-design.php:314
 msgid "Notice border"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:308
+#: inc/Settings/Tabs/class-settings-design.php:326
 msgid "Plugin/menu label"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:323
+#: inc/Settings/Tabs/class-settings-design.php:341
 msgid "Library title"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:338
+#: inc/Settings/Tabs/class-settings-design.php:356
 msgid "Show Buttons on hover"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:351
+#: inc/Settings/Tabs/class-settings-design.php:369
 msgid "Show Preview Button"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:352
+#: inc/Settings/Tabs/class-settings-design.php:370
 msgid "Show Edit Button"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:360
+#: inc/Settings/Tabs/class-settings-design.php:378
 msgid "Button Styles"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:365
+#: inc/Settings/Tabs/class-settings-design.php:383
 msgid "Button Border Radius"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:371
+#: inc/Settings/Tabs/class-settings-design.php:389
 msgid "Button Border Width"
 msgstr ""
 
