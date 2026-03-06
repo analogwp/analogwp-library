@@ -3,7 +3,7 @@ Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 Tags: elementor, elementor templates, template library, design system, elementor addons
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -152,6 +152,17 @@ Contact us via the [support page](https://analogwp.com/contact/) or use the supp
 4. Custom Library popup modal in the Elementor Editor.
 
 == Changelog ==
+
+= 2.2.0 =
+* New: Library Style presets (4 styles to choose from) at settings
+* New: Template library Subcategories support at Categories bar
+* Fix: White labelling with Plugin/menu label control at settings missing key spots
+* Improvement: Hide additional search bar in Vertical sidebar
+* Improvement: Move Misc tab options to Tools tab settings
+* Improvement: Removed legacy submenu page from Elementor Templates menu
+* Improvement: Add Alpha color support at Color control options in Settings
+* Improvement: Update language files
+* Improvement: Other minor improvements
 
 = 2.1.0 =
 * New: Template Visibility options at Remote Library Settings
