@@ -181,6 +181,7 @@ final class Plugin {
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Core/Storage/class-transients.php';
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/class-register-settings.php';
+		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/class-onboarding.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/settings-helpers.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/Featuresets/class-register-featuresets.php';
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-base.php';

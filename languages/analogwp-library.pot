@@ -9,7 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-03-06T18:03:18.949Z\n"
+"POT-Creation-Date: 2026-03-15T06:57:33.332Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -100,7 +100,7 @@ msgid "Settings"
 msgstr ""
 
 #: inc/class-elementor.php:85
-#: inc/Settings/Tabs/class-settings-design.php:348
+#: inc/Settings/Tabs/class-settings-design.php:369
 msgid "Library"
 msgstr ""
 
@@ -155,22 +155,22 @@ msgid "View Plans"
 msgstr ""
 
 #: client/PresetToggle.js:11
-#: inc/Settings/Tabs/class-settings-design.php:120
+#: inc/Settings/Tabs/class-settings-design.php:29
 msgid "Default"
 msgstr ""
 
 #: client/PresetToggle.js:12
-#: inc/Settings/Tabs/class-settings-design.php:121
+#: inc/Settings/Tabs/class-settings-design.php:33
 msgid "Light"
 msgstr ""
 
 #: client/PresetToggle.js:13
-#: inc/Settings/Tabs/class-settings-design.php:122
+#: inc/Settings/Tabs/class-settings-design.php:37
 msgid "Dark"
 msgstr ""
 
 #: client/PresetToggle.js:14
-#: inc/Settings/Tabs/class-settings-design.php:123
+#: inc/Settings/Tabs/class-settings-design.php:41
 msgid "Color"
 msgstr ""
 
@@ -204,6 +204,8 @@ msgstr ""
 #: client/HeaderSearch.js:188
 #: client/HeaderSearch.js:189
 #: client/HeaderSearch.js:212
+#: inc/Settings/Views/html-admin-onboarding.php:50
+#: inc/Settings/Views/html-admin-onboarding.php:51
 msgid "Search templates"
 msgstr ""
 
@@ -216,58 +218,70 @@ msgstr ""
 msgid "Close search"
 msgstr ""
 
+#: inc/Settings/class-onboarding.php:93
+msgid "Sorry, you are not allowed to manage Custom Library onboarding."
+msgstr ""
+
+#: inc/Settings/class-onboarding.php:247
+msgid "Unknown"
+msgstr ""
+
+#: inc/Settings/class-onboarding.php:263
+msgid "Uncategorized"
+msgstr ""
+
 #: inc/Settings/class-admin-settings.php:77
 msgid "Your settings have been saved."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:150
+#: inc/Settings/class-admin-settings.php:152
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:151
+#: inc/Settings/class-admin-settings.php:153
 msgid "Select Image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:152
+#: inc/Settings/class-admin-settings.php:154
 msgid "Use this image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:329
+#: inc/Settings/class-admin-settings.php:332
 #: client/blocks/BlockList.js:386
 #: client/blocks/BlockList.js:436
 msgid "Pro"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:330
+#: inc/Settings/class-admin-settings.php:333
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:906
+#: inc/Settings/class-admin-settings.php:911
 msgid "Toggle"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:970
-#: inc/Settings/class-admin-settings.php:1009
+#: inc/Settings/class-admin-settings.php:975
+#: inc/Settings/class-admin-settings.php:1014
 msgid "Change Image"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:971
-#: inc/Settings/class-admin-settings.php:1010
+#: inc/Settings/class-admin-settings.php:976
+#: inc/Settings/class-admin-settings.php:1015
 msgid "Revert to Default"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1123
-#: inc/Settings/class-admin-settings.php:1146
+#: inc/Settings/class-admin-settings.php:1134
+#: inc/Settings/class-admin-settings.php:1157
 msgid "Import"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1156
-#: inc/Settings/class-admin-settings.php:1157
+#: inc/Settings/class-admin-settings.php:1167
+#: inc/Settings/class-admin-settings.php:1168
 msgid "Go"
 msgstr ""
 
-#: inc/Settings/class-admin-settings.php:1186
-#: inc/Settings/class-admin-settings.php:1204
+#: inc/Settings/class-admin-settings.php:1197
+#: inc/Settings/class-admin-settings.php:1215
 msgid "Export All"
 msgstr ""
 
@@ -284,7 +298,7 @@ msgid "Theme Custom Library for Elementor"
 msgstr ""
 
 #: inc/Core/class-library-manager.php:61
-#: inc/Settings/Tabs/class-settings-design.php:333
+#: inc/Settings/Tabs/class-settings-design.php:354
 msgid "Custom Library"
 msgstr ""
 
@@ -365,31 +379,6 @@ msgstr ""
 
 #: client/blocks/BlockList.js:417
 msgid "Insert"
-msgstr ""
-
-#: inc/Settings/Views/html-admin-settings.php:54
-msgid "Save changes"
-msgstr ""
-
-#: inc/Settings/Views/html-admin-settings.php:92
-msgid "Your Email"
-msgstr ""
-
-#: inc/Settings/Views/html-admin-settings.php:93
-msgid "First Name"
-msgstr ""
-
-#: inc/Settings/Views/html-admin-settings.php:94
-msgid "Send me the coupon"
-msgstr ""
-
-# %s: Link to AnalogWP privacy policy.
-#: inc/Settings/Views/html-admin-settings.php:102
-msgid "By submitting your details, you agree to our %s."
-msgstr ""
-
-#: inc/Settings/Views/html-admin-settings.php:103
-msgid "privacy policy"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-version-control.php:26
@@ -657,188 +646,303 @@ msgid ""
 "is not explicitly set here to avoid accidental lockouts."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:26
+#: inc/Settings/Tabs/class-settings-design.php:52
 msgid "Design"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:41
+#: inc/Settings/Tabs/class-settings-design.php:67
 msgid "Library popup style"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:49
+#: inc/Settings/Tabs/class-settings-design.php:75
 msgid "Compact (popup)"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:50
+#: inc/Settings/Tabs/class-settings-design.php:76
 msgid "Fullscreen"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:59
+#: inc/Settings/Tabs/class-settings-design.php:85
 msgid "Template columns"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:67
+#: inc/Settings/Tabs/class-settings-design.php:93
 msgid "2 Columns"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:68
+#: inc/Settings/Tabs/class-settings-design.php:94
 msgid "3 Columns"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:69
+#: inc/Settings/Tabs/class-settings-design.php:95
 msgid "Auto"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:78
+#: inc/Settings/Tabs/class-settings-design.php:104
 msgid "Categories location"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:86
+#: inc/Settings/Tabs/class-settings-design.php:112
 msgid "Sidebar"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:87
+#: inc/Settings/Tabs/class-settings-design.php:113
 msgid "Horizontal"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:88
+#: inc/Settings/Tabs/class-settings-design.php:114
 msgid "None"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:94
+#: inc/Settings/Tabs/class-settings-design.php:120
 msgid "Show categories template count"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:103
+#: inc/Settings/Tabs/class-settings-design.php:129
 msgid "Library styles"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:111
+#: inc/Settings/Tabs/class-settings-design.php:137
 msgid "Preset"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:112
+#: inc/Settings/Tabs/class-settings-design.php:138
 msgid "Customize"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:139
+#: inc/Settings/Tabs/class-settings-design.php:160
 msgid "Header colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:146
+#: inc/Settings/Tabs/class-settings-design.php:167
 msgid "Header Background"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:154
+#: inc/Settings/Tabs/class-settings-design.php:175
 msgid "Header Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:162
+#: inc/Settings/Tabs/class-settings-design.php:183
 msgid "Header Border Bottom"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:174
+#: inc/Settings/Tabs/class-settings-design.php:195
 msgid "Categories colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:180
+#: inc/Settings/Tabs/class-settings-design.php:201
 msgid "Categories Background"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:188
+#: inc/Settings/Tabs/class-settings-design.php:209
 msgid "Categories Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:196
+#: inc/Settings/Tabs/class-settings-design.php:217
 msgid "Active Category Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:208
+#: inc/Settings/Tabs/class-settings-design.php:229
 msgid "Button colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:214
+#: inc/Settings/Tabs/class-settings-design.php:235
 msgid "Button Background Color"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:222
+#: inc/Settings/Tabs/class-settings-design.php:243
 msgid "Button Text Color"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:230
+#: inc/Settings/Tabs/class-settings-design.php:251
 msgid "Button Border Color"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:242
+#: inc/Settings/Tabs/class-settings-design.php:263
 msgid "Body colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:248
+#: inc/Settings/Tabs/class-settings-design.php:269
 msgid "Library Background"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:256
+#: inc/Settings/Tabs/class-settings-design.php:277
 msgid "Library Text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:264
+#: inc/Settings/Tabs/class-settings-design.php:285
 msgid "Favorite Icon"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:272
+#: inc/Settings/Tabs/class-settings-design.php:293
 msgid "Hover Overlay"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:280
+#: inc/Settings/Tabs/class-settings-design.php:301
 msgid "Thumbnail border"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:292
+#: inc/Settings/Tabs/class-settings-design.php:313
 msgid "Notifications colors"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:298
+#: inc/Settings/Tabs/class-settings-design.php:319
 msgid "Notice text"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:306
+#: inc/Settings/Tabs/class-settings-design.php:327
 msgid "Notice background"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:314
+#: inc/Settings/Tabs/class-settings-design.php:335
 msgid "Notice border"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:326
+#: inc/Settings/Tabs/class-settings-design.php:347
 msgid "Plugin/menu label"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:341
+#: inc/Settings/Tabs/class-settings-design.php:362
 msgid "Library title"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:356
+#: inc/Settings/Tabs/class-settings-design.php:377
 msgid "Show Buttons on hover"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:369
+#: inc/Settings/Tabs/class-settings-design.php:390
 msgid "Show Preview Button"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:370
+#: inc/Settings/Tabs/class-settings-design.php:391
 msgid "Show Edit Button"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:378
+#: inc/Settings/Tabs/class-settings-design.php:399
 msgid "Button Styles"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:383
+#: inc/Settings/Tabs/class-settings-design.php:404
 msgid "Button Border Radius"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-design.php:389
+#: inc/Settings/Tabs/class-settings-design.php:410
 msgid "Button Border Width"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-settings.php:57
+msgid "Save changes"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-settings.php:96
+msgid "Your Email"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-settings.php:97
+msgid "First Name"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-settings.php:98
+msgid "Send me the coupon"
+msgstr ""
+
+# %s: Link to AnalogWP privacy policy.
+#: inc/Settings/Views/html-admin-settings.php:106
+msgid "By submitting your details, you agree to our %s."
+msgstr ""
+
+#: inc/Settings/Views/html-admin-settings.php:107
+msgid "privacy policy"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:18
+msgid "Onboarding"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:23
+msgid "Choose your library style"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:24
+msgid ""
+"Pick the preset that best matches how you want Custom Library to look from "
+"day one."
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:38
+#: inc/Settings/Views/html-admin-onboarding.php:107
+msgid "Continue"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:45
+msgid "Add your existing Elementor templates"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:46
+msgid ""
+"Select any templates you want to sync into Custom Library now. You can "
+"always add more later."
+msgstr ""
+
+# 1: Default visible template count, 2: Total available template count.
+#: inc/Settings/Views/html-admin-onboarding.php:57
+msgid ""
+"Showing the first %1$d templates by default. Search to narrow the list from "
+"%2$d available templates."
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:69
+msgid "Select all templates"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:71
+msgid "Title"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:72
+msgid "Type"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:73
+msgid "Categories"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:74
+#: inc/Settings/Views/html-admin-onboarding.php:92
+msgid "Preview"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:94
+msgid "Unavailable"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:100
+msgid "No templates match your search."
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:106
+#: inc/Settings/Views/html-admin-onboarding.php:145
+msgid "Back"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:114
+msgid "?? You?re all set"
+msgstr ""
+
+# %s: Documentation URL.
+#: inc/Settings/Views/html-admin-onboarding.php:120
+msgid ""
+"Your custom library is ready to go! You can customize it further at any "
+"point. If you need any help, feel free to <a href=\"%s\" target=\"_blank\" "
+"rel=\"noopener noreferrer\">visit the documentation</a>. Happy building!"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:137
+msgid "Custom Library onboarding tutorial"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:146
+msgid "Finish setup"
 msgstr ""
 
 #: inc/Featuresets/rollback/class-rollbacker.php:153
