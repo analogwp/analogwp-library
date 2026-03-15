@@ -15,27 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="analog-custom-library-onboarding" id="analog-custom-library-onboarding-form" data-has-templates="<?php echo esc_attr( $onboarding_data['has_templates'] ? '1' : '0' ); ?>">
 	<div class="analog-custom-library-onboarding__intro">
-		<span class="analog-custom-library-onboarding__eyebrow"><?php esc_html_e( 'Welcome to Custom Library', 'analogwp-library' ); ?></span>
-		<h2><?php esc_html_e( 'Set up your library in a few steps', 'analogwp-library' ); ?></h2>
-		<p><?php esc_html_e( 'Choose a style preset and optionally pull in your existing Elementor templates.', 'analogwp-library' ); ?></p>
+		<span class="analog-custom-library-onboarding__eyebrow"><?php esc_html_e( 'Onboarding', 'analogwp-library' ); ?></span>
 	</div>
-
-	<ol class="analog-custom-library-onboarding__steps">
-		<li class="analog-custom-library-onboarding__step is-active" data-step-indicator="1">
-			<span>1</span>
-			<strong><?php esc_html_e( 'Choose style', 'analogwp-library' ); ?></strong>
-		</li>
-		<?php if ( $onboarding_data['has_templates'] ) : ?>
-			<li class="analog-custom-library-onboarding__step" data-step-indicator="2">
-				<span>2</span>
-				<strong><?php esc_html_e( 'Import templates', 'analogwp-library' ); ?></strong>
-			</li>
-		<?php endif; ?>
-		<li class="analog-custom-library-onboarding__step" data-step-indicator="3">
-			<span><?php echo esc_html( $onboarding_data['has_templates'] ? '3' : '2' ); ?></span>
-			<strong><?php esc_html_e( 'Finish', 'analogwp-library' ); ?></strong>
-		</li>
-	</ol>
 
 	<div class="analog-custom-library-onboarding__panel is-active" data-onboarding-step="1">
 		<div class="analog-custom-library-onboarding__panel-copy">
@@ -136,7 +117,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				printf(
 					wp_kses(
 						/* translators: %s: Documentation URL. */
-						__( 'Your custom library is ready to go! You can customize it further at any point. If you need any help, feel free to visit the <a href="%s" target="_blank" rel="noopener noreferrer">documentation</a>. Happy building!', 'analogwp-library' ),
+						__( 'Your custom library is ready to go! You can customize it further at any point. If you need any help, feel free to <a href="%s" target="_blank" rel="noopener noreferrer">visit the documentation</a>. Happy building!', 'analogwp-library' ),
 						array(
 							'a' => array(
 								'href'   => array(),

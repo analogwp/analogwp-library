@@ -675,59 +675,10 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 
 .analog-custom-library-onboarding__intro p,
 .analog-custom-library-onboarding__panel-copy p {
-	max-width: 720px;
 	margin: 0;
 	color: #646970;
 	font-size: 15px;
 	line-height: 1.6;
-}
-
-.analog-custom-library-onboarding__steps {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-	gap: 12px;
-	margin: 0 0 28px;
-	padding: 0;
-	list-style: none;
-}
-
-.analog-custom-library-onboarding__step {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-	padding: 14px 16px;
-	border: 1px solid #E2E2E4;
-	border-radius: 10px;
-	color: #646970;
-	background: #F8F9FA;
-}
-
-.analog-custom-library-onboarding__step span {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 30px;
-	height: 30px;
-	border-radius: 999px;
-	background: #E2E2E4;
-	color: #1D2327;
-	font-weight: 600;
-}
-
-.analog-custom-library-onboarding__step strong {
-	font-size: 14px;
-	line-height: 1.4;
-}
-
-.analog-custom-library-onboarding__step.is-active {
-	border-color: #602BC2;
-	background: #F0F7FB;
-	color: #1D2327;
-}
-
-.analog-custom-library-onboarding__step.is-active span {
-	background: #602BC2;
-	color: #fff;
 }
 
 .analog-custom-library-onboarding__panel {
@@ -746,10 +697,6 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	margin: 0 0 8px;
 	font-size: 22px;
 	line-height: 1.3;
-}
-
-.analog-custom-library-onboarding__panel-copy--narrow {
-	max-width: 760px;
 }
 
 .analog-custom-library-onboarding__preset-options {
