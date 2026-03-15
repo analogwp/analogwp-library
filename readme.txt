@@ -3,7 +3,7 @@ Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 2.2.0
+Stable tag: 2.3.0
 Tags: elementor, elementor templates, template library, design system, elementor addons
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -12,7 +12,7 @@ Create your own design system in Elementor. Organize templates, save time, and e
 
 == Description ==
 
-[🚀 Take a better look at Custom Library for Elementor](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
+[🚀 Take a look at Custom Library for Elementor](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
 
 **Transform how you build with Elementor.** Custom Library for Elementor lets you create your own personal design system—organizing reusable templates, sections, and patterns into one streamlined library accessible directly from the editor.
 
@@ -152,6 +152,12 @@ Contact us via the [support page](https://analogwp.com/contact/) or use the supp
 4. Custom Library popup modal in the Elementor Editor.
 
 == Changelog ==
+
+= 2.3.0 =
+* New: Onboarding for new users
+* Fix: Library modal showing blank areas when not of full height
+* Improvement: Update language files
+* Improvement: Other minor improvements
 
 = 2.2.0 =
 * New: Library Style presets (4 styles to choose from) at settings
