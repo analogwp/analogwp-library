@@ -130,7 +130,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="analog-custom-library-onboarding__panel" data-onboarding-step="3" hidden>
 		<div class="analog-custom-library-onboarding__panel-copy analog-custom-library-onboarding__panel-copy--narrow">
-			<h3><?php esc_html_e( 'You’re all set', 'analogwp-library' ); ?></h3>
+			<h3><?php esc_html_e( '🎉 You’re all set', 'analogwp-library' ); ?></h3>
 			<p>
 				<?php
 				printf(
@@ -150,12 +150,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 				?>
 			</p>
 		</div>
-		<div class="analog-custom-library-onboarding__video-placeholder">
-			<span><?php esc_html_e( 'Video tutorial space', 'analogwp-library' ); ?></span>
+		<div class="analog-custom-library-onboarding__video-frame">
+			<iframe
+				src="https://www.youtube.com/embed/9RTBS6rhYgg?rel=0"
+				title="<?php esc_attr_e( 'Custom Library onboarding tutorial', 'analogwp-library' ); ?>"
+				loading="lazy"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin"
+				allowfullscreen
+			></iframe>
 		</div>
 		<div class="analog-custom-library-onboarding__actions">
 			<button type="button" class="button button-secondary" data-onboarding-back="<?php echo esc_attr( $onboarding_data['has_templates'] ? '2' : '1' ); ?>"><?php esc_html_e( 'Back', 'analogwp-library' ); ?></button>
-			<button type="submit" name="analog_custom_library_finish_onboarding" value="1" class="button button-primary"><?php esc_html_e( 'Finish', 'analogwp-library' ); ?></button>
+			<button type="submit" name="analog_custom_library_finish_onboarding" value="1" class="button button-primary"><?php esc_html_e( 'Finish setup', 'analogwp-library' ); ?></button>
 		</div>
 	</div>
 
