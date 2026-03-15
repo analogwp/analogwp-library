@@ -123,6 +123,8 @@ class Admin_Settings {
 	public static function output() {
 		global $current_section, $current_tab;
 
+		$onboarding_active = Onboarding::should_render();
+
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 		// Select2 styles.
@@ -157,7 +159,8 @@ class Admin_Settings {
 		do_action( 'analog_custom_library_settings_output' );
 
 		// Get tabs for the settings page.
-		$tabs = apply_filters( 'analog_custom_library_settings_tabs_array', array() );
+		$tabs            = apply_filters( 'analog_custom_library_settings_tabs_array', array() );
+		$onboarding_data = $onboarding_active ? Onboarding::get_view_data() : array();
 
 		include AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/Views/html-admin-settings.php';
 	}
@@ -723,10 +726,11 @@ class Admin_Settings {
 						<td class="forminp forminp-image-radio" colspan="2">
 							<fieldset>
 								<div class="image-radio-options">
-								<?php foreach ( $value['options'] as $key => $option ) :
+								<?php
+								foreach ( $value['options'] as $key => $option ) :
 									$label = is_array( $option ) ? $option['label'] : $option;
 									$image = is_array( $option ) && ! empty( $option['image'] ) ? $option['image'] : '';
-								?>
+									?>
 									<label class="image-radio-option<?php echo checked( $key, $option_value, false ) ? ' selected' : ''; ?>">
 										<input
 											type="radio"
@@ -756,10 +760,11 @@ class Admin_Settings {
 						<td class="forminp forminp-promo-image-radio" colspan="2">
 							<fieldset>
 								<div class="image-radio-options">
-								<?php foreach ( $value['options'] as $key => $option ) :
+								<?php
+								foreach ( $value['options'] as $key => $option ) :
 									$label = is_array( $option ) ? $option['label'] : $option;
 									$image = is_array( $option ) && ! empty( $option['image'] ) ? $option['image'] : '';
-								?>
+									?>
 									<label class="image-radio-option<?php echo checked( $key, $option_value, false ) ? ' selected' : ''; ?>">
 										<input
 											type="radio"
@@ -1053,7 +1058,10 @@ class Admin_Settings {
 								data-default-color="<?php echo esc_attr( $default_color ); ?>"
 								value="<?php echo esc_attr( $display_color ); ?>"
 								class="color-field <?php echo esc_attr( $value['class'] ); ?>"
-								<?php if ( $needs_alpha ) : ?>data-alpha-enabled="true"<?php endif; ?>
+								<?php
+								if ( $needs_alpha ) :
+									?>
+									data-alpha-enabled="true"<?php endif; ?>
 								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 								/>
 
@@ -1092,7 +1100,10 @@ class Admin_Settings {
 								data-default-color="<?php echo esc_attr( $default_color ); ?>"
 								value="<?php echo esc_attr( $display_color ); ?>"
 								class="color-field <?php echo esc_attr( $value['class'] ); ?>"
-								<?php if ( $needs_alpha ) : ?>data-alpha-enabled="true"<?php endif; ?>
+								<?php
+								if ( $needs_alpha ) :
+									?>
+									data-alpha-enabled="true"<?php endif; ?>
 								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 								/>
 

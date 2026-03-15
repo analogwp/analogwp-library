@@ -19,6 +19,32 @@ defined( 'ABSPATH' ) || exit;
 class Design extends Settings_Page {
 
 	/**
+	 * Get the available library style presets.
+	 *
+	 * @return array
+	 */
+	public static function get_style_preset_options() {
+		return array(
+			'default' => array(
+				'label' => __( 'Default', 'analogwp-library' ),
+				'image' => AGWP_LIBRARY_PLUGIN_URL . 'assets/img/preset-default.svg',
+			),
+			'light'   => array(
+				'label' => __( 'Light', 'analogwp-library' ),
+				'image' => AGWP_LIBRARY_PLUGIN_URL . 'assets/img/preset-light.svg',
+			),
+			'dark'    => array(
+				'label' => __( 'Dark', 'analogwp-library' ),
+				'image' => AGWP_LIBRARY_PLUGIN_URL . 'assets/img/preset-dark.svg',
+			),
+			'color'   => array(
+				'label' => __( 'Color', 'analogwp-library' ),
+				'image' => AGWP_LIBRARY_PLUGIN_URL . 'assets/img/preset-color.svg',
+			),
+		);
+	}
+
+	/**
 	 * Constructor.
 	 */
 	public function __construct() {
@@ -116,12 +142,7 @@ class Design extends Settings_Page {
 				array(
 					'id'      => 'library_style_preset',
 					'type'    => 'image-radio',
-					'options' => array(
-						'default' => array( 'label' => __( 'Default', 'analogwp-library' ), 'image' => AGWP_LIBRARY_PLUGIN_URL . 'assets/img/preset-default.svg' ),
-						'light'   => array( 'label' => __( 'Light', 'analogwp-library' ), 'image' => AGWP_LIBRARY_PLUGIN_URL . 'assets/img/preset-light.svg' ),
-						'dark'    => array( 'label' => __( 'Dark', 'analogwp-library' ), 'image' => AGWP_LIBRARY_PLUGIN_URL . 'assets/img/preset-dark.svg' ),
-						'color'   => array( 'label' => __( 'Color', 'analogwp-library' ), 'image' => AGWP_LIBRARY_PLUGIN_URL . 'assets/img/preset-color.svg' ),
-					),
+					'options' => self::get_style_preset_options(),
 					'default' => 'default',
 				),
 				array(
@@ -380,16 +401,16 @@ class Design extends Settings_Page {
 						'id'    => 'analog_custom_library_button_styles',
 					),
 					array(
-						'title'              => __( 'Button Border Radius', 'analogwp-library' ),
-						'id'                 => 'button_border_radius',
-						'default'            => 5,
-						'type'               => 'promo-number',
+						'title'   => __( 'Button Border Radius', 'analogwp-library' ),
+						'id'      => 'button_border_radius',
+						'default' => 5,
+						'type'    => 'promo-number',
 					),
 					array(
-						'title'              => __( 'Button Border Width', 'analogwp-library' ),
-						'id'                 => 'button_border_width',
-						'default'            => 1,
-						'type'               => 'promo-number',
+						'title'   => __( 'Button Border Width', 'analogwp-library' ),
+						'id'      => 'button_border_width',
+						'default' => 1,
+						'type'    => 'promo-number',
 					),
 					array(
 						'type' => 'sectionend',

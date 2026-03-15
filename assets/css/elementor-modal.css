@@ -22,6 +22,7 @@
 
 #analog-custom-library {
     text-align: left;
+		min-height: 90vh;
 }
 
 #analog-custom-library input[type=checkbox]:checked:before {

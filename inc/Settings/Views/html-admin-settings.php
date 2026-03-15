@@ -19,7 +19,7 @@ $plugin_title      = Plugin::get_plugin_public_name();
 
 global $current_user;
 
-if ( ! $tab_exists ) {
+if ( ! $onboarding_active && ! $tab_exists ) {
 	wp_safe_redirect( admin_url( 'admin.php?page=agwp-custom-library' ) );
 	exit;
 }
@@ -27,34 +27,38 @@ if ( ! $tab_exists ) {
 <div class="wrap ang-custom-library <?php echo esc_attr( $current_tab ); ?>">
 	<h1 class="menu-title"><?php echo esc_html( $plugin_title ) . ' ' . esc_html__( 'Settings', 'analogwp-library' ); ?></h1>
 	<div class="analog-custom-library-wrapper">
-		<form method="<?php echo esc_attr( apply_filters( 'analog_custom_library_settings_form_method_tab_' . $current_tab, 'post' ) ); ?>" id="mainform" action="" enctype="multipart/form-data">
-			<nav class="nav-tab-wrapper analog-custom-library-nav-tab-wrapper">
-				<?php
+		<form method="<?php echo esc_attr( $onboarding_active ? 'post' : apply_filters( 'analog_custom_library_settings_form_method_tab_' . $current_tab, 'post' ) ); ?>" id="mainform" action="" enctype="multipart/form-data">
+			<?php if ( $onboarding_active ) : ?>
+				<?php include AGWP_LIBRARY_PLUGIN_DIR . 'inc/Settings/Views/html-admin-onboarding.php'; ?>
+			<?php else : ?>
+				<nav class="nav-tab-wrapper analog-custom-library-nav-tab-wrapper">
+					<?php
 
-				foreach ( $tabs as $slug => $label ) {
-					echo '<a href="' . esc_html( admin_url( 'admin.php?page=agwp-custom-library&tab=' . esc_attr( $slug ) ) ) . '" class="analog-custom-library-nav-tab nav-tab-' . esc_attr( $slug ) . ( $current_tab === $slug ? ' analog-custom-library-nav-tab-active' : '' ) . '">' . esc_html( $label ) . '</a>';
-				}
+					foreach ( $tabs as $slug => $label ) {
+						echo '<a href="' . esc_html( admin_url( 'admin.php?page=agwp-custom-library&tab=' . esc_attr( $slug ) ) ) . '" class="analog-custom-library-nav-tab nav-tab-' . esc_attr( $slug ) . ( $current_tab === $slug ? ' analog-custom-library-nav-tab-active' : '' ) . '">' . esc_html( $label ) . '</a>';
+					}
 
-				do_action( 'analog_custom_library_settings_tabs' );
+					do_action( 'analog_custom_library_settings_tabs' );
 
-				?>
-			</nav>
-			<div class="tab-content">
-				<h1 class="screen-reader-text"><?php echo esc_html( $current_tab_label ); ?></h1>
-				<?php
-					do_action( 'analog_custom_library_sections_' . $current_tab );
+					?>
+				</nav>
+				<div class="tab-content">
+					<h1 class="screen-reader-text"><?php echo esc_html( $current_tab_label ); ?></h1>
+					<?php
+						do_action( 'analog_custom_library_sections_' . $current_tab );
 
-					self::show_messages();
+						self::show_messages();
 
-					do_action( 'analog_custom_library_settings_' . $current_tab );
-				?>
-			</div>
-			<p class="submit">
+						do_action( 'analog_custom_library_settings_' . $current_tab );
+					?>
+				</div>
+				<p class="submit">
 					<?php if ( empty( $GLOBALS['hide_save_button'] ) ) : ?>
 						<button name="save" class="button-primary analog-custom-library-save-button" type="submit" value="<?php esc_attr_e( 'Save changes', 'analogwp-library' ); ?>"><?php esc_html_e( 'Save changes', 'analogwp-library' ); ?></button>
 					<?php endif; ?>
 					<?php wp_nonce_field( 'analog-custom-library-settings' ); ?>
 				</p>
+			<?php endif; ?>
 		</form>
 		<div class="sidebar">
 			<?php do_action( 'analog_custom_library_sidebar_start' ); ?>
@@ -114,9 +118,9 @@ if ( ! $tab_exists ) {
 
 					<div>
 						<?php if ( Plugin::instance()->has_pro_active() ) : ?>
-						<a class="button button-secondary" href="<?php echo admin_url( 'admin.php?page=agwp-custom-library-account' ); ?>">Account</a>
+						<a class="button button-secondary" href="<?php echo esc_url( admin_url( 'admin.php?page=agwp-custom-library-account' ) ); ?>">Account</a>
 					<?php endif; ?>
-					<a class="button button-secondary" href="<?php echo admin_url( 'admin.php?page=agwp-custom-library-contact' ); ?>">Create a Support Request</a>
+					<a class="button button-secondary" href="<?php echo esc_url( admin_url( 'admin.php?page=agwp-custom-library-contact' ) ); ?>">Create a Support Request</a>
 					</div>
 				</div>
 

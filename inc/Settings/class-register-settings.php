@@ -152,6 +152,10 @@ class Register_Settings {
 			return;
 		}
 
+		if ( ! empty( $_POST['analog_custom_library_finish_onboarding'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			Onboarding::maybe_handle_request();
+		}
+
 		// Include settings pages.
 		Admin_Settings::get_settings_pages();
 

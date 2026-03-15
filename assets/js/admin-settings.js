@@ -156,6 +156,128 @@
 			$( this ).closest( '.image-radio-option' ).addClass( 'selected' );
 		} );
 
+		// Onboarding step navigation.
+		const onboardingEl = document.getElementById( 'analog-custom-library-onboarding-form' );
+
+		if ( onboardingEl ) {
+			const panels = onboardingEl.querySelectorAll( '[data-onboarding-step]' );
+			const indicators = onboardingEl.querySelectorAll( '[data-step-indicator]' );
+			const searchInput = onboardingEl.querySelector( '[data-onboarding-search]' );
+			const templateRows = Array.from( onboardingEl.querySelectorAll( '[data-onboarding-template-row]' ) );
+			const selectAllCheckbox = onboardingEl.querySelector( '[data-onboarding-select-all]' );
+			const emptyStateRow = onboardingEl.querySelector( '[data-onboarding-empty-state]' );
+			const templateLimit = 5;
+
+			function setActiveStep( step ) {
+				panels.forEach( ( panel ) => {
+					const isActive = panel.dataset.onboardingStep === step;
+					panel.classList.toggle( 'is-active', isActive );
+					panel.hidden = ! isActive;
+				} );
+
+				indicators.forEach( ( indicator ) => {
+					indicator.classList.toggle( 'is-active', indicator.dataset.stepIndicator === step );
+				} );
+			}
+
+			function getVisibleTemplateRows() {
+				return templateRows.filter( ( row ) => ! row.hidden );
+			}
+
+			function syncSelectAllState() {
+				if ( ! selectAllCheckbox ) {
+					return;
+				}
+
+				const visibleRows = getVisibleTemplateRows();
+				const visibleCheckboxes = visibleRows
+					.map( ( row ) => row.querySelector( 'input[name="onboarding_template_ids[]"]' ) )
+					.filter( Boolean );
+
+				if ( visibleCheckboxes.length === 0 ) {
+					selectAllCheckbox.checked = false;
+					selectAllCheckbox.indeterminate = false;
+					return;
+				}
+
+				const checkedCount = visibleCheckboxes.filter( ( checkbox ) => checkbox.checked ).length;
+
+				selectAllCheckbox.checked = checkedCount === visibleCheckboxes.length;
+				selectAllCheckbox.indeterminate = checkedCount > 0 && checkedCount < visibleCheckboxes.length;
+			}
+
+			function updateTemplateRows() {
+				if ( templateRows.length === 0 ) {
+					return;
+				}
+
+				const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+				let visibleCount = 0;
+
+				templateRows.forEach( ( row ) => {
+					const rowIndex = Number.parseInt( row.dataset.templateIndex || '0', 10 );
+					const matchesSearch = query === '' || ( row.dataset.searchText || '' ).includes( query );
+					const withinDefaultLimit = query !== '' || rowIndex < templateLimit;
+					const isVisible = matchesSearch && withinDefaultLimit;
+
+					row.hidden = ! isVisible;
+
+					if ( isVisible ) {
+						visibleCount += 1;
+					}
+				} );
+
+				if ( emptyStateRow ) {
+					emptyStateRow.hidden = visibleCount > 0;
+				}
+
+				syncSelectAllState();
+			}
+
+			if ( searchInput ) {
+				searchInput.addEventListener( 'input', updateTemplateRows );
+			}
+
+			if ( templateRows.length > 0 ) {
+				onboardingEl.addEventListener( 'change', ( event ) => {
+					if ( event.target.matches( 'input[name="onboarding_template_ids[]"]' ) ) {
+						syncSelectAllState();
+					}
+				} );
+
+				updateTemplateRows();
+			}
+
+			onboardingEl.addEventListener( 'click', ( event ) => {
+				const nextButton = event.target.closest( '[data-onboarding-next]' );
+				const backButton = event.target.closest( '[data-onboarding-back]' );
+				const selectAll = event.target.closest( '[data-onboarding-select-all]' );
+
+				if ( selectAll ) {
+					const rowCheckboxes = getVisibleTemplateRows()
+						.map( ( row ) => row.querySelector( 'input[name="onboarding_template_ids[]"]' ) )
+						.filter( Boolean );
+
+					rowCheckboxes.forEach( ( checkbox ) => {
+						checkbox.checked = selectAll.checked;
+					} );
+
+					syncSelectAllState();
+					return;
+				}
+
+				if ( nextButton ) {
+					event.preventDefault();
+					setActiveStep( nextButton.dataset.onboardingNext );
+				}
+
+				if ( backButton ) {
+					event.preventDefault();
+					setActiveStep( backButton.dataset.onboardingBack );
+				}
+			} );
+		}
+
 		// Update outdated templates.
 		$( '.forminp-action-button #update_outdated_templates' ).on('click', function(e) {
 			e.preventDefault();

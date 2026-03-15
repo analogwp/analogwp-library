@@ -259,7 +259,7 @@
 }
 
 #analog-custom-library .block-list {
-	color: #23282d;
+	color: var(--analog-custom-library-text);
 }
 
 @media only screen and (max-width: 1120px) {
