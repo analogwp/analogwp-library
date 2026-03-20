@@ -3,13 +3,13 @@
 #: assets/js/app/index.js:1
 msgid ""
 msgstr ""
-"Project-Id-Version: analogwp-library 2.2.0\n"
+"Project-Id-Version: analogwp-library 2.4.0\n"
 "Report-Msgid-Bugs-To: AnalogWP <EMAIL>\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"POT-Creation-Date: 2026-03-15T06:57:33.332Z\n"
+"POT-Creation-Date: 2026-03-20T18:48:27.593Z\n"
 "PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: AnalogWP <EMAIL>\n"
 "Language-Team: AnalogWP <EMAIL>\n"
@@ -204,8 +204,8 @@ msgstr ""
 #: client/HeaderSearch.js:188
 #: client/HeaderSearch.js:189
 #: client/HeaderSearch.js:212
-#: inc/Settings/Views/html-admin-onboarding.php:50
-#: inc/Settings/Views/html-admin-onboarding.php:51
+#: inc/Settings/Views/html-admin-onboarding.php:107
+#: inc/Settings/Views/html-admin-onboarding.php:108
 msgid "Search templates"
 msgstr ""
 
@@ -222,11 +222,11 @@ msgstr ""
 msgid "Sorry, you are not allowed to manage Custom Library onboarding."
 msgstr ""
 
-#: inc/Settings/class-onboarding.php:247
+#: inc/Settings/class-onboarding.php:267
 msgid "Unknown"
 msgstr ""
 
-#: inc/Settings/class-onboarding.php:263
+#: inc/Settings/class-onboarding.php:283
 msgid "Uncategorized"
 msgstr ""
 
@@ -594,53 +594,63 @@ msgid "General Settings"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-general.php:53
-msgid "Hide default Elementor Template library icon from editor."
+msgid "Hide Default Library icon"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:59
-msgid "Hide default Elementor Template library popup from editor."
+#: inc/Settings/Tabs/class-settings-general.php:54
+msgid "Removes the default template library icon from the editor toolbar."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:75
+#: inc/Settings/Tabs/class-settings-general.php:60
+msgid "Disable Default auto-popup"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:61
+msgid ""
+"Stops the default template library popup from appearing when you open Theme "
+"Builder pages."
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:77
 msgid "Placeholder image"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:79
+#: inc/Settings/Tabs/class-settings-general.php:81
 msgid "Replace the default placeholder image."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:96
+#: inc/Settings/Tabs/class-settings-general.php:98
 msgid "Trigger icon"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:100
+#: inc/Settings/Tabs/class-settings-general.php:102
 msgid "Replace the trigger icon."
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:111
+#: inc/Settings/Tabs/class-settings-general.php:113
 msgid "Library Access"
-msgstr ""
-
-#: inc/Settings/Tabs/class-settings-general.php:119
-#: inc/Settings/Tabs/class-settings-general.php:139
-msgid "Show to All"
-msgstr ""
-
-#: inc/Settings/Tabs/class-settings-general.php:120
-#: inc/Settings/Tabs/class-settings-general.php:140
-msgid "Show only to specific roles"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-general.php:121
 #: inc/Settings/Tabs/class-settings-general.php:141
+msgid "Show to All"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:122
+#: inc/Settings/Tabs/class-settings-general.php:142
+msgid "Show only to specific roles"
+msgstr ""
+
+#: inc/Settings/Tabs/class-settings-general.php:123
+#: inc/Settings/Tabs/class-settings-general.php:143
 msgid "Show only to specific users"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:130
+#: inc/Settings/Tabs/class-settings-general.php:132
 msgid "Settings Access"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:131
+#: inc/Settings/Tabs/class-settings-general.php:133
 msgid ""
 "Please note, by default all administrators have settings access even if it "
 "is not explicitly set here to avoid accidental lockouts."
@@ -651,46 +661,57 @@ msgid "Design"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:67
+#: inc/Settings/Views/html-admin-onboarding.php:29
 msgid "Library popup style"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:75
+#: inc/Settings/Views/html-admin-onboarding.php:33
 msgid "Compact (popup)"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:76
+#: inc/Settings/Views/html-admin-onboarding.php:37
 msgid "Fullscreen"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:85
+#: inc/Settings/Views/html-admin-onboarding.php:43
 msgid "Template columns"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:93
+#: inc/Settings/Views/html-admin-onboarding.php:47
 msgid "2 Columns"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:94
+#: inc/Settings/Views/html-admin-onboarding.php:51
 msgid "3 Columns"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:95
+#: inc/Settings/Views/html-admin-onboarding.php:55
 msgid "Auto"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:104
+#: inc/Settings/Views/html-admin-onboarding.php:61
 msgid "Categories location"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:112
+#: inc/Settings/Views/html-admin-onboarding.php:65
 msgid "Sidebar"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:113
+#: inc/Settings/Views/html-admin-onboarding.php:69
 msgid "Horizontal"
 msgstr ""
 
 #: inc/Settings/Tabs/class-settings-design.php:114
+#: inc/Settings/Views/html-admin-onboarding.php:73
 msgid "None"
 msgstr ""
 
@@ -860,88 +881,94 @@ msgid "Onboarding"
 msgstr ""
 
 #: inc/Settings/Views/html-admin-onboarding.php:23
-msgid "Choose your library style"
+msgid "Library Setup"
 msgstr ""
 
 #: inc/Settings/Views/html-admin-onboarding.php:24
-msgid ""
-"Pick the preset that best matches how you want Custom Library to look from "
-"day one."
+msgid "Customize your custom library."
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:38
-#: inc/Settings/Views/html-admin-onboarding.php:107
+#: inc/Settings/Views/html-admin-onboarding.php:80
+msgid "Library colors"
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:81
+msgid "Pick a color palette for your library. You can customize colors anytime."
+msgstr ""
+
+#: inc/Settings/Views/html-admin-onboarding.php:95
+#: inc/Settings/Views/html-admin-onboarding.php:164
 msgid "Continue"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:45
+#: inc/Settings/Views/html-admin-onboarding.php:102
 msgid "Add your existing Elementor templates"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:46
+#: inc/Settings/Views/html-admin-onboarding.php:103
 msgid ""
 "Select any templates you want to sync into Custom Library now. You can "
 "always add more later."
 msgstr ""
 
 # 1: Default visible template count, 2: Total available template count.
-#: inc/Settings/Views/html-admin-onboarding.php:57
+#: inc/Settings/Views/html-admin-onboarding.php:114
 msgid ""
 "Showing the first %1$d templates by default. Search to narrow the list from "
 "%2$d available templates."
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:69
+#: inc/Settings/Views/html-admin-onboarding.php:126
 msgid "Select all templates"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:71
+#: inc/Settings/Views/html-admin-onboarding.php:128
 msgid "Title"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:72
+#: inc/Settings/Views/html-admin-onboarding.php:129
 msgid "Type"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:73
+#: inc/Settings/Views/html-admin-onboarding.php:130
 msgid "Categories"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:74
-#: inc/Settings/Views/html-admin-onboarding.php:92
+#: inc/Settings/Views/html-admin-onboarding.php:131
+#: inc/Settings/Views/html-admin-onboarding.php:149
 msgid "Preview"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:94
+#: inc/Settings/Views/html-admin-onboarding.php:151
 msgid "Unavailable"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:100
+#: inc/Settings/Views/html-admin-onboarding.php:157
 msgid "No templates match your search."
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:106
-#: inc/Settings/Views/html-admin-onboarding.php:145
+#: inc/Settings/Views/html-admin-onboarding.php:163
+#: inc/Settings/Views/html-admin-onboarding.php:202
 msgid "Back"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:114
+#: inc/Settings/Views/html-admin-onboarding.php:171
 msgid "?? You?re all set"
 msgstr ""
 
 # %s: Documentation URL.
-#: inc/Settings/Views/html-admin-onboarding.php:120
+#: inc/Settings/Views/html-admin-onboarding.php:177
 msgid ""
 "Your custom library is ready to go! You can customize it further at any "
 "point. If you need any help, feel free to <a href=\"%s\" target=\"_blank\" "
 "rel=\"noopener noreferrer\">visit the documentation</a>. Happy building!"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:137
+#: inc/Settings/Views/html-admin-onboarding.php:194
 msgid "Custom Library onboarding tutorial"
 msgstr ""
 
-#: inc/Settings/Views/html-admin-onboarding.php:146
+#: inc/Settings/Views/html-admin-onboarding.php:203
 msgid "Finish setup"
 msgstr ""
 
@@ -1055,7 +1082,7 @@ msgstr ""
 msgid "Large"
 msgstr ""
 
-#: inc/Settings/Tabs/class-settings-general.php:65
+#: inc/Settings/Tabs/class-settings-general.php:67
 msgctxt "settings title"
 msgid "Enable SVG Uploads"
 msgstr ""

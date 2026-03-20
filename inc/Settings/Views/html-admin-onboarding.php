@@ -20,19 +20,76 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="analog-custom-library-onboarding__panel is-active" data-onboarding-step="1">
 		<div class="analog-custom-library-onboarding__panel-copy">
-			<h3><?php esc_html_e( 'Choose your library style', 'analogwp-library' ); ?></h3>
-			<p><?php esc_html_e( 'Pick the preset that best matches how you want Custom Library to look from day one.', 'analogwp-library' ); ?></p>
+			<h3><?php esc_html_e( 'Library Setup', 'analogwp-library' ); ?></h3>
+			<p><?php esc_html_e( 'Customize your custom library.', 'analogwp-library' ); ?></p>
 		</div>
-		<div class="image-radio-options analog-custom-library-onboarding__preset-options">
-			<?php foreach ( $onboarding_data['style_presets'] as $key => $option ) : ?>
-				<label class="image-radio-option<?php echo 'default' === $key ? ' selected' : ''; ?>">
-					<input type="radio" name="library_style_preset" value="<?php echo esc_attr( $key ); ?>" <?php checked( 'default', $key ); ?> />
-					<span class="image-radio-preview">
-						<img src="<?php echo esc_url( $option['image'] ); ?>" alt="<?php echo esc_attr( $option['label'] ); ?>" />
-					</span>
-					<span class="image-radio-label"><?php echo esc_html( $option['label'] ); ?></span>
+
+		<div class="analog-custom-library-onboarding__step-1-options">
+		<div class="analog-custom-library-onboarding__field-group">
+			<span class="analog-custom-library-onboarding__field-label"><?php esc_html_e( 'Library popup style', 'analogwp-library' ); ?></span>
+			<div class="analog-custom-library-onboarding__radio-options">
+				<label>
+					<input type="radio" name="library_popup_style" value="compact" checked />
+					<?php esc_html_e( 'Compact (popup)', 'analogwp-library' ); ?>
 				</label>
-			<?php endforeach; ?>
+				<label>
+					<input type="radio" name="library_popup_style" value="full-screen" />
+					<?php esc_html_e( 'Fullscreen', 'analogwp-library' ); ?>
+				</label>
+			</div>
+		</div>
+
+		<div class="analog-custom-library-onboarding__field-group">
+			<span class="analog-custom-library-onboarding__field-label"><?php esc_html_e( 'Template columns', 'analogwp-library' ); ?></span>
+			<div class="analog-custom-library-onboarding__radio-options">
+				<label>
+					<input type="radio" name="library_template_columns" value="2c" />
+					<?php esc_html_e( '2 Columns', 'analogwp-library' ); ?>
+				</label>
+				<label>
+					<input type="radio" name="library_template_columns" value="3c" checked />
+					<?php esc_html_e( '3 Columns', 'analogwp-library' ); ?>
+				</label>
+				<label>
+					<input type="radio" name="library_template_columns" value="auto" />
+					<?php esc_html_e( 'Auto', 'analogwp-library' ); ?>
+				</label>
+			</div>
+		</div>
+
+		<div class="analog-custom-library-onboarding__field-group">
+			<span class="analog-custom-library-onboarding__field-label"><?php esc_html_e( 'Categories location', 'analogwp-library' ); ?></span>
+			<div class="analog-custom-library-onboarding__radio-options">
+				<label>
+					<input type="radio" name="library_categories_location" value="vertical" />
+					<?php esc_html_e( 'Sidebar', 'analogwp-library' ); ?>
+				</label>
+				<label>
+					<input type="radio" name="library_categories_location" value="horizontal" checked />
+					<?php esc_html_e( 'Horizontal', 'analogwp-library' ); ?>
+				</label>
+				<label>
+					<input type="radio" name="library_categories_location" value="hide-categories" />
+					<?php esc_html_e( 'None', 'analogwp-library' ); ?>
+				</label>
+			</div>
+		</div>
+		</div><!-- /.analog-custom-library-onboarding__step-1-options -->
+
+		<div class="analog-custom-library-onboarding__field-group analog-custom-library-onboarding__field-group--presets">
+			<span class="analog-custom-library-onboarding__field-label"><?php esc_html_e( 'Library colors', 'analogwp-library' ); ?></span>
+			<p class="analog-custom-library-onboarding__field-desc"><?php esc_html_e( 'Pick a color palette for your library. You can customize colors anytime.', 'analogwp-library' ); ?></p>
+			<div class="image-radio-options analog-custom-library-onboarding__preset-options">
+				<?php foreach ( $onboarding_data['style_presets'] as $key => $option ) : ?>
+					<label class="image-radio-option<?php echo 'default' === $key ? ' selected' : ''; ?>">
+						<input type="radio" name="library_style_preset" value="<?php echo esc_attr( $key ); ?>" <?php checked( 'default', $key ); ?> />
+						<span class="image-radio-preview">
+							<img src="<?php echo esc_url( $option['image'] ); ?>" alt="<?php echo esc_attr( $option['label'] ); ?>" />
+						</span>
+						<span class="image-radio-label"><?php echo esc_html( $option['label'] ); ?></span>
+					</label>
+				<?php endforeach; ?>
+			</div>
 		</div>
 		<div class="analog-custom-library-onboarding__actions analog-custom-library-onboarding__actions--end">
 			<button type="button" class="button button-primary" data-onboarding-next="<?php echo esc_attr( $onboarding_data['has_templates'] ? '2' : '3' ); ?>"><?php esc_html_e( 'Continue', 'analogwp-library' ); ?></button>

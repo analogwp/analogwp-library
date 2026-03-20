@@ -93,13 +93,19 @@ class Onboarding {
 			wp_die( esc_html__( 'Sorry, you are not allowed to manage Custom Library onboarding.', 'analogwp-library' ) );
 		}
 
-		$submitted_preset       = isset( $_POST['library_style_preset'] ) ? sanitize_text_field( wp_unslash( $_POST['library_style_preset'] ) ) : 'default'; // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$submitted_template_ids = isset( $_POST['onboarding_template_ids'] ) ? array_map( 'sanitize_text_field', wp_unslash( (array) $_POST['onboarding_template_ids'] ) ) : array(); // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$options                = Options::get_instance();
-		$preset                 = self::sanitize_style_preset( $submitted_preset );
+		$submitted_preset              = isset( $_POST['library_style_preset'] ) ? sanitize_text_field( wp_unslash( $_POST['library_style_preset'] ) ) : 'default'; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$submitted_template_ids        = isset( $_POST['onboarding_template_ids'] ) ? array_map( 'sanitize_text_field', wp_unslash( (array) $_POST['onboarding_template_ids'] ) ) : array(); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$submitted_popup_style         = isset( $_POST['library_popup_style'] ) ? sanitize_text_field( wp_unslash( $_POST['library_popup_style'] ) ) : 'compact'; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$submitted_template_columns    = isset( $_POST['library_template_columns'] ) ? sanitize_text_field( wp_unslash( $_POST['library_template_columns'] ) ) : '3c'; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$submitted_categories_location = isset( $_POST['library_categories_location'] ) ? sanitize_text_field( wp_unslash( $_POST['library_categories_location'] ) ) : 'horizontal'; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$options                       = Options::get_instance();
+		$preset                        = self::sanitize_style_preset( $submitted_preset );
 
 		$options->set( 'library_style_mode', 'preset' );
 		$options->set( 'library_style_preset', $preset );
+		$options->set( 'library_popup_style', self::sanitize_allowed( $submitted_popup_style, array( 'compact', 'full-screen' ), 'compact' ) );
+		$options->set( 'library_template_columns', self::sanitize_allowed( $submitted_template_columns, array( '2c', '3c', 'auto' ), '3c' ) );
+		$options->set( 'library_categories_location', self::sanitize_allowed( $submitted_categories_location, array( 'vertical', 'horizontal', 'hide-categories' ), 'horizontal' ) );
 
 		$library_manager = new Library_Manager();
 
@@ -136,6 +142,20 @@ class Onboarding {
 			'template_limit' => self::TEMPLATE_LIMIT,
 			'templates'      => $templates,
 		);
+	}
+
+	/**
+	 * Sanitize a value against an allowed list, falling back to a default.
+	 *
+	 * @param string $value   Value to validate.
+	 * @param array  $allowed Allowed values.
+	 * @param string $default Fallback default.
+	 * @return string
+	 */
+	private static function sanitize_allowed( $value, $allowed, $default ) {
+		$value = sanitize_key( $value );
+
+		return in_array( $value, $allowed, true ) ? $value : $default;
 	}
 
 	/**
