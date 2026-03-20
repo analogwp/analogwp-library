@@ -68,7 +68,8 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	box-shadow: none;
 }
 
-.ang-custom-library .tab-content .title {
+.ang-custom-library .tab-content .title,
+.analog-custom-library-onboarding__field-label {
 	color: #3C434A;
 	font-size: 14px;
 	font-weight: 700;
@@ -647,6 +648,31 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 	font-weight: 600;
 }
 
+/* Onboarding-only layout overrides */
+
+/* Reserve scrollbar gutter on the onboarding page to prevent layout shift
+   when switching between steps of different heights. */
+html:has(#analog-custom-library-onboarding-form) {
+	scrollbar-gutter: stable;
+}
+
+.wrap.ang-custom-library:has(#analog-custom-library-onboarding-form) .menu-title {
+	display: none;
+}
+
+.analog-custom-library-wrapper:has(#analog-custom-library-onboarding-form) {
+	display: block;
+}
+
+.analog-custom-library-wrapper:has(#analog-custom-library-onboarding-form) .sidebar {
+	display: none;
+}
+
+.analog-custom-library-wrapper:has(#analog-custom-library-onboarding-form) #mainform {
+	max-width: 760px;
+	margin-inline: auto;
+}
+
 .analog-custom-library-onboarding {
 	background: #fff;
 	border-radius: 8px;
@@ -700,7 +726,54 @@ body.custom-library_page_analog-custom-library-settings .wrap {
 }
 
 .analog-custom-library-onboarding__preset-options {
+	margin-bottom: 0;
+}
+
+.analog-custom-library-onboarding__step-1-options {
 	margin-bottom: 28px;
+}
+
+.analog-custom-library-onboarding__field-group {
+	margin-bottom: 40px;
+}
+
+.analog-custom-library-onboarding__field-group--presets {
+	margin-top: 4px;
+	margin-bottom: 28px;
+}
+
+.analog-custom-library-onboarding__field-label {
+	display: block;
+	margin-bottom: 8px;
+	margin: 1.5em 0;
+}
+
+.analog-custom-library-onboarding__field-desc {
+	margin: -4px 0 12px;
+	color: #646970;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.analog-custom-library-onboarding__radio-options {
+	margin: 0;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px 0;
+}
+
+.analog-custom-library-onboarding__radio-options label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 14px;
+	color: #3c434a;
+	cursor: pointer;
+}
+
+.analog-custom-library-onboarding__radio-options input[type="radio"] {
+	margin: 0;
+	flex-shrink: 0;
 }
 
 .analog-custom-library-onboarding__table-toolbar {

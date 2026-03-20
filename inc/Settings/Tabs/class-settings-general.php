@@ -50,13 +50,13 @@ class General extends Settings_Page {
 				),
 				array(
 					'id'      => 'hide_elementor_template_library',
-					'desc'    => __( 'Hide default Elementor Template library icon from editor.', 'analogwp-library' ),
+					'desc'    => __( 'Hide Default library icon', 'analogwp-library' ),
 					'type'    => 'checkbox',
 					'default' => false,
 				),
 				array(
 					'id'      => 'hide_elementor_library_popup',
-					'desc'    => __( 'Hide default Elementor Template library popup from editor.', 'analogwp-library' ),
+					'desc'    => __( 'Disable Default auto-popup', 'analogwp-library' ),
 					'type'    => 'checkbox',
 					'default' => false,
 				),
