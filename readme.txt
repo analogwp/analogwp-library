@@ -3,7 +3,7 @@ Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 2.3.0
+Stable tag: 2.4.0
 Tags: elementor, elementor templates, template library, design system, elementor addons
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -152,6 +152,13 @@ Contact us via the [support page](https://analogwp.com/contact/) or use the supp
 4. Custom Library popup modal in the Elementor Editor.
 
 == Changelog ==
+
+= 2.4.0 =
+* Improvement: Enhanced onboarding layout
+* Improvement: Updated onboarding options
+* Improvement: Updated labels and tooltips for a few options at settings
+* Improvement: Update language files
+* Improvement: Other minor improvements
 
 = 2.3.0 =
 * New: Onboarding for new users
