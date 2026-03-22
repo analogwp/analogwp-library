@@ -4,7 +4,7 @@ Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.9
 Stable tag: 2.4.0
-Tags: elementor, elementor templates, template library, design system, elementor addons
+Tags: elementor patterns, elementor templates, elementor library, template library, elementor addons
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,9 +12,9 @@ Create your own design system in Elementor. Organize templates, save time, and e
 
 == Description ==
 
-[🚀 Take a look at Custom Library for Elementor](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
+Custom Library for Elementor is a template library and pattern manager that lets Elementor users save, organize, and reuse their own Elementor templates, sections, and patterns — directly inside the editor.
 
-**Transform how you build with Elementor.** Custom Library for Elementor lets you create your own personal design system—organizing reusable templates, sections, and patterns into one streamlined library accessible directly from the editor.
+[🚀 Take a better look at Custom Library for Elementor](https://analogwp.com/custom-library-for-elementor/?utm_source=wporg&utm_medium=referral&utm_campaign=readme)
 
 https://www.youtube.com/watch?v=9RTBS6rhYgg
 
