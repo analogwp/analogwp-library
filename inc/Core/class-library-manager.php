@@ -48,6 +48,9 @@ class Library_Manager extends Base {
 
 		// Add to library on post save.
 		add_action( 'elementor/template-library/after_save_template', array( $this, 'handle_library_template_save' ), 10, 2 );
+
+		// AJAX: direct save from the Elementor editor dropdown.
+		add_action( 'wp_ajax_agwp_library_direct_save', array( $this, 'handle_direct_save' ) );
 	}
 
 	/**
@@ -128,6 +131,51 @@ class Library_Manager extends Base {
 	}
 
 	/**
+	 * AJAX handler: save the current Elementor document directly to Custom Library.
+	 *
+	 * Creates a local Elementor template and syncs it to the Custom Library DB
+	 * via the existing after_save_template hook (analog_custom_library_elementor_sync_on_save).
+	 *
+	 * @return void
+	 */
+	public function handle_direct_save() {
+		check_ajax_referer( 'agwp_library_direct_save', 'nonce' );
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( array( 'message' => __( 'Unauthorized.', 'analogwp-library' ) ) );
+		}
+
+		$title   = isset( $_POST['title'] ) ? sanitize_text_field( wp_unslash( $_POST['title'] ) ) : '';
+		$content = isset( $_POST['content'] ) ? json_decode( wp_unslash( $_POST['content'] ), true ) : array();
+
+		if ( ! $title ) {
+			wp_send_json_error( array( 'message' => __( 'Template name is required.', 'analogwp-library' ) ) );
+		}
+
+		$source = Plugin::elementor()->templates_manager->get_source( 'local' );
+
+		if ( ! $source ) {
+			wp_send_json_error( array( 'message' => __( 'Template source not found.', 'analogwp-library' ) ) );
+		}
+
+		$template_id = $source->save_item(
+			array(
+				'type'          => 'page',
+				'title'         => $title,
+				'content'       => is_array( $content ) ? $content : array(),
+				'page_settings' => array(),
+				'analog_custom_library_elementor_sync_on_save' => 'on',
+			)
+		);
+
+		if ( is_wp_error( $template_id ) ) {
+			wp_send_json_error( array( 'message' => $template_id->get_error_message() ) );
+		}
+
+		wp_send_json_success( array( 'template_id' => (int) $template_id ) );
+	}
+
+	/**
 	 * Prepare template data for saving in Library DB.
 	 *
 	 * @param int $post_id Post ID.
@@ -141,7 +189,7 @@ class Library_Manager extends Base {
 
 		// Get Elementor Document.
 		$document = Plugin::elementor()->documents->get( $post_id );
-		$content = array();
+		$content  = array();
 
 		if ( $document ) {
 			$content = $document->get_elements_raw_data( null, true );
