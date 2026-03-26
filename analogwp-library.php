@@ -227,6 +227,25 @@ if ( ! function_exists( 'agwp_custom_library_for_elementor_fs' ) ) {
 }
 
 /**
+ * Redirect to the plugin settings page after first activation.
+ */
+function agwp_custom_library_activation_redirect() {
+	// Avoid redirecting on AJAX requests or in the network admin.
+	if ( wp_doing_ajax() || is_network_admin() ) {
+		return;
+	}
+
+	// If the user has options set, don't redirect.
+	if ( get_option( 'analog_custom_library_options' ) ) {
+		return;
+	}
+
+	// Redirect to the plugin settings page.
+	wp_safe_redirect( admin_url( 'admin.php?page=agwp-custom-library' ) );
+	exit;
+}
+
+/**
  * Fire up plugin instance.
  */
 add_action(
@@ -262,6 +281,8 @@ add_action(
 		}
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-plugin.php';
+
+		add_action( 'admin_init', 'agwp_custom_library_activation_redirect' );
 
 		\AnalogWP\CustomLibrary\Plugin::load( AGWP_LIBRARY_PLUGIN_FILE );
 	}
