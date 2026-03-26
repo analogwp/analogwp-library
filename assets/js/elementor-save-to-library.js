@@ -122,6 +122,29 @@
 		} );
 	}
 
+	/**
+	 * Right-click context menu — registered at DOM ready when elementor.hooks is available.
+	 */
+	window.jQuery( document ).ready( function () {
+		if ( window.elementor && window.elementor.hooks ) {
+			window.elementor.hooks.addFilter( 'elements/context-menu/groups', function ( groups ) {
+				groups.push( {
+					name: 'analog-custom-library',
+					actions: [
+						{
+							name:      'save-to-analog-custom-library',
+							title:     'Save in Custom Library',
+							icon:      'eicon-folder',
+							isEnabled: function () { return true; },
+							callback:  openSaveDialog,
+						},
+					],
+				} );
+				return groups;
+			} );
+		}
+	} );
+
 	function showAlert( header, message ) {
 		window.elementorCommon.dialogsManager.createWidget( 'alert', {
 			id: 'agwp-cl-alert',
