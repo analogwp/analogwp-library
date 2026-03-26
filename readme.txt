@@ -1,4 +1,4 @@
-=== Custom Library for Elementor – Template Manager for Elementor Library, Elementor Templates, Elementor Patterns ===
+=== Custom Library for Elementor – Custom Library for Elementor Templates, Elementor Patterns & Elementor Library ===
 Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
