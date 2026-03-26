@@ -154,7 +154,7 @@ Contact us via the [support page](https://analogwp.com/contact/) or use the supp
 == Changelog ==
 
 = 2.5.0 =
-* New: "Save in Custom Library" dropdown menu inside Page Save Options menu inside Elementor editor
+* New: "Save in Custom Library" dropdown menu at Page Save Options menu inside Elementor editor
 * New: "Save in Custom Library" action in right-click Context menu inside Elementor editor
 * Fix: Onboarding redirect not working
 * Improvement: Update language files
