@@ -8,7 +8,7 @@ Tags: elementor patterns, elementor templates, elementor library, template libra
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Your own design system in Elementor. Organize templates, save time with consistent designs. Create Custom Elementor Library with Elementor Patterns and Elementor Templates now.
+Your own design system in Elementor. Organize templates, save time with consistent designs. Create a Custom Library for Elementor Templates and Elementor Patterns now.
 
 == Description ==
 
