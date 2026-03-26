@@ -10,7 +10,7 @@
  * Plugin Name: Custom Library for Elementor
  * Plugin URI:  https://analogwp.com/custom-library-for-elementor
  * Description: Custom Library for Elementor creates the foundation for a design framework that will help you create better, more consistent websites with Elementor.
- * Version:     2.4.0
+ * Version:     2.5.0
  * Author:      AnalogWP
  * Author URI:  https://analogwp.com/
  * License:     GPL2
@@ -18,7 +18,7 @@
  * Text Domain: analogwp-library
  * Requires at least: 6.0
  * Requires PHP: 7.4
- * Elementor tested up to: 3.35.7
+ * Elementor tested up to: 3.35.9
  * Elementor Pro tested up to: 3.35.1
  */
 
@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
 define( 'AGWP_LIBRARY_ELEMENTOR_MINIMUM', '3.20.0' );
 define( 'AGWP_LIBRARY_PHP_MINIMUM', '7.4' );
 define( 'AGWP_LIBRARY_WP_MINIMUM', '6.0' );
-define( 'AGWP_LIBRARY_VERSION', '2.4.0' );
+define( 'AGWP_LIBRARY_VERSION', '2.5.0' );
 define( 'AGWP_LIBRARY_PLUGIN_FILE', __FILE__ );
 define( 'AGWP_LIBRARY_PLUGIN_URL', plugin_dir_url( AGWP_LIBRARY_PLUGIN_FILE ) );
 define( 'AGWP_LIBRARY_PLUGIN_DIR', plugin_dir_path( AGWP_LIBRARY_PLUGIN_FILE ) );
@@ -227,6 +227,33 @@ if ( ! function_exists( 'agwp_custom_library_for_elementor_fs' ) ) {
 }
 
 /**
+ * Redirect to the plugin settings page once until onboarding is completed.
+ */
+function agwp_custom_library_activation_redirect() {
+	// Avoid redirecting on AJAX requests or in the network admin.
+	if ( wp_doing_ajax() || is_network_admin() ) {
+		return;
+	}
+
+	// If onboarding options are set, no redirect needed.
+	if ( get_option( 'analog_custom_library_options' ) ) {
+		return;
+	}
+
+	// If already redirected once, don't redirect again.
+	if ( get_transient( 'agwp_library_onboarding_redirected' ) ) {
+		return;
+	}
+
+	// Mark as redirected so this never fires again.
+	set_transient( 'agwp_library_onboarding_redirected', true, YEAR_IN_SECONDS );
+
+	// Redirect to the plugin settings page.
+	wp_safe_redirect( admin_url( 'admin.php?page=agwp-custom-library' ) );
+	exit;
+}
+
+/**
  * Fire up plugin instance.
  */
 add_action(
@@ -262,6 +289,8 @@ add_action(
 		}
 
 		require_once AGWP_LIBRARY_PLUGIN_DIR . 'inc/class-plugin.php';
+
+		add_action( 'admin_init', 'agwp_custom_library_activation_redirect' );
 
 		\AnalogWP\CustomLibrary\Plugin::load( AGWP_LIBRARY_PLUGIN_FILE );
 	}

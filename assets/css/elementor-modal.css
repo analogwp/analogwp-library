@@ -219,3 +219,24 @@ button[data-action="save_token"] {
 #elementor-template-library-save-template .elementor-template-library-custom-library {
 	margin-bottom: 40px;
 }
+
+/* "Save in Custom Library" dialog input */
+.agwp-cl-dialog-body {
+	padding: 4px 0 8px;
+}
+
+.agwp-cl-input {
+	width: 100%;
+	padding: 8px 12px;
+	border: 1px solid #d5d8dd;
+	border-radius: 4px;
+	font-size: 14px;
+	line-height: 1.4;
+	outline: none;
+	box-sizing: border-box;
+}
+
+.agwp-cl-input:focus {
+	border-color: var(--analog-custom-library-accent);
+	box-shadow: 0 0 0 2px rgba(92, 50, 182, 0.15);
+}

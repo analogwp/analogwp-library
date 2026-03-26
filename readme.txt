@@ -1,4 +1,4 @@
-=== Custom Library for Elementor: Design System & Template Manager ===
+=== Custom Library for Elementor: Template Manager for Elementor Library, Elementor Templates, Elementor Patterns ===
 Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
@@ -152,6 +152,13 @@ Contact us via the [support page](https://analogwp.com/contact/) or use the supp
 4. Custom Library popup modal in the Elementor Editor.
 
 == Changelog ==
+
+= 2.5.0 =
+* New: "Save in Custom Library" dropdown menu at Page Save Options menu inside Elementor editor
+* New: "Save in Custom Library" action in right-click Context menu inside Elementor editor
+* Fix: Onboarding redirect not working
+* Improvement: Update language files
+* Improvement: Other minor improvements
 
 = 2.4.0 =
 * Improvement: Enhanced onboarding layout

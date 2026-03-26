@@ -27,6 +27,9 @@ class Elementor {
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'enqueue_editor_scripts' ) );
 		add_action( 'elementor/preview/enqueue_styles', array( $this, 'enqueue_editor_scripts' ) );
 
+		// Save in Custom Library dropdown action.
+		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'enqueue_save_to_library_script' ) );
+
 		add_action(
 			'elementor/finder/register',
 			static function ( Categories_Manager $categories_manager ) {
@@ -36,6 +39,38 @@ class Elementor {
 		);
 
 		add_filter( 'elementor/editor/templates', array( $this, 'register_template_overrides' ) );
+	}
+
+	/**
+	 * Enqueue "Save in Custom Library" save-dropdown action script.
+	 *
+	 * Depends on elementor-v2-editor-app-bar so WordPress places it after that
+	 * package and before elementor-editor-loader-v2 (which mounts the React app),
+	 * ensuring registerAction() runs before useMemo captures the injections Map.
+	 *
+	 * @return void
+	 */
+	public function enqueue_save_to_library_script() {
+		if ( has_filter( 'analog_library_visibility_hidden', '__return_true' ) ) {
+			return;
+		}
+
+		wp_enqueue_script(
+			'analog-custom-library-save-action',
+			AGWP_LIBRARY_PLUGIN_URL . 'assets/js/elementor-save-to-library.js',
+			array( 'jquery', 'elementor-v2-editor-app-bar' ),
+			filemtime( AGWP_LIBRARY_PLUGIN_DIR . 'assets/js/elementor-save-to-library.js' ),
+			false
+		);
+
+		wp_localize_script(
+			'analog-custom-library-save-action',
+			'AGWP_LIBRARY_SAVE',
+			array(
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'nonce'    => wp_create_nonce( 'agwp_library_direct_save' ),
+			)
+		);
 	}
 
 	/**
