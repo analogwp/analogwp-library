@@ -227,7 +227,7 @@ if ( ! function_exists( 'agwp_custom_library_for_elementor_fs' ) ) {
 }
 
 /**
- * Redirect to the plugin settings page after first activation.
+ * Redirect to the plugin settings page once until onboarding is completed.
  */
 function agwp_custom_library_activation_redirect() {
 	// Avoid redirecting on AJAX requests or in the network admin.
@@ -235,10 +235,18 @@ function agwp_custom_library_activation_redirect() {
 		return;
 	}
 
-	// If the user has options set, don't redirect.
+	// If onboarding options are set, no redirect needed.
 	if ( get_option( 'analog_custom_library_options' ) ) {
 		return;
 	}
+
+	// If already redirected once, don't redirect again.
+	if ( get_transient( 'agwp_library_onboarding_redirected' ) ) {
+		return;
+	}
+
+	// Mark as redirected so this never fires again.
+	set_transient( 'agwp_library_onboarding_redirected', true, YEAR_IN_SECONDS );
 
 	// Redirect to the plugin settings page.
 	wp_safe_redirect( admin_url( 'admin.php?page=agwp-custom-library' ) );
