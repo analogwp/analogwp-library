@@ -3,7 +3,7 @@ Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 2.4.0
+Stable tag: 2.5.0
 Tags: elementor patterns, elementor templates, elementor library, template library, elementor addons
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
