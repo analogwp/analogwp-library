@@ -1,4 +1,4 @@
-=== Custom Library for Elementor: Template Manager for Elementor Library, Elementor Templates, Elementor Patterns ===
+=== Custom Library for Elementor – Template Manager for Elementor Library, Elementor Templates, Elementor Patterns ===
 Contributors: analogwp, lushkant, johnpixle
 Requires at least: 6.0
 Requires PHP: 7.4
@@ -8,7 +8,7 @@ Tags: elementor patterns, elementor templates, elementor library, template libra
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create your own design system in Elementor. Organize templates, save time, and empower clients with consistent designs.
+Create your own design system in Elementor. Organize templates, save time, and empower clients with consistent designs. Create your Custom Elementor Library with Elementor Patterns and Elementor Templates now.
 
 == Description ==
 
