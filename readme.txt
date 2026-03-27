@@ -4,11 +4,11 @@ Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.9
 Stable tag: 2.5.0
-Tags: elementor patterns, elementor templates, elementor library, template library, elementor addons
+Tags: elementor, elementor templates, elementor library, elementor widgets, elementor addons
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Your own design system in Elementor. Organize templates, save time with consistent designs. Create a Custom Library for Elementor Templates and Elementor Patterns now.
+Custom Library is your own design system in Elementor. Organize templates, save time with consistent designs. Get Custom Library for Elementor Templates and Elementor Patterns.
 
 == Description ==
 
